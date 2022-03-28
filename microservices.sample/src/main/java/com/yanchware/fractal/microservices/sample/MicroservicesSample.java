@@ -43,7 +43,8 @@ public class MicroservicesSample {
         .withServiceRange("tier-1-services")
 
       .withAPIGateway(Ambassador.builder()
-        //TODO
+        .withId(ComponentId.from("my-gateway"))
+        .withNamespace("apigateway")
         .build())
 
       .withNodePool(AzureNodePool.builder()
@@ -62,7 +63,7 @@ public class MicroservicesSample {
         .withId(ComponentId.from("svc-acl-erp"))
         .withDisplayName("PostgreSQL Database")
         .withDescription("PostgreSQL Database for Demo")
-        .withDisplayName("svc-acl-erp")
+        .withName("svc-acl-erp")
         .build();
 
       var postgresDbms = AzurePostgreSQL.builder()
