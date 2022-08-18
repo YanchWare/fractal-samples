@@ -41,6 +41,7 @@ public class TraefikWorkload {
         "metrics",
         false,
         9100,
+        9100,
         "tcp",
         false);
   }
@@ -50,6 +51,7 @@ public class TraefikWorkload {
         "websecure",
         true,
         8443,
+        443,
         "tcp",
         false);
   }
@@ -59,6 +61,7 @@ public class TraefikWorkload {
         "web",
         false,
         8000,
+        80,
         "tcp",
         true);
   }
