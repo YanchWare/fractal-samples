@@ -6,6 +6,8 @@ The approach used here is LiveSystem-First so that we can use the powerful SDK c
 This is a good enough approach for quick prototyping and MVPs.
 However, we advise to use the Fractal-First approach as soon as possible, as that will allow delegating more control to the development teams without hindering governance and security.
 
+You can find more information on this in our [documentation](https://fractal.cloud/docs)
+
 ## Build and run the project locally
 
 You can build the project by running the following command in its root folder:
