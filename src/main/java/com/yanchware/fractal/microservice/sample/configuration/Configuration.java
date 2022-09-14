@@ -1,9 +1,9 @@
-package com.yanchware.fractal.microservices.sample.configuration;
+package com.yanchware.fractal.microservice.sample.configuration;
 
 public interface Configuration {
   String getLiveSystemName();
   String getResourceGroupId();
-  String getSubscriptionId();
-  String getTenantId();
+  String getEnvironmentId();
+  String getEnvironmentParentId();
   String getEnvironmentDisplayName();
 }

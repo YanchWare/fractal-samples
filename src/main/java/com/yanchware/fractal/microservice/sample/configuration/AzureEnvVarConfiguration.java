@@ -1,15 +1,13 @@
-package com.yanchware.fractal.microservices.sample.configuration;
+package com.yanchware.fractal.microservice.sample.configuration;
 
 import static org.apache.commons.lang3.StringUtils.isBlank;
 
-import java.util.UUID;
+public class AzureEnvVarConfiguration implements Configuration {
 
-public class EnvVarConfiguration implements Configuration {
-
-  private EnvVarConfiguration() { }
+  private AzureEnvVarConfiguration() { }
 
   public static Configuration getInstance() {
-    return new EnvVarConfiguration();
+    return new AzureEnvVarConfiguration();
   }
 
   @Override
@@ -18,6 +16,16 @@ public class EnvVarConfiguration implements Configuration {
     return isBlank(liveSystemName)
       ? "local-test-env"
       : liveSystemName;
+  }
+
+  @Override
+  public String getEnvironmentId() {
+    var subscriptionId = System.getenv("SUBSCRIPTION_ID");
+    if(isBlank(subscriptionId)) {
+      throw new IllegalArgumentException("The environment variable SUBSCRIPTION_ID is required and it has not been defined");
+    }
+
+    return subscriptionId;
   }
 
   @Override
@@ -31,17 +39,7 @@ public class EnvVarConfiguration implements Configuration {
   }
 
   @Override
-  public String getSubscriptionId() {
-    var subscriptionId = System.getenv("SUBSCRIPTION_ID");
-    if(isBlank(subscriptionId)) {
-      throw new IllegalArgumentException("The environment variable SUBSCRIPTION_ID is required and it has not been defined");
-    }
-
-    return subscriptionId;
-  }
-
-  @Override
-  public String getTenantId() {
+  public String getEnvironmentParentId() {
     var tenantId = System.getenv("TENANT_ID");
     if(isBlank(tenantId)) {
       throw new IllegalArgumentException("The environment variable TENANT_ID is required and it has not been defined");

@@ -39,7 +39,7 @@
           <finalName>${project.name}</finalName>
           <archive>
             <manifest>
-              <mainClass>com.yanchware.fractal.microservices.sample.MicroservicesSample</mainClass>
+              <mainClass>com.yanchware.fractal.microservice.sample.MicroserviceSample</mainClass>
             </manifest>
           </archive>
           <descriptorRefs>
