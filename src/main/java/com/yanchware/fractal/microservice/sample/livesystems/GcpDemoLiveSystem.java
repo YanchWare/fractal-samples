@@ -13,7 +13,7 @@ import java.util.List;
 
 public class GcpDemoLiveSystem {
 
-  public static void Instantiate(Configuration configuration) {
+  public static LiveSystem build(Configuration configuration) {
 
     // ENVIRONMENT:
     var environment = GcpEnvironment.getEnvironment(configuration);
@@ -36,6 +36,8 @@ public class GcpDemoLiveSystem {
         .withComponents(List.of(gke, postgreSQLDbms))
         .withEnvironment(environment)
         . build();
+
+    return  liveSystem;
   }
 
 }

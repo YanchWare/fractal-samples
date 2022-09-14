@@ -9,8 +9,8 @@ public class PostgreSqlDatabase {
   public static PostgreSQLDBBuilder getBuilder() {
     return PostgreSQLDB.builder()
         .withId(ComponentId.from("demo-db"))
-        .withDisplayName("PostgreSQL Database 2")
-        .withDescription("PostgreSQL Database 2")
+        .withDisplayName("PostgreSQL Database")
+        .withDescription("PostgreSQL Database")
         .withName("demo-db");
   }
 

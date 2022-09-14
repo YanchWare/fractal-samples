@@ -2,7 +2,6 @@ package com.yanchware.fractal.microservice.sample.livesystems;
 
 import com.yanchware.fractal.microservice.sample.components.AmbassadorWorkload;
 import com.yanchware.fractal.microservice.sample.components.SampleMicroserviceWorkload;
-import com.yanchware.fractal.microservice.sample.components.azure.PostgreSqlDatabase;
 import com.yanchware.fractal.microservice.sample.configuration.Configuration;
 import com.yanchware.fractal.microservice.sample.components.azure.AksCluster;
 import com.yanchware.fractal.microservice.sample.components.azure.PostgreSqlDbms;
@@ -13,7 +12,7 @@ import java.util.List;
 
 public class AzureDemoLiveSystem {
 
-  public static void Instantiate(Configuration configuration) {
+  public static LiveSystem build(Configuration configuration) {
 
     // ENVIRONMENT:
     var environment= AzureEnvironment.getEnvironment(configuration);
@@ -25,17 +24,19 @@ public class AzureDemoLiveSystem {
         .build();
 
     var postgreSQLDbms = PostgreSqlDbms.getBuilder()
-        .withDatabase(PostgreSqlDatabase.build())
+        // .withDatabase(PostgreSqlDatabase.build())
         .build();
 
     // INSTANTIATION:
-    LiveSystem azureLiveSystem = LiveSystem.builder()
+    LiveSystem liveSystem = LiveSystem.builder()
         .withName(configuration.getLiveSystemName())
         .withDescription("Fractal Azure demo")
         .withResourceGroupId(configuration.getResourceGroupId())
         .withComponents(List.of(azureAks, postgreSQLDbms))
         .withEnvironment(environment)
         . build();
+
+    return liveSystem;
   }
 
 }

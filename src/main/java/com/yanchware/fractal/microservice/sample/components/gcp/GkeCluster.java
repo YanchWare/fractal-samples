@@ -14,17 +14,17 @@ public class GkeCluster {
   public static GoogleKubernetesEngine.GoogleKubernetesEngineBuilder getBuilder() {
     return GoogleKubernetesEngine.builder()
         .withId(ComponentId.from("gcp-cluster"))
-        .withDescription("AKS cluster")
-        .withDisplayName("AKS cluster")
+        .withDescription("GKE cluster")
+        .withDisplayName("GKE cluster")
         .withRegion(GcpRegion.EU_WEST1)
-        .withNetwork("network-host")
-        .withSubNetwork("compute-tier-1")
-        .withPodsRange("tier-1-pods")
-        .withServiceRange("tier-2-services")
-        .withServiceIpMask("10.2.0.0/16")
-        .withPodIpMask("10.3.0.0/16")
-        .withVnetAddressSpaceIpMask("10.90.0.0/22")
-        .withVnetSubnetAddressIpMask("10.90.0.0/22")
+        .withNetworkName("fractal-demo-host")
+        .withSubnetworkName("compute-tier-1")
+        .withSubnetworkIpRange("10.0.4.0/22")
+        .withPodsRangeName("tier-1-pods")
+        .withPodIpRange("10.4.0.0/14")
+        .withServicesRangeName("tier-2-services")
+        .withServiceIpRange("10.0.32.0/20")
+
         .withNodePools(getNodePools());
   }
 

@@ -18,14 +18,8 @@ public class AksCluster {
         .withDescription("AKS cluster")
         .withDisplayName("AKS cluster")
         .withRegion(EUROPE_WEST)
-        .withNetwork("network-host")
-        .withSubNetwork("compute-tier-1")
-        .withPodsRange("tier-1-pods")
-        .withServiceRange("tier-2-services")
-        .withServiceIpMask("10.2.0.0/16")
-        .withPodIpMask("10.3.0.0/16")
-        .withVnetAddressSpaceIpMask("10.90.0.0/22")
-        .withVnetSubnetAddressIpMask("10.90.0.0/22")
+        .withPodIpRange("10.3.0.0/16")
+        .withServiceIpRange("10.2.0.0/16")
         .withNodePools(getNodePools());
   }
 

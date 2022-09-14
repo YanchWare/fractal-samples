@@ -4,17 +4,21 @@ import com.yanchware.fractal.microservice.sample.configuration.AzureEnvVarConfig
 import com.yanchware.fractal.microservice.sample.configuration.GcpEnvVarConfiguration;
 import com.yanchware.fractal.microservice.sample.livesystems.AzureDemoLiveSystem;
 import com.yanchware.fractal.microservice.sample.livesystems.GcpDemoLiveSystem;
+import com.yanchware.fractal.sdk.Automaton;
 import com.yanchware.fractal.sdk.domain.exceptions.InstantiatorException;
+
+import java.util.List;
 
 public class MicroserviceSample {
 
   public static void main (String[] args) throws InstantiatorException {
 
-    // Instantiate live-system on Azure:
-    AzureDemoLiveSystem.Instantiate(AzureEnvVarConfiguration.getInstance());
+    // Instantiate Azure live-system:
+    var azureLiveSystem = AzureDemoLiveSystem.build(AzureEnvVarConfiguration.getInstance());
 
-    // Instantiate live-system on Google:
-    GcpDemoLiveSystem.Instantiate(GcpEnvVarConfiguration.getInstance());
+    // Instantiate Google live-system:
+    var gcpLiveSystem = GcpDemoLiveSystem.build(GcpEnvVarConfiguration.getInstance());
 
+    Automaton.instantiate(List.of(azureLiveSystem, gcpLiveSystem));
   }
 }
