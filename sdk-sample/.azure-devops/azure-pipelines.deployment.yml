@@ -1,0 +1,25 @@
+parameters:
+- name: environment
+  type: string
+
+jobs:
+- deployment: deploy
+  displayName: 'Deploy Microservices Sample Fractal to ${{ parameters.environment }}'
+  variables:
+  - group: ${{ parameters.environment }}
+  environment: ${{ parameters.environment }}
+  strategy:
+    runOnce:
+      deploy:
+        steps:
+        - download: current
+          artifact: Fractal
+        - bash: java -jar $(Pipeline.Workspace)/Fractal/sdk-sample-jar-with-dependencies.jar
+          displayName: 'Deploy Microservices Sample Fractal'
+          env:
+            CLIENT_ID: $(CLIENT_ID)
+            CLIENT_SECRET: $(CLIENT_SECRET)
+            ENV_DISPLAY_NAME: $(ENV_DISPLAY_NAME)
+            LIVE_SYSTEM_NAME: $(LIVE_SYSTEM_NAME)
+            RESOURCE_GROUP_ID: $(RESOURCE_GROUP_ID)
+            SUBSCRIPTION_ID: $(SUBSCRIPTION_ID)
