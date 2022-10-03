@@ -9,8 +9,9 @@ Consult the main [README](../README.md) for details on how to set up your enviro
 
 ## Projects
 
-| Project                         	| Description                                                                      	|
-|---------------------------------	|----------------------------------------------------------------------------------	|
-| [ AKS Sample ]( ./aks-sample/ ) 	| Sample project to emphasise the creation of an AKS with the minimum requirements 	|
+| Project                               	| Description                                                                      	|
+|---------------------------------------	|----------------------------------------------------------------------------------	|
+| [ AKS Sample ]( ./aks-sample/ )       	| Sample project to emphasise the creation of an AKS with the minimum requirements 	|
+| [ Ambassador Sample ]( ./aks-sample/ ) 	| Sample project to emphasise creation of Ambassador API Gateway in AKS           	|
 
 #### [Go back to previous README](../README.md)
