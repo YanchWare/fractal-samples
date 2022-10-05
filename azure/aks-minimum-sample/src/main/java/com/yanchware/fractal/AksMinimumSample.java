@@ -10,7 +10,7 @@ import java.util.List;
 
 import static com.yanchware.fractal.azure.aks.sample.components.AksComponent.getAks;
 
-public class AksSample {
+public class AksMinimumSample {
   public static void main(String[] args) throws InstantiatorException {
     // CONFIGURATION:
     var configuration = EnvVarConfiguration.getInstance();
