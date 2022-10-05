@@ -1,4 +1,6 @@
-# Introduction
+# Ambassador Sample 
+
+## Introduction
 
 The purpose of this project is to show an example of instantiating an AKS cluster with Ambassador as API Gateway.
 
