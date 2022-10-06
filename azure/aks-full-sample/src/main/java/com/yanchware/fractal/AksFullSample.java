@@ -26,7 +26,7 @@ public class AksFullSample {
     // INSTANTIATION:
     LiveSystem liveSystem = LiveSystem.builder()
         .withName(configuration.getLiveSystemName())
-        .withDescription("Fractal demo")
+        .withDescription("AKS with full options sample")
         .withResourceGroupId(configuration.getResourceGroupId())
         .withComponent(getAks("aks-1"))
         .withEnvironment(env)
