@@ -5,16 +5,17 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.yanchware.fractal</groupId>
-    <artifactId>aks.sample</artifactId>
+    <artifactId>aks.full.sample</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-    <name>aks-sample</name>
+    <name>aks-full-sample</name>
     <url>https://github.com/YanchWare/fractal-samples</url>
-    <description>Sample of AKS using Fractal Cloud SDK</description>
+    <description>Sample of AKS with all possible options using Fractal Cloud SDK</description>
 
     <properties>
         <maven.compiler.source>18</maven.compiler.source>
         <maven.compiler.target>18</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <dependencies>
@@ -26,7 +27,7 @@
         <dependency>
             <groupId>com.yanchware</groupId>
             <artifactId>fractal.sdk</artifactId>
-            <version>1.0.12</version>
+            <version>1.0.15</version>
         </dependency>
     </dependencies>
 
@@ -38,7 +39,7 @@
                     <finalName>${project.name}</finalName>
                     <archive>
                         <manifest>
-                            <mainClass>com.yanchware.fractal.sdk.sample.SdkSample</mainClass>
+                            <mainClass>com.yanchware.fractal.AksFullSample</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>

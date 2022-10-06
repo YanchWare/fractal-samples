@@ -1,4 +1,6 @@
-# Introduction
+# AKS with minimum requirements sample 
+
+## Introduction
 
 The purpose of this project is to test the instantiation of an AKS cluster using the minimum requirements. For this example, we will mostly rely on the default settings used by [Fractal Cloud](https://fractal.cloud).
 
@@ -14,6 +16,6 @@ You can build the project by running the following command in its root folder:
 
 To run the project you can type the following command:
 
-`java -jar target/aks-sample-jar-with-dependencies.jar`
+`java -jar target/aks-minimum-sample-jar-with-dependencies.jar`
 
 #### [Go back to previous README](../README.md)
