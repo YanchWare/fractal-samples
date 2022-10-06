@@ -34,8 +34,9 @@ public class AksComponent {
         .withAddonProfiles(List.of(AzureAddonProfile.AZURE_POLICY, AzureAddonProfile.AZURE_KEYVAULT_SECRETS_PROVIDER))
         .withWindowsAdminUsername("")
         .withNodePool(getNodePools())
-        .withPriorityClass(getPriorityClass("fractal-critical", PREEMPT_LOWER_PRIORITY, 1_000_000_000))
-        .withPriorityClass(getPriorityClass("fractal-critical-2", NEVER, 999_999_000))
+        .withPriorityClasses(List.of(
+            getPriorityClass("fractal-critical", PREEMPT_LOWER_PRIORITY, 1_000_000_000),
+            getPriorityClass("fractal-critical-2", NEVER, 999_999_000)))
         .withPodManagedIdentity(getPodManagedIdentity())
         .build();
   }
