@@ -11,8 +11,9 @@ Consult the main [README](../README.md) for details on how to set up your enviro
 
 | Project                                                                 	| Description                                                                               	|
 |-------------------------------------------------------------------------	|-------------------------------------------------------------------------------------------	|
-| [ AKS with minimum requirements Sample ]( ./aks-minimum-sample/ )       	| Sample project to emphasise the creation of an AKS with the minimum requirements           	|
-| [ AKS with all possible options Sample ]( ./aks-full-sample/ )          	| Sample project to emphasise the creation of an AKS with all the possible options available 	|
-| [ Ambassador Sample ]( ./ambassador-sample/ ) 	                          | Sample project to emphasise creation of Ambassador API Gateway in AKS                     	|
+| [ aks-minimum-sample ]( ./aks-minimum-sample/ )                          	| Sample project to emphasise the creation of an AKS with the minimum requirements           	|
+| [ aks-full-sample ]( ./aks-full-sample/ )                               	| Sample project to emphasise the creation of an AKS with all the possible options available 	|
+| [ ambassador-sample ]( ./ambassador-sample/ ) 	                          | Sample project to emphasise creation of Ambassador API Gateway in AKS                     	|
+| [ prometheus-sample ]( ./prometheus-sample/ ) 	                          | Sample project to emphasise creation of Prometheus in AKS                                  	|
 
 #### [Go back to previous README](../README.md)

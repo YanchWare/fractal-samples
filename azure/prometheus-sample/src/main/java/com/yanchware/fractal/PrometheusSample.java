@@ -10,7 +10,7 @@ import java.util.List;
 
 import static com.yanchware.fractal.azure.aks.sample.components.AksComponent.getAks;
 
-public class AksMinimumSample {
+public class PrometheusSample {
   public static void main(String[] args) throws InstantiatorException {
     // CONFIGURATION:
     var configuration = EnvVarConfiguration.getInstance();
@@ -26,7 +26,7 @@ public class AksMinimumSample {
     // INSTANTIATION:
     LiveSystem liveSystem = LiveSystem.builder()
         .withName(configuration.getLiveSystemName())
-        .withDescription("AKS with minimum requirements sample")
+        .withDescription("Prometheus in AKS sample")
         .withResourceGroupId(configuration.getResourceGroupId())
         .withComponent(getAks("aks-1"))
         .withEnvironment(env)
