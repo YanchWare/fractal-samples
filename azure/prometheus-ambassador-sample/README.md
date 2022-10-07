@@ -1,4 +1,4 @@
-# Prometheus in AKS sample 
+# Prometheus with Ambassador in AKS sample 
 
 ## Introduction
 
