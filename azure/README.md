@@ -15,5 +15,6 @@ Consult the main [README](../README.md) for details on how to set up your enviro
 | [ aks-full-sample ]( ./aks-full-sample/ )                               	| Sample project to emphasise the creation of an AKS with all the possible options available 	|
 | [ ambassador-sample ]( ./ambassador-sample/ ) 	                          | Sample project to emphasise creation of Ambassador API Gateway in AKS                     	|
 | [ prometheus-sample ]( ./prometheus-sample/ ) 	                          | Sample project to emphasise creation of Prometheus in AKS                                  	|
+| [ prometheus-ambassador-sample ]( ./prometheus-ambassador-sample/ ) 	    | Sample project to emphasise creation of Prometheus alongisde Ambassador in AKS             	|
 
 #### [Go back to previous README](../README.md)
