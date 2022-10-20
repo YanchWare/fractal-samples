@@ -23,7 +23,7 @@ public class SdkSample {
     
     var aks = AzureKubernetesService.builder()
         .withId("aks-cluster")
-        .withDisplayName("AKS cluster ")
+        .withDisplayName("AKS cluster")
         .withRegion(EUROPE_WEST)
         .withNodePool(AzureNodePool.builder()
             .withName("linux")

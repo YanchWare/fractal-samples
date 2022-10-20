@@ -17,10 +17,11 @@ jobs:
           distribution: 'adopt'
       - name: Maven Build 
         run: mvn clean compile assembly:single
-        #working-directory: ./fractal.sdk
+        working-directory: ./sdk-sample
         #env:
         #  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Maven Deploy
+        working-directory: ./sdk-sample
         run: java -jar target/sdk-sample-jar-with-dependencies.jar
         env:
           RESOURCE_GROUP_ID: ${{ secrets.RESOURCE_GROUP_ID }}
