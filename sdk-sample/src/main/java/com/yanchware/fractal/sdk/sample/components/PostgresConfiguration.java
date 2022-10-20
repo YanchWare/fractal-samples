@@ -11,7 +11,7 @@ public class PostgresConfiguration {
   
   public static PostgreSQL getPostgresDbms() {
     return AzurePostgreSQL.builder()
-        .withId("rdbms")
+        .withId("rdbms-hw")
         .withDisplayName("PostgreSQL DBMS")
         .withRegion(EUROPE_WEST)
         .withDatabase(PostgreSQLDB.builder()
