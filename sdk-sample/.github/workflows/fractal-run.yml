@@ -23,5 +23,11 @@ jobs:
       - name: Maven Deploy
         run: java -jar target/sdk-sample-jar-with-dependencies.jar
         env:
-          SECRET: ${{ secrets.SECRET }}
-    
+          RESOURCE_GROUP_ID: ${{ secrets.RESOURCE_GROUP_ID }}
+          CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
+          CLIENT_ID: ${{ secrets.CLIENT_ID }}
+          ENVIRONMENT_ID: ${{ secrets.ENVIRONMENT_ID }}
+          SUBSCRIPTION_ID: ${{ secrets.SUBSCRIPTION_ID }}
+          TENANT_ID: ${{ secrets.TENANT_ID }}
+          LIVESYSTEM_ENDPOINT: ${{ secrets.LIVESYSTEM_ENDPOINT }}
+          BLUEPRINT_ENDPOINT: ${{ secrets.BLUEPRINT_ENDPOINT }}
