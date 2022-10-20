@@ -16,14 +16,14 @@ jobs:
           java-version: '17'
           distribution: 'adopt'
       - name: maven-settings
-        uses: s4u/maven-settings-actions@v2
+        uses: s4u/maven-settings-action@v2.7.0
         with:
           servers: '[{"id": "yanchware", "username": "yanchware", "password": "${GITHUB_TOKEN_REF}"}]'
       - name: Maven Build 
         run: mvn clean compile assembly:single
         working-directory: ./sdk-sample
         env:
-          GITHUB_TOKEN_REF: ${{ secrets.GITHUB_TOKEN_REF }}
+          GITHUB_TOKEN_REF: ${{ secrets.GH_TOKEN_REF }}
       - name: Maven Deploy
         working-directory: ./sdk-sample
         run: java -jar target/sdk-sample-jar-with-dependencies.jar
