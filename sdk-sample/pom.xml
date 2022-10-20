@@ -27,7 +27,7 @@
         <dependency>
             <groupId>com.yanchware</groupId>
             <artifactId>fractal.sdk</artifactId>
-            <version>1.0.10</version>
+            <version>1.0.16</version>
         </dependency>
     </dependencies>
 
