@@ -14,7 +14,7 @@ public class EnvVarConfiguration implements Configuration {
   public String getLiveSystemName() {
     var liveSystemName = System.getenv("LIVE_SYSTEM_NAME");
     return isBlank(liveSystemName)
-      ? "hello-world-aks"
+      ? "hello-world-aks-2"
       : liveSystemName;
   }
 
