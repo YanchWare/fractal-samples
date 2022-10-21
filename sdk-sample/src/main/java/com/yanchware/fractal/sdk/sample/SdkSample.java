@@ -35,7 +35,7 @@ public class SdkSample {
 
     LiveSystem liveSystem = LiveSystem.builder()
         .withName(configuration.getLiveSystemName())
-        .withDescription("Microservice with DB and API Gateway")
+        .withDescription("Microservice with DB and Ambassador API Gateway")
         .withResourceGroupId(configuration.getResourceGroupId())
         .withComponents(List.of(aks, getPostgresDbms()))
         .withEnvironment(getEnvironment(configuration))
