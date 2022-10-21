@@ -22,7 +22,7 @@ public class SdkSample {
     var configuration = EnvVarConfiguration.getInstance();
     
     var aks = AzureKubernetesService.builder()
-        .withId("aks-cluster")
+        .withId("aks-cluster-2")
         .withDisplayName("AKS cluster")
         .withRegion(EUROPE_WEST)
         .withNodePool(AzureNodePool.builder()

@@ -6,7 +6,7 @@ public class AmbassadorConfiguration {
   
   public static Ambassador getAmbassador() {
     return Ambassador.builder()
-        .withId("ambassador")
+        .withId("ambassador-2")
         .withDisplayName("Ambassador API Gateway")
         .withNamespace("ambassador")
         .withAcmeProviderAuthority("https://acme-v02.api.letsencrypt.org/directory")

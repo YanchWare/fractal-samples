@@ -5,7 +5,7 @@ import com.yanchware.fractal.sdk.domain.entities.livesystem.caas.KubernetesWorkl
 public class HelloWorldWorkloadConfiguration {
   public static KubernetesWorkload getHelloWorldWorkloadConfiguration() {
     return KubernetesWorkload.builder()
-        .withId("hello-world")
+        .withId("hello-world-2")
         .withDisplayName("Hello World Custom Workload")
         .withSSHRepositoryURI("git@github.com:YanchWare/fractal-hello-world.git")
         .withRepoId("YanchWare/fractal-hello-world")
