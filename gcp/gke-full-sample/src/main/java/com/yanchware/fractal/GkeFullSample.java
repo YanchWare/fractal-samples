@@ -1,6 +1,6 @@
 package com.yanchware.fractal;
 
-import com.yanchware.fractal.gcp.gke.sample.configuration.EnvVarConfiguration;
+import com.yanchware.fractal.sample.configuration.EnvVarConfiguration;
 import com.yanchware.fractal.sdk.Automaton;
 import com.yanchware.fractal.sdk.aggregates.Environment;
 import com.yanchware.fractal.sdk.aggregates.LiveSystem;
@@ -8,9 +8,9 @@ import com.yanchware.fractal.sdk.domain.exceptions.InstantiatorException;
 
 import java.util.List;
 
-import static com.yanchware.fractal.gcp.gke.sample.components.GkeComponent.getGke;
+import static com.yanchware.fractal.sample.components.GkeComponent.getGke;
 
-public class GkeMinimumSample {
+public class GkeFullSample {
   public static void main(String[] args) throws InstantiatorException {
     // CONFIGURATION:
     var configuration = EnvVarConfiguration.getInstance();
@@ -21,6 +21,7 @@ public class GkeMinimumSample {
         .withParentId(configuration.getTenantId())
         .withParentType("tenant")
         .build();
+
 
     // INSTANTIATION:
     LiveSystem liveSystem = LiveSystem.builder()
