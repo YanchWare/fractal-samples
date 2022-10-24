@@ -21,6 +21,7 @@ The repository is split into different directories based on the cloud provider. 
 | Cloud Provider        	| Description                                           	|
 |-----------------------	|-------------------------------------------------------	|
 | [ Azure ]( ./azure/ ) 	| Collection of sample projects using our SDK for Azure 	|
+| [ GCP   ]( ./gcp/   ) 	| Collection of sample projects using our SDK for GCP   	|
 
 ## Build and run the project locally
 
