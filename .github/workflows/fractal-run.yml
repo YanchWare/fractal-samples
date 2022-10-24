@@ -1,7 +1,7 @@
 name: Build and run LiveSystem for Fractal Cloud
 
-on:
-  pull_request:
+#on:
+#  pull_request:
     
 jobs:
   deploy-with-fractal-cloud:
