@@ -22,7 +22,6 @@ public class PrometheusSample {
         .withParentType("tenant")
         .build();
 
-
     // INSTANTIATION:
     LiveSystem liveSystem = LiveSystem.builder()
         .withName(configuration.getLiveSystemName())
