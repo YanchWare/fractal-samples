@@ -26,7 +26,7 @@ public class GkeFullSample {
     // INSTANTIATION:
     LiveSystem liveSystem = LiveSystem.builder()
         .withName(configuration.getLiveSystemName())
-        .withDescription("GKE with minimum requirements sample")
+        .withDescription("GKE with full options sample")
         .withResourceGroupId(configuration.getResourceGroupId())
         .withComponent(getGke("gke-1"))
         .withEnvironment(env)
