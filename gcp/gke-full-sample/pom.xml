@@ -5,18 +5,18 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.yanchware.fractal</groupId>
-    <artifactId>gke.minimum.sample</artifactId>
+    <artifactId>gke.full.sample</artifactId>
     <version>1.0-SNAPSHOT</version>
-
-    <name>gke-minimum-sample</name>
-    <url>https://github.com/YanchWare/fractal-samples</url>
-    <description>Sample of GKE with minimum requirements using Fractal Cloud SDK</description>
 
     <properties>
         <maven.compiler.source>18</maven.compiler.source>
         <maven.compiler.target>18</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+
+    <name>gke-full-sample</name>
+    <url>https://github.com/YanchWare/fractal-samples</url>
+    <description>Sample of GKE with all options using Fractal Cloud SDK</description>
 
     <dependencies>
         <dependency>
@@ -39,7 +39,7 @@
                     <finalName>${project.name}</finalName>
                     <archive>
                         <manifest>
-                            <mainClass>com.yanchware.fractal.GkeMinimumSample</mainClass>
+                            <mainClass>com.yanchware.fractal.GkeFullSample</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>

@@ -9,8 +9,9 @@ Consult the main [README](../README.md) for details on how to set up your enviro
 
 ## Projects
 
-| Project                                                                 	| Description                                                                               	|
-|-------------------------------------------------------------------------	|-------------------------------------------------------------------------------------------	|
-| [ gke-minimum-sample ]( ./gke-minimum-sample/ )                          	| Sample project to emphasise the creation of a GKE with the minimum requirements           	|
+| Project                                                                 	| Description                                                                                              	|
+|-------------------------------------------------------------------------	|---------------------------------------------------------------------------------------------------------- |
+| [ gke-minimum-sample ]( ./gke-minimum-sample/ )                          	| Sample project to emphasise the creation of a GKE with the minimum requirements                         	|
+| [ gke-full-sample ]( ./gke-full-sample/ )                               	| Sample project to emphasise the creation of a GKE with with all the possible options available           	|
 
 #### [Go back to previous README](../README.md)
