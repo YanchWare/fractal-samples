@@ -27,7 +27,7 @@ public class PrometheusSample {
         .withName(configuration.getLiveSystemName())
         .withDescription("Prometheus in GKE sample")
         .withResourceGroupId(configuration.getResourceGroupId())
-        .withComponent(getGke("aks-1"))
+        .withComponent(getGke("gke-1"))
         .withEnvironment(env)
         .build();
 
