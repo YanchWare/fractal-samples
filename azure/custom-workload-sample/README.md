@@ -1,4 +1,4 @@
-# Prometheus in AKS sample 
+# Custom Workload in AKS sample 
 
 ## Introduction
 
