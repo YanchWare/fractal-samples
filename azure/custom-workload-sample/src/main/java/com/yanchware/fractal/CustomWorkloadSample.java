@@ -25,7 +25,7 @@ public class CustomWorkloadSample {
     // INSTANTIATION:
     LiveSystem liveSystem = LiveSystem.builder()
         .withName(configuration.getLiveSystemName())
-        .withDescription("Prometheus in AKS sample")
+        .withDescription("Custom Workload in AKS sample")
         .withResourceGroupId(configuration.getResourceGroupId())
         .withComponent(getAksWithCustomWorkload("aks-1"))
         .withEnvironment(env)

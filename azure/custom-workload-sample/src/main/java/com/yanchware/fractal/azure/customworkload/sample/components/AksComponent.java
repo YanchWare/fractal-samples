@@ -23,7 +23,7 @@ public class AksComponent {
 
   public static KubernetesWorkload getK8sWorkload() {
     return KubernetesWorkload.builder()
-        .withId("fractal-svc")
+        .withId("fractal-samples")
         .withDescription("Fractal Service on K8S")
         .withNamespace("fractal")
         .withPrivateSSHKeyPassphraseSecretId("fractal-deployer-secret-id")
