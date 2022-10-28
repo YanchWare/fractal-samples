@@ -25,13 +25,12 @@ public class AksComponent {
     return KubernetesWorkload.builder()
         .withId("fractal-svc")
         .withDescription("Fractal Service on K8S")
-        .withDisplayName("Fractal SVC")
         .withNamespace("fractal")
-        .withPrivateSSHKeyPassphraseSecretId("fractal-private-passphrase")
-        .withPrivateSSHKeySecretId("fractal-private-ssh")
-        .withSSHRepositoryURI("ssh-uri")
-        .withRepoId("fractal-svc-id")
-        .withBranchName("env/fractal-test")
+        .withPrivateSSHKeyPassphraseSecretId("fractal-deployer-secret-id")
+        .withPrivateSSHKeySecretId("fractal-deployer-passphrase-secret-id")
+        .withSSHRepositoryURI("git@github.com:YanchWare/fractal-samples.git")
+        .withRepoId("YanchWare/fractal-samples")
+        .withBranchName("env/prod")
         .build();
   }
 
