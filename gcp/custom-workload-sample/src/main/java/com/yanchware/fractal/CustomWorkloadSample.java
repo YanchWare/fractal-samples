@@ -1,6 +1,6 @@
 package com.yanchware.fractal;
 
-import com.yanchware.fractal.gcp.ambassador.sample.configuration.EnvVarConfiguration;
+import com.yanchware.fractal.gcp.customworkload.sample.configuration.EnvVarConfiguration;
 import com.yanchware.fractal.sdk.Automaton;
 import com.yanchware.fractal.sdk.aggregates.Environment;
 import com.yanchware.fractal.sdk.aggregates.LiveSystem;
@@ -8,9 +8,9 @@ import com.yanchware.fractal.sdk.domain.exceptions.InstantiatorException;
 
 import java.util.List;
 
-import static com.yanchware.fractal.gcp.ambassador.sample.components.GkeComponent.getGke;
+import static com.yanchware.fractal.gcp.customworkload.sample.components.GkeComponent.getGke;
 
-public class AmbassadorSample {
+public class CustomWorkloadSample {
   public static void main(String[] args) throws InstantiatorException {
     // CONFIGURATION:
     var configuration = EnvVarConfiguration.getInstance();
@@ -25,7 +25,7 @@ public class AmbassadorSample {
     // INSTANTIATION:
     LiveSystem liveSystem = LiveSystem.builder()
         .withName(configuration.getLiveSystemName())
-        .withDescription("GKE with Ambassador sample")
+        .withDescription("Custom Workload in GKE sample")
         .withResourceGroupId(configuration.getResourceGroupId())
         .withComponent(getGke("gke-1"))
         .withEnvironment(env)
