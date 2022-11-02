@@ -1,6 +1,7 @@
-package com.yanchware.fractal.gcp.ambassador.sample.components;
+package com.yanchware.fractal.gcp.customworkload.sample.components;
 
 import com.yanchware.fractal.sdk.domain.entities.livesystem.caas.Ambassador;
+import com.yanchware.fractal.sdk.domain.entities.livesystem.caas.KubernetesWorkload;
 import com.yanchware.fractal.sdk.domain.entities.livesystem.caas.providers.gcp.GcpNodePool;
 import com.yanchware.fractal.sdk.domain.entities.livesystem.caas.providers.gcp.GoogleKubernetesEngine;
 
@@ -17,7 +18,7 @@ public class GkeComponent {
         .withId(id)
         .withRegion(EU_WEST1)
         .withNodePools(getNodePools())
-        .withAPIGateway(getAmbassador())
+        .withK8sWorkload(getK8sWorkload())
         .build();
   }
 
@@ -30,13 +31,16 @@ public class GkeComponent {
     );
   }
 
-  public static Ambassador getAmbassador() {
-    return Ambassador.builder()
-        .withId("ambassador")
-        .withHost("api.yourdomain.com")
-        .withHostOwnerEmail("email@yourdomain.com")
-        .withAcmeProviderAuthority("https://acme-v02.api.letsencrypt.org/directory")
-        .withTlsSecretName("env-tls-cert")
+  public static KubernetesWorkload getK8sWorkload() {
+    return KubernetesWorkload.builder()
+        .withId("fractal-samples")
+        .withDescription("Fractal Service on K8S")
+        .withNamespace("fractal")
+        .withPrivateSSHKeyPassphraseSecretId("fractal-deployer-secret-id")
+        .withPrivateSSHKeySecretId("fractal-deployer-passphrase-secret-id")
+        .withSSHRepositoryURI("git@github.com:YanchWare/fractal-samples.git")
+        .withRepoId("YanchWare/fractal-samples")
+        .withBranchName("env/prod")
         .build();
   }
 }

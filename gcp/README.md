@@ -16,5 +16,6 @@ Consult the main [README](../README.md) for details on how to set up your enviro
 | [ ambassador-sample ]( ./ambassador-sample/ )                            	| Sample project to emphasise the creation of Ambassador API Gateway in GKE                               	|
 | [ prometheus-sample ]( ./prometheus-sample/ )                           	| Sample project to emphasise the creation of Prometheus in GKE                                            	|
 | [ prometheus-ambassador-sample ]( ./prometheus-ambassador-sample/ )     	| Sample project to emphasise the creation of Prometheus alongisde Ambassador in GKE                       	|
+| [ custom-workload-sample ](./custom-workload-sample/)                     | Sample project to emphasise creation of Custom Workload in GKE                                            |
 
 #### [Go back to previous README](../README.md)
