@@ -1,4 +1,4 @@
-# GKE with minimum requirements sample 
+# GKE with all possible options sample 
 
 ## Introduction
 
