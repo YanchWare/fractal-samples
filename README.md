@@ -6,7 +6,7 @@
 
 ## Introduction
 
-This repository is split into different projects that test, in isolation, all the components [Fractal Cloud](https://fractal.cloud/) using the different cloud providers supported. 
+This repository is split into different projects that test, in isolation, all the components supported by [Fractal Cloud](https://fractal.cloud/) using different cloud providers. 
 
 The approach used here is LiveSystem-First so that we can use the powerful SDK constructs in order to define infrastructure through classic IaC approach.
 This is a good enough approach for quick prototyping and MVPs.
@@ -27,7 +27,7 @@ The repository is split into different directories based on the cloud provider. 
 
 Each sample project has it's own instructions. Please refer to those for more details.
 
-In most of the projects you will need these environment variables:
+In most projects you will need these environment variables:
 
 | Environment variable 	| Description                                                                                                	|
 |----------------------	|------------------------------------------------------------------------------------------------------------	|
