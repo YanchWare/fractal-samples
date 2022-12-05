@@ -1,14 +1,14 @@
 package com.yanchware.fractal.azure.customworkload.sample.components;
 
-import com.yanchware.fractal.sdk.domain.entities.livesystem.caas.KubernetesWorkload;
-import com.yanchware.fractal.sdk.domain.entities.livesystem.caas.providers.azure.AzureKubernetesService;
-import com.yanchware.fractal.sdk.domain.entities.livesystem.caas.providers.azure.AzureNodePool;
+import com.yanchware.fractal.sdk.domain.entities.livesystem.caas.CaaSKubernetesWorkload;
+import com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.azure.AzureKubernetesService;
+import com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.azure.AzureNodePool;
 
 import java.util.Collection;
 import java.util.List;
 
-import static com.yanchware.fractal.sdk.domain.entities.livesystem.caas.providers.azure.AzureMachineType.STANDARD_B2S;
-import static com.yanchware.fractal.sdk.domain.entities.livesystem.caas.providers.azure.AzureRegion.EUROPE_WEST;
+import static com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.azure.AzureMachineType.STANDARD_B2S;
+import static com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.azure.AzureRegion.EUROPE_WEST;
 
 public class AksComponent {
 
@@ -21,8 +21,8 @@ public class AksComponent {
         .build();
   }
 
-  public static KubernetesWorkload getK8sWorkload() {
-    return KubernetesWorkload.builder()
+  public static CaaSKubernetesWorkload getK8sWorkload() {
+    return CaaSKubernetesWorkload.builder()
         .withId("fractal-samples")
         .withDescription("Fractal Service on K8S")
         .withNamespace("fractal")
