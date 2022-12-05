@@ -5,16 +5,17 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.yanchware.fractal</groupId>
-    <artifactId>ambassador.sample</artifactId>
+    <artifactId>elastic.datastore.sample</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-    <name>ambassador-sample</name>
+    <name>elastic-datastore-sample</name>
     <url>https://github.com/YanchWare/fractal-samples</url>
-    <description>Sample of Ambassador with AKS using Fractal Cloud SDK</description>
+    <description>Elastic Datastore Sample with AKS using Fractal Cloud SDK</description>
 
     <properties>
         <maven.compiler.source>18</maven.compiler.source>
         <maven.compiler.target>18</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <dependencies>
@@ -38,7 +39,7 @@
                     <finalName>${project.name}</finalName>
                     <archive>
                         <manifest>
-                            <mainClass>com.yanchware.fractal.AmbassadorSample</mainClass>
+                            <mainClass>com.yanchware.fractal.ElasticDatastoreSample</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>
