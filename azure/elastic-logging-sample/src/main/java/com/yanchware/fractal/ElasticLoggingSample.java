@@ -1,6 +1,6 @@
 package com.yanchware.fractal;
 
-import com.yanchware.fractal.azure.elastic.datastore.sample.configuration.EnvVarConfiguration;
+import com.yanchware.fractal.azure.elastic.logging.sample.configuration.EnvVarConfiguration;
 import com.yanchware.fractal.sdk.Automaton;
 import com.yanchware.fractal.sdk.aggregates.Environment;
 import com.yanchware.fractal.sdk.aggregates.LiveSystem;
@@ -8,9 +8,9 @@ import com.yanchware.fractal.sdk.domain.exceptions.InstantiatorException;
 
 import java.util.List;
 
-import static com.yanchware.fractal.azure.elastic.datastore.sample.components.AksComponent.getAks;
+import static com.yanchware.fractal.azure.elastic.logging.sample.components.AksComponent.getAks;
 
-public class ElasticDatastoreSample {
+public class ElasticLoggingSample {
   public static void main(String[] args) throws InstantiatorException {
     // CONFIGURATION:
     var configuration = EnvVarConfiguration.getInstance();

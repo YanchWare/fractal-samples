@@ -5,12 +5,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.yanchware.fractal</groupId>
-    <artifactId>prometheus.ambassador.sample</artifactId>
+    <artifactId>elastic.logging.sample</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-    <name>prometheus-ambassador-sample</name>
+    <name>elastic-logging-sample</name>
     <url>https://github.com/YanchWare/fractal-samples</url>
-    <description>Sample of Prometheus alongside Ambassador in AKS using Fractal Cloud SDK</description>
+    <description>Elastic Logging Sample with AKS using Fractal Cloud SDK</description>
 
     <properties>
         <maven.compiler.source>18</maven.compiler.source>
@@ -39,7 +39,7 @@
                     <finalName>${project.name}</finalName>
                     <archive>
                         <manifest>
-                            <mainClass>com.yanchware.fractal.PrometheusAmbassadorSample</mainClass>
+                            <mainClass>com.yanchware.fractal.ElasticLoggingSample</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>
