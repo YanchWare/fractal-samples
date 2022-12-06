@@ -1,14 +1,14 @@
 package com.yanchware.fractal.azure.ambassador.sample.components;
 
-import com.yanchware.fractal.sdk.domain.entities.livesystem.caas.Ambassador;
-import com.yanchware.fractal.sdk.domain.entities.livesystem.caas.providers.azure.AzureKubernetesService;
-import com.yanchware.fractal.sdk.domain.entities.livesystem.caas.providers.azure.AzureNodePool;
+import com.yanchware.fractal.sdk.domain.entities.livesystem.caas.CaaSAmbassador;
+import com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.azure.AzureKubernetesService;
+import com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.azure.AzureNodePool;
 
 import java.util.Collection;
 import java.util.List;
 
-import static com.yanchware.fractal.sdk.domain.entities.livesystem.caas.providers.azure.AzureMachineType.STANDARD_B2S;
-import static com.yanchware.fractal.sdk.domain.entities.livesystem.caas.providers.azure.AzureRegion.EUROPE_WEST;
+import static com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.azure.AzureMachineType.STANDARD_B2S;
+import static com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.azure.AzureRegion.EUROPE_WEST;
 
 public class AksComponent {
 
@@ -30,8 +30,8 @@ public class AksComponent {
     );
   }
   
-  public static Ambassador getAmbassador() {
-    return Ambassador.builder()
+  public static CaaSAmbassador getAmbassador() {
+    return CaaSAmbassador.builder()
         .withId("ambassador")
         .withHost("api.yourdomain.com")
         .withHostOwnerEmail("email@yourdomain.com")

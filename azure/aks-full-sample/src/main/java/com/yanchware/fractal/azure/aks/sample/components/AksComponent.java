@@ -1,21 +1,20 @@
 package com.yanchware.fractal.azure.aks.sample.components;
 
-import com.yanchware.fractal.sdk.domain.entities.livesystem.caas.PodManagedIdentity;
 import com.yanchware.fractal.sdk.domain.entities.livesystem.caas.PreemptionPolicy;
 import com.yanchware.fractal.sdk.domain.entities.livesystem.caas.PriorityClass;
-import com.yanchware.fractal.sdk.domain.entities.livesystem.caas.providers.azure.AzureAddonProfile;
-import com.yanchware.fractal.sdk.domain.entities.livesystem.caas.providers.azure.AzureKubernetesService;
-import com.yanchware.fractal.sdk.domain.entities.livesystem.caas.providers.azure.AzureNodePool;
+import com.yanchware.fractal.sdk.domain.entities.livesystem.paas.PodManagedIdentity;
+import com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.azure.AzureAddonProfile;
+import com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.azure.AzureKubernetesService;
+import com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.azure.AzureNodePool;
 
-import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
 import static com.yanchware.fractal.sdk.domain.entities.livesystem.caas.PreemptionPolicy.NEVER;
 import static com.yanchware.fractal.sdk.domain.entities.livesystem.caas.PreemptionPolicy.PREEMPT_LOWER_PRIORITY;
-import static com.yanchware.fractal.sdk.domain.entities.livesystem.caas.providers.azure.AzureMachineType.STANDARD_B2S;
-import static com.yanchware.fractal.sdk.domain.entities.livesystem.caas.providers.azure.AzureOsType.LINUX;
-import static com.yanchware.fractal.sdk.domain.entities.livesystem.caas.providers.azure.AzureRegion.EUROPE_WEST;
+import static com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.azure.AzureMachineType.STANDARD_B2S;
+import static com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.azure.AzureOsType.LINUX;
+import static com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.azure.AzureRegion.EUROPE_WEST;
 
 public class AksComponent {
 

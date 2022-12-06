@@ -1,15 +1,15 @@
 package com.yanchware.fractal.gcp.gke.sample.components;
 
-import com.yanchware.fractal.sdk.domain.entities.livesystem.caas.Ambassador;
-import com.yanchware.fractal.sdk.domain.entities.livesystem.caas.Prometheus;
-import com.yanchware.fractal.sdk.domain.entities.livesystem.caas.providers.gcp.GcpNodePool;
-import com.yanchware.fractal.sdk.domain.entities.livesystem.caas.providers.gcp.GoogleKubernetesEngine;
+import com.yanchware.fractal.sdk.domain.entities.livesystem.caas.CaaSAmbassador;
+import com.yanchware.fractal.sdk.domain.entities.livesystem.caas.CaaSPrometheus;
+import com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.gcp.GcpNodePool;
+import com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.gcp.GoogleKubernetesEngine;
 
 import java.util.Collection;
 import java.util.List;
 
-import static com.yanchware.fractal.sdk.domain.entities.livesystem.caas.providers.gcp.GcpMachine.E2_STANDARD2;
-import static com.yanchware.fractal.sdk.domain.entities.livesystem.caas.providers.gcp.GcpRegion.EU_WEST1;
+import static com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.gcp.GcpMachine.E2_STANDARD2;
+import static com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.gcp.GcpRegion.EU_WEST1;
 
 public class GkeComponent {
 
@@ -32,8 +32,8 @@ public class GkeComponent {
     );
   }
 
-  public static Ambassador getAmbassador() {
-    return Ambassador.builder()
+  public static CaaSAmbassador getAmbassador() {
+    return CaaSAmbassador.builder()
         .withId("ambassador")
         .withHost("api.yourdomain.com")
         .withHostOwnerEmail("email@yourdomain.com")
@@ -42,8 +42,8 @@ public class GkeComponent {
         .build();
   }
 
-  public static Prometheus getPrometheusExample() {
-    return Prometheus.builder()
+  public static CaaSPrometheus getPrometheusExample() {
+    return CaaSPrometheus.builder()
         .withId("prometheus")
         .withDescription("Prometheus monitoring")
         .withDisplayName("Prometheus")
