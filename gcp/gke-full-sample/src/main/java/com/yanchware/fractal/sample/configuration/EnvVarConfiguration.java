@@ -29,20 +29,20 @@ public class EnvVarConfiguration implements Configuration {
   }
 
   @Override
-  public String getSubscriptionId() {
-    var subscriptionId = System.getenv("SUBSCRIPTION_ID");
+  public String getProjectId() {
+    var subscriptionId = System.getenv("PROJECT_ID");
     if(isBlank(subscriptionId)) {
-      throw new IllegalArgumentException("The environment variable SUBSCRIPTION_ID is required and it has not been defined");
+      throw new IllegalArgumentException("The environment variable PROJECT_ID is required and it has not been defined");
     }
 
     return subscriptionId;
   }
 
   @Override
-  public String getTenantId() {
-    var tenantId = System.getenv("TENANT_ID");
+  public String getOrganizationId() {
+    var tenantId = System.getenv("ORGANIZATION_ID");
     if(isBlank(tenantId)) {
-      throw new IllegalArgumentException("The environment variable TENANT_ID is required and it has not been defined");
+      throw new IllegalArgumentException("The environment variable ORGANIZATION_ID is required and it has not been defined");
     }
 
     return tenantId;

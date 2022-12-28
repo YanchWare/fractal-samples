@@ -16,10 +16,10 @@ public class GkeMinimumSample {
     var configuration = EnvVarConfiguration.getInstance();
 
     var env = Environment.builder()
-        .withId(configuration.getSubscriptionId())
+        .withId(configuration.getProjectId())
         .withDisplayName(configuration.getEnvironmentDisplayName())
-        .withParentId(configuration.getTenantId())
-        .withParentType("tenant")
+        .withParentId(configuration.getOrganizationId())
+        .withParentType("organization")
         .build();
 
     // INSTANTIATION:
