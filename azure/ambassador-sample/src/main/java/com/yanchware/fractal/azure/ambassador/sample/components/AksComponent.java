@@ -1,8 +1,8 @@
 package com.yanchware.fractal.azure.ambassador.sample.components;
 
 import com.yanchware.fractal.sdk.domain.entities.livesystem.caas.CaaSAmbassador;
-import com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.azure.AzureKubernetesService;
-import com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.azure.AzureNodePool;
+import com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.azure.aks.AzureKubernetesService;
+import com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.azure.aks.AzureNodePool;
 
 import java.util.Collection;
 import java.util.List;

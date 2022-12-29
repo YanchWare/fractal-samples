@@ -4,8 +4,7 @@ import static org.apache.commons.lang3.StringUtils.isBlank;
 
 public class EnvVarConfiguration implements Configuration {
 
-  private EnvVarConfiguration() {
-  }
+  private EnvVarConfiguration() { }
 
   public static Configuration getInstance() {
     return new EnvVarConfiguration();
@@ -15,14 +14,14 @@ public class EnvVarConfiguration implements Configuration {
   public String getLiveSystemName() {
     var liveSystemName = System.getenv("LIVE_SYSTEM_NAME");
     return isBlank(liveSystemName)
-        ? "local-test-env"
-        : liveSystemName;
+      ? "local-test-env"
+      : liveSystemName;
   }
 
   @Override
   public String getResourceGroupId() {
     var resourceGroupId = System.getenv("RESOURCE_GROUP_ID");
-    if (isBlank(resourceGroupId)) {
+    if(isBlank(resourceGroupId)) {
       throw new IllegalArgumentException("The environment variable RESOURCE_GROUP_ID is required and it has not been defined");
     }
 
@@ -30,20 +29,20 @@ public class EnvVarConfiguration implements Configuration {
   }
 
   @Override
-  public String getSubscriptionId() {
-    var subscriptionId = System.getenv("SUBSCRIPTION_ID");
-    if (isBlank(subscriptionId)) {
-      throw new IllegalArgumentException("The environment variable SUBSCRIPTION_ID is required and it has not been defined");
+  public String getProjectId() {
+    var subscriptionId = System.getenv("PROJECT_ID");
+    if(isBlank(subscriptionId)) {
+      throw new IllegalArgumentException("The environment variable PROJECT_ID is required and it has not been defined");
     }
 
     return subscriptionId;
   }
 
   @Override
-  public String getTenantId() {
-    var tenantId = System.getenv("TENANT_ID");
-    if (isBlank(tenantId)) {
-      throw new IllegalArgumentException("The environment variable TENANT_ID is required and it has not been defined");
+  public String getOrganizationId() {
+    var tenantId = System.getenv("ORGANIZATION_ID");
+    if(isBlank(tenantId)) {
+      throw new IllegalArgumentException("The environment variable ORGANIZATION_ID is required and it has not been defined");
     }
 
     return tenantId;
@@ -53,7 +52,7 @@ public class EnvVarConfiguration implements Configuration {
   public String getEnvironmentDisplayName() {
     var environmentDisplayName = System.getenv("ENV_DISPLAY_NAME");
     return isBlank(environmentDisplayName)
-        ? "Locally deployed environment"
-        : environmentDisplayName;
+      ? "Locally deployed environment"
+      : environmentDisplayName;
   }
 }
