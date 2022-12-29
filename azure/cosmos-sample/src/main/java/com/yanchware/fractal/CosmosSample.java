@@ -4,6 +4,8 @@ import com.yanchware.fractal.azure.sample.configuration.EnvVarConfiguration;
 import com.yanchware.fractal.sdk.Automaton;
 import com.yanchware.fractal.sdk.aggregates.Environment;
 import com.yanchware.fractal.sdk.aggregates.LiveSystem;
+import com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.azure.AzureRegion;
+import com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.azure.AzureResourceGroup;
 import com.yanchware.fractal.sdk.domain.exceptions.InstantiatorException;
 
 import java.util.List;
@@ -22,6 +24,9 @@ public class CosmosSample {
         .withParentType("tenant")
         .build();
 
+    var relationalResourceGroup = new AzureResourceGroup(AzureRegion.ASIA_SOUTHEAST, "Relational");
+    var noSqlResourceGroup = new AzureResourceGroup(AzureRegion.AUSTRALIA_CENTRAL, "NoSql");
+
 
     // INSTANTIATION:
     LiveSystem liveSystem = LiveSystem.builder()
@@ -29,12 +34,12 @@ public class CosmosSample {
         .withDescription("PostgreSql sample")
         .withResourceGroupId(configuration.getResourceGroupId())
         .withComponents(List.of(
-          getDbmsAndDatabaseForMongoDb("nosql-1"),
-          getDbmsAndDatabaseForGremlinDb("nosql-1"),
-          getDbmsAndDatabaseForPostgreSql("nosql-1"),
-          getDbmsAndDatabaseForCosmosTable("nosql-1"),
-          getDbmsAndDatabaseForNoSql("nosql-1"),
-          getDbmsAndDatabaseForCassandra("nosql-1")))
+          getDbmsAndDatabaseForMongoDb("nosql-1", noSqlResourceGroup),
+          getDbmsAndDatabaseForGremlinDb("nosql-1", noSqlResourceGroup),
+          getDbmsAndDatabaseForPostgreSql("nosql-1", relationalResourceGroup),
+          getDbmsAndDatabaseForCosmosTable("nosql-1", noSqlResourceGroup),
+          getDbmsAndDatabaseForNoSql("nosql-1", noSqlResourceGroup),
+          getDbmsAndDatabaseForCassandra("nosql-1", noSqlResourceGroup)))
         .withEnvironment(env)
     .build();
 
