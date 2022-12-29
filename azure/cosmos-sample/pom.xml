@@ -39,7 +39,7 @@
                     <finalName>${project.name}</finalName>
                     <archive>
                         <manifest>
-                            <mainClass>com.yanchware.fractal.CosmosDbSample</mainClass>
+                            <mainClass>com.yanchware.fractal.CosmosSample</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>
