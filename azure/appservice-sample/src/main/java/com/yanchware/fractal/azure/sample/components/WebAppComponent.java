@@ -3,7 +3,6 @@ package com.yanchware.fractal.azure.sample.components;
 import com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.azure.AzureResourceGroup;
 import com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.azure.appservice.AzureWebApp;
 import com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.azure.appservice.AzureWebAppHosting;
-import com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.azure.cosmos.*;
 
 public class WebAppComponent {
 
