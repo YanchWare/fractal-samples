@@ -16,7 +16,7 @@ public class WebAppComponent {
         .withBranchName("env/prod")
         .withHosting(
             AzureWebAppHosting.builder()
-                .withJavaVersion("JAVA:18-java18")
+                .withJavaVersion("1.7")
                 .build()
         )
     .build();
