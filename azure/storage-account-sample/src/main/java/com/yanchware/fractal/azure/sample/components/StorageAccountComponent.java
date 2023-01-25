@@ -9,8 +9,6 @@ public class StorageAccountComponent {
 
   public static AzureStorageAccount getStorageAccountComponent(String id) {
 
-    // Backup policy definition:
-
     return AzureStorageAccount.builder()
         .withId(id)
         .withInfrastructure(
@@ -26,6 +24,8 @@ public class StorageAccountComponent {
   }
   
   private static String getBackupPolicy() {
+
+    // Backup policy definition:
     return """
             {
               "workLoadType": "AzureFileShare",
