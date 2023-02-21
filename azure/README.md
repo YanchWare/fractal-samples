@@ -21,5 +21,8 @@ Consult the main [README](../README.md) for details on how to set up your enviro
 | [ prometheus-ambassador-sample ]( ./prometheus-ambassador-sample/ ) 	         | Sample project to emphasise creation of Prometheus alongisde Ambassador in AKS              |
 | [ cosmos-sample ]( ./cosmos-sample/ ) 	                                       | Sample project to emphasise creation of Azure Cosmos Entities                               |
 | [ appservice-sample ]( ./appservice-sample/ ) 	                               | Sample project to emphasise creation of Azure App Service                                   |
+| [ service-bus-full-sample ]( ./service-bus-full-sample/ ) 	                   | Sample project to emphasise creation of Azure Service Bus with full options                 |
+| [ service-bus-minimum-sample ]( ./service-bus-minimum-sample/ ) 	             | Sample project to emphasise creation of Azure Service Bus with minimum requirements         |
+| [ relay-sample ]( ./relay-sample/ ) 	                           | Sample project to emphasise creation of Azure Relay                                         |
 
 #### [Go back to previous README](../README.md)
