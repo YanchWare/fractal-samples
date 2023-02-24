@@ -10,7 +10,7 @@ public class Relay {
   public static AzureRelay getRelay() {
     AzureResourceGroup azureResourceGroup = AzureResourceGroup
         .builder()
-        .withName("relay-rg")
+        .withName("rg-relay")
         .withRegion(EUROPE_WEST)
         .build();
     return AzureRelay.builder()

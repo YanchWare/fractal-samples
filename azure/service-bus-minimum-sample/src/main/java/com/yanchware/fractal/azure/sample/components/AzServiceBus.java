@@ -12,12 +12,12 @@ public class AzServiceBus {
   public static AzureServiceBus getServiceBus() {
     AzureResourceGroup azureResourceGroup = AzureResourceGroup
         .builder()
-        .withName("service-bus-rg")
+        .withName("rg-service-bus")
         .withRegion(EUROPE_WEST)
         .build();
     return AzureServiceBus.builder()
-        .withId("service-bus")
-        .withName("service-bus")
+        .withId("sb-sample")
+        .withName("sb-sample")
         .withRegion(AzureRegion.EUROPE_WEST)
         .withAzureResourceGroup(azureResourceGroup)
         .withSku(ServiceBusSku.builder()
