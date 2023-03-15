@@ -16,12 +16,12 @@ import static com.yanchware.fractal.sdk.domain.entities.livesystem.paas.provider
 
 public class WebAppComponent {
 
-  public static AzureWebApp getJavaWebAppComponent(String id) {
+  public static AzureWebApp getDotnetWebAppComponent(String id) {
     var resourceGroup = AzureResourceGroup.builder()
         .withName("resource-group")
         .withRegion(EUROPE_WEST)
         .build();
-    
+
     var appServicePlan = AzureAppServicePlan.builder()
         .withName("asp-sample")
         .withRegion(EUROPE_WEST)
@@ -30,10 +30,10 @@ public class WebAppComponent {
         .withPricingPlan(AzurePricingPlan.BASIC_B1)
         .withNumberOfWorkers(1)
         .build();
-    
+
     return AzureWebApp.builder()
         .withId(id)
-        .withDisplayName("Java WebApp")
+        .withDisplayName(".NET WebApp")
         .withResourceGroup(resourceGroup)
         .withRegion(EUROPE_WEST)
         .withRepoId("YanchWare/fractal-samples")
@@ -42,7 +42,7 @@ public class WebAppComponent {
         .withPrivateSSHKeySecretId("fractal-deployer-passphrase-secret-id")
         .withSSHRepositoryURI("git@github.com:YanchWare/fractal-samples.git")
         .withOperatingSystem(LINUX)
-        .withRuntimeStack(AzureWebAppLinuxRuntimeStack.JAVA_11)
+        .withRuntimeStack(AzureWebAppLinuxRuntimeStack.DOTNET_CORE_7_0)
         .withAppServicePlan(appServicePlan)
         .withCustomDomains(List.of("api.app.cloud"))
         .withCertificate(AzureKeyVaultCertificate.builder()
@@ -50,7 +50,7 @@ public class WebAppComponent {
             .withName("sna-app")
             .build())
         .withConfiguration(AzureWebAppConfiguration.builder()
-            .withAppSettings(Map.of("JAVA_VERSION", "11"))
+            .withAppSettings(Map.of("ASPNETCORE_ENVIRONMENT", "Development"))
             .withHealthCheckPath("/health/")
             .withNumberOfWorkers(2)
             .build())
