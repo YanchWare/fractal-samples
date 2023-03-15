@@ -17,6 +17,6 @@ You can build the project by running the following command in its root folder:
 
 To run the project you can type the following command:
 
-`java -jar target/appservice-sample-jar-with-dependencies.jar`
+`java -jar target/appservice-dotnet-sample-jar-with-dependencies.jar`
 
 #### [Go back to previous README](../README.md)
