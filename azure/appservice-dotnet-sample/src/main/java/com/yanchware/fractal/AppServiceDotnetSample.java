@@ -8,11 +8,10 @@ import com.yanchware.fractal.sdk.domain.exceptions.InstantiatorException;
 
 import java.util.List;
 
-import static com.yanchware.fractal.azure.sample.components.WebAppComponent.getJavaWebAppComponent;
+import static com.yanchware.fractal.azure.sample.components.WebAppComponent.getDotnetWebAppComponent;
 
-public class AppServiceSample {
+public class AppServiceDotnetSample {
   public static void main(String[] args) throws InstantiatorException {
-
     // CONFIGURATION:
     var configuration = EnvVarConfiguration.getInstance();
 
@@ -26,9 +25,9 @@ public class AppServiceSample {
     // LIVE-SYSTEM DEFINITION:
     LiveSystem liveSystem = LiveSystem.builder()
         .withName(configuration.getLiveSystemName())
-        .withDescription("WebApp Java Sample")
+        .withDescription("WebApp sample")
         .withResourceGroupId(configuration.getResourceGroupId())
-        .withComponent(getJavaWebAppComponent("sample-java-web-app"))
+        .withComponent(getDotnetWebAppComponent("sample-web-app"))
         .withEnvironment(env)
         .build();
 
