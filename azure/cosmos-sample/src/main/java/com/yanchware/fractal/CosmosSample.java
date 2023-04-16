@@ -9,6 +9,7 @@ import com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.azure
 import com.yanchware.fractal.sdk.domain.exceptions.InstantiatorException;
 
 import java.util.List;
+import java.util.Map;
 
 import static com.yanchware.fractal.azure.sample.components.CosmosComponent.*;
 
@@ -24,8 +25,9 @@ public class CosmosSample {
         .withParentType("tenant")
         .build();
 
-    var relationalResourceGroup = new AzureResourceGroup(AzureRegion.ASIA_SOUTHEAST, "Relational");
-    var noSqlResourceGroup = new AzureResourceGroup(AzureRegion.AUSTRALIA_CENTRAL, "NoSql");
+    var standardTags = Map.of("managed-by", "fractal");
+    var relationalResourceGroup = new AzureResourceGroup("Relational", AzureRegion.ASIA_SOUTHEAST, standardTags);
+    var noSqlResourceGroup = new AzureResourceGroup("NoSql", AzureRegion.AUSTRALIA_CENTRAL, standardTags);
 
 
     // INSTANTIATION:
