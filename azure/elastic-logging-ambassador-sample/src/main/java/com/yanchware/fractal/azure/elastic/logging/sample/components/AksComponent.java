@@ -34,6 +34,7 @@ public class AksComponent {
   public static CaaSAmbassador getAmbassador() {
     return CaaSAmbassador.builder()
         .withId("ambassador")
+        .withNamespace("ambassador")
         .withHost("api.yourdomain.com")
         .withHostOwnerEmail("email@yourdomain.com")
         .withAcmeProviderAuthority("https://acme-v02.api.letsencrypt.org/directory")
