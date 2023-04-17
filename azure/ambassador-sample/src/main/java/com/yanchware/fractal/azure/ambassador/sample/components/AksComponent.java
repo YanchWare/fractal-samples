@@ -38,6 +38,7 @@ public class AksComponent {
         .withHostOwnerEmail("email@yourdomain.com")
         .withAcmeProviderAuthority("https://acme-v02.api.letsencrypt.org/directory")
         .withTlsSecretName("env-tls-cert")
+        .withNamespace("ambassador-01")
         .build();
   }
 
