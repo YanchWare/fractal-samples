@@ -1,13 +1,10 @@
-package com.yanchware.fractal.azure.aks.sample.components;
+package com.yanchware.fractal.azure.aks.minimum.sample.components;
 
 import com.yanchware.fractal.sdk.domain.entities.livesystem.caas.PreemptionPolicy;
 import com.yanchware.fractal.sdk.domain.entities.livesystem.caas.PriorityClass;
 import com.yanchware.fractal.sdk.domain.entities.livesystem.paas.PodManagedIdentity;
 import com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.azure.AzureResourceGroup;
-import com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.azure.aks.AzureAddonProfile;
-import com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.azure.aks.AzureKubernetesService;
-import com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.azure.aks.AzureNodePool;
-import com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.azure.aks.AzureOutboundIp;
+import com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.azure.aks.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +19,8 @@ import static com.yanchware.fractal.sdk.domain.entities.livesystem.paas.provider
 public class AksComponent {
 
   public static AzureKubernetesService getAks(String id) {
-    var azureResourceGroup = new AzureResourceGroup("rg", EUROPE_WEST, Map.of("managed-by", "fractal"));
+    var azureResourceGroup = new AzureResourceGroup("rg-infra", EUROPE_WEST, Map.of("managed-by", "fractal"));
+    
     return AzureKubernetesService.builder()
         .withId(id)
         .withDescription("Test AKS cluster")
@@ -33,7 +31,7 @@ public class AksComponent {
         .withVnetAddressSpaceIpRange("10.1.0.0/22")
         .withVnetSubnetAddressIpRange("10.1.0.0/22")
         .withExternalWorkspaceResourceId("workplaceResourceId")
-        .withOutboundIps(getOutboundIps())
+        .withOutboundIps(getOutboundIps(azureResourceGroup))
         .withAddonProfiles(getAddonProfiles())
         .withWindowsAdminUsername("")
         .withNodePool(getNodePools())
@@ -45,22 +43,18 @@ public class AksComponent {
         .build();
   }
   
-  private static List<AzureOutboundIp> getOutboundIps() {
-    var resourceGroup = AzureResourceGroup.builder()
-        .withName("rg-infra")
-        .withRegion(EUROPE_WEST)
-        .build();
+  private static List<AzureOutboundIp> getOutboundIps(AzureResourceGroup azureResourceGroup) {
     
     return new ArrayList<>() {
       {
         add(AzureOutboundIp.builder()
             .withName("ip1")
-            .withAzureResourceGroup(resourceGroup)
+            .withAzureResourceGroup(azureResourceGroup)
             .build());
 
         add(AzureOutboundIp.builder()
             .withName("ip2")
-            .withAzureResourceGroup(resourceGroup)
+            .withAzureResourceGroup(azureResourceGroup)
             .build());
       }
     };

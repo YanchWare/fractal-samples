@@ -1,4 +1,4 @@
-package com.yanchware.fractal.azure.aks.sample.configuration;
+package com.yanchware.fractal.azure.aks.minimum.sample.configuration;
 
 import static org.apache.commons.lang3.StringUtils.isBlank;
 

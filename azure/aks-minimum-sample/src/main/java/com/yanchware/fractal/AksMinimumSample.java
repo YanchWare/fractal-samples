@@ -1,6 +1,6 @@
 package com.yanchware.fractal;
 
-import com.yanchware.fractal.azure.aks.sample.configuration.EnvVarConfiguration;
+import com.yanchware.fractal.azure.aks.minimum.sample.configuration.EnvVarConfiguration;
 import com.yanchware.fractal.sdk.Automaton;
 import com.yanchware.fractal.sdk.aggregates.Environment;
 import com.yanchware.fractal.sdk.aggregates.LiveSystem;
@@ -10,7 +10,7 @@ import com.yanchware.fractal.sdk.domain.exceptions.InstantiatorException;
 
 import java.util.List;
 
-import static com.yanchware.fractal.azure.aks.sample.components.AksComponent.getAks;
+import static com.yanchware.fractal.azure.aks.minimum.sample.components.AksComponent.getAks;
 
 public class AksMinimumSample {
   public static void main(String[] args) throws InstantiatorException {
@@ -30,7 +30,7 @@ public class AksMinimumSample {
         .withName(configuration.getLiveSystemName())
         .withDescription("AKS with minimum requirements sample")
         .withResourceGroupId(configuration.getResourceGroupId())
-        .withComponent(getAks("aks-1"))
+        .withComponent(getAks("aks-minimum-1"))
         .withEnvironment(env)
         .build();
 
