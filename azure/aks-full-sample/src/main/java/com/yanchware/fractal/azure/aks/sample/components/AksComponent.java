@@ -3,6 +3,7 @@ package com.yanchware.fractal.azure.aks.sample.components;
 import com.yanchware.fractal.sdk.domain.entities.livesystem.caas.PreemptionPolicy;
 import com.yanchware.fractal.sdk.domain.entities.livesystem.caas.PriorityClass;
 import com.yanchware.fractal.sdk.domain.entities.livesystem.paas.PodManagedIdentity;
+import com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.azure.AzureResourceGroup;
 import com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.azure.aks.*;
 
 import java.util.ArrayList;
@@ -36,18 +37,26 @@ public class AksComponent {
             getPriorityClass("fractal-critical", PREEMPT_LOWER_PRIORITY, 1_000_000_000),
             getPriorityClass("fractal-critical-2", NEVER, 999_999_000)))
         .withPodManagedIdentity(getPodManagedIdentity())
+        .withKubernetesVersion("1.24.10")
         .build();
   }
   
   private static List<AzureOutboundIp> getOutboundIps() {
+    var resourceGroup = AzureResourceGroup.builder()
+        .withName("rg-infra")
+        .withRegion(EUROPE_WEST)
+        .build();
+    
     return new ArrayList<>() {
       {
         add(AzureOutboundIp.builder()
             .withName("ip1")
+            .withAzureResourceGroup(resourceGroup)
             .build());
 
         add(AzureOutboundIp.builder()
             .withName("ip2")
+            .withAzureResourceGroup(resourceGroup)
             .build());
       }
     };
