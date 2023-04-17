@@ -28,12 +28,12 @@ public class AksComponent {
         .withRegion(EUROPE_WEST)
         .withServiceIpRange("10.2.0.0/16")
         .withPodIpRange("10.3.0.0/16")
-        .withVnetAddressSpaceIpRange("10.1.0.0/22")
-        .withVnetSubnetAddressIpRange("10.1.0.0/22")
+        .withVnetAddressSpaceIpRange("10.69.0.0/22")
+        .withVnetSubnetAddressIpRange("10.69.0.0/22")
         .withExternalWorkspaceResourceId("workplaceResourceId")
-        .withOutboundIps(getOutboundIps(azureResourceGroup))
+        .withOutboundIps(getOutboundIps(azureResourceGroup, id))
         .withAddonProfiles(getAddonProfiles())
-        .withWindowsAdminUsername("")
+        .withWindowsAdminUsername("aksFullSample")
         .withNodePool(getNodePools())
         .withPriorityClasses(List.of(
             getPriorityClass("fractal-critical", PREEMPT_LOWER_PRIORITY, 1_000_000_000),
@@ -43,17 +43,17 @@ public class AksComponent {
         .build();
   }
   
-  private static List<AzureOutboundIp> getOutboundIps(AzureResourceGroup azureResourceGroup) {
+  private static List<AzureOutboundIp> getOutboundIps(AzureResourceGroup azureResourceGroup, String aksId) {
     
     return new ArrayList<>() {
       {
         add(AzureOutboundIp.builder()
-            .withName("ip1")
+            .withName(String.format("pip-%s-ip1", aksId))
             .withAzureResourceGroup(azureResourceGroup)
             .build());
 
         add(AzureOutboundIp.builder()
-            .withName("ip2")
+            .withName(String.format("pip-%s-ip2", aksId))
             .withAzureResourceGroup(azureResourceGroup)
             .build());
       }
