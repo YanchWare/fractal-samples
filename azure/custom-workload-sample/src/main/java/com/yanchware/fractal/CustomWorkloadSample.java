@@ -29,7 +29,7 @@ public class CustomWorkloadSample {
         .withName(configuration.getLiveSystemName())
         .withDescription("Custom Workload in AKS sample")
         .withResourceGroupId(configuration.getResourceGroupId())
-        .withComponent(getAksWithCustomWorkload("aks-1"))
+        .withComponent(getAksWithCustomWorkload("aks-minimum-1"))
         .withEnvironment(env)
         .build();
 

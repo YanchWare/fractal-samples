@@ -29,7 +29,7 @@ public class ElasticLoggingSample {
         .withName(configuration.getLiveSystemName())
         .withDescription("Elastic Logging in AKS sample")
         .withResourceGroupId(configuration.getResourceGroupId())
-        .withComponent(getAks("aks-1"))
+        .withComponent(getAks("aks-minimum-1"))
         .withEnvironment(env)
         .build();
 

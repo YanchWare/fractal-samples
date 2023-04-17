@@ -28,9 +28,9 @@ public class AmbassadorSample {
     // INSTANTIATION:
     LiveSystem liveSystem = LiveSystem.builder()
         .withName(configuration.getLiveSystemName())
-        .withDescription("Fractal demo")
+        .withDescription("Ambassador in AKS sample")
         .withResourceGroupId(configuration.getResourceGroupId())
-        .withComponent(getAks("aks-1"))
+        .withComponent(getAks("aks-minimum-1"))
         .withEnvironment(env)
         .build();
 

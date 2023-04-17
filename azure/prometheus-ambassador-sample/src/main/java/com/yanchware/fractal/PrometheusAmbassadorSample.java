@@ -30,7 +30,7 @@ public class PrometheusAmbassadorSample {
         .withName(configuration.getLiveSystemName())
         .withDescription("Prometheus in AKS sample")
         .withResourceGroupId(configuration.getResourceGroupId())
-        .withComponent(getAks("aks-1"))
+        .withComponent(getAks("aks-minimum-1"))
         .withEnvironment(env)
         .build();
 
@@ -42,6 +42,5 @@ public class PrometheusAmbassadorSample {
     }};
 
     Automaton.instantiate(List.of(liveSystem), instantiationConfig);
-;
   }
 }
