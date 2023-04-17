@@ -3,10 +3,10 @@ package com.yanchware.fractal.azure.aks.sample.components;
 import com.yanchware.fractal.sdk.domain.entities.livesystem.caas.PreemptionPolicy;
 import com.yanchware.fractal.sdk.domain.entities.livesystem.caas.PriorityClass;
 import com.yanchware.fractal.sdk.domain.entities.livesystem.paas.PodManagedIdentity;
-import com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.azure.aks.AzureAddonProfile;
-import com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.azure.aks.AzureKubernetesService;
-import com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.azure.aks.AzureNodePool;
+import com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.azure.AzureResourceGroup;
+import com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.azure.aks.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -29,15 +29,52 @@ public class AksComponent {
         .withVnetAddressSpaceIpRange("10.1.0.0/22")
         .withVnetSubnetAddressIpRange("10.1.0.0/22")
         .withExternalWorkspaceResourceId("workplaceResourceId")
-        .withExternalLoadBalancerOutboundIps(List.of("ip1", "ip2"))
-        .withAddonProfiles(List.of(AzureAddonProfile.AZURE_POLICY, AzureAddonProfile.AZURE_KEYVAULT_SECRETS_PROVIDER))
+        .withOutboundIps(getOutboundIps())
+        .withAddonProfiles(getAddonProfiles())
         .withWindowsAdminUsername("")
         .withNodePool(getNodePools())
         .withPriorityClasses(List.of(
             getPriorityClass("fractal-critical", PREEMPT_LOWER_PRIORITY, 1_000_000_000),
             getPriorityClass("fractal-critical-2", NEVER, 999_999_000)))
         .withPodManagedIdentity(getPodManagedIdentity())
+        .withKubernetesVersion("1.24.10")
         .build();
+  }
+  
+  private static List<AzureOutboundIp> getOutboundIps() {
+    var resourceGroup = AzureResourceGroup.builder()
+        .withName("rg-infra")
+        .withRegion(EUROPE_WEST)
+        .build();
+    
+    return new ArrayList<>() {
+      {
+        add(AzureOutboundIp.builder()
+            .withName("ip1")
+            .withAzureResourceGroup(resourceGroup)
+            .build());
+
+        add(AzureOutboundIp.builder()
+            .withName("ip2")
+            .withAzureResourceGroup(resourceGroup)
+            .build());
+      }
+    };
+  }
+
+  private static List<AzureKubernetesAddonProfile> getAddonProfiles() {
+    return new ArrayList<>() {
+      {
+        add(AzureKubernetesAddonProfile.builder()
+                .withAddonToEnable(AzureKubernetesAddon.AZURE_POLICY)
+                .build());
+
+        add(AzureKubernetesAddonProfile.builder()
+                .withAddonToEnable(AzureKubernetesAddon.AZURE_KEYVAULT_SECRETS_PROVIDER)
+                .withConfig(Map.of("enableSecretRotation", "false", "rotationPollInterval", "2m"))
+                .build());
+      }
+    };
   }
 
   private static PodManagedIdentity getPodManagedIdentity() {
@@ -71,7 +108,6 @@ public class AksComponent {
         .withMaxPodsPerNode(100)
         .withOsType(LINUX)
         .withAutoscalingEnabled(true)
-        .withKubernetesVersion("1.1.1")
         .build();
   }
 
