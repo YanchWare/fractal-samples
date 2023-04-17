@@ -1,4 +1,4 @@
-package com.yanchware.fractal.azure.aks.minimum.sample.components;
+package com.yanchware.fractal.azure.aks.minimum.components;
 
 import com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.azure.aks.AzureKubernetesService;
 import com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.azure.aks.AzureNodePool;

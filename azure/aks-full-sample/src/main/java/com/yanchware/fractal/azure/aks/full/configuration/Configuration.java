@@ -1,4 +1,4 @@
-package com.yanchware.fractal.azure.aks.minimum.sample.configuration;
+package com.yanchware.fractal.azure.aks.full.configuration;
 
 public interface Configuration {
   String getLiveSystemName();
