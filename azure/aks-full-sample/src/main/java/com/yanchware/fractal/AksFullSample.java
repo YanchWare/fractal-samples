@@ -1,14 +1,15 @@
 package com.yanchware.fractal;
 
-import com.yanchware.fractal.azure.aks.sample.configuration.EnvVarConfiguration;
+import com.yanchware.fractal.azure.aks.full.sample.configuration.EnvVarConfiguration;
 import com.yanchware.fractal.sdk.Automaton;
 import com.yanchware.fractal.sdk.aggregates.Environment;
+import com.yanchware.fractal.sdk.aggregates.EnvironmentType;
 import com.yanchware.fractal.sdk.aggregates.LiveSystem;
 import com.yanchware.fractal.sdk.domain.exceptions.InstantiatorException;
 
 import java.util.List;
 
-import static com.yanchware.fractal.azure.aks.sample.components.AksComponent.getAks;
+import static com.yanchware.fractal.azure.aks.full.sample.components.AksComponent.getAks;
 
 public class AksFullSample {
   public static void main(String[] args) throws InstantiatorException {
@@ -16,12 +17,10 @@ public class AksFullSample {
     var configuration = EnvVarConfiguration.getInstance();
 
     var env = Environment.builder()
-        .withId(configuration.getSubscriptionId())
-        .withDisplayName(configuration.getEnvironmentDisplayName())
-        .withParentId(configuration.getTenantId())
-        .withParentType("tenant")
+        .withEnvironmentType(EnvironmentType.fromString(configuration.getEnvironmentType()))
+        .withId(configuration.getEnvironmentId())
+        .withOwnerId(configuration.getEnvironmentOwnerId())
         .build();
-
 
     // INSTANTIATION:
     LiveSystem liveSystem = LiveSystem.builder()

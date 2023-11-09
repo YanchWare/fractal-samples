@@ -1,4 +1,4 @@
-package com.yanchware.fractal.azure.aks.sample.components;
+package com.yanchware.fractal.azure.aks.full.sample.components;
 
 import com.yanchware.fractal.sdk.domain.entities.livesystem.caas.PreemptionPolicy;
 import com.yanchware.fractal.sdk.domain.entities.livesystem.caas.PriorityClass;

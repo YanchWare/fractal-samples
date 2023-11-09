@@ -14,14 +14,14 @@ public class EnvVarConfiguration implements Configuration {
   public String getLiveSystemName() {
     var liveSystemName = System.getenv("LIVE_SYSTEM_NAME");
     return isBlank(liveSystemName)
-      ? "local-test-env"
-      : liveSystemName;
+        ? "local-test-env"
+        : liveSystemName;
   }
 
   @Override
   public String getResourceGroupId() {
     var resourceGroupId = System.getenv("RESOURCE_GROUP_ID");
-    if(isBlank(resourceGroupId)) {
+    if (isBlank(resourceGroupId)) {
       throw new IllegalArgumentException("The environment variable RESOURCE_GROUP_ID is required and it has not been defined");
     }
 
@@ -29,30 +29,32 @@ public class EnvVarConfiguration implements Configuration {
   }
 
   @Override
-  public String getSubscriptionId() {
-    var subscriptionId = System.getenv("SUBSCRIPTION_ID");
-    if(isBlank(subscriptionId)) {
-      throw new IllegalArgumentException("The environment variable SUBSCRIPTION_ID is required and it has not been defined");
+  public String getEnvironmentId() {
+    var environmentId = System.getenv("ENVIRONMENT_ID");
+    if (isBlank(environmentId)) {
+      throw new IllegalArgumentException("The environment variable ENVIRONMENT_ID is required and it has not been defined");
     }
 
-    return subscriptionId;
+    return environmentId;
   }
 
   @Override
-  public String getTenantId() {
-    var tenantId = System.getenv("TENANT_ID");
-    if(isBlank(tenantId)) {
-      throw new IllegalArgumentException("The environment variable TENANT_ID is required and it has not been defined");
+  public String getEnvironmentOwnerId() {
+    var environmentOwnerId = System.getenv("ENVIRONMENT_OWNER_ID");
+    if (isBlank(environmentOwnerId)) {
+      throw new IllegalArgumentException("The environment variable ENVIRONMENT_OWNER_ID is required and it has not been defined");
     }
 
-    return tenantId;
+    return environmentOwnerId;
   }
 
   @Override
-  public String getEnvironmentDisplayName() {
-    var environmentDisplayName = System.getenv("ENV_DISPLAY_NAME");
-    return isBlank(environmentDisplayName)
-      ? "Locally deployed environment"
-      : environmentDisplayName;
+  public String getEnvironmentType() {
+    var environmentType = System.getenv("ENVIRONMENT_TYPE");
+    if (isBlank(environmentType)) {
+      throw new IllegalArgumentException("The environment variable ENVIRONMENT_TYPE is required and it has not been defined");
+    }
+
+    return environmentType;
   }
 }

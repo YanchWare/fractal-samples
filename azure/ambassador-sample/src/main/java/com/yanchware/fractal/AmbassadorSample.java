@@ -3,6 +3,7 @@ package com.yanchware.fractal;
 import com.yanchware.fractal.azure.ambassador.sample.configuration.EnvVarConfiguration;
 import com.yanchware.fractal.sdk.Automaton;
 import com.yanchware.fractal.sdk.aggregates.Environment;
+import com.yanchware.fractal.sdk.aggregates.EnvironmentType;
 import com.yanchware.fractal.sdk.aggregates.LiveSystem;
 import com.yanchware.fractal.sdk.domain.exceptions.InstantiatorException;
 
@@ -16,12 +17,10 @@ public class AmbassadorSample {
     var configuration = EnvVarConfiguration.getInstance();
 
     var env = Environment.builder()
-        .withId(configuration.getSubscriptionId())
-        .withDisplayName(configuration.getEnvironmentDisplayName())
-        .withParentId(configuration.getTenantId())
-        .withParentType("tenant")
+        .withEnvironmentType(EnvironmentType.fromString(configuration.getEnvironmentType()))
+        .withId(configuration.getEnvironmentId())
+        .withOwnerId(configuration.getEnvironmentOwnerId())
         .build();
-
 
     // INSTANTIATION:
     LiveSystem liveSystem = LiveSystem.builder()
