@@ -14,6 +14,7 @@ public class PostgreSqlComponent {
         .withDatabase(
             AzurePostgreSqlDatabase.builder()
                 .withId(String.format("%s-nice-db", id))
+                .withName(String.format("%s-nice-db", id))
                 .build()
         )
         .build();

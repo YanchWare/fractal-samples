@@ -16,8 +16,8 @@ public class AzServiceBus {
         .withRegion(EUROPE_WEST)
         .build();
     return AzureServiceBus.builder()
-        .withId("sb-sample")
-        .withName("sb-sample")
+        .withId("sb-minimum-sample")
+        .withName("sb-minimum-sample")
         .withRegion(AzureRegion.EUROPE_WEST)
         .withAzureResourceGroup(azureResourceGroup)
         .withSku(ServiceBusSku.builder()

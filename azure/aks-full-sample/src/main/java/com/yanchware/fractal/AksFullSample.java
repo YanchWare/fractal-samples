@@ -1,5 +1,6 @@
 package com.yanchware.fractal;
 
+import com.yanchware.fractal.azure.aks.full.sample.configuration.Configuration;
 import com.yanchware.fractal.azure.aks.full.sample.configuration.EnvVarConfiguration;
 import com.yanchware.fractal.sdk.Automaton;
 import com.yanchware.fractal.sdk.aggregates.Environment;
@@ -16,21 +17,26 @@ public class AksFullSample {
     // CONFIGURATION:
     var configuration = EnvVarConfiguration.getInstance();
 
+
+
+    // INSTANTIATION:
+    Automaton.instantiate(List.of(getLiveSystem(configuration)));
+  }
+
+  public static LiveSystem getLiveSystem(Configuration configuration) {
     var env = Environment.builder()
         .withEnvironmentType(EnvironmentType.fromString(configuration.getEnvironmentType()))
         .withId(configuration.getEnvironmentId())
         .withOwnerId(configuration.getEnvironmentOwnerId())
         .build();
 
-    // INSTANTIATION:
-    LiveSystem liveSystem = LiveSystem.builder()
+   
+    return LiveSystem.builder()
         .withName(configuration.getLiveSystemName())
         .withDescription("AKS with full options sample")
         .withResourceGroupId(configuration.getResourceGroupId())
-        .withComponent(getAks("aks-1"))
+        .withComponent(getAks("aks-full-1"))
         .withEnvironment(env)
         .build();
-
-    Automaton.instantiate(List.of(liveSystem));
   }
 }

@@ -13,9 +13,10 @@ public class Relay {
         .withName("rg-relay")
         .withRegion(EUROPE_WEST)
         .build();
+    
     return AzureRelay.builder()
-        .withId("relay")
-        .withName("relay")
+        .withId("relay-fractal-cloud-demo")
+        .withName("relay-fractal-cloud-demo")
         .withRegion(AzureRegion.EUROPE_WEST)
         .withAzureResourceGroup(azureResourceGroup)
         .build();

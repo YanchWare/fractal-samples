@@ -1,5 +1,6 @@
 package com.yanchware.fractal;
 
+import com.yanchware.fractal.azure.ambassador.sample.configuration.Configuration;
 import com.yanchware.fractal.azure.ambassador.sample.configuration.EnvVarConfiguration;
 import com.yanchware.fractal.sdk.Automaton;
 import com.yanchware.fractal.sdk.aggregates.Environment;
@@ -15,22 +16,24 @@ public class AmbassadorSample {
   public static void main(String[] args) throws InstantiatorException {
     // CONFIGURATION:
     var configuration = EnvVarConfiguration.getInstance();
-
+    
+    // INSTANTIATION:
+    Automaton.instantiate(List.of(getLiveSystem(configuration)));
+  }
+  public static LiveSystem getLiveSystem(Configuration configuration) {
     var env = Environment.builder()
         .withEnvironmentType(EnvironmentType.fromString(configuration.getEnvironmentType()))
         .withId(configuration.getEnvironmentId())
         .withOwnerId(configuration.getEnvironmentOwnerId())
         .build();
 
-    // INSTANTIATION:
-    LiveSystem liveSystem = LiveSystem.builder()
+    
+    return LiveSystem.builder()
         .withName(configuration.getLiveSystemName())
         .withDescription("Fractal demo")
         .withResourceGroupId(configuration.getResourceGroupId())
-        .withComponent(getAks("aks-1"))
+        .withComponent(getAks("aks-ambassador-1"))
         .withEnvironment(env)
         .build();
-
-    Automaton.instantiate(List.of(liveSystem));
   }
 }

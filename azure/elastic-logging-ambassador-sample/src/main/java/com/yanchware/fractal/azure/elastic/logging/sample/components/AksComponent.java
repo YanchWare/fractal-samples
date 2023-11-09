@@ -19,6 +19,7 @@ public class AksComponent {
         .withRegion(EUROPE_WEST)
         .withNodePools(getNodePools())
         .withAPIGateway(getAmbassador())
+        .withLogging(getElasticLoggingExample())
         .build();
   }
 
@@ -38,6 +39,7 @@ public class AksComponent {
         .withHostOwnerEmail("email@yourdomain.com")
         .withAcmeProviderAuthority("https://acme-v02.api.letsencrypt.org/directory")
         .withTlsSecretName("env-tls-cert")
+        .withNamespace("ambassador-01")
         .build();
   }
 
