@@ -5,7 +5,7 @@
 
     <groupId>com.yanchware.fractal</groupId>
     <artifactId>azure</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>2.0.0</version>
     <packaging>pom</packaging>
 
     <modules>
@@ -17,6 +17,7 @@
         <module>cosmos-sample</module>
         <module>custom-workload-sample</module>
         <module>elastic-datastore-sample</module>
+        <module>elastic-logging-ambassador-sample</module>
         <module>elastic-logging-sample</module>
         <module>postgresql-sample</module>
         <module>prometheus-ambassador-sample</module>
