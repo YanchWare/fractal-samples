@@ -20,9 +20,10 @@ public class AzServiceBus {
         .withName("rg-service-bus")
         .withRegion(EUROPE_WEST)
         .build();
+    
     return AzureServiceBus.builder()
-        .withId("sb-sample")
-        .withName("sb-sample")
+        .withId("sb-full-sample")
+        .withName("sb-full-sample")
         .withRegion(AzureRegion.EUROPE_WEST)
         .withAzureResourceGroup(azureResourceGroup)
         .withSku(ServiceBusSku.builder()

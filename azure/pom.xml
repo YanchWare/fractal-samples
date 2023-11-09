@@ -33,6 +33,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <commons-lang3.version>3.13.0</commons-lang3.version>
         <fractal.sdk.version>7.2.1</fractal.sdk.version>
+        <junit-jupiter-api.version>5.10.1</junit-jupiter-api.version>
     </properties>
 
     <dependencyManagement>
@@ -46,6 +47,12 @@
                 <groupId>com.yanchware</groupId>
                 <artifactId>fractal.sdk</artifactId>
                 <version>${fractal.sdk.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter-api</artifactId>
+                <version>${junit-jupiter-api.version}</version>
+                <scope>test</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>

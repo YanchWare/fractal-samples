@@ -1,5 +1,6 @@
 package com.yanchware.fractal;
 
+import com.yanchware.fractal.azure.sample.configuration.Configuration;
 import com.yanchware.fractal.azure.sample.configuration.EnvVarConfiguration;
 import com.yanchware.fractal.sdk.Automaton;
 import com.yanchware.fractal.sdk.aggregates.Environment;
@@ -17,6 +18,11 @@ public class AppServiceSample {
     // CONFIGURATION:
     var configuration = EnvVarConfiguration.getInstance();
 
+    // INSTANTIATION:
+    Automaton.instantiate(List.of(getLiveSystem(configuration)));
+  }
+
+  public static LiveSystem getLiveSystem(Configuration configuration) {
     var env = Environment.builder()
         .withEnvironmentType(EnvironmentType.fromString(configuration.getEnvironmentType()))
         .withId(configuration.getEnvironmentId())
@@ -24,15 +30,12 @@ public class AppServiceSample {
         .build();
 
     // LIVE-SYSTEM DEFINITION:
-    LiveSystem liveSystem = LiveSystem.builder()
+    return LiveSystem.builder()
         .withName(configuration.getLiveSystemName())
         .withDescription("WebApp Java Sample")
         .withResourceGroupId(configuration.getResourceGroupId())
-        .withComponent(getJavaWebAppComponent("sample-java-web-app"))
+        .withComponent(getJavaWebAppComponent("app-java-fractal-cloud-demo"))
         .withEnvironment(env)
         .build();
-
-    // LIVE-SYSTEM INSTANTIATION:
-    Automaton.instantiate(List.of(liveSystem));
   }
 }

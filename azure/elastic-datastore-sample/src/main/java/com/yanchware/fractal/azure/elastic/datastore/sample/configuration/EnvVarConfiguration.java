@@ -4,16 +4,27 @@ import static org.apache.commons.lang3.StringUtils.isBlank;
 
 public class EnvVarConfiguration implements Configuration {
 
+  private boolean readFromProperties;
+
   private EnvVarConfiguration() {
+    new EnvVarConfiguration(false);
+  }
+
+  public EnvVarConfiguration(boolean readFromProperties) {
+    this.readFromProperties = readFromProperties;
   }
 
   public static Configuration getInstance() {
     return new EnvVarConfiguration();
   }
 
+  public static Configuration getInstance(boolean readFromProperties) {
+    return new EnvVarConfiguration(readFromProperties);
+  }
+
   @Override
   public String getLiveSystemName() {
-    var liveSystemName = System.getenv("LIVE_SYSTEM_NAME");
+    var liveSystemName = getVariableValue("LIVE_SYSTEM_NAME");
     return isBlank(liveSystemName)
         ? "local-test-env"
         : liveSystemName;
@@ -21,7 +32,7 @@ public class EnvVarConfiguration implements Configuration {
 
   @Override
   public String getResourceGroupId() {
-    var resourceGroupId = System.getenv("RESOURCE_GROUP_ID");
+    var resourceGroupId = getVariableValue("RESOURCE_GROUP_ID");
     if (isBlank(resourceGroupId)) {
       throw new IllegalArgumentException("The environment variable RESOURCE_GROUP_ID is required and it has not been defined");
     }
@@ -31,7 +42,7 @@ public class EnvVarConfiguration implements Configuration {
 
   @Override
   public String getEnvironmentId() {
-    var environmentId = System.getenv("ENVIRONMENT_ID");
+    var environmentId = getVariableValue("ENVIRONMENT_ID");
     if (isBlank(environmentId)) {
       throw new IllegalArgumentException("The environment variable ENVIRONMENT_ID is required and it has not been defined");
     }
@@ -41,7 +52,7 @@ public class EnvVarConfiguration implements Configuration {
 
   @Override
   public String getEnvironmentOwnerId() {
-    var environmentOwnerId = System.getenv("ENVIRONMENT_OWNER_ID");
+    var environmentOwnerId = getVariableValue("ENVIRONMENT_OWNER_ID");
     if (isBlank(environmentOwnerId)) {
       throw new IllegalArgumentException("The environment variable ENVIRONMENT_OWNER_ID is required and it has not been defined");
     }
@@ -51,11 +62,23 @@ public class EnvVarConfiguration implements Configuration {
 
   @Override
   public String getEnvironmentType() {
-    var environmentType = System.getenv("ENVIRONMENT_TYPE");
+    var environmentType = getVariableValue("ENVIRONMENT_TYPE");
     if (isBlank(environmentType)) {
       throw new IllegalArgumentException("The environment variable ENVIRONMENT_TYPE is required and it has not been defined");
     }
 
     return environmentType;
+  }
+
+  private String getVariableValue(String key) {
+
+    var value = readFromProperties ? System.getProperty(key) : System.getenv(key);
+
+    if (isBlank(value)) {
+      throw new IllegalArgumentException(
+          String.format("The environment variable ['%s'] is required but it has not been defined", key));
+    }
+
+    return value;
   }
 }
