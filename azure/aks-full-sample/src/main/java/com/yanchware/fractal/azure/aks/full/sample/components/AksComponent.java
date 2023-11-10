@@ -37,7 +37,7 @@ public class AksComponent {
             getPriorityClass("fractal-critical", PREEMPT_LOWER_PRIORITY, 1_000_000_000),
             getPriorityClass("fractal-critical-2", NEVER, 999_999_000)))
         .withPodManagedIdentity(getPodManagedIdentity())
-        .withKubernetesVersion("1.24.10")
+        .withKubernetesVersion("1.27.3")
         .build();
   }
   
