@@ -39,7 +39,7 @@
                     <finalName>${project.name}</finalName>
                     <archive>
                         <manifest>
-                            <mainClass>com.yanchware.com.yanchware.fractal.ServiceBusMinimumSample</mainClass>
+                            <mainClass>com.yanchware.fractal.ServiceBusMinimumSample</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
