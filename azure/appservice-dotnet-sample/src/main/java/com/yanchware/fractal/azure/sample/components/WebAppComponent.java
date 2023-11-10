@@ -1,6 +1,5 @@
 package com.yanchware.fractal.azure.sample.components;
 
-import com.yanchware.fractal.sdk.domain.entities.ComponentLink;
 import com.yanchware.fractal.sdk.domain.entities.livesystem.caas.CustomWorkloadRole;
 import com.yanchware.fractal.sdk.domain.entities.livesystem.caas.RoleType;
 import com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.azure.AzureOsType;
@@ -54,7 +53,6 @@ public class WebAppComponent {
             .withHealthCheckPath("/health/")
             .withNumberOfWorkers(2)
             .build())
-        .withLink(ComponentLink.builder().withComponentId("another-component-id").build())
         .withRoles(List.of(CustomWorkloadRole.builder().withName("role").withRoleType(RoleType.BUILT_IN_ROLE).build()))
         .build();
   }
