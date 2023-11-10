@@ -6,6 +6,8 @@ import com.yanchware.fractal.sdk.Automaton;
 import com.yanchware.fractal.sdk.aggregates.Environment;
 import com.yanchware.fractal.sdk.aggregates.EnvironmentType;
 import com.yanchware.fractal.sdk.aggregates.LiveSystem;
+import com.yanchware.fractal.sdk.configuration.instantiation.InstantiationConfiguration;
+import com.yanchware.fractal.sdk.configuration.instantiation.InstantiationWaitConfiguration;
 import com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.azure.AzureRegion;
 import com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.azure.AzureResourceGroup;
 import com.yanchware.fractal.sdk.domain.exceptions.InstantiatorException;
@@ -20,8 +22,15 @@ public class CosmosSample {
     // CONFIGURATION:
     var configuration = EnvVarConfiguration.getInstance();
 
+    var instantiationConfig = new InstantiationConfiguration() {{
+      setWaitConfiguration(new InstantiationWaitConfiguration() {{
+        setWaitForInstantiation(true);
+        setTimeoutMinutes(120);
+      }});
+    }};
+    
     // INSTANTIATION:
-    Automaton.instantiate(List.of(getLiveSystem(configuration)));
+    Automaton.instantiate(List.of(getLiveSystem(configuration)), instantiationConfig);
   }
   
   public static LiveSystem getLiveSystem(Configuration configuration) {
