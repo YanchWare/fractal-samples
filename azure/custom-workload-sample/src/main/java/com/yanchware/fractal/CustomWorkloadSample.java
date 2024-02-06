@@ -1,14 +1,11 @@
 package com.yanchware.fractal;
 
-import com.yanchware.fractal.azure.customworkload.sample.configuration.Configuration;
-import com.yanchware.fractal.azure.customworkload.sample.configuration.EnvVarConfiguration;
 import com.yanchware.fractal.sdk.Automaton;
-import com.yanchware.fractal.sdk.aggregates.Environment;
-import com.yanchware.fractal.sdk.aggregates.EnvironmentType;
 import com.yanchware.fractal.sdk.aggregates.LiveSystem;
 import com.yanchware.fractal.sdk.configuration.instantiation.InstantiationConfiguration;
 import com.yanchware.fractal.sdk.configuration.instantiation.InstantiationWaitConfiguration;
 import com.yanchware.fractal.sdk.domain.exceptions.InstantiatorException;
+import com.yanchware.fractal.sharedconfig.SharedConfig;
 
 import java.util.List;
 
@@ -17,7 +14,7 @@ import static com.yanchware.fractal.azure.customworkload.sample.components.AksCo
 public class CustomWorkloadSample {
   public static void main(String[] args) throws InstantiatorException {
     // CONFIGURATION:
-    var configuration = EnvVarConfiguration.getInstance();
+    var configuration = SharedConfig.getInstance();
 
     var instantiationConfig = new InstantiationConfiguration() {{
       setWaitConfiguration(new InstantiationWaitConfiguration() {{
@@ -30,19 +27,13 @@ public class CustomWorkloadSample {
     Automaton.instantiate(List.of(getLiveSystem(configuration)), instantiationConfig);
   }
 
-  public static LiveSystem getLiveSystem(Configuration configuration) {
-    var env = Environment.builder()
-        .withEnvironmentType(EnvironmentType.fromString(configuration.getEnvironmentType()))
-        .withId(configuration.getEnvironmentId())
-        .withOwnerId(configuration.getEnvironmentOwnerId())
-        .build();
-
+  public static LiveSystem getLiveSystem(SharedConfig configuration) {
     return LiveSystem.builder()
         .withName(configuration.getLiveSystemName())
         .withDescription("Custom Workload in AKS sample")
         .withResourceGroupId(configuration.getResourceGroupId())
-        .withComponent(getAksWithCustomWorkload("aks-custom-workload-1"))
-        .withEnvironment(env)
+        .withComponent(getAksWithCustomWorkload("aks-custom-workload-1", configuration.getAzureResourceGroup()))
+        .withEnvironment(configuration.getEnvironment())
         .build();
   }
 }
