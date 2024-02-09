@@ -1,6 +1,7 @@
 package com.yanchware.fractal.azure.elastic.datastore.sample.components;
 
 import com.yanchware.fractal.sdk.domain.entities.livesystem.caas.CaaSElasticDataStore;
+import com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.azure.AzureResourceGroup;
 import com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.azure.aks.AzureKubernetesService;
 import com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.azure.aks.AzureNodePool;
 
@@ -8,14 +9,14 @@ import java.util.Collection;
 import java.util.List;
 
 import static com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.azure.AzureMachineType.STANDARD_B2S;
-import static com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.azure.AzureRegion.EUROPE_WEST;
 
 public class AksComponent {
 
-  public static AzureKubernetesService getAks(String id) {
+  public static AzureKubernetesService getAks(String id, AzureResourceGroup resourceGroup) {
     return AzureKubernetesService.builder()
         .withId(id)
-        .withRegion(EUROPE_WEST)
+        .withRegion(resourceGroup.getRegion())
+        .withResourceGroup(resourceGroup)
         .withNodePools(getNodePools())
         .withDocumentDB(getElasticDataStoreExample())
         .build();

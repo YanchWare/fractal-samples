@@ -1,14 +1,11 @@
 package com.yanchware.fractal;
 
-import com.yanchware.fractal.azure.aks.sample.configuration.Configuration;
-import com.yanchware.fractal.azure.aks.sample.configuration.EnvVarConfiguration;
 import com.yanchware.fractal.sdk.Automaton;
-import com.yanchware.fractal.sdk.aggregates.Environment;
-import com.yanchware.fractal.sdk.aggregates.EnvironmentType;
 import com.yanchware.fractal.sdk.aggregates.LiveSystem;
 import com.yanchware.fractal.sdk.configuration.instantiation.InstantiationConfiguration;
 import com.yanchware.fractal.sdk.configuration.instantiation.InstantiationWaitConfiguration;
 import com.yanchware.fractal.sdk.domain.exceptions.InstantiatorException;
+import com.yanchware.fractal.sharedconfig.SharedConfig;
 
 import java.util.List;
 
@@ -17,7 +14,7 @@ import static com.yanchware.fractal.azure.aks.sample.components.AksComponent.get
 public class AksMinimumSample {
   public static void main(String[] args) throws InstantiatorException {
     // CONFIGURATION:
-    var configuration = EnvVarConfiguration.getInstance();
+    var configuration = SharedConfig.getInstance();
 
     var instantiationConfig = new InstantiationConfiguration() {{
       setWaitConfiguration(new InstantiationWaitConfiguration() {{
@@ -29,19 +26,13 @@ public class AksMinimumSample {
     // INSTANTIATION:
     Automaton.instantiate(List.of(getLiveSystem(configuration)), instantiationConfig);
   }
-  public static LiveSystem getLiveSystem(Configuration configuration) {
-    var env = Environment.builder()
-        .withEnvironmentType(EnvironmentType.fromString(configuration.getEnvironmentType()))
-        .withId(configuration.getEnvironmentId())
-        .withOwnerId(configuration.getEnvironmentOwnerId())
-        .build();
-    
+  public static LiveSystem getLiveSystem(SharedConfig configuration) {
     return LiveSystem.builder()
         .withName(configuration.getLiveSystemName())
         .withDescription("AKS with minimum requirements sample")
         .withResourceGroupId(configuration.getResourceGroupId())
-        .withComponent(getAks("aks-minimum-1"))
-        .withEnvironment(env)
+        .withComponent(getAks("aks-minimum-1", configuration.getAzureResourceGroup()))
+        .withEnvironment(configuration.getEnvironment())
         .build();
   }
 }

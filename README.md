@@ -18,10 +18,10 @@ You can find more information on this in our [documentation](https://fractal.clo
 
 The repository is split into different directories based on the cloud provider. See the list below for easier navigation.
 
-| Cloud Provider        	| Description                                           	|
-|-----------------------	|-------------------------------------------------------	|
-| [ Azure ]( ./azure/ ) 	| Collection of sample projects using our SDK for Azure 	|
-| [ GCP   ]( ./gcp/   ) 	| Collection of sample projects using our SDK for GCP   	|
+| Cloud Provider        	 | Description                                             |
+|-------------------------|---------------------------------------------------------|
+| [ Azure ](./azure/) 	   | Collection of sample projects using our SDK for Azure 	 |
+| [ GCP   ](./gcp/) 	     | Collection of sample projects using our SDK for GCP   	 |
 
 ## Build and run the project locally
 
@@ -34,7 +34,7 @@ In most projects you will need these environment variables:
 | RESOURCE_GROUP_ID    	| The name of the resource group you are working on in Fractal Cloud                                         	|
 | CLIENT_ID            	| Credentials used to authenticate to Fractal. This field is required by the Fractal SDK                     	|
 | CLIENT_SECRET        	| Credentials used to authenticate to Fractal. This field is required by the Fractal SDK                    	|
-| ENVIRONMENT_ID       	| Required to identify the Azure Subscription or the GCP Project on which the Fractal Cloud Agent is active 	|
+| ENVIRONMENT_SHORT_NAME       	| Required to identify the Azure Subscription or the GCP Project on which the Fractal Cloud Agent is active 	|
 
 ### Connect to YanchWare Maven Repository
 

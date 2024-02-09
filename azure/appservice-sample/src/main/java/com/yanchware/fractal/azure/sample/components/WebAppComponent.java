@@ -11,19 +11,14 @@ import java.util.List;
 import java.util.Map;
 
 import static com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.azure.AzureOsType.LINUX;
-import static com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.azure.AzureRegion.EUROPE_WEST;
 
 public class WebAppComponent {
 
-  public static AzureWebApp getJavaWebAppComponent(String id) {
-    var resourceGroup = AzureResourceGroup.builder()
-        .withName("resource-group")
-        .withRegion(EUROPE_WEST)
-        .build();
+  public static AzureWebApp getJavaWebAppComponent(String id, AzureResourceGroup resourceGroup) {
     
     var appServicePlan = AzureAppServicePlan.builder()
         .withName("asp-sample")
-        .withRegion(EUROPE_WEST)
+        .withRegion(resourceGroup.getRegion())
         .withAzureResourceGroup(resourceGroup)
         .withOperatingSystem(AzureOsType.LINUX)
         .withPricingPlan(AzurePricingPlan.BASIC_B1)
@@ -34,7 +29,7 @@ public class WebAppComponent {
         .withId(id)
         .withDisplayName("Java WebApp")
         .withResourceGroup(resourceGroup)
-        .withRegion(EUROPE_WEST)
+        .withRegion(resourceGroup.getRegion())
         .withRepoId("YanchWare/fractal-samples")
         .withBranchName("env/prod")
         .withPrivateSSHKeyPassphraseSecretId("fractal-deployer-secret-id")

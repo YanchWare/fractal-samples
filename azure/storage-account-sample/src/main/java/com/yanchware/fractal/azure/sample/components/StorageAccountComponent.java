@@ -1,28 +1,94 @@
 package com.yanchware.fractal.azure.sample.components;
 
-import com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.azure.storageaccount.AzureStorageAccount;
-import com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.azure.storageaccount.AzureStorageAccountBackup;
-import com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.azure.storageaccount.AzureStorageAccountInfrastructure;
-import com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.azure.storageaccount.valueobjects.AzureStorageSkuName;
+import com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.azure.AzureResourceGroup;
+import com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.azure.storageaccount.*;
+import com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.azure.storageaccount.valueobjects.AzureStorageAccountSkuName;
 
 public class StorageAccountComponent {
-
-  public static AzureStorageAccount getStorageAccountComponent(String id) {
-
-    return AzureStorageAccount.builder()
+  public static AzureLegacyStorageAccount getLegacyStorageAccountComponent(String id,
+                                                                           AzureResourceGroup resourceGroup) {
+    return AzureLegacyStorageAccount.builder()
         .withId(id)
-        .withInfrastructure(
-            AzureStorageAccountInfrastructure.builder()
-                .withSku(AzureStorageSkuName.PREMIUM_LRS)
-                .build()
-        )
-        .withBackup(AzureStorageAccountBackup.builder()
-            .withPolicy(getBackupPolicy())
-            .build()
-        )
+        .withName(id)
+        .withDescription(getDescription(id, "Legacy"))
+        .withDisplayName(getDisplayName(id, "Legacy"))
+        .withResourceGroup(resourceGroup)
+        .withRegion(resourceGroup.getRegion())
+        .withFileShare(AzureFileShare.builder()
+            .withId("share-yanchware-legacy")
+            .withName("share-yanchware-legacy")
+            .withDisplayName("YanchWare Azure File Share Legacy")
+            .withDescription("YanchWare Azure File Share on Legacy Storage Account")
+            .build())
         .build();
   }
-  
+
+  public static AzureStorageAccount getStorageAccountComponent(String id, AzureResourceGroup resourceGroup) {
+    return AzureStorageAccount.builder()
+        .withId(id)
+        .withName(id)
+        .withDescription(getDescription(id, "V2"))
+        .withDisplayName(getDisplayName(id, "V2"))
+        .withResourceGroup(resourceGroup)
+        .withRegion(resourceGroup.getRegion())
+        .withBackup(AzureStorageAccountBackup.builder()
+            .withPolicy(getBackupPolicy())
+            .withPolicyName("bkpol-fractal-cloud-demo")
+            .withPolicyResourceGroupName(resourceGroup.getName())
+            .withVaultName("rsv-fractal-cloud-demo")
+            .withVaultResourceGroupName(resourceGroup.getName())
+            .build())
+        .build();
+  }
+
+  public static AzureFileStorageAccount getFileStorageAccountComponent(String id, AzureResourceGroup resourceGroup) {
+    return AzureFileStorageAccount.builder()
+        .withId(id)
+        .withName(id)
+        .withDescription(getDescription(id, "File"))
+        .withDisplayName(getDisplayName(id, "File"))
+        .withResourceGroup(resourceGroup)
+        .withRegion(resourceGroup.getRegion())
+        .withSku(AzureStorageAccountSkuName.PREMIUM_LRS)
+        .withFileShare(AzureFileShare.builder()
+            .withId("share-yanchware")
+            .withName("share-yanchware")
+            .withDisplayName("YanchWare Azure File Share")
+            .withDescription("YanchWare Azure FileS hare on File Storage Account")
+            .build())
+        .build();
+  }
+
+  public static AzureBlobStorageAccount getBlobStorageAccountComponent(String id, AzureResourceGroup resourceGroup) {
+    return AzureBlobStorageAccount.builder()
+        .withId(id)
+        .withName(id)
+        .withDescription(getDescription(id, "Blob"))
+        .withDisplayName(getDisplayName(id, "Blob"))
+        .withResourceGroup(resourceGroup)
+        .withRegion(resourceGroup.getRegion())
+        .build();
+  }
+
+  public static AzureBlockBlobStorageAccount getBlockBlobStorageAccountComponent(String id, AzureResourceGroup resourceGroup) {
+    return AzureBlockBlobStorageAccount.builder()
+        .withId(id)
+        .withName(id)
+        .withDescription(getDescription(id, "BlockBlob"))
+        .withDisplayName(getDisplayName(id, "BlockBlob"))
+        .withResourceGroup(resourceGroup)
+        .withRegion(resourceGroup.getRegion())
+        .build();
+  }
+
+  private static String getDisplayName(String name, String type) {
+    return String.format("Azure %s Storage Account - %s", type, name);
+  }
+
+  private static String getDescription(String name, String type) {
+    return String.format("Azure %s Storage Account instance named '%s'", type, name);
+  }
+
   private static String getBackupPolicy() {
 
     // Backup policy definition:

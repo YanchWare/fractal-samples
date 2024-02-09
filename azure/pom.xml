@@ -9,6 +9,7 @@
     <packaging>pom</packaging>
 
     <modules>
+        <module>shared-config</module>
         <module>aks-full-sample</module>
         <module>aks-minimum-sample</module>
         <module>ambassador-sample</module>
@@ -31,9 +32,10 @@
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <commons-lang3.version>3.13.0</commons-lang3.version>
-        <fractal.sdk.version>7.2.1</fractal.sdk.version>
+        <commons-lang3.version>3.14.0</commons-lang3.version>
+        <fractal.sdk.version>7.7.0</fractal.sdk.version>
         <junit-jupiter-api.version>5.10.1</junit-jupiter-api.version>
+        <azure.shared.config.version>1.0.0</azure.shared.config.version>
     </properties>
 
     <dependencyManagement>
@@ -47,6 +49,11 @@
                 <groupId>com.yanchware</groupId>
                 <artifactId>fractal.sdk</artifactId>
                 <version>${fractal.sdk.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.yanchware.fractal</groupId>
+                <artifactId>azure.shared.config</artifactId>
+                <version>${azure.shared.config.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.junit.jupiter</groupId>

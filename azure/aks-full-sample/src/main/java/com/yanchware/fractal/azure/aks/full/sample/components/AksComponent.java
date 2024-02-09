@@ -14,22 +14,22 @@ import static com.yanchware.fractal.sdk.domain.entities.livesystem.caas.Preempti
 import static com.yanchware.fractal.sdk.domain.entities.livesystem.caas.PreemptionPolicy.PREEMPT_LOWER_PRIORITY;
 import static com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.azure.AzureMachineType.STANDARD_B2S;
 import static com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.azure.AzureOsType.LINUX;
-import static com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.azure.AzureRegion.EUROPE_WEST;
 
 public class AksComponent {
 
-  public static AzureKubernetesService getAks(String id) {
+  public static AzureKubernetesService getAks(String id, AzureResourceGroup resourceGroup) {
     return AzureKubernetesService.builder()
         .withId(id)
         .withDescription("Test AKS cluster")
         .withDisplayName("AKS #1")
-        .withRegion(EUROPE_WEST)
+        .withRegion(resourceGroup.getRegion())
+        .withResourceGroup(resourceGroup)
         .withServiceIpRange("10.2.0.0/16")
         .withPodIpRange("10.3.0.0/16")
         .withVnetAddressSpaceIpRange("10.1.0.0/22")
         .withVnetSubnetAddressIpRange("10.1.0.0/22")
         .withExternalWorkspaceResourceId("workplaceResourceId")
-        .withOutboundIps(getOutboundIps())
+        .withOutboundIps(getOutboundIps(resourceGroup))
         .withAddonProfiles(getAddonProfiles())
         .withWindowsAdminUsername("")
         .withNodePool(getNodePools())
@@ -41,12 +41,7 @@ public class AksComponent {
         .build();
   }
   
-  private static List<AzureOutboundIp> getOutboundIps() {
-    var resourceGroup = AzureResourceGroup.builder()
-        .withName("rg-infra")
-        .withRegion(EUROPE_WEST)
-        .build();
-    
+  private static List<AzureOutboundIp> getOutboundIps(AzureResourceGroup resourceGroup) {    
     return new ArrayList<>() {
       {
         add(AzureOutboundIp.builder()
