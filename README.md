@@ -23,23 +23,11 @@ The repository is split into different directories based on the cloud provider. 
 | [ Azure ](./azure/) 	   | Collection of sample projects using our SDK for Azure 	 |
 | [ GCP   ](./gcp/) 	     | Collection of sample projects using our SDK for GCP   	 |
 
-## Build and run the project locally
-
-Each sample project has it's own instructions. Please refer to those for more details.
-
-In most projects you will need these environment variables:
-
-| Environment variable 	| Description                                                                                                	|
-|----------------------	|------------------------------------------------------------------------------------------------------------	|
-| RESOURCE_GROUP_ID    	| The name of the resource group you are working on in Fractal Cloud                                         	|
-| CLIENT_ID            	| Credentials used to authenticate to Fractal. This field is required by the Fractal SDK                     	|
-| CLIENT_SECRET        	| Credentials used to authenticate to Fractal. This field is required by the Fractal SDK                    	|
-| ENVIRONMENT_SHORT_NAME       	| Required to identify the Azure Subscription or the GCP Project on which the Fractal Cloud Agent is active 	|
-
 ### Connect to YanchWare Maven Repository
 
-You can authenticate to YanchWare Packages with Maven by editing your `~/.m2/settings.xml` file to include your personal access token. Create a new `~/.m2/settings.xml` file if one doesn't exist.
-In order to get the credentials to access the packages please contact your administrator.
+You must use a personal access token (classic) with `read:packages` permission to install packages in GitHub Packages.
+You can read more on how to create a GitHub Personal Access Token (PAT) [here](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens).
+You can then authenticate to YanchWare Packages with Maven by editing your `~/.m2/settings.xml` file to include your personal access token. Create a new `~/.m2/settings.xml` file if one doesn't exist.
 
 Sample contents:
 
@@ -75,7 +63,7 @@ Sample contents:
   <servers>
     <server>
       <id>yanchware</id>
-      <username>USERNAME</username>
+      <username>GITHUB_USERNAME</username>
       <password>TOKEN</password>
     </server>
   </servers>
