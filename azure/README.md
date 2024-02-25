@@ -7,8 +7,8 @@ In here you can find example using our SDK for all supported components in the A
 Consult the main [README](../README.md) for details on how to set up your environment to be able to run our projects.
 
 The simplest way to use these samples is to build them from the parent project.
-If for instance you would like to build and run the ask-full-example you could do it running the following commands 
-from the current directory:
+If for instance you would like to build and run the `aks-full-example` you could do it by running the following two 
+commands from the current directory:
 
 ```bash
 mvn clean compile assembly:single -pl shared-config,aks-full-sample
@@ -23,14 +23,14 @@ LIVE_SYSTEM_NAME="aks-full-sample" \
     java -jar aks-full-sample/target/aks-full-sample-jar-with-dependencies.jar
 ```
 
-The first command instruct Maven to build the `shared-config` library and the specific sample we are interested in, 
-in this specific case the `aks-full-sample`.
+The first command instruct Maven to build the `shared-config` library we need in all sample projects and the specific sample we are interested in.
 
 The second command sets some environment variables required by the SDK to identify the [Environment](https://fractal.cloud/docs/definitions/concepts/) in which to deploy 
-the infrastructure components and the [Resource Group](https://fractal.cloud/docs/definitions/concepts/) utilized to administrate access controls. Further information
-about the environment variables required are contained in the following table.
+the infrastructure components and the [Resource Group](https://fractal.cloud/docs/definitions/concepts/) utilized to administrate access controls. 
 
 Please, ensure that the Resource Group you are trying to use is enabled to deploy to the Environment identified.
+
+Further information about the environment variables required are contained in the following table.
 
 | Environment variable 	  | Description                                                                                                                                                                                                                                           |
 |---------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|

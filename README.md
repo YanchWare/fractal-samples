@@ -25,11 +25,11 @@ The repository is split into different directories based on the cloud provider. 
 
 ### Connect to YanchWare Maven Repository
 
-You must use a personal access token (classic) with `read:packages` permission to install packages in GitHub Packages.
-You can read more on how to create a GitHub Personal Access Token (PAT) [here](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens).
-You can then authenticate to YanchWare Packages with Maven by editing your `~/.m2/settings.xml` file to include your personal access token. Create a new `~/.m2/settings.xml` file if one doesn't exist.
+A [GitHub Personal Access Token (PAT)]((https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens)) 
+with `read:packages` permission is required to install our packages as they are currently hosted on GitHub Packages.
 
-Sample contents:
+You can then authenticate to YanchWare Packages with Maven by editing your `~/.m2/settings.xml` file to include your PAT. 
+Create or extend the file at `~/.m2/settings.xml`. Feel free to use the following as a sample for its contents:
 
 ```xml
 <settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
