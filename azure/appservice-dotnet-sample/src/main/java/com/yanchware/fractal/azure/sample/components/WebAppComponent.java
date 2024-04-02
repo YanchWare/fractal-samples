@@ -48,6 +48,9 @@ public class WebAppComponent {
             .withHealthCheckPath("/health/")
             .withNumberOfWorkers(2)
             .build())
+        .withDeploymentSlot(AzureWebAppDeploymentSlot.builder()
+            .withName("staging")
+            .build())
         .withRoles(List.of(CustomWorkloadRole.builder().withName("role").withRoleType(RoleType.BUILT_IN_ROLE).build()))
         .build();
   }
