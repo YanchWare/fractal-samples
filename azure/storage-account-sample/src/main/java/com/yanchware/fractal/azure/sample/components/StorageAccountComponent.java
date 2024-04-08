@@ -60,17 +60,31 @@ public class StorageAccountComponent {
   }
 
   public static AzureBlobStorageAccount getBlobStorageAccountComponent(String id, AzureResourceGroup resourceGroup) {
+    var description = getDescription(id, "Blob");
+    var displayName = getDisplayName(id, "Blob");
+    var containerName = "container";
+    
     return AzureBlobStorageAccount.builder()
         .withId(id)
         .withName(id)
-        .withDescription(getDescription(id, "Blob"))
-        .withDisplayName(getDisplayName(id, "Blob"))
+        .withDescription(description)
+        .withDisplayName(displayName)
         .withResourceGroup(resourceGroup)
         .withRegion(resourceGroup.getRegion())
+        .withContainer(AzureBlobContainer.builder()
+            .withId(String.format("%s-%s", id, containerName))
+            .withName(containerName)
+            .withDescription(String.format("%s - %s", description, containerName))
+            .withDisplayName(String.format("%s - %s", displayName, containerName))
+            .build())
         .build();
   }
 
   public static AzureBlockBlobStorageAccount getBlockBlobStorageAccountComponent(String id, AzureResourceGroup resourceGroup) {
+    var description = getDescription(id, "BlockBlob");
+    var displayName = getDisplayName(id, "BlockBlob");
+    var containerName = "container";
+    
     return AzureBlockBlobStorageAccount.builder()
         .withId(id)
         .withName(id)
@@ -78,6 +92,12 @@ public class StorageAccountComponent {
         .withDisplayName(getDisplayName(id, "BlockBlob"))
         .withResourceGroup(resourceGroup)
         .withRegion(resourceGroup.getRegion())
+        .withContainer(AzureBlobContainer.builder()
+            .withId(String.format("%s-%s", id, containerName))
+            .withName(containerName)
+            .withDescription(String.format("%s - %s", description, containerName))
+            .withDisplayName(String.format("%s - %s", displayName, containerName))
+            .build())
         .build();
   }
 
