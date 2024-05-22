@@ -38,6 +38,7 @@ public class AksComponent {
             getPriorityClass("fractal-critical-2", NEVER, 999_999_000)))
         .withPodManagedIdentity(getPodManagedIdentity())
         .withKubernetesVersion("1.27.3")
+        .withManagedClusterSkuTier(ManagedClusterSkuTier.STANDARD)
         .build();
   }
   
