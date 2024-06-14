@@ -3,6 +3,7 @@ package com.yanchware.fractal;
 import com.yanchware.fractal.gcp.gke.sample.configuration.EnvVarConfiguration;
 import com.yanchware.fractal.sdk.Automaton;
 import com.yanchware.fractal.sdk.aggregates.Environment;
+import com.yanchware.fractal.sdk.aggregates.EnvironmentType;
 import com.yanchware.fractal.sdk.aggregates.LiveSystem;
 import com.yanchware.fractal.sdk.domain.exceptions.InstantiatorException;
 
@@ -16,8 +17,9 @@ public class PrometheusAmbassadorSample {
     var configuration = EnvVarConfiguration.getInstance();
 
     var env = Environment.builder()
-        .withId(configuration.getProjectId())
-        .withDisplayName(configuration.getEnvironmentDisplayName())
+        .withEnvironmentType(EnvironmentType.ORGANIZATIONAL)
+        .withShortName(configuration.getProjectId())
+        .withName(configuration.getEnvironmentDisplayName())
         .withParentId(configuration.getOrganizationId())
         .withParentType("organization")
         .build();
