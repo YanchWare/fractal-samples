@@ -37,13 +37,43 @@ public class SharedConfig implements SharedConfiguration {
   }
 
   @Override
-  public String getResourceGroupId() {
+  public AzureRegion getAzureRegion() {
+    var azureRegion = getVariableValue("AZURE_REGION", false);
+    if (isBlank(azureRegion)) {
+      throw new IllegalArgumentException("The environment variable AZURE_REGION is required and it has not been defined");
+    }
+    
+    return AzureRegion.fromString(azureRegion);
+  }
+
+  @Override
+  public UUID getTenantId() {
+    var tenantId = getVariableValue("AZURE_TENANT_ID", false);
+    if (isBlank(tenantId)) {
+      throw new IllegalArgumentException("The environment variable AZURE_TENANT_ID is required and it has not been defined");
+    }
+
+    return UUID.fromString(tenantId);
+  }
+
+  @Override
+  public UUID getSubscriptionId() {
+    var subscriptionId = getVariableValue("AZURE_SUBSCRIPTION_ID", false);
+    if (isBlank(subscriptionId)) {
+      throw new IllegalArgumentException("The environment variable AZURE_SUBSCRIPTION_ID is required and it has not been defined");
+    }
+
+    return UUID.fromString(subscriptionId);
+  }
+
+  @Override
+  public UUID getResourceGroupId() {
     var resourceGroupId = getVariableValue("RESOURCE_GROUP_ID");
     if (isBlank(resourceGroupId)) {
       throw new IllegalArgumentException("The environment variable RESOURCE_GROUP_ID is required and it has not been defined");
     }
 
-    return resourceGroupId;
+    return UUID.fromString(resourceGroupId);
   }
 
   @Override
@@ -62,11 +92,21 @@ public class SharedConfig implements SharedConfiguration {
     if (isBlank(environmentShortName)) {
       throw new IllegalArgumentException("The environment variable ENVIRONMENT_SHORT_NAME is required and it has not been defined");
     }
+
+    var environmentName = getVariableValue("ENVIRONMENT_NAME");
+    if (isBlank(environmentShortName)) {
+      environmentName = environmentShortName;
+    }
     
     return Environment.builder()
         .withEnvironmentType(EnvironmentType.fromString(environmentType))
         .withOwnerId(UUID.fromString(environmentOwnerId))
         .withShortName(environmentShortName)
+        .withName(environmentName)
+        .withRegion(getAzureRegion())
+        .withResourceGroup(getResourceGroupId())
+        .withTenantId(getTenantId())
+        .withSubscriptionId(getSubscriptionId())
         .build();
   }
 

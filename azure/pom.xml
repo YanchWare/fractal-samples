@@ -3,13 +3,18 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.yanchware.fractal</groupId>
+    <parent>
+        <groupId>com.yanchware.fractal</groupId>
+        <artifactId>fractal-samples</artifactId>
+        <version>2.0.0</version>
+    </parent>
+
     <artifactId>azure</artifactId>
-    <version>2.0.0</version>
     <packaging>pom</packaging>
 
     <modules>
         <module>shared-config</module>
+        <module>shared-config-tests</module>
         <module>aks-full-sample</module>
         <module>aks-minimum-sample</module>
         <module>ambassador-sample</module>
@@ -31,79 +36,37 @@
     </modules>
 
     <properties>
-        <maven.compiler.source>21</maven.compiler.source>
-        <maven.compiler.target>21</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <commons-lang3.version>3.14.0</commons-lang3.version>
-        <fractal.sdk.version>8.3.0</fractal.sdk.version>
-        <junit-jupiter-api.version>5.10.1</junit-jupiter-api.version>
-        <azure.shared.config.version>1.0.0</azure.shared.config.version>
+        <shared.config.artifactId>azure.shared.config</shared.config.artifactId>
     </properties>
-
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>org.apache.commons</groupId>
-                <artifactId>commons-lang3</artifactId>
-                <version>${commons-lang3.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.yanchware</groupId>
-                <artifactId>fractal.sdk</artifactId>
-                <version>${fractal.sdk.version}</version>
+                <groupId>com.yanchware.fractal</groupId>
+                <artifactId>azure.shared.config</artifactId>
+                <version>${shared.config.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.yanchware.fractal</groupId>
-                <artifactId>azure.shared.config</artifactId>
-                <version>${azure.shared.config.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.junit.jupiter</groupId>
-                <artifactId>junit-jupiter-api</artifactId>
-                <version>${junit-jupiter-api.version}</version>
+                <artifactId>azure.shared.config.tests</artifactId>
+                <type>test-jar</type>
+                <version>${shared.config.version}</version>
                 <scope>test</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>
-
-    <build>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.11.0</version>
-                    <configuration>
-                        <source>${maven.compiler.source}</source>
-                        <target>${maven.compiler.target}</target>
-                        <encoding>${project.build.sourceEncoding}</encoding>
-                    </configuration>
-                </plugin>
-                <plugin> 
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-assembly-plugin</artifactId>
-                    <version>3.6.0</version>
-                    <configuration>
-                        <descriptorRefs>
-                            <descriptorRef>jar-with-dependencies</descriptorRef>
-                        </descriptorRefs>
-                    </configuration>
-                </plugin>
-            </plugins>
-        </pluginManagement>
-    </build>
-
-    <repositories>
-        <repository>
-            <id>yanchware</id>
-            <name>YanchWare Maven Packages</name>
-            <url>https://maven.pkg.github.com/YanchWare/fractal-java-sdk</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
+<dependencies>
+    <dependency>
+        <groupId>org.apache.commons</groupId>
+        <artifactId>commons-lang3</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>com.yanchware</groupId>
+        <artifactId>fractal.sdk</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>org.junit.jupiter</groupId>
+        <artifactId>junit-jupiter-api</artifactId>
+        <scope>test</scope>
+    </dependency>
+</dependencies>
 </project>

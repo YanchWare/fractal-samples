@@ -38,7 +38,7 @@ public class CosmosSample {
     return LiveSystem.builder()
         .withName(configuration.getLiveSystemName())
         .withDescription("Cosmos sample")
-        .withResourceGroupId(configuration.getResourceGroupId())
+        .withResourceGroupId(configuration.getResourceGroupId().toString())
         .withComponents(List.of(
             getDbmsAndDatabaseForMongoDb("nosql-mongo-1", noSqlResourceGroup),
             getDbmsAndDatabaseForGremlinDb("nosql-gremlin-1", noSqlResourceGroup),

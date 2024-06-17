@@ -37,7 +37,7 @@ public class MultipleResourcesSample {
     return LiveSystem.builder()
         .withName(configuration.getLiveSystemName())
         .withDescription("CDN sample")
-        .withResourceGroupId(configuration.getResourceGroupId())
+        .withResourceGroupId(configuration.getResourceGroupId().toString())
         .withComponents(List.of(
             serviceBusComponent,
             getDotnetWebAppComponent("app-dotnet-fractal-cloud-demo", serviceBusComponent.getId(), resourceGroup)))

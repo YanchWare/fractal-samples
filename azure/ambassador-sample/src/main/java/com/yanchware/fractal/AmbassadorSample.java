@@ -30,7 +30,7 @@ public class AmbassadorSample {
     return LiveSystem.builder()
         .withName(configuration.getLiveSystemName())
         .withDescription("Fractal demo")
-        .withResourceGroupId(configuration.getResourceGroupId())
+        .withResourceGroupId(configuration.getResourceGroupId().toString())
         .withComponent(getAks("aks-ambassador-1", configuration.getAzureResourceGroup()))
         .withEnvironment(configuration.getEnvironment())
         .build();

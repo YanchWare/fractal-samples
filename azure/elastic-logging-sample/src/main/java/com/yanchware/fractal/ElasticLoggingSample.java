@@ -31,7 +31,7 @@ public class ElasticLoggingSample {
     return LiveSystem.builder()
         .withName(configuration.getLiveSystemName())
         .withDescription("Elastic Logging in AKS sample")
-        .withResourceGroupId(configuration.getResourceGroupId())
+        .withResourceGroupId(configuration.getResourceGroupId().toString())
         .withComponent(getAks("aks-elastic-logging-1", configuration.getAzureResourceGroup()))
         .withEnvironment(configuration.getEnvironment())
         .build();

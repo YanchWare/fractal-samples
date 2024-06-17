@@ -31,7 +31,7 @@ public class ServiceBusMinimumSample {
     return LiveSystem.builder()
         .withName(configuration.getLiveSystemName())
         .withDescription("Service Bus with minimum requirements sample")
-        .withResourceGroupId(configuration.getResourceGroupId())
+        .withResourceGroupId(configuration.getResourceGroupId().toString())
         .withComponent(getServiceBus(configuration.getAzureResourceGroup()))
         .withEnvironment(configuration.getEnvironment())
         .build();

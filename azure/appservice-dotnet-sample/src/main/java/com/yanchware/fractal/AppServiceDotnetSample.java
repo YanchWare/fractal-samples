@@ -32,7 +32,7 @@ public class AppServiceDotnetSample {
     return LiveSystem.builder()
         .withName(configuration.getLiveSystemName())
         .withDescription("WebApp sample")
-        .withResourceGroupId(configuration.getResourceGroupId())
+        .withResourceGroupId(configuration.getResourceGroupId().toString())
         .withComponent(getDotnetWebAppComponent("app-dotnet-fractal-cloud-demo", configuration.getAzureResourceGroup()))
         .withEnvironment(configuration.getEnvironment())
         .build();

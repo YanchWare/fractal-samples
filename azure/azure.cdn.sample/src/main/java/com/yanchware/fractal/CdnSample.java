@@ -36,7 +36,7 @@ public class CdnSample {
     return LiveSystem.builder()
         .withName(configuration.getLiveSystemName())
         .withDescription("CDN sample")
-        .withResourceGroupId(configuration.getResourceGroupId())
+        .withResourceGroupId(configuration.getResourceGroupId().toString())
         .withComponents(List.of(
             getMinimalComponent("cdn-minimal", resourceGroup),
             getFullComponent("cdn-front-door", resourceGroup)))

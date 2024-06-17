@@ -31,7 +31,7 @@ public class AksFullSample {
     return LiveSystem.builder()
         .withName(configuration.getLiveSystemName())
         .withDescription("AKS with full options sample")
-        .withResourceGroupId(configuration.getResourceGroupId())
+        .withResourceGroupId(configuration.getResourceGroupId().toString())
         .withComponent(getAks("aks-full-1", configuration.getAzureResourceGroup()))
         .withEnvironment(configuration.getEnvironment())
         .build();

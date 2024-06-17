@@ -36,6 +36,11 @@
             <artifactId>azure.shared.config</artifactId>
         </dependency>
         <dependency>
+            <groupId>com.yanchware.fractal</groupId>
+            <artifactId>azure.shared.config.tests</artifactId>
+            <type>test-jar</type>
+        </dependency>
+        <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
         </dependency>

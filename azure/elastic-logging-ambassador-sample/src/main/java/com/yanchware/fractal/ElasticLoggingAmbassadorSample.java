@@ -31,7 +31,7 @@ public class ElasticLoggingAmbassadorSample {
     return LiveSystem.builder()
         .withName(configuration.getLiveSystemName())
         .withDescription("Elastic Logging with Ambassador in AKS sample")
-        .withResourceGroupId(configuration.getResourceGroupId())
+        .withResourceGroupId(configuration.getResourceGroupId().toString())
         .withComponent(getAks("aks-ambassador-elastic-logging-1", configuration.getAzureResourceGroup()))
         .withEnvironment(configuration.getEnvironment())
         .build();

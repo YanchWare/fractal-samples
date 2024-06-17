@@ -30,7 +30,7 @@ public class AksMinimumSample {
     return LiveSystem.builder()
         .withName(configuration.getLiveSystemName())
         .withDescription("AKS with minimum requirements sample")
-        .withResourceGroupId(configuration.getResourceGroupId())
+        .withResourceGroupId(configuration.getResourceGroupId().toString())
         .withComponent(getAks("aks-minimum-1", configuration.getAzureResourceGroup()))
         .withEnvironment(configuration.getEnvironment())
         .build();

@@ -31,7 +31,7 @@ public class PrometheusAmbassadorSample {
     return LiveSystem.builder()
         .withName(configuration.getLiveSystemName())
         .withDescription("Prometheus in AKS sample")
-        .withResourceGroupId(configuration.getResourceGroupId())
+        .withResourceGroupId(configuration.getResourceGroupId().toString())
         .withComponent(getAks("aks-prometheus-ambassador-1", configuration.getAzureResourceGroup()))
         .withEnvironment(configuration.getEnvironment())
         .build();
