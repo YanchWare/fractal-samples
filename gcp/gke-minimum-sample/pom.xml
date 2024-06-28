@@ -4,30 +4,34 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.yanchware.fractal</groupId>
-    <artifactId>gke.minimum.sample</artifactId>
-    <version>1.0-SNAPSHOT</version>
-
+    <parent>
+        <groupId>com.yanchware.fractal</groupId>
+        <artifactId>gcp</artifactId>
+        <version>2.0.0</version>
+    </parent>
+    
+    <artifactId>gcp.gke.minimum.sample</artifactId>
     <name>gke-minimum-sample</name>
     <url>https://github.com/YanchWare/fractal-samples</url>
     <description>Sample of GKE with minimum requirements using Fractal Cloud SDK</description>
-
-    <properties>
-        <maven.compiler.source>21</maven.compiler.source>
-        <maven.compiler.target>21</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
 
     <dependencies>
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-            <version>3.12.0</version>
         </dependency>
         <dependency>
             <groupId>com.yanchware</groupId>
             <artifactId>fractal.sdk</artifactId>
-            <version>7.14.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.yanchware.fractal</groupId>
+            <artifactId>gcp.shared.config</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.yanchware.fractal</groupId>
+            <artifactId>gcp.shared.config.tests</artifactId>
+            <type>test-jar</type>
         </dependency>
     </dependencies>
 
@@ -42,31 +46,8 @@
                             <mainClass>com.yanchware.fractal.GkeMinimumSample</mainClass>
                         </manifest>
                     </archive>
-                    <descriptorRefs>
-                        <descriptorRef>jar-with-dependencies</descriptorRef>
-                    </descriptorRefs>
                 </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.10.1</version>
             </plugin>
         </plugins>
     </build>
-
-    <repositories>
-        <repository>
-            <id>yanchware</id>
-            <name>YanchWare Maven Packages</name>
-            <url>https://maven.pkg.github.com/YanchWare/fractal-java-sdk</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
-
 </project>

@@ -18,4 +18,4 @@ To run the project you can type the following command:
 
 `java -jar target/gke-minimum-sample-jar-with-dependencies.jar`
 
-#### [Go back to previous README](../README.md)
+#### [Go back to previous README](../../gcp/README.md)

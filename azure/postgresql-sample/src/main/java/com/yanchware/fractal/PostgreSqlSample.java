@@ -31,7 +31,7 @@ public class PostgreSqlSample {
     return LiveSystem.builder()
         .withName(configuration.getLiveSystemName())
         .withDescription("PostgreSql sample")
-        .withResourceGroupId(configuration.getResourceGroupId())
+        .withResourceGroupId(configuration.getResourceGroupId().toString())
         .withComponent(getDbmsAndDatabase("postrgresql-1"))
         .withEnvironment(configuration.getEnvironment())
         .build();

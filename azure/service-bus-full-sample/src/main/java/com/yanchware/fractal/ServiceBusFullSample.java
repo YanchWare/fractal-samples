@@ -31,7 +31,7 @@ public class ServiceBusFullSample {
     return LiveSystem.builder()
         .withName(configuration.getLiveSystemName())
         .withDescription("Service Bus with full options sample")
-        .withResourceGroupId(configuration.getResourceGroupId())
+        .withResourceGroupId(configuration.getResourceGroupId().toString())
         .withComponent(getServiceBus(configuration.getAzureResourceGroup()))
         .withEnvironment(configuration.getEnvironment())
         .build();

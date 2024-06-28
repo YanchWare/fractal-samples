@@ -31,7 +31,7 @@ public class CustomWorkloadSample {
     return LiveSystem.builder()
         .withName(configuration.getLiveSystemName())
         .withDescription("Custom Workload in AKS sample")
-        .withResourceGroupId(configuration.getResourceGroupId())
+        .withResourceGroupId(configuration.getResourceGroupId().toString())
         .withComponent(getAksWithCustomWorkload("aks-custom-workload-1", configuration.getAzureResourceGroup()))
         .withEnvironment(configuration.getEnvironment())
         .build();

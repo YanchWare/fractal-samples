@@ -34,7 +34,7 @@ public class AppServiceSample {
     return LiveSystem.builder()
         .withName(configuration.getLiveSystemName())
         .withDescription("WebApp Java Sample")
-        .withResourceGroupId(configuration.getResourceGroupId())
+        .withResourceGroupId(configuration.getResourceGroupId().toString())
         .withComponent(getJavaWebAppComponent("app-java-fractal-cloud-demo", configuration.getAzureResourceGroup()))
         .withEnvironment(configuration.getEnvironment())
         .build();

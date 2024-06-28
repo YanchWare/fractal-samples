@@ -31,7 +31,7 @@ public class RelaySample {
     return LiveSystem.builder()
         .withName(configuration.getLiveSystemName())
         .withDescription("Relay sample")
-        .withResourceGroupId(configuration.getResourceGroupId())
+        .withResourceGroupId(configuration.getResourceGroupId().toString())
         .withComponent(getRelay(configuration.getAzureResourceGroup()))
         .withEnvironment(configuration.getEnvironment())
         .build();

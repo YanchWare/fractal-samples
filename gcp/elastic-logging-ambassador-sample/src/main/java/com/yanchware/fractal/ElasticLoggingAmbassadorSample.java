@@ -1,8 +1,7 @@
 package com.yanchware.fractal;
 
-import com.yanchware.fractal.gcp.gke.elastic.logging.sample.configuration.EnvVarConfiguration;
+import com.yanchware.fractal.gcp.sharedconfig.SharedConfig;
 import com.yanchware.fractal.sdk.Automaton;
-import com.yanchware.fractal.sdk.aggregates.Environment;
 import com.yanchware.fractal.sdk.aggregates.LiveSystem;
 import com.yanchware.fractal.sdk.domain.exceptions.InstantiatorException;
 
@@ -13,24 +12,19 @@ import static com.yanchware.fractal.gcp.gke.elastic.logging.sample.components.Gk
 public class ElasticLoggingAmbassadorSample {
   public static void main(String[] args) throws InstantiatorException {
     // CONFIGURATION:
-    var configuration = EnvVarConfiguration.getInstance();
-
-    var env = Environment.builder()
-        .withId(configuration.getProjectId())
-        .withDisplayName(configuration.getEnvironmentDisplayName())
-        .withParentId(configuration.getOrganizationId())
-        .withParentType("organization")
-        .build();
+    var configuration = SharedConfig.getInstance();
 
     // INSTANTIATION:
-    LiveSystem liveSystem = LiveSystem.builder()
+    Automaton.instantiate(List.of(getLiveSystem(configuration)));
+  }
+
+  public static LiveSystem getLiveSystem(SharedConfig configuration) {
+    return LiveSystem.builder()
         .withName(configuration.getLiveSystemName())
         .withDescription("Elastic Logging with Ambassador in GKE sample")
-        .withResourceGroupId(configuration.getResourceGroupId())
-        .withComponent(getGke("gke-1"))
-        .withEnvironment(env)
+        .withResourceGroupId(configuration.getResourceGroupId().toString())
+        .withComponent(getGke("gke-1", configuration))
+        .withEnvironment(configuration.getEnvironment())
         .build();
-
-    Automaton.instantiate(List.of(liveSystem));
   }
 }

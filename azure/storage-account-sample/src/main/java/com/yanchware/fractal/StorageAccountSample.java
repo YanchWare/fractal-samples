@@ -36,7 +36,7 @@ public class StorageAccountSample {
     return LiveSystem.builder()
         .withName(configuration.getLiveSystemName())
         .withDescription("Storage account sample")
-        .withResourceGroupId(configuration.getResourceGroupId())
+        .withResourceGroupId(configuration.getResourceGroupId().toString())
         .withComponents(List.of(
             getLegacyStorageAccountComponent("stlegacyyw001", resourceGroup),
             getStorageAccountComponent("stv2yw001", resourceGroup),

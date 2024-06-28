@@ -1,20 +1,21 @@
 package com.yanchware.fractal;
 
-import com.yanchware.fractal.sdk.aggregates.LiveSystem;
+import com.yanchware.fractal.azure.sharedconfig.tests.AzureBaseTest;
 import com.yanchware.fractal.sharedconfig.SharedConfig;
 import org.junit.jupiter.api.Test;
 
-import java.util.Collection;
-
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-class CustomWorkloadSampleTest extends BaseTest {
+class CustomWorkloadSampleTest extends AzureBaseTest {
 
   @Test
   public void validateLiveSystem() {
     var configuration = SharedConfig.getInstance(true);
-    LiveSystem liveSystem = CustomWorkloadSample.getLiveSystem(configuration);
-    Collection<String> errors = liveSystem.validate();
+    var liveSystem = CustomWorkloadSample.getLiveSystem(configuration);
+    var errors = liveSystem.validate();
+
     assertTrue(errors.isEmpty());
+    assertEquals(liveSystem.getName(), "CustomWorkloadSampleTest");
   }
 }
