@@ -11,6 +11,8 @@
     <modules>
         <module>azure</module>
         <module>gcp</module>
+        <module>fractal-first</module>
+        <module>environment-initialization</module>
     </modules>
 
     <properties>
