@@ -9,7 +9,7 @@ import com.yanchware.fractal.sharedconfig.SharedConfig;
 
 import java.util.List;
 
-import static com.yanchware.fractal.oci.oke.minimum.sample.components.AksComponent.getAks;
+import static com.yanchware.fractal.azure.aks.full.sample.components.AksComponent.getAks;
 
 public class AksFullSample {
   public static void main(String[] args) throws InstantiatorException {
