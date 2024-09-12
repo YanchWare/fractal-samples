@@ -1,0 +1,25 @@
+trigger:
+  - main
+
+pool:
+  vmImage: ubuntu-latest
+
+stages:
+  - stage: build_and_create_image
+    displayName: Build and Create Image
+    jobs:
+      - job: build
+        displayName: Build and Create Backend Image
+        steps:
+          - task: Gradle@3
+            inputs:
+              tasks: 'bootJar'
+              jdkVersionOption: '1.17'
+          - task: Docker@2
+            inputs:
+              buildContext: .
+              command: buildAndPush
+              repository: migration-backend
+              dockerfile: ./Dockerfile
+              containerRegistry: fractal-scai-test
+              tags: latest

@@ -1,0 +1,31 @@
+parameters:
+  - name: environment
+    type: string
+
+jobs:
+  - deployment: deploy
+    container: maven:3-eclipse-temurin-21
+    displayName: 'Deploy Fractal Cloud Custom Workload Deployment Demo to ${{ parameters.environment }}'
+    variables:
+      - group: ${{ parameters.environment }}
+    environment: ${{ parameters.environment }}
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+            - download: current
+              displayName: 'Download Artifact'
+              artifact: Architecture
+            - bash: java -jar $(Pipeline.Workspace)/Architecture/pocs.migration.architecture-jar-with-dependencies.jar
+              displayName: 'Deploy Fractal Cloud Architecture PoC'
+              env:
+                CLIENT_ID: $(CLIENT_ID)
+                CLIENT_SECRET: $(CLIENT_SECRET)
+                AZURE_TENANT_ID: $(AZURE_TENANT_ID)
+                AZURE_SUBSCRIPTION_ID: $(AZURE_SUBSCRIPTION_ID)
+                AZURE_SP_CLIENT_ID: $(AZURE_SP_CLIENT_ID)
+                AZURE_SP_CLIENT_SECRET: $(AZURE_SP_CLIENT_SECRET)
+                FRACTAL_ENVIRONMENT_OWNER_ID: $(FRACTAL_ENVIRONMENT_OWNER_ID)
+                FRACTAL_ENVIRONMENT_SHORT_NAME: $(FRACTAL_ENVIRONMENT_SHORT_NAME)
+                FRACTAL_ENVIRONMENT_NAME: $(FRACTAL_ENVIRONMENT_NAME)
+                FRACTAL_CLOUD_RESOURCE_GROUP_ID: $(FRACTAL_CLOUD_RESOURCE_GROUP_ID)

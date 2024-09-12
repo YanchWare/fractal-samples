@@ -1,0 +1,62 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.yanchware.fractal</groupId>
+        <artifactId>fractal-samples</artifactId>
+        <version>2.0.0</version>
+    </parent>
+
+    <artifactId>oci</artifactId>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>shared-config</module>
+        <module>shared-config-tests</module>
+        <module>oke-full-sample</module>
+        <module>oke-minimum-sample</module>
+        <module>ambassador-sample</module>
+        <module>custom-workload-sample</module>
+        <module>elastic-datastore-sample</module>
+        <module>elastic-logging-ambassador-sample</module>
+        <module>elastic-logging-sample</module>
+        <module>prometheus-ambassador-sample</module>
+    </modules>
+
+    <properties>
+        <shared.config.artifactId>oci.shared.config</shared.config.artifactId>
+    </properties>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.yanchware.fractal</groupId>
+                <artifactId>oci.shared.config</artifactId>
+                <version>${shared.config.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.yanchware.fractal</groupId>
+                <artifactId>oci.shared.config.tests</artifactId>
+                <type>test-jar</type>
+                <version>${shared.config.version}</version>
+                <scope>test</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+<dependencies>
+    <dependency>
+        <groupId>org.apache.commons</groupId>
+        <artifactId>commons-lang3</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>com.yanchware</groupId>
+        <artifactId>fractal.sdk</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>org.junit.jupiter</groupId>
+        <artifactId>junit-jupiter-api</artifactId>
+        <scope>test</scope>
+    </dependency>
+</dependencies>
+</project>

@@ -1,0 +1,18 @@
+<div>
+  <span>{{ label() }}</span>
+  <div class="bar-container w-100">
+    @if (!isReverse()) {
+    <div class="bar"
+      [ngClass]="{'bar__green': value() >= 70, 'bar__orange': (value() > 40 && value() < 70), 'bar__red': value() < 40  }"
+      [style.width.%]="value()">
+      <span class="px-1" [ngClass]="{'text-white': value() > 5}">{{ value() }}</span>
+    </div>
+    } @else {
+    <div class="bar"
+      [ngClass]="{'bar__red': value() >= 70, 'bar__orange': (value() > 40 && value() < 70), 'bar__green': value() < 40  }"
+      [style.width.%]="value()">
+      <span class="px-1" [ngClass]="{'text-white': value() > 5}">{{ value() }}</span>
+    </div>
+    }
+  </div>
+</div>

@@ -31,7 +31,7 @@
         <module>service-bus-full-sample</module>
         <module>service-bus-minimum-sample</module>
         <module>storage-account-sample</module>
-        <module>azure.cdn.sample</module>
+        <module>azure-cdn-sample</module>
         <module>azure-multiple-resources-sample</module>
     </modules>
 

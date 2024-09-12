@@ -1,0 +1,1652 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>yanchware-go documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avaoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
+            <a href="../" class="navbar-brand">yanchware-go documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content miscellaneous-variables">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Miscellaneous</li>
+  <li class="breadcrumb-item">Variables</li>
+</ol>
+
+<section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <ul class="index-list">
+                        <li>
+                            <a href="#appConfig" title="src/app/app.config.ts" ><b>appConfig</b>&nbsp;&nbsp;&nbsp;(src/.../app.config.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#cities" title="src/app/core/store/dashboard/dashboard.actions.ts" ><b>cities</b>&nbsp;&nbsp;&nbsp;(src/.../dashboard.actions.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#cities$" title="src/app/core/store/dashboard/dashboard.selectors.ts" ><b>cities$</b>&nbsp;&nbsp;&nbsp;(src/.../dashboard.selectors.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#citiesSuccess" title="src/app/core/store/dashboard/dashboard.actions.ts" ><b>citiesSuccess</b>&nbsp;&nbsp;&nbsp;(src/.../dashboard.actions.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#COMPONENTS" title="src/app/shared/components/navbar/navbar.component.ts" ><b>COMPONENTS</b>&nbsp;&nbsp;&nbsp;(src/.../navbar.component.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#COMPONENTS" title="src/app/shared/components/form/form.component.ts" ><b>COMPONENTS</b>&nbsp;&nbsp;&nbsp;(src/.../form.component.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#COMPONENTS" title="src/app/core/components/cities/cities.component.ts" ><b>COMPONENTS</b>&nbsp;&nbsp;&nbsp;(src/.../cities.component.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#COMPONENTS" title="src/app/modules/components/city/city.component.ts" ><b>COMPONENTS</b>&nbsp;&nbsp;&nbsp;(src/.../city.component.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#COMPONENTS" title="src/app/modules/components/dashboard/dashboard.component.ts" ><b>COMPONENTS</b>&nbsp;&nbsp;&nbsp;(src/.../dashboard.component.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#dashboardFeatureKey" title="src/app/core/store/dashboard/dashboard.reducer.ts" ><b>dashboardFeatureKey</b>&nbsp;&nbsp;&nbsp;(src/.../dashboard.reducer.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#dashboardReducer" title="src/app/core/store/dashboard/dashboard.reducer.ts" ><b>dashboardReducer</b>&nbsp;&nbsp;&nbsp;(src/.../dashboard.reducer.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#ENDPOINTS" title="src/app/constants/endpoints.ts" ><b>ENDPOINTS</b>&nbsp;&nbsp;&nbsp;(src/.../endpoints.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#environment" title="src/environments/environment.prod.ts" ><b>environment</b>&nbsp;&nbsp;&nbsp;(src/.../environment.prod.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#environment" title="src/environments/environment.ts" ><b>environment</b>&nbsp;&nbsp;&nbsp;(src/.../environment.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#getCity" title="src/app/core/store/dashboard/dashboard.actions.ts" ><b>getCity</b>&nbsp;&nbsp;&nbsp;(src/.../dashboard.actions.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#getCity$" title="src/app/core/store/dashboard/dashboard.selectors.ts" ><b>getCity$</b>&nbsp;&nbsp;&nbsp;(src/.../dashboard.selectors.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#getCitySuccess" title="src/app/core/store/dashboard/dashboard.actions.ts" ><b>getCitySuccess</b>&nbsp;&nbsp;&nbsp;(src/.../dashboard.actions.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#getDashboardFeature" title="src/app/core/store/dashboard/dashboard.selectors.ts" ><b>getDashboardFeature</b>&nbsp;&nbsp;&nbsp;(src/.../dashboard.selectors.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#getUserFeature" title="src/app/core/store/user/user.selectors.ts" ><b>getUserFeature</b>&nbsp;&nbsp;&nbsp;(src/.../user.selectors.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#IMAGES" title="src/app/constants/images.ts" ><b>IMAGES</b>&nbsp;&nbsp;&nbsp;(src/.../images.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#initialState" title="src/app/core/store/dashboard/dashboard.reducer.ts" ><b>initialState</b>&nbsp;&nbsp;&nbsp;(src/.../dashboard.reducer.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#initialState" title="src/app/core/store/user/user.reducer.ts" ><b>initialState</b>&nbsp;&nbsp;&nbsp;(src/.../user.reducer.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#login" title="src/app/core/store/user/user.actions.ts" ><b>login</b>&nbsp;&nbsp;&nbsp;(src/.../user.actions.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#loginSuccess" title="src/app/core/store/user/user.actions.ts" ><b>loginSuccess</b>&nbsp;&nbsp;&nbsp;(src/.../user.actions.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#logOut" title="src/app/core/store/user/user.actions.ts" ><b>logOut</b>&nbsp;&nbsp;&nbsp;(src/.../user.actions.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#logOutSuccess" title="src/app/core/store/user/user.actions.ts" ><b>logOutSuccess</b>&nbsp;&nbsp;&nbsp;(src/.../user.actions.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#MODULE" title="src/app/shared/components/form/form.component.ts" ><b>MODULE</b>&nbsp;&nbsp;&nbsp;(src/.../form.component.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#MODULES" title="src/app/core/components/cities/cities.component.ts" ><b>MODULES</b>&nbsp;&nbsp;&nbsp;(src/.../cities.component.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#MODULES" title="src/app/modules/components/city/city.component.ts" ><b>MODULES</b>&nbsp;&nbsp;&nbsp;(src/.../city.component.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#register" title="src/app/core/store/user/user.actions.ts" ><b>register</b>&nbsp;&nbsp;&nbsp;(src/.../user.actions.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#registerSuccess" title="src/app/core/store/user/user.actions.ts" ><b>registerSuccess</b>&nbsp;&nbsp;&nbsp;(src/.../user.actions.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#resetCity" title="src/app/core/store/dashboard/dashboard.actions.ts" ><b>resetCity</b>&nbsp;&nbsp;&nbsp;(src/.../dashboard.actions.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#ROUTE" title="src/app/constants/route.ts" ><b>ROUTE</b>&nbsp;&nbsp;&nbsp;(src/.../route.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#setUserData" title="src/app/core/store/user/user.actions.ts" ><b>setUserData</b>&nbsp;&nbsp;&nbsp;(src/.../user.actions.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#setUserDataSuccess" title="src/app/core/store/user/user.actions.ts" ><b>setUserDataSuccess</b>&nbsp;&nbsp;&nbsp;(src/.../user.actions.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#TIMER" title="src/app/shared/models/alert-popup.model.ts" ><b>TIMER</b>&nbsp;&nbsp;&nbsp;(src/.../alert-popup.model.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#token$" title="src/app/core/store/user/user.selectors.ts" ><b>token$</b>&nbsp;&nbsp;&nbsp;(src/.../user.selectors.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#userFeatureKey" title="src/app/core/store/user/user.reducer.ts" ><b>userFeatureKey</b>&nbsp;&nbsp;&nbsp;(src/.../user.reducer.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#userReducer" title="src/app/core/store/user/user.reducer.ts" ><b>userReducer</b>&nbsp;&nbsp;&nbsp;(src/.../user.reducer.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#userState$" title="src/app/core/store/user/user.selectors.ts" ><b>userState$</b>&nbsp;&nbsp;&nbsp;(src/.../user.selectors.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#VERSIONS" title="src/app/constants/endpoints.ts" ><b>VERSIONS</b>&nbsp;&nbsp;&nbsp;(src/.../endpoints.ts)</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+    <h3>src/app/app.config.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="appConfig"></a>
+                    <span class="name">
+                        <span ><b>appConfig</b></span>
+                        <a href="#appConfig"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>ApplicationConfig</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+  providers: [
+    provideRouter(routes, withViewTransitions()),
+    provideHttpClient(),
+
+    provideStore(),
+
+    provideStore({ user: userReducer, search: dashboardReducer }),
+    provideStoreDevtools(),
+    provideEffects([UserEffects, DashboardEffects]),
+  ],
+  
+}</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Configuration object for the application.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/app/core/store/dashboard/dashboard.actions.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cities"></a>
+                    <span class="name">
+                        <span ><b>cities</b></span>
+                        <a href="#cities"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createAction(&#x27;[Dashboard] Get Cities&#x27;, props&lt;{ getCitiesPayload?: GetCitiesPayload }&gt;())</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Action to get cities for the dashboard.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="citiesSuccess"></a>
+                    <span class="name">
+                        <span ><b>citiesSuccess</b></span>
+                        <a href="#citiesSuccess"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createAction(&#x27;[Dashboard] Get Cities Success&#x27;, props&lt;{ cities: Cities }&gt;())</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Action creator for the &#39;citiesSuccess&#39; action.
+This action is dispatched when the cities data is successfully retrieved.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getCity"></a>
+                    <span class="name">
+                        <span ><b>getCity</b></span>
+                        <a href="#getCity"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createAction(&#x27;[City] Get City Info&#x27;, props&lt;{ cityId: string }&gt;())</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Action to get city information.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getCitySuccess"></a>
+                    <span class="name">
+                        <span ><b>getCitySuccess</b></span>
+                        <a href="#getCitySuccess"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createAction(&#x27;[City] Get City Info Success&#x27;, props&lt;{ city: CityInfoResponse }&gt;())</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Action to indicate a successful retrieval of city information.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="resetCity"></a>
+                    <span class="name">
+                        <span ><b>resetCity</b></span>
+                        <a href="#resetCity"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createAction(&#x27;[City] Reset City&#x27;)</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Action to reset the city.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/app/core/store/dashboard/dashboard.selectors.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cities$"></a>
+                    <span class="name">
+                        <span ><b>cities$</b></span>
+                        <a href="#cities$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createSelector(getDashboardFeature, ({ cities }) &#x3D;&gt; cities)</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Selects the cities from the dashboard feature state.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getCity$"></a>
+                    <span class="name">
+                        <span ><b>getCity$</b></span>
+                        <a href="#getCity$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createSelector(getDashboardFeature, ({ city }) &#x3D;&gt; city)</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Retrieves the city from the dashboard feature state.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getDashboardFeature"></a>
+                    <span class="name">
+                        <span ><b>getDashboardFeature</b></span>
+                        <a href="#getDashboardFeature"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createFeatureSelector&lt;DashboardState&gt;(dashboardFeatureKey)</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Retrieves the dashboard feature state from the store.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/app/shared/components/navbar/navbar.component.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="COMPONENTS"></a>
+                    <span class="name">
+                        <span ><b>COMPONENTS</b></span>
+                        <a href="#COMPONENTS"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[
+  ButtonComponent,
+]</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/app/shared/components/form/form.component.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="COMPONENTS"></a>
+                    <span class="name">
+                        <span ><b>COMPONENTS</b></span>
+                        <a href="#COMPONENTS"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[CardComponent, ButtonComponent]</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Array of components used in the component.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="MODULE"></a>
+                    <span class="name">
+                        <span ><b>MODULE</b></span>
+                        <a href="#MODULE"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[CommonModule, ReactiveFormsModule, RouterLink]</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Array of modules used in the form component.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/app/core/components/cities/cities.component.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="COMPONENTS"></a>
+                    <span class="name">
+                        <span ><b>COMPONENTS</b></span>
+                        <a href="#COMPONENTS"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[FormComponent, CardComponent, ButtonComponent]</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="MODULES"></a>
+                    <span class="name">
+                        <span ><b>MODULES</b></span>
+                        <a href="#MODULES"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[CommonModule, RouterLink]</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/app/modules/components/city/city.component.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="COMPONENTS"></a>
+                    <span class="name">
+                        <span ><b>COMPONENTS</b></span>
+                        <a href="#COMPONENTS"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[CardComponent, ButtonComponent, BarChartComponent, StarRatingComponent]</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="MODULES"></a>
+                    <span class="name">
+                        <span ><b>MODULES</b></span>
+                        <a href="#MODULES"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[CommonModule, RouterLink]</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/app/modules/components/dashboard/dashboard.component.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="COMPONENTS"></a>
+                    <span class="name">
+                        <span ><b>COMPONENTS</b></span>
+                        <a href="#COMPONENTS"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[
+  NavBarComponent,
+  CitiesComponent,
+]</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Array of components used in the dashboard.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/app/core/store/dashboard/dashboard.reducer.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="dashboardFeatureKey"></a>
+                    <span class="name">
+                        <span ><b>dashboardFeatureKey</b></span>
+                        <a href="#dashboardFeatureKey"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;search&#x27;</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The key used to identify the dashboard feature in the store.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="dashboardReducer"></a>
+                    <span class="name">
+                        <span ><b>dashboardReducer</b></span>
+                        <a href="#dashboardReducer"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createReducer(
+  initialState,
+  /**
+   * Updates the state with the list of cities.
+   * @param state - The current state.
+   * @param cities - The list of cities.
+   * @returns The updated state with the list of cities.
+   */
+  on(citiesSuccess, (state, { cities }) &#x3D;&gt; ({ ...state, cities })),
+  /**
+   * Updates the state with a single city.
+   * @param state - The current state.
+   * @param city - The city object.
+   * @returns The updated state with the city object.
+   */
+  on(getCitySuccess, (state, { city }) &#x3D;&gt; ({ ...state, city })),
+  /**
+   * Resets the city object in the state.
+   * @param state - The current state.
+   * @returns The updated state with an empty city object.
+   */
+  on(resetCity, (state) &#x3D;&gt; ({ ...state, city: {} as CityInfoResponse }))
+)</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Reducer function for the dashboard state.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="initialState"></a>
+                    <span class="name">
+                        <span ><b>initialState</b></span>
+                        <a href="#initialState"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/DashboardState.html" target="_self" >DashboardState</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+  cities: {} as Cities,
+  city: {} as CityInfoResponse,
+}</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The initial state for the dashboard reducer.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/app/constants/endpoints.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ENDPOINTS"></a>
+                    <span class="name">
+                        <span ><b>ENDPOINTS</b></span>
+                        <a href="#ENDPOINTS"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+  CITIES: &#x60;${VERSIONS.V1}/cities&#x60;,
+}</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Defines the endpoints used in the application.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="VERSIONS"></a>
+                    <span class="name">
+                        <span ><b>VERSIONS</b></span>
+                        <a href="#VERSIONS"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+  V1: &#x27;v1&#x27;,
+}</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Defines the version used in the endpoint path.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/environments/environment.prod.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="environment"></a>
+                    <span class="name">
+                        <span ><b>environment</b></span>
+                        <a href="#environment"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+    /**
+     * Indicates whether the application is in production mode.
+     */
+    production: true,
+
+    /**
+     * The base URL for API requests in the production environment.
+     */
+    baseUrl: &#x27;http://localhost:1234&#x27;,
+}</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Represents the production environment configuration.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/environments/environment.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="environment"></a>
+                    <span class="name">
+                        <span ><b>environment</b></span>
+                        <a href="#environment"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+    /**
+     * Specifies whether the application is in production mode or not.
+     */
+    production: false,
+
+    /**
+     * Specifies the base URL for API requests.
+     */
+    baseUrl: &#x27;http://localhost:1234&#x27;,
+}</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Represents the environment configuration for the application.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/app/core/store/user/user.selectors.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getUserFeature"></a>
+                    <span class="name">
+                        <span ><b>getUserFeature</b></span>
+                        <a href="#getUserFeature"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createFeatureSelector&lt;UserState&gt;(userFeatureKey)</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Retrieves the user feature state from the store.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="token$"></a>
+                    <span class="name">
+                        <span ><b>token$</b></span>
+                        <a href="#token$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createSelector(getUserFeature, ({ token }) &#x3D;&gt; token)</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Selects the token from the user feature state.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="userState$"></a>
+                    <span class="name">
+                        <span ><b>userState$</b></span>
+                        <a href="#userState$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createSelector(getUserFeature, state &#x3D;&gt; state)</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Selects the user state from the user feature state.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/app/constants/images.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="IMAGES"></a>
+                    <span class="name">
+                        <span ><b>IMAGES</b></span>
+                        <a href="#IMAGES"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+  /**
+   * Path to the YanchWareGo mini logo image.
+   */
+  YANCHWAREGO_MINI_LOGO: &#x27;./assets/images/YanchWareGo_mini_logo.svg&#x27;,
+
+  /**
+   * Path to the YanchWareGo logo image.
+   */
+  YANCHWAREGO_LOGO: &#x27;./assets/images/YanchWareGo_logo.svg&#x27;,
+
+  /**
+   * Path to the YanchWare logo image.
+   */
+  YANCHWARE_LOGO: &#x27;./assets/images/YanchWare_logo.svg&#x27;,
+}</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Contains the paths to various image assets used in the application.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/app/core/store/user/user.reducer.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="initialState"></a>
+                    <span class="name">
+                        <span ><b>initialState</b></span>
+                        <a href="#initialState"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/UserState.html" target="_self" >UserState</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+  name: &#x27;&#x27;,
+  token: &#x27;&#x27;,
+}</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Initial state for the User reducer.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="userFeatureKey"></a>
+                    <span class="name">
+                        <span ><b>userFeatureKey</b></span>
+                        <a href="#userFeatureKey"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;user&#x27;</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The key used to access the user feature state in the Redux store.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="userReducer"></a>
+                    <span class="name">
+                        <span ><b>userReducer</b></span>
+                        <a href="#userReducer"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createReducer(
+  initialState,
+  
+  /**
+   * Updates the state with the user&#x27;s information after a successful login.
+   * @param state - The current user state.
+   * @param response - The response object containing the user&#x27;s token and name.
+   * @returns The updated user state.
+   */
+  on(loginSuccess, (state, { response } ) &#x3D;&gt; ({ ...state, token: response.token, name: response.name })),
+
+  /**
+   * Updates the state with the user&#x27;s information after a successful registration.
+   * @param state - The current user state.
+   * @param response - The response object containing the user&#x27;s token and name.
+   * @returns The updated user state.
+   */
+  on(registerSuccess, (state, { response } ) &#x3D;&gt; ({ ...state, token: response.token, name: response.name })),
+
+  /**
+   * Resets the user state to the initial state after a successful logout.
+   * @returns The initial user state.
+   */
+  on(logOutSuccess, () &#x3D;&gt; ( initialState ))
+)</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Reducer function for managing user state.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/app/core/store/user/user.actions.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="login"></a>
+                    <span class="name">
+                        <span ><b>login</b></span>
+                        <a href="#login"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createAction(&#x27;[User] Login&#x27;, props&lt;{ payload: LoginPayload }&gt;())</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Action to initiate the login process for a user.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loginSuccess"></a>
+                    <span class="name">
+                        <span ><b>loginSuccess</b></span>
+                        <a href="#loginSuccess"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createAction(&#x27;[User] Login Success&#x27;, props&lt;{ response: LoginResponse }&gt;())</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Action creator for login success.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="logOut"></a>
+                    <span class="name">
+                        <span ><b>logOut</b></span>
+                        <a href="#logOut"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createAction(&#x27;[User] Logout&#x27;)</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Action creator for logging out the user.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="logOutSuccess"></a>
+                    <span class="name">
+                        <span ><b>logOutSuccess</b></span>
+                        <a href="#logOutSuccess"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createAction(&#x27;[User] Logout Success&#x27;)</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Action creator for the &#39;logOutSuccess&#39; action.
+This action is dispatched when a user successfully logs out.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="register"></a>
+                    <span class="name">
+                        <span ><b>register</b></span>
+                        <a href="#register"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createAction(&#x27;[User] Register&#x27;, props&lt;{ payload: RegisterPayload }&gt;())</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Registers a user.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="registerSuccess"></a>
+                    <span class="name">
+                        <span ><b>registerSuccess</b></span>
+                        <a href="#registerSuccess"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createAction(&#x27;[User] Registered Success&#x27;, props&lt;{ response: RegisterResponse }&gt;())</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Action creator for registering success.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setUserData"></a>
+                    <span class="name">
+                        <span ><b>setUserData</b></span>
+                        <a href="#setUserData"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createAction(&#x27;[User] Set User Data&#x27;)</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Action creator for setting user data.
+This action is dispatched when user data needs to be set in the store.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setUserDataSuccess"></a>
+                    <span class="name">
+                        <span ><b>setUserDataSuccess</b></span>
+                        <a href="#setUserDataSuccess"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createAction(&#x27;[User] Set User Data Successfully&#x27;)</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Action creator for setting user data successfully.
+This action is dispatched when user data is successfully set.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/app/constants/route.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ROUTE"></a>
+                    <span class="name">
+                        <span ><b>ROUTE</b></span>
+                        <a href="#ROUTE"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+  /**
+   * The login route.
+   */
+  LOGIN: &#x27;login&#x27;,
+  
+  /**
+   * The register route.
+   */
+  REGISTER: &#x27;register&#x27;,
+  
+  /**
+   * The dashboard route.
+   */
+  DASHBOARD: &#x27;dashboard&#x27;,
+  
+  /**
+   * The city route.
+   */
+  CITY: &#x27;city&#x27;,
+}</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Defines the routes used in the application.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/app/shared/models/alert-popup.model.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="TIMER"></a>
+                    <span class="name">
+                        <span ><b>TIMER</b></span>
+                        <a href="#TIMER"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>7000</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'miscellaneous-variables';
+            var COMPODOC_CURRENT_PAGE_URL = 'variables.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

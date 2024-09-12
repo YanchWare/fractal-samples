@@ -1,0 +1,92 @@
+<div class="d-flex justify-content-center w-100 mt-2 city">
+  <div class="city__card">
+    <app-card>
+      <div class="mb-3">
+        <app-button [buttonConfig]="buttonElement" [routerLink]="'/' + ROUTE.DASHBOARD" />
+      </div>
+
+      @if (city().cityId) {
+      <div>
+        <img [src]="'https://placehold.co/200x200'" class="w-100 object-fit-cover" />
+      </div>
+      <div class="d-flex justify-content-between my-2">
+        <h4>{{ city().name }}</h4>
+        <h4>{{ city().country }}</h4>
+      </div>
+
+      <div class="my-2">
+        <app-bar-chart [label]="'How safe is this city?'" [value]="city().safetyIndex" />
+      </div>
+
+      <div class="my-2">
+        <app-bar-chart [label]="'Cost of Living'" [value]="city().costOfLivingIndex" [isReverse]="true"/>
+      </div>
+
+
+      @if (city().internetSpeed) {
+        <div class="row my-2">
+          <span class="fw-bold">Internet Speed</span>
+          <div class="col-6">
+            <app-bar-chart [label]="'Download Mbps'" [value]="city().internetSpeed.download" />
+          </div>
+          <div class="col-6">
+            <app-bar-chart [label]="'Upload Mbps'" [value]="city().internetSpeed.upload" />
+          </div>
+        </div>
+      }
+
+      @if (city().climate) {
+        <div class="row my-2">
+          <span class="fw-bold">Weather Info</span>
+          <div class="row">
+            <div class="col-6">
+              <span>Temperature {{ city().climate.averageTemperature }}C°</span>
+            </div>
+            <div class="col-6">
+              <span>Rainfall {{ city().climate.rainfall }}mm</span>
+            </div>
+          </div>   
+        </div>
+      }
+
+      @if (city().coworkingSpaces) {
+      <div class="my-3">
+        <div class="accordion" id="accordionElement">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="fw-bold accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapse" aria-expanded="false" aria-controls="collapse">
+                Coworking Spaces Info
+              </button>
+            </h2>
+            <div id="collapse" class="accordion-collapse collapse" data-bs-parent="#accordionElement">
+              <div class="accordion-body row">
+                @for (coworkingSpace of city().coworkingSpaces; track coworkingSpace) {
+                <app-card class="col-6 mt-3" [cardModel]="cardConfig">
+
+                  <div class="w-100">
+                    <a class="fw-bold" target="_blank" href="https://www.google.com/">{{ coworkingSpace.name }}</a>
+                  </div>
+                  <div>
+                    <span>{{ coworkingSpace.address }}</span>
+                  </div>
+                  <div class="text-center">
+                    <app-star-rating [rating]="coworkingSpace.rating" />
+                  </div>
+                </app-card>
+                }
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      }
+
+      } @else {
+      <h1>No City Found</h1>
+      }
+
+      <!-- <pre>{{ city() | json }}</pre> -->
+    </app-card>
+  </div>
+</div>

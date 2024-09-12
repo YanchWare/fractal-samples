@@ -1,0 +1,20 @@
+meta {
+  name: Get Service Instance
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{base-url}}/broker/v2/service_instances/:instance_id
+  body: json
+  auth: basic
+}
+
+params:path {
+  instance_id: <enter-your-instance-id>
+}
+
+auth:basic {
+  username: admin
+  password: admin
+}

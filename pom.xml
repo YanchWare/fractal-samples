@@ -7,11 +7,13 @@
     <artifactId>fractal-samples</artifactId> 
     <packaging>pom</packaging>
     <version>2.0.0</version>
-    
+
     <modules>
         <module>azure</module>
         <module>gcp</module>
-        <module>fractal-first</module>
+        <module>oci</module>
+        <module>fractal-first/infrastructure</module>
+        <module>fractal-first/architecture</module>
         <module>environment-initialization</module>
     </modules>
 

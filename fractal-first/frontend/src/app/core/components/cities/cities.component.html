@@ -1,0 +1,40 @@
+<div class="cities">
+  <div class="d-flex justify-content-center">
+
+    <div class="my-3 cities__card">
+      <app-form [formModel]="formModel" (searchValueChanges)="filterCities($event)" />
+    </div>
+  </div>
+
+  @if (citiesListFiltered()) {
+  <div class="mx-3 cities__grid"
+    [ngClass]="{'cities__grid__element': citiesListFiltered().length <= 2, 'cities__grid__elements': citiesListFiltered().length > 2, }">
+    @for (city of citiesListFiltered(); track city) {
+    <div>
+      <app-card>
+        <div>
+          <img [src]="'https://placehold.co/200x200'" class="w-100 object-fit-cover" />
+        </div>
+
+        <div class="d-flex justify-content-between mt-2">
+          <h4>{{ city.name }}</h4>
+          <h4>{{ city.country }}</h4>
+        </div>
+
+        <app-button [buttonConfig]="buttonElement" [routerLink]="'/' + ROUTE.CITY + '/' + city.cityId"></app-button>
+      </app-card>
+    </div>
+    }
+  </div>
+  } @else {
+  <div class="d-flex justify-content-center">
+    <div class="w-50">
+      <app-card>
+        <div class="d-flex justify-content-center">
+          <h4>No cities found</h4>
+        </div>
+      </app-card>
+    </div>
+  </div>
+  }
+</div>

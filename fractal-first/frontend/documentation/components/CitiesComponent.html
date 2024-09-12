@@ -1,0 +1,1096 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>yanchware-go documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avaoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
+            <a href="../" class="navbar-brand">yanchware-go documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  CitiesComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/core/components/cities/cities.component.ts</code>
+</p>
+
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Component for displaying a list of cities.</p>
+
+    </p>
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+                <code>OnDestroy</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-cities</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                                <code><a href="../miscellaneous/variables.html#MODULES" target="_self" >MODULES</a></code>
+                                <code><a href="../miscellaneous/variables.html#COMPONENTS" target="_self" >COMPONENTS</a></code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./cities.component.html</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrl</td>
+                <td class="col-md-9"><code>./cities.component.scss</code></td>
+            </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#buttonElement" >buttonElement</a>
+                            </li>
+                            <li>
+                                <a href="#cities" >cities</a>
+                            </li>
+                            <li>
+                                <a href="#cities$" >cities$</a>
+                            </li>
+                            <li>
+                                <a href="#citiesList" >citiesList</a>
+                            </li>
+                            <li>
+                                <a href="#citiesListFiltered" >citiesListFiltered</a>
+                            </li>
+                            <li>
+                                <a href="#cityFilterName" >cityFilterName</a>
+                            </li>
+                            <li>
+                                <a href="#dashboardFacade" >dashboardFacade</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#destroy$" >destroy$</a>
+                            </li>
+                            <li>
+                                <a href="#formModel" >formModel</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#ROUTE" >ROUTE</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#filterCities" >filterCities</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnDestroy" >ngOnDestroy</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="filterCities"></a>
+                    <span class="name">
+                        <span ><b>filterCities</b></span>
+                        <a href="#filterCities"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>filterCities(searchCity: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="127"
+                                    class="link-to-prism">src/app/core/components/cities/cities.component.ts:127</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Filters the cities based on the provided search city name.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>searchCity</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>The name of the city to filter.</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnDestroy"></a>
+                    <span class="name">
+                        <span ><b>ngOnDestroy</b></span>
+                        <a href="#ngOnDestroy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnDestroy()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="119"
+                                    class="link-to-prism">src/app/core/components/cities/cities.component.ts:119</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Lifecycle hook that is called when the component is about to be destroyed.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="112"
+                                    class="link-to-prism">src/app/core/components/cities/cities.component.ts:112</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Lifecycle hook that is called after the component has been initialized.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="buttonElement"></a>
+                    <span class="name">
+                        <span ><b>buttonElement</b></span>
+                        <a href="#buttonElement"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/ButtonConfig.html" target="_self" >ButtonConfig</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+    id: &#x27;explore&#x27;,
+    classButtonType: &#x27;btn-outline-primary&#x27;,
+    typeButtonType: &#x27;button&#x27;,
+    label: &#x27;Explore&#x27;,
+    customClass: &#x27;w-100&#x27;,
+  }</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="77" class="link-to-prism">src/app/core/components/cities/cities.component.ts:77</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Button configuration for the explore button.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cities"></a>
+                    <span class="name">
+                        <span ><b>cities</b></span>
+                        <a href="#cities"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>signal&lt;Cities&gt;({} as Cities)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/core/components/cities/cities.component.ts:39</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Signal for storing the cities data.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cities$"></a>
+                    <span class="name">
+                        <span ><b>cities$</b></span>
+                        <a href="#cities$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Subscription</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this.dashboardFacade.cities$
+    .pipe(filter(Boolean), takeUntil(this.destroy$))
+    .subscribe((cities: Cities) &#x3D;&gt; {
+      this.cities.set(cities);
+    })</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="103" class="link-to-prism">src/app/core/components/cities/cities.component.ts:103</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Subscription for receiving cities data from the DashboardFacade.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="citiesList"></a>
+                    <span class="name">
+                        <span ><b>citiesList</b></span>
+                        <a href="#citiesList"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>computed&lt;City[]&gt;(() &#x3D;&gt; this.cities().cities)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/app/core/components/cities/cities.component.ts:44</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Computed property related with cities signal =&gt; cities.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="citiesListFiltered"></a>
+                    <span class="name">
+                        <span ><b>citiesListFiltered</b></span>
+                        <a href="#citiesListFiltered"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>computed&lt;City[]&gt;(() &#x3D;&gt;
+    this.citiesList()?.filter((city) &#x3D;&gt; city.name.toLowerCase().includes(this.cityFilterName().toLowerCase()))
+  )</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">src/app/core/components/cities/cities.component.ts:54</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Computed property for getting the filtered list of cities based on the city filter name.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cityFilterName"></a>
+                    <span class="name">
+                        <span ><b>cityFilterName</b></span>
+                        <a href="#cityFilterName"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>signal&lt;string&gt;(&#x27;&#x27;)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">src/app/core/components/cities/cities.component.ts:49</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Signal for storing the city filter name.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="dashboardFacade"></a>
+                    <span class="name">
+                        <span ><b>dashboardFacade</b></span>
+                        <a href="#dashboardFacade"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(DashboardFacade)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="98" class="link-to-prism">src/app/core/components/cities/cities.component.ts:98</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Inject the DashboardFacade Pattern.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="destroy$"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>destroy$</b></span>
+                        <a href="#destroy$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new Subject&lt;void&gt;()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="93" class="link-to-prism">src/app/core/components/cities/cities.component.ts:93</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Subject for managing the component&#39;s lifecycle.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="formModel"></a>
+                    <span class="name">
+                        <span ><b>formModel</b></span>
+                        <a href="#formModel"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/FormModel.html" target="_self" >FormModel</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+    type: &#x27;search&#x27;,
+    cardCustomClass: &#x27;w-100&#x27;,
+    inputElements: [
+      {
+        label: &#x27;Choose your next destination&#x27;,
+        inputType: &#x27;text&#x27;,
+        inputValidator: [Validators.required],
+        customClass: &#x27;mb-3&#x27;,
+      },
+    ],
+  }</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">src/app/core/components/cities/cities.component.ts:61</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Form model for the search input.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ROUTE"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>ROUTE</b></span>
+                        <a href="#ROUTE"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>ROUTE</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="88" class="link-to-prism">src/app/core/components/cities/cities.component.ts:88</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Constant for storing the route path.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { CommonModule } from &#x27;@angular/common&#x27;;
+import {
+  Component,
+  OnDestroy,
+  OnInit,
+  computed,
+  inject,
+  signal,
+} from &#x27;@angular/core&#x27;;
+import { Validators } from &#x27;@angular/forms&#x27;;
+import { RouterLink } from &#x27;@angular/router&#x27;;
+import { ROUTE } from &#x27;@src/app/constants/route&#x27;;
+import { ButtonComponent } from &#x27;@src/app/shared/components/button/button.component&#x27;;
+import { CardComponent } from &#x27;@src/app/shared/components/card/card.component&#x27;;
+import { FormComponent } from &#x27;@src/app/shared/components/form/form.component&#x27;;
+import { ButtonConfig } from &#x27;@src/app/shared/models/button.model&#x27;;
+import { FormModel } from &#x27;@src/app/shared/models/form.model&#x27;;
+import { Subject, Subscription, filter, takeUntil } from &#x27;rxjs&#x27;;
+import { Cities, City } from &#x27;../../models/dashboard.model&#x27;;
+import { DashboardFacade } from &#x27;../../store/dashboard/dashboard.facade&#x27;;
+
+const MODULES &#x3D; [CommonModule, RouterLink];
+const COMPONENTS &#x3D; [FormComponent, CardComponent, ButtonComponent];
+
+/**
+ * Component for displaying a list of cities.
+ */
+@Component({
+  selector: &#x27;app-cities&#x27;,
+  standalone: true,
+  imports: [...MODULES, ...COMPONENTS],
+  templateUrl: &#x27;./cities.component.html&#x27;,
+  styleUrl: &#x27;./cities.component.scss&#x27;,
+})
+export class CitiesComponent implements OnInit, OnDestroy {
+  /**
+   * Signal for storing the cities data.
+   */
+  cities &#x3D; signal&lt;Cities&gt;({} as Cities);
+
+  /**
+   * Computed property related with cities signal &#x3D;&gt; cities.
+   */
+  citiesList &#x3D; computed&lt;City[]&gt;(() &#x3D;&gt; this.cities().cities);
+
+  /**
+   * Signal for storing the city filter name.
+   */
+  cityFilterName &#x3D; signal&lt;string&gt;(&#x27;&#x27;);
+
+  /**
+   * Computed property for getting the filtered list of cities based on the city filter name.
+   */
+  citiesListFiltered &#x3D; computed&lt;City[]&gt;(() &#x3D;&gt;
+    this.citiesList()?.filter((city) &#x3D;&gt; city.name.toLowerCase().includes(this.cityFilterName().toLowerCase()))
+  );
+
+  /**
+   * Form model for the search input.
+   */
+  formModel: FormModel &#x3D; {
+    type: &#x27;search&#x27;,
+    cardCustomClass: &#x27;w-100&#x27;,
+    inputElements: [
+      {
+        label: &#x27;Choose your next destination&#x27;,
+        inputType: &#x27;text&#x27;,
+        inputValidator: [Validators.required],
+        customClass: &#x27;mb-3&#x27;,
+      },
+    ],
+  };
+
+  /**
+   * Button configuration for the explore button.
+   */
+  buttonElement: ButtonConfig &#x3D; {
+    id: &#x27;explore&#x27;,
+    classButtonType: &#x27;btn-outline-primary&#x27;,
+    typeButtonType: &#x27;button&#x27;,
+    label: &#x27;Explore&#x27;,
+    customClass: &#x27;w-100&#x27;,
+  };
+
+  /**
+   * Constant for storing the route path.
+   */
+  public ROUTE &#x3D; ROUTE;
+
+  /**
+   * Subject for managing the component&#x27;s lifecycle.
+   */
+  private destroy$ &#x3D; new Subject&lt;void&gt;();
+
+  /**
+   * Inject the DashboardFacade Pattern.
+   */
+  dashboardFacade &#x3D; inject(DashboardFacade);
+
+  /**
+   * Subscription for receiving cities data from the DashboardFacade.
+   */
+  cities$: Subscription &#x3D; this.dashboardFacade.cities$
+    .pipe(filter(Boolean), takeUntil(this.destroy$))
+    .subscribe((cities: Cities) &#x3D;&gt; {
+      this.cities.set(cities);
+    });
+
+  /**
+   * Lifecycle hook that is called after the component has been initialized.
+   */
+  ngOnInit() {
+    this.dashboardFacade.cities();
+  }
+
+  /**
+   * Lifecycle hook that is called when the component is about to be destroyed.
+   */
+  ngOnDestroy() {
+    this.destroy$.next();
+  }
+
+  /**
+   * Filters the cities based on the provided search city name.
+   * @param searchCity The name of the city to filter.
+   */
+  filterCities(searchCity: string) {
+    this.cityFilterName.set(searchCity);
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;cities&quot;&gt;
+  &lt;div class&#x3D;&quot;d-flex justify-content-center&quot;&gt;
+
+    &lt;div class&#x3D;&quot;my-3 cities__card&quot;&gt;
+      &lt;app-form [formModel]&#x3D;&quot;formModel&quot; (searchValueChanges)&#x3D;&quot;filterCities($event)&quot; /&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  @if (citiesListFiltered()) {
+  &lt;div class&#x3D;&quot;mx-3 cities__grid&quot;
+    [ngClass]&#x3D;&quot;{&#x27;cities__grid__element&#x27;: citiesListFiltered().length &lt;&#x3D; 2, &#x27;cities__grid__elements&#x27;: citiesListFiltered().length &gt; 2, }&quot;&gt;
+    @for (city of citiesListFiltered(); track city) {
+    &lt;div&gt;
+      &lt;app-card&gt;
+        &lt;div&gt;
+          &lt;img [src]&#x3D;&quot;&#x27;https://placehold.co/200x200&#x27;&quot; class&#x3D;&quot;w-100 object-fit-cover&quot; /&gt;
+        &lt;/div&gt;
+
+        &lt;div class&#x3D;&quot;d-flex justify-content-between mt-2&quot;&gt;
+          &lt;h4&gt;{{ city.name }}&lt;/h4&gt;
+          &lt;h4&gt;{{ city.country }}&lt;/h4&gt;
+        &lt;/div&gt;
+
+        &lt;app-button [buttonConfig]&#x3D;&quot;buttonElement&quot; [routerLink]&#x3D;&quot;&#x27;/&#x27; + ROUTE.CITY + &#x27;/&#x27; + city.cityId&quot;&gt;&lt;/app-button&gt;
+      &lt;/app-card&gt;
+    &lt;/div&gt;
+    }
+  &lt;/div&gt;
+  } @else {
+  &lt;div class&#x3D;&quot;d-flex justify-content-center&quot;&gt;
+    &lt;div class&#x3D;&quot;w-50&quot;&gt;
+      &lt;app-card&gt;
+        &lt;div class&#x3D;&quot;d-flex justify-content-center&quot;&gt;
+          &lt;h4&gt;No cities found&lt;/h4&gt;
+        &lt;/div&gt;
+      &lt;/app-card&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  }
+&lt;/div&gt;</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="cities">  <div class="d-flex justify-content-center">    <div class="my-3 cities__card">      <app-form [formModel]="formModel" (searchValueChanges)="filterCities($event)" />    </div>  </div>  @if (citiesListFiltered()) {  <div class="mx-3 cities__grid"    [ngClass]="{\'cities__grid__element\': citiesListFiltered().length <= 2, \'cities__grid__elements\': citiesListFiltered().length > 2, }">    @for (city of citiesListFiltered(); track city) {    <div>      <app-card>        <div>          <img [src]="\'https://placehold.co/200x200\'" class="w-100 object-fit-cover" />        </div>        <div class="d-flex justify-content-between mt-2">          <h4>{{ city.name }}</h4>          <h4>{{ city.country }}</h4>        </div>        <app-button [buttonConfig]="buttonElement" [routerLink]="\'/\' + ROUTE.CITY + \'/\' + city.cityId"></app-button>      </app-card>    </div>    }  </div>  } @else {  <div class="d-flex justify-content-center">    <div class="w-50">      <app-card>        <div class="d-flex justify-content-center">          <h4>No cities found</h4>        </div>      </app-card>    </div>  </div>  }</div></div>'
+    var COMPONENTS = [{'name': 'AlertPopupComponent', 'selector': 'app-alert-popup'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BarChartComponent', 'selector': 'app-bar-chart'},{'name': 'ButtonComponent', 'selector': 'app-button'},{'name': 'CardComponent', 'selector': 'app-card'},{'name': 'CitiesComponent', 'selector': 'app-cities'},{'name': 'CityComponent', 'selector': 'app-city'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'FormComponent', 'selector': 'app-form'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NavBarComponent', 'selector': 'app-navbar'},{'name': 'RegistrationComponent', 'selector': 'app-registration'},{'name': 'StarRatingComponent', 'selector': 'app-star-rating'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'CitiesComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'CitiesComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

@@ -1,0 +1,13 @@
+@import 'variables';
+
+.star-rating {
+    font-size: 1.5rem;
+  }
+  
+  .star {
+    color: $gray;
+  }
+  
+  .star.filled {
+    color: $gold;
+  }

@@ -1,0 +1,38 @@
+<nav class="navbar navbar-expand-lg">
+  <div class="container-fluid">
+
+    @if(navbarConfig().imgLogo) {
+    <div>
+      <img class="w-100 h-100" [src]="navbarConfig().imgLogo">
+    </div>
+
+    <button class="navbar-toggler bg-white" type="button" data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+      aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon text-white"></span>
+    </button>
+    }
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        @if (navbarConfig().buttonsNavbarStart) {
+        @for(button of navbarConfig().buttonsNavbarStart; track button) {
+        <li class="nav-item">
+          <app-button [buttonConfig]="button" />
+        </li>
+        }
+        }
+      </ul>
+
+      @if (navbarConfig().buttonsNavbarEnd) {
+      @for (button of navbarConfig().buttonsNavbarEnd; track button) {
+      <div class="ms-auto">
+        <!-- <app-button [buttonConfig]="button" (click)="logOut()" /> -->
+        <app-button [buttonConfig]="button" (click)="onClickButton.emit(button)" />
+      </div>
+      }
+      }
+
+    </div>
+  </div>
+</nav>

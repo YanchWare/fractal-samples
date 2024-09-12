@@ -1,0 +1,27 @@
+meta {
+  name: Create Service Instance
+  type: http
+  seq: 1
+}
+
+put {
+  url: {{base-url}}/broker/v2/service_instances/:instance_id
+  body: json
+  auth: basic
+}
+
+params:path {
+  instance_id: <enter-your-instance-id>
+}
+
+auth:basic {
+  username: admin
+  password: admin
+}
+
+body:json {
+  {
+    "service_id":"cc4096cb-eaf8-410e-a590-4a113cb86a41",
+    "plan_id":"f01d9b10-c70e-4136-a6dd-22b9c95e67dd"
+  }
+}

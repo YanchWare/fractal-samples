@@ -1,0 +1,9 @@
+<div class="overflow-x-hidden yanchware-container">
+  
+  <router-outlet />
+
+  @if(isVisible()) {
+  <app-alert-popup [alertPopupConfig]="alertPopupConfig()" />
+  }
+
+</div>

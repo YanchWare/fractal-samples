@@ -1,0 +1,37 @@
+trigger:
+  - main
+
+pool:
+  vmImage: ubuntu-latest
+
+stages:
+  - stage: build
+    displayName: Build
+    jobs:
+      - job: build
+        container: maven:3-eclipse-temurin-21
+        displayName: Build Fractal Cloud Custom Workload Deployment Demo
+        steps:
+          - task: MavenAuthenticate@0
+            displayName: Authenticate to Fractal SDK Package Repo
+            inputs:
+              artifactsFeeds: migration-poc-v1
+              mavenServiceConnections: yw-fractal-java-sdk
+          - task: Maven@3
+            displayName: Maven Build
+            inputs:
+              mavenPomFile: 'pom.xml'
+              javaHomeSelection: 'path'
+              jdkDirectory: '/opt/java/openjdk'
+              goals: clean compile assembly:single
+          - publish: 'target/pocs.migration.architecture-jar-with-dependencies.jar'
+            displayName: Publish Artifact
+            artifact: Architecture
+
+  - stage: deploy
+    dependsOn: build
+    displayName: Deploy
+    jobs:
+      - template: 'azure-pipelines.deployment.yml'
+        parameters:
+          environment: Architecture
