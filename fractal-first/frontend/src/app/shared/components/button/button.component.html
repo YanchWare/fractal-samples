@@ -1,0 +1,2 @@
+<button [type]="buttonConfig().typeButtonType" class="btn {{ buttonConfig().classButtonType }} {{ buttonConfig().customClass }}"
+  [disabled]="buttonConfig().isDisabled || isDisabled()" [routerLink]="buttonConfig().routerLink">{{ buttonConfig().label }}</button>

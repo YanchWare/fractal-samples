@@ -1,0 +1,26 @@
+trigger:
+  - main
+
+pool:
+  vmImage: ubuntu-latest
+
+stages:
+  - stage: build_and_create_image
+    displayName: Build and Create Image
+    jobs:
+    - job: build
+      displayName: Build and Create Frontend Image
+      steps:
+      - task: Npm@1
+      - task: Npm@1
+        inputs:
+          command: 'custom'
+          customCommand: 'run build'
+      - task: Docker@2
+        inputs:
+          buildContext: .
+          command: buildAndPush
+          repository: migration-frontend
+          dockerfile: ./Dockerfile
+          containerRegistry: fractal-scai-test
+          tags: latest

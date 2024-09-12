@@ -1,0 +1,5 @@
+<div class="star-rating">
+  @for (star of [1, 2, 3, 4, 5]; track star) {
+  <span class="star" [class.filled]="star <= rating()">&#9733;</span>
+  }
+</div>

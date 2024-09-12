@@ -1,0 +1,7 @@
+<div class="position-absolute alert-popup {{ customClass }}">
+  <div class="d-flex justify-content-between alert alert-{{ alertPopupConfig().alertType }}" role="alert">
+    <span>{{ alertPopupConfig().label }}</span>
+    <button type="button" class="btn-close ms-3" data-bs-dismiss="alert" aria-label="Close"
+      (click)="resetTimer(); alertPopupService.hide()"></button>
+  </div>
+</div>

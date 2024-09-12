@@ -1,0 +1,68 @@
+<div class="d-flex justify-content-center align-items-center h-100 form">
+
+  @if(formModel().backgroundSrc) {
+  <div class="position-absolute form__background">
+    <img class="w-100 h-100" [src]="formModel().backgroundSrc">
+  </div>
+  }
+
+  <app-card [cardModel]="cardModel" [class]="formModel().cardCustomClass">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+      @if(formModel().logoSrc) {
+      <img [src]="formModel().logoSrc" class="w-100 mb-2 form__card__logo">
+      }
+
+      @if(formModel().title) {
+      <h1 class="text-center {{ formModel().title?.customClass }}">{{ formModel().title?.label }}</h1>
+      }
+
+      @for(inputElement of formModel().inputElements; track inputElement) {
+
+      <div class="form-group {{ inputElement.customClass }}">
+        <label [for]="inputElement.label.toLowerCase().trim()">{{ inputElement.label }}</label>
+
+        @if (formModel().type !== 'search') {
+        <input [type]="inputElement.inputType" [id]="inputElement.label.toLowerCase().trim()"
+          [formControlName]="inputElement.label.toLowerCase().trim()" class="form-control"
+          [ngClass]="{ 'is-invalid': form.get(inputElement.label.toLowerCase().trim())?.invalid && (form.get(inputElement.label.toLowerCase().trim())?.dirty || form.get(inputElement.label.toLowerCase().trim())?.touched),
+          'is-valid': form.get(inputElement.label.toLowerCase().trim())?.valid && (form.get(inputElement.label.toLowerCase().trim())?.dirty || form.get(inputElement.label.toLowerCase().trim())?.touched) }"
+          required>
+        <div
+          *ngIf="form.get(inputElement.label.toLowerCase().trim())?.invalid && (form.get(inputElement.label.toLowerCase().trim())?.dirty || form.get(inputElement.label.toLowerCase().trim())?.touched)"
+          class="invalid-feedback">
+          Invalid {{ inputElement.label }}
+        </div>
+        } @else {
+        <input [type]="inputElement.inputType" [id]="inputElement.label.toLowerCase().trim()"
+          [formControlName]="inputElement.label.toLowerCase().trim()" class="form-control" required>
+        }
+      </div>
+      }
+      @for (buttonElement of formModel().buttonElements; track buttonElement) {
+      <div>
+        <app-button [buttonConfig]="buttonElement" [isDisabled]="form.invalid"></app-button>
+      </div>
+      }
+
+      @if(formModel().footerText) {
+      <div class="d-flex align-items-center justify-content-center w-100 mt-4 mb-3 small form__card__redirect">
+        <span>{{ formModel().footerText?.text }}</span>
+        <button type="button" [routerLink]="formModel().footerText?.routerLink"
+          class="btn btn-link me-3 ps-1 text-decoration-none small">{{ formModel().footerText?.labelLink }}</button>
+      </div>
+      }
+
+      @if(formModel().footerLogo) {
+      <div class="w-100 d-flex justify-content-center align-items-center">
+        <div class="text-center  form__card__footer-logo">
+          <span>{{ formModel().footerLogo?.label }}</span>
+          <img [src]="formModel().footerLogo?.logoSrc">
+        </div>
+      </div>
+      }
+
+    </form>
+  </app-card>
+
+</div>

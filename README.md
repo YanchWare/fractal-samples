@@ -18,10 +18,13 @@ You can find more information on this in our [documentation](https://fractal.clo
 
 The repository is split into different directories based on the cloud provider. See the list below for easier navigation.
 
-| Cloud Provider        	 | Description                                             |
-|-------------------------|---------------------------------------------------------|
-| [ Azure ](./azure/) 	   | Collection of sample projects using our SDK for Azure 	 |
-| [ GCP   ](./gcp/) 	     | Collection of sample projects using our SDK for GCP   	 |
+| Cloud Provider        	                 | Description                                                        |
+|-----------------------------------------|--------------------------------------------------------------------|
+| [ AWS ](./aws/) 	                       | Collection of sample projects using our SDK for AWS 	              |
+| [ Azure ](./azure/) 	                   | Collection of sample projects using our SDK for Azure 	            |
+| [ GCP   ](./gcp/) 	                     | Collection of sample projects using our SDK for GCP   	            |
+| [ OCI   ](./oci/) 	                     | Collection of sample projects using our SDK for OCI   	            |
+| [ Fractal First   ](./fractal-first/) 	 | A sample projects for governable Fractals in large Enterprises   	 |
 
 ### Connect to YanchWare Maven Repository
 

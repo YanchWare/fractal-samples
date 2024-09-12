@@ -1,0 +1,61 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /
+  error:
+    include-message: always
+
+management:
+  endpoint:
+    metrics:
+      enabled: true
+    prometheus:
+      enabled: true
+  endpoints:
+    web:
+      base-path: /
+      exposure:
+        include:
+          - health
+          - info
+          - prometheus
+          - metrics
+      path-mapping:
+        prometheus: metrics
+  prometheus:
+    metrics:
+      export:
+        enabled: true
+
+spring:
+  application:
+    name: OSB
+  cloud:
+    openservicebroker:
+      base-path: /broker
+  jackson:
+    property-naming-strategy: SNAKE_CASE
+    default-property-inclusion: NON_NULL
+    deserialization:
+      fail-on-ignored-properties: false
+      fail-on-unknown-properties: false
+  security:
+    user:
+      name: ${SECURITY_USER_NAME:admin}
+      password: ${SECURITY_USER_PASSWORD:admin}
+      roles: ADMIN
+
+
+logging:
+  level:
+    root: WARN
+    org.springframework:
+      web: INFO
+    me.amasiero.osb: DEBUG
+    org.hibernate: INFO
+
+aws:
+  access-key-id: ${AWS_ACCESS_KEY_ID:}
+  secret-key: ${AWS_SECRET_KEY:}
+  profile: ${AWS_PROFILE:}
+  region: ${AWS_REGION:eu-west-1}

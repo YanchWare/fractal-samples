@@ -48,7 +48,7 @@
                     <finalName>${project.name}</finalName>
                     <archive>
                         <manifest>
-                            <mainClass>com.yanchware.fractal.AksFullSample</mainClass>
+                            <mainClass>com.yanchware.fractal.OkeMinimumSample</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

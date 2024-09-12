@@ -1,0 +1,28 @@
+.cities {
+  &__card {
+    width: 100%;
+    @media (min-width: 768px) {
+      width: 50%;
+    }
+    @media (min-width: 1024px) {
+      width: 33.33%;
+    }
+  }
+  
+  &__grid {
+    display: grid;
+    grid-gap: 1rem;
+
+    &__element {
+      grid-template-columns: repeat(auto-fit, minmax(20rem, 20rem));
+    }
+
+    &__elements {
+      grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    }
+
+    img {
+      height: 10rem;
+    }
+  }
+}

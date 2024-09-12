@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.yanchware.fractal</groupId>
+        <artifactId>oci</artifactId>
+        <version>2.0.0</version>
+    </parent>
+    
+    <artifactId>oci.oke.ambassador.sample</artifactId>
+    <name>ambassador-sample</name>
+    <url>https://github.com/YanchWare/fractal-samples</url>
+    <description>Sample of Ambassador with OKE using Fractal Cloud SDK</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.yanchware</groupId>
+            <artifactId>fractal.sdk</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.yanchware.fractal</groupId>
+            <artifactId>oci.shared.config</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.yanchware.fractal</groupId>
+            <artifactId>oci.shared.config.tests</artifactId>
+            <type>test-jar</type>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <configuration>
+                    <finalName>${project.name}</finalName>
+                    <archive>
+                        <manifest>
+                            <mainClass>com.yanchware.fractal.AmbassadorSample</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

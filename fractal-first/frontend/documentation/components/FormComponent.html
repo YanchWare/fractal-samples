@@ -1,0 +1,1117 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>yanchware-go documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avaoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
+            <a href="../" class="navbar-brand">yanchware-go documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  FormComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/shared/components/form/form.component.ts</code>
+</p>
+
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Represents a form component.</p>
+
+    </p>
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-form</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                                <code><a href="../miscellaneous/variables.html#MODULE" target="_self" >MODULE</a></code>
+                                <code><a href="../miscellaneous/variables.html#COMPONENTS" target="_self" >COMPONENTS</a></code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./form.component.html</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrl</td>
+                <td class="col-md-9"><code>./form.component.scss</code></td>
+            </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#alertPopupService" >alertPopupService</a>
+                            </li>
+                            <li>
+                                <a href="#cardModel" >cardModel</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Protected</span>
+                                <a href="#form" >form</a>
+                            </li>
+                            <li>
+                                <a href="#formBuilder" >formBuilder</a>
+                            </li>
+                            <li>
+                                <a href="#formModel" >formModel</a>
+                            </li>
+                            <li>
+                                <a href="#onSubmitForm" >onSubmitForm</a>
+                            </li>
+                            <li>
+                                <a href="#searchFormValueChanges" >searchFormValueChanges</a>
+                            </li>
+                            <li>
+                                <a href="#searchValueChanges" >searchValueChanges</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#onSubmit" >onSubmit</a>
+                            </li>
+                            <li>
+                                <a href="#updateFormValue" >updateFormValue</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#formModel" >formModel</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Outputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#onSubmitForm" >onSubmitForm</a>
+                            </li>
+                            <li>
+                                <a href="#searchValueChanges" >searchValueChanges</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+        </tbody>
+    </table>
+</section>
+
+
+    <section data-compodoc="block-inputs">
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="formModel"></a>
+                        <b>formModel</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Required : </i>&nbsp;<b>true</b>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="55" class="link-to-prism">src/app/shared/components/form/form.component.ts:55</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Represents the model for the form.</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+    <section data-compodoc="block-outputs">
+    <h3 id="outputs">Outputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="onSubmitForm"></a>
+                        <b>onSubmitForm</b>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">src/app/shared/components/form/form.component.ts:61</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Event emitted when the form is submitted.</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="searchValueChanges"></a>
+                        <b>searchValueChanges</b>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">src/app/shared/components/form/form.component.ts:66</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Event emitted when the search value changes.</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="80"
+                                    class="link-to-prism">src/app/shared/components/form/form.component.ts:80</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onSubmit"></a>
+                    <span class="name">
+                        <span ><b>onSubmit</b></span>
+                        <a href="#onSubmit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onSubmit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="92"
+                                    class="link-to-prism">src/app/shared/components/form/form.component.ts:92</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Handles the form submission.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateFormValue"></a>
+                    <span class="name">
+                        <span ><b>updateFormValue</b></span>
+                        <a href="#updateFormValue"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>updateFormValue(value: FormControl)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="120"
+                                    class="link-to-prism">src/app/shared/components/form/form.component.ts:120</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Updates the form value with the given value.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>value</td>
+                                            <td>
+                                                        <code>FormControl</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>The form control value.</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="alertPopupService"></a>
+                    <span class="name">
+                        <span ><b>alertPopupService</b></span>
+                        <a href="#alertPopupService"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(AlertPopupService)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="70" class="link-to-prism">src/app/shared/components/form/form.component.ts:70</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cardModel"></a>
+                    <span class="name">
+                        <span ><b>cardModel</b></span>
+                        <a href="#cardModel"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/CardConfig.html" target="_self" >CardConfig</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+    cardBodyCustomClass: &#x27;px-5 form__card&#x27;,
+  }</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/app/shared/components/form/form.component.ts:47</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Represents the configuration for the card in the form component.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="form"></a>
+                    <span class="name">
+                            <span class="modifier">Protected</span>
+                        <span ><b>form</b></span>
+                        <a href="#form"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>FormGroup</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new FormGroup({})</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/app/shared/components/form/form.component.ts:42</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="formBuilder"></a>
+                    <span class="name">
+                        <span ><b>formBuilder</b></span>
+                        <a href="#formBuilder"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(FormBuilder)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="69" class="link-to-prism">src/app/shared/components/form/form.component.ts:69</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="formModel"></a>
+                    <span class="name">
+                        <span ><b>formModel</b></span>
+                        <a href="#formModel"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="55" class="link-to-prism">src/app/shared/components/form/form.component.ts:55</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Represents the model for the form.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onSubmitForm"></a>
+                    <span class="name">
+                        <span ><b>onSubmitForm</b></span>
+                        <a href="#onSubmitForm"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">src/app/shared/components/form/form.component.ts:61</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Event emitted when the form is submitted.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="searchFormValueChanges"></a>
+                    <span class="name">
+                        <span ><b>searchFormValueChanges</b></span>
+                        <a href="#searchFormValueChanges"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this.form.valueChanges.subscribe((value: FormControl) &#x3D;&gt; {
+    this.searchValueChanges.emit(Object.values(value)[0]);
+  })</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="76" class="link-to-prism">src/app/shared/components/form/form.component.ts:76</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Subscribes to the value changes of the search form and emits the search value.</p>
+</div>
+                </td>
+            </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description">
+                                <b>Parameters :</b>
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                            <tr>
+                                                    <td>value</td>
+                                                    <td>
+                                                            <code><ul>
+<li>The form control value.</li>
+</ul>
+</code>
+                                                    </td>
+                                            </tr>
+                                    </tbody>
+                                </table>
+                        </div>
+                    </td>
+                </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="searchValueChanges"></a>
+                    <span class="name">
+                        <span ><b>searchValueChanges</b></span>
+                        <a href="#searchValueChanges"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">src/app/shared/components/form/form.component.ts:66</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Event emitted when the search value changes.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { CommonModule } from &#x27;@angular/common&#x27;;
+import { Component, OnInit, inject, input, output } from &#x27;@angular/core&#x27;;
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+} from &#x27;@angular/forms&#x27;;
+import { RouterLink } from &#x27;@angular/router&#x27;;
+import { CardConfig } from &#x27;../../models/card.model&#x27;;
+import {
+  FormModel,
+  FormOutputModel,
+  InputFormModel,
+} from &#x27;../../models/form.model&#x27;;
+import { AlertPopupService } from &#x27;../../services/alert-popup.service&#x27;;
+import { ButtonComponent } from &#x27;../button/button.component&#x27;;
+import { CardComponent } from &#x27;../card/card.component&#x27;;
+
+/**
+ * Array of modules used in the form component.
+ */
+const MODULE &#x3D; [CommonModule, ReactiveFormsModule, RouterLink];
+
+/**
+ * Array of components used in the component.
+ */
+const COMPONENTS &#x3D; [CardComponent, ButtonComponent];
+
+/**
+ * Represents a form component.
+ */
+@Component({
+  selector: &#x27;app-form&#x27;,
+  standalone: true,
+  imports: [...MODULE, ...COMPONENTS],
+  templateUrl: &#x27;./form.component.html&#x27;,
+  styleUrl: &#x27;./form.component.scss&#x27;,
+})
+export class FormComponent implements OnInit {
+  // Variables
+  protected form: FormGroup &#x3D; new FormGroup({});
+
+  /**
+   * Represents the configuration for the card in the form component.
+   */
+  cardModel: CardConfig &#x3D; {
+    cardBodyCustomClass: &#x27;px-5 form__card&#x27;,
+  };
+
+  // Input
+  /**
+   * Represents the model for the form.
+   */
+  formModel &#x3D; input.required&lt;FormModel&gt;();
+
+  // Output
+  /**
+   * Event emitted when the form is submitted.
+   */
+  onSubmitForm &#x3D; output&lt;FormOutputModel&gt;();
+
+  /**
+   * Event emitted when the search value changes.
+   */
+  searchValueChanges &#x3D; output&lt;string&gt;();
+
+  // Inject
+  formBuilder &#x3D; inject(FormBuilder);
+  alertPopupService &#x3D; inject(AlertPopupService);
+
+  /**
+   * Subscribes to the value changes of the search form and emits the search value.
+   * @param value - The form control value.
+   */
+  searchFormValueChanges &#x3D; this.form.valueChanges.subscribe((value: FormControl) &#x3D;&gt; {
+    this.searchValueChanges.emit(Object.values(value)[0]);
+  });
+
+  ngOnInit(): void {
+    this.formModel()?.inputElements.forEach((input: InputFormModel) &#x3D;&gt; {
+      this.form.addControl(
+        input.label.toLowerCase().trim(),
+        this.formBuilder.control(&#x27;&#x27;, [...input.inputValidator])
+      );
+    });
+  }
+
+  /**
+   * Handles the form submission.
+   */
+  onSubmit() {
+    if (this.form.valid) {
+      if (
+        this.formModel().type &#x3D;&#x3D;&#x3D; &#x27;register&#x27; &amp;&amp;
+        this.form.value.password !&#x3D;&#x3D; this.form.value[&#x27;confirm password&#x27;]
+      ) {
+        /*
+         * Handle password mismatch with a custom alert popup.
+         */
+        this.alertPopupService.show({
+          alertType: &#x27;danger&#x27;,
+          label: &#x27;Passwords do not match&#x27;,
+          isVisible: true,
+        });
+        return;
+      }
+      this.onSubmitForm.emit(this.form.value);
+    } else {
+      // Handle form validation errors
+      console.log(&#x27;Form is invalid&#x27;);
+    }
+    this.form.reset();
+  }
+
+  /**
+   * Updates the form value with the given value.
+   * @param value - The form control value.
+   */
+  updateFormValue(value: FormControl) {
+    this.form.patchValue(value);
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;d-flex justify-content-center align-items-center h-100 form&quot;&gt;
+
+  @if(formModel().backgroundSrc) {
+  &lt;div class&#x3D;&quot;position-absolute form__background&quot;&gt;
+    &lt;img class&#x3D;&quot;w-100 h-100&quot; [src]&#x3D;&quot;formModel().backgroundSrc&quot;&gt;
+  &lt;/div&gt;
+  }
+
+  &lt;app-card [cardModel]&#x3D;&quot;cardModel&quot; [class]&#x3D;&quot;formModel().cardCustomClass&quot;&gt;
+    &lt;form [formGroup]&#x3D;&quot;form&quot; (ngSubmit)&#x3D;&quot;onSubmit()&quot;&gt;
+
+      @if(formModel().logoSrc) {
+      &lt;img [src]&#x3D;&quot;formModel().logoSrc&quot; class&#x3D;&quot;w-100 mb-2 form__card__logo&quot;&gt;
+      }
+
+      @if(formModel().title) {
+      &lt;h1 class&#x3D;&quot;text-center {{ formModel().title?.customClass }}&quot;&gt;{{ formModel().title?.label }}&lt;/h1&gt;
+      }
+
+      @for(inputElement of formModel().inputElements; track inputElement) {
+
+      &lt;div class&#x3D;&quot;form-group {{ inputElement.customClass }}&quot;&gt;
+        &lt;label [for]&#x3D;&quot;inputElement.label.toLowerCase().trim()&quot;&gt;{{ inputElement.label }}&lt;/label&gt;
+
+        @if (formModel().type !&#x3D;&#x3D; &#x27;search&#x27;) {
+        &lt;input [type]&#x3D;&quot;inputElement.inputType&quot; [id]&#x3D;&quot;inputElement.label.toLowerCase().trim()&quot;
+          [formControlName]&#x3D;&quot;inputElement.label.toLowerCase().trim()&quot; class&#x3D;&quot;form-control&quot;
+          [ngClass]&#x3D;&quot;{ &#x27;is-invalid&#x27;: form.get(inputElement.label.toLowerCase().trim())?.invalid &amp;&amp; (form.get(inputElement.label.toLowerCase().trim())?.dirty || form.get(inputElement.label.toLowerCase().trim())?.touched),
+          &#x27;is-valid&#x27;: form.get(inputElement.label.toLowerCase().trim())?.valid &amp;&amp; (form.get(inputElement.label.toLowerCase().trim())?.dirty || form.get(inputElement.label.toLowerCase().trim())?.touched) }&quot;
+          required&gt;
+        &lt;div
+          *ngIf&#x3D;&quot;form.get(inputElement.label.toLowerCase().trim())?.invalid &amp;&amp; (form.get(inputElement.label.toLowerCase().trim())?.dirty || form.get(inputElement.label.toLowerCase().trim())?.touched)&quot;
+          class&#x3D;&quot;invalid-feedback&quot;&gt;
+          Invalid {{ inputElement.label }}
+        &lt;/div&gt;
+        } @else {
+        &lt;input [type]&#x3D;&quot;inputElement.inputType&quot; [id]&#x3D;&quot;inputElement.label.toLowerCase().trim()&quot;
+          [formControlName]&#x3D;&quot;inputElement.label.toLowerCase().trim()&quot; class&#x3D;&quot;form-control&quot; required&gt;
+        }
+      &lt;/div&gt;
+      }
+      @for (buttonElement of formModel().buttonElements; track buttonElement) {
+      &lt;div&gt;
+        &lt;app-button [buttonConfig]&#x3D;&quot;buttonElement&quot; [isDisabled]&#x3D;&quot;form.invalid&quot;&gt;&lt;/app-button&gt;
+      &lt;/div&gt;
+      }
+
+      @if(formModel().footerText) {
+      &lt;div class&#x3D;&quot;d-flex align-items-center justify-content-center w-100 mt-4 mb-3 small form__card__redirect&quot;&gt;
+        &lt;span&gt;{{ formModel().footerText?.text }}&lt;/span&gt;
+        &lt;button type&#x3D;&quot;button&quot; [routerLink]&#x3D;&quot;formModel().footerText?.routerLink&quot;
+          class&#x3D;&quot;btn btn-link me-3 ps-1 text-decoration-none small&quot;&gt;{{ formModel().footerText?.labelLink }}&lt;/button&gt;
+      &lt;/div&gt;
+      }
+
+      @if(formModel().footerLogo) {
+      &lt;div class&#x3D;&quot;w-100 d-flex justify-content-center align-items-center&quot;&gt;
+        &lt;div class&#x3D;&quot;text-center  form__card__footer-logo&quot;&gt;
+          &lt;span&gt;{{ formModel().footerLogo?.label }}&lt;/span&gt;
+          &lt;img [src]&#x3D;&quot;formModel().footerLogo?.logoSrc&quot;&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      }
+
+    &lt;/form&gt;
+  &lt;/app-card&gt;
+
+&lt;/div&gt;</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="d-flex justify-content-center align-items-center h-100 form">  @if(formModel().backgroundSrc) {  <div class="position-absolute form__background">    <img class="w-100 h-100" [src]="formModel().backgroundSrc">  </div>  }  <app-card [cardModel]="cardModel" [class]="formModel().cardCustomClass">    <form [formGroup]="form" (ngSubmit)="onSubmit()">      @if(formModel().logoSrc) {      <img [src]="formModel().logoSrc" class="w-100 mb-2 form__card__logo">      }      @if(formModel().title) {      <h1 class="text-center {{ formModel().title?.customClass }}">{{ formModel().title?.label }}</h1>      }      @for(inputElement of formModel().inputElements; track inputElement) {      <div class="form-group {{ inputElement.customClass }}">        <label [for]="inputElement.label.toLowerCase().trim()">{{ inputElement.label }}</label>        @if (formModel().type !== \'search\') {        <input [type]="inputElement.inputType" [id]="inputElement.label.toLowerCase().trim()"          [formControlName]="inputElement.label.toLowerCase().trim()" class="form-control"          [ngClass]="{ \'is-invalid\': form.get(inputElement.label.toLowerCase().trim())?.invalid && (form.get(inputElement.label.toLowerCase().trim())?.dirty || form.get(inputElement.label.toLowerCase().trim())?.touched),          \'is-valid\': form.get(inputElement.label.toLowerCase().trim())?.valid && (form.get(inputElement.label.toLowerCase().trim())?.dirty || form.get(inputElement.label.toLowerCase().trim())?.touched) }"          required>        <div          *ngIf="form.get(inputElement.label.toLowerCase().trim())?.invalid && (form.get(inputElement.label.toLowerCase().trim())?.dirty || form.get(inputElement.label.toLowerCase().trim())?.touched)"          class="invalid-feedback">          Invalid {{ inputElement.label }}        </div>        } @else {        <input [type]="inputElement.inputType" [id]="inputElement.label.toLowerCase().trim()"          [formControlName]="inputElement.label.toLowerCase().trim()" class="form-control" required>        }      </div>      }      @for (buttonElement of formModel().buttonElements; track buttonElement) {      <div>        <app-button [buttonConfig]="buttonElement" [isDisabled]="form.invalid"></app-button>      </div>      }      @if(formModel().footerText) {      <div class="d-flex align-items-center justify-content-center w-100 mt-4 mb-3 small form__card__redirect">        <span>{{ formModel().footerText?.text }}</span>        <button type="button" [routerLink]="formModel().footerText?.routerLink"          class="btn btn-link me-3 ps-1 text-decoration-none small">{{ formModel().footerText?.labelLink }}</button>      </div>      }      @if(formModel().footerLogo) {      <div class="w-100 d-flex justify-content-center align-items-center">        <div class="text-center  form__card__footer-logo">          <span>{{ formModel().footerLogo?.label }}</span>          <img [src]="formModel().footerLogo?.logoSrc">        </div>      </div>      }    </form>  </app-card></div></div>'
+    var COMPONENTS = [{'name': 'AlertPopupComponent', 'selector': 'app-alert-popup'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BarChartComponent', 'selector': 'app-bar-chart'},{'name': 'ButtonComponent', 'selector': 'app-button'},{'name': 'CardComponent', 'selector': 'app-card'},{'name': 'CitiesComponent', 'selector': 'app-cities'},{'name': 'CityComponent', 'selector': 'app-city'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'FormComponent', 'selector': 'app-form'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NavBarComponent', 'selector': 'app-navbar'},{'name': 'RegistrationComponent', 'selector': 'app-registration'},{'name': 'StarRatingComponent', 'selector': 'app-star-rating'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'FormComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'FormComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

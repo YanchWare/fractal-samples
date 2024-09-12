@@ -1,0 +1,11 @@
+@import 'variables';
+
+.city {
+  &__card {
+    width: 30rem;
+    img {
+      height: 10rem;
+    }
+  }
+}
+

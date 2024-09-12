@@ -1,0 +1,22 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  labels:
+    app.kubernetes.io/created-by: Fractal
+    app.kubernetes.io/instance: traefik
+    app.kubernetes.io/name: traefik
+  name: traefik-dashboard-static-ip
+  namespace: traefik
+spec:
+  entryPoints:
+    - web
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`20.103.119.237`) && (Path(`/`) || PathPrefix(`/api`) || PathPrefix(`/dashboard`)
+        || PathPrefix(`/_oauth`))
+      middlewares:
+        - name: traefik-secure-headers
+      services:
+        - kind: TraefikService
+          name: api@internal
