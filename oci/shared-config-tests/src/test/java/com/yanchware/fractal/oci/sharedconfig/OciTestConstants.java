@@ -23,5 +23,10 @@ public class OciTestConstants {
 
   public static final EnvVarRecord OCI_REGION_ENV = new EnvVarRecord("OCI_REGION", "eu-zurich-1");
 
-  
+  public static final EnvVarRecord OCI_TENANCY_ID_ENV =
+          new EnvVarRecord("TENANCY_ID", "11434e97-d73c-472e-9e90-e4bef0e4aa01");
+
+  public static final EnvVarRecord OCI_COMPARTMENT_ID_ENV =
+          new EnvVarRecord("COMPARTMENT_ID", "e2088f53-8ac7-4f37-818f-e895b3f4527c");
+
 }

@@ -18,5 +18,7 @@ public class OciBaseTest {
     System.setProperty(ENVIRONMENT_TYPE_ENV.key(), ENVIRONMENT_TYPE_ENV.value());
     System.setProperty(OCI_COMPARTMENT_NAME_ENV.key(), OCI_COMPARTMENT_NAME_ENV.value());
     System.setProperty(OCI_REGION_ENV.key(), OCI_REGION_ENV.value());
+    System.setProperty(OCI_TENANCY_ID_ENV.key(), OCI_TENANCY_ID_ENV.value());
+    System.setProperty(OCI_COMPARTMENT_ID_ENV.key(), OCI_COMPARTMENT_ID_ENV.value());
   }
 }

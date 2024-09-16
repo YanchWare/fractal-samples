@@ -41,60 +41,35 @@ public class SharedConfig implements SharedConfiguration {
 
   @Override
   public AzureRegion getAzureRegion() {
-    var azureRegion = getVariableValue("AZURE_REGION", false);
-    if (isBlank(azureRegion)) {
-      throw new IllegalArgumentException("The environment variable AZURE_REGION is required and it has not been defined");
-    }
-    
+    var azureRegion = getVariableValue("AZURE_REGION", true);
     return AzureRegion.fromString(azureRegion);
   }
 
   @Override
   public UUID getTenantId() {
-    var tenantId = getVariableValue("AZURE_TENANT_ID", false);
-    if (isBlank(tenantId)) {
-      throw new IllegalArgumentException("The environment variable AZURE_TENANT_ID is required and it has not been defined");
-    }
-
+    var tenantId = getVariableValue("AZURE_TENANT_ID", true);
     return UUID.fromString(tenantId);
   }
 
   @Override
   public UUID getSubscriptionId() {
-    var subscriptionId = getVariableValue("AZURE_SUBSCRIPTION_ID", false);
-    if (isBlank(subscriptionId)) {
-      throw new IllegalArgumentException("The environment variable AZURE_SUBSCRIPTION_ID is required and it has not been defined");
-    }
-
+    var subscriptionId = getVariableValue("AZURE_SUBSCRIPTION_ID", true);
     return UUID.fromString(subscriptionId);
   }
 
   @Override
   public UUID getResourceGroupId() {
-    var resourceGroupId = getVariableValue("RESOURCE_GROUP_ID");
-    if (isBlank(resourceGroupId)) {
-      throw new IllegalArgumentException("The environment variable RESOURCE_GROUP_ID is required and it has not been defined");
-    }
-
+    var resourceGroupId = getVariableValue("RESOURCE_GROUP_ID", true);
     return UUID.fromString(resourceGroupId);
   }
 
   @Override
   public EnvironmentAggregate getEnvironment() throws InstantiatorException {
-    var environmentType = getVariableValue("ENVIRONMENT_TYPE");
-    if (isBlank(environmentType)) {
-      throw new IllegalArgumentException("The environment variable ENVIRONMENT_TYPE is required and it has not been defined");
-    }
+    var environmentType = getVariableValue("ENVIRONMENT_TYPE", true);
 
-    var environmentOwnerId = getVariableValue("ENVIRONMENT_OWNER_ID");
-    if (isBlank(environmentOwnerId)) {
-      throw new IllegalArgumentException("The environment variable ENVIRONMENT_OWNER_ID is required and it has not been defined");
-    }
+    var environmentOwnerId = getVariableValue("ENVIRONMENT_OWNER_ID", true);
 
-    var environmentShortName = getVariableValue("ENVIRONMENT_SHORT_NAME");
-    if (isBlank(environmentShortName)) {
-      throw new IllegalArgumentException("The environment variable ENVIRONMENT_SHORT_NAME is required and it has not been defined");
-    }
+    var environmentShortName = getVariableValue("ENVIRONMENT_SHORT_NAME", true);
 
     var environmentName = getVariableValue("ENVIRONMENT_NAME");
     if (isBlank(environmentShortName)) {

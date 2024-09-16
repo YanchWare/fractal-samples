@@ -10,7 +10,7 @@ import com.yanchware.fractal.sharedconfig.SharedConfig;
 
 import java.util.List;
 
-import static com.yanchware.fractal.oci.oke.minimum.sample.components.OkeComponent.getOke;
+import static com.yanchware.fractal.oci.oke.full.sample.components.OkeComponent.getOke;
 
 public class OkeFullSample {
   public static void main(String[] args) throws InstantiatorException {

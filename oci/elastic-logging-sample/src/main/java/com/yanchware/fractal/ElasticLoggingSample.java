@@ -30,8 +30,8 @@ automaton.instantiate(List.of(getLiveSystem(automaton, configuration)), instanti
   public static LiveSystemAggregate getLiveSystem(Automaton automaton, SharedConfig configuration) throws InstantiatorException {
     return automaton.getLiveSystemBuilder()
         .withId(new LiveSystemIdValue(configuration.getResourceGroupId().toString(), configuration.getLiveSystemName()))
-        .withDescription("Elastic Logging in AKS sample")
-        .withComponent(getOkeWithElasticLogging("aks-elastic-logging-1", configuration.getCompartment(), configuration.getOciRegion()))
+        .withDescription("Elastic Logging in OKE sample")
+        .withComponent(getOkeWithElasticLogging("oke-elastic-logging-1", configuration.getCompartment(), configuration.getOciRegion()))
         .withEnvironment(configuration.getEnvironment())
         .build();
   }

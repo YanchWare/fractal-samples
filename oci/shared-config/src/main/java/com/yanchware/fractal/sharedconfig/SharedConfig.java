@@ -33,11 +33,7 @@ public class SharedConfig implements SharedConfiguration {
 
   @Override
   public UUID getResourceGroupId() {
-    var resourceGroupId = getVariableValue("RESOURCE_GROUP_ID");
-    if (isBlank(resourceGroupId)) {
-      throw new IllegalArgumentException("The environment variable RESOURCE_GROUP_ID is required and it has not been defined");
-    }
-
+    var resourceGroupId = getVariableValue("RESOURCE_GROUP_ID", true);
     return UUID.fromString(resourceGroupId);
   }
 
@@ -51,12 +47,13 @@ public class SharedConfig implements SharedConfiguration {
 
   @Override
   public OciRegion getOciRegion() {
-    var region = getVariableValue("OCI_REGION", false);
-    if (isBlank(region)) {
-      throw new IllegalArgumentException("The environment variable OCI_REGION is required and it has not been defined");
-    }
-
+    var region = getVariableValue("OCI_REGION", true);
     return OciRegion.fromString(region);
+  }
+
+  @Override
+  public String getTenancyId() {
+    return getVariableValue("TENANCY_ID", true);
   }
 
   @Override
@@ -71,20 +68,9 @@ public class SharedConfig implements SharedConfiguration {
 
   @Override
   public EnvironmentAggregate getEnvironment() throws InstantiatorException {
-    var environmentType = getVariableValue("ENVIRONMENT_TYPE");
-    if (isBlank(environmentType)) {
-      throw new IllegalArgumentException("The environment variable ENVIRONMENT_TYPE is required and it has not been defined");
-    }
-
-    var environmentOwnerId = getVariableValue("ENVIRONMENT_OWNER_ID");
-    if (isBlank(environmentOwnerId)) {
-      throw new IllegalArgumentException("The environment variable ENVIRONMENT_OWNER_ID is required and it has not been defined");
-    }
-
-    var environmentShortName = getVariableValue("ENVIRONMENT_SHORT_NAME");
-    if (isBlank(environmentShortName)) {
-      throw new IllegalArgumentException("The environment variable ENVIRONMENT_SHORT_NAME is required and it has not been defined");
-    }
+    var environmentType = getVariableValue("ENVIRONMENT_TYPE", true);
+    var environmentOwnerId = getVariableValue("ENVIRONMENT_OWNER_ID", true);
+    var environmentShortName = getVariableValue("ENVIRONMENT_SHORT_NAME", true);
 
     var environmentName = getVariableValue("ENVIRONMENT_NAME");
     if (isBlank(environmentShortName)) {
@@ -98,8 +84,10 @@ public class SharedConfig implements SharedConfiguration {
                     environmentShortName))
         .withName(environmentName)
         .withResourceGroup(getResourceGroupId())
-// Fixed in SDK
-//        .withRegion(getOciRegion().toString())
+        .withOciCloudAgent(
+                getOciRegion(),
+                getTenancyId(),
+                getCompartment().getName())
         .build();
   }
 

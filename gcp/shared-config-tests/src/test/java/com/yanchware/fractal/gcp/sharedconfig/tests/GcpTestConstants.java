@@ -20,4 +20,11 @@ public class GcpTestConstants {
 
   public static final EnvVarRecord GCP_REGION_ENV =
       new EnvVarRecord("GCP_REGION", "EU_WEST1");
+
+  public static final EnvVarRecord GCP_ORGANIZATION_ID_ENV =
+          new EnvVarRecord("ORGANIZATION_ID", "11434e97-d73c-472e-9e90-e4bef0e4aa01");
+
+  public static final EnvVarRecord GCP_PROJECT_ID_ENV =
+          new EnvVarRecord("PROJECT_ID", "e2088f53-8ac7-4f37-818f-e895b3f4527c");
+
 }

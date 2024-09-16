@@ -12,5 +12,6 @@ public interface SharedConfiguration {
   UUID getResourceGroupId();
   Compartment getCompartment();
   OciRegion getOciRegion();
+  String getTenancyId();
   EnvironmentAggregate getEnvironment() throws InstantiatorException;
 }
