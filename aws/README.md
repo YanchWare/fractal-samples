@@ -46,7 +46,7 @@ Further information about the environment variables required are contained in th
 
 | Project                                                                      	 | Description                                                                               	 |
 |--------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------|
-| [ eks-full-sample ]( eks-full-sample/ )                                   	    | Sample project to emphasise the creation of an OKE with all the possible options available  |
-| [ eks-minimum-sample ]( eks-minimum-sample/ )                              	   | Sample project to emphasise the creation of an OKE with the minimum requirements            |
+| [ eks-full-sample ]( eks-full-sample/ )                                   	    | Sample project to emphasise the creation of an EKS with all the possible options available  |
+| [ eks-minimum-sample ]( eks-minimum-sample/ )                              	   | Sample project to emphasise the creation of an EKS with the minimum requirements            |
 
 #### [Go back to previous README](../README.md)
