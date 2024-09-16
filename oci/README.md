@@ -7,20 +7,20 @@ In here you can find example using our SDK for all supported components in the O
 Consult the main [README](../README.md) for details on how to set up your environment to be able to run our projects.
 
 The simplest way to use these samples is to build them from the parent project.
-If for instance you would like to build and run the `aks-full-example` you could do it by running the following two 
+If for instance you would like to build and run the `oke-full-example` you could do it by running the following two 
 commands from the current directory:
 
 ```bash
-mvn clean compile assembly:single -pl shared-config,aks-full-sample
+mvn clean compile assembly:single -pl shared-config,oke-full-sample
 
-LIVE_SYSTEM_NAME="aks-full-sample" \
+LIVE_SYSTEM_NAME="oke-full-sample" \
     RESOURCE_GROUP_ID="43f7d06d-1341-4655-b2d8-4fee6f2eb892" \
     ENVIRONMENT_TYPE="personal" \
     ENVIRONMENT_OWNER_ID="682edc62-e14d-4357-93f4-7c8b1b896716" \
     ENVIRONMENT_SHORT_NAME="yanch-sandbox-01" \
     CLIENT_ID="sp-xxx" \
     CLIENT_SECRET="xxx" \
-    java -jar aks-full-sample/target/aks-full-sample-jar-with-dependencies.jar
+    java -jar oke-full-sample/target/oke-full-sample-jar-with-dependencies.jar
 ```
 
 The first command instruct Maven to build the `shared-config` library we need in all sample projects and the specific sample we are interested in.
