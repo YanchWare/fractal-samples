@@ -3,15 +3,17 @@ package com.yanchware.fractal.pocs.migration.infrastructure.agnostic;
 import com.yanchware.fractal.pocs.migration.infrastructure.ThreeTierApplication;
 import com.yanchware.fractal.pocs.migration.infrastructure.configuration.InfrastructureConfiguration;
 import com.yanchware.fractal.sdk.Automaton;
-import com.yanchware.fractal.sdk.aggregates.Environment;
-import com.yanchware.fractal.sdk.aggregates.EnvironmentType;
-import com.yanchware.fractal.sdk.aggregates.LiveSystem;
 import com.yanchware.fractal.sdk.configuration.instantiation.InstantiationConfiguration;
 import com.yanchware.fractal.sdk.configuration.instantiation.InstantiationWaitConfiguration;
-import com.yanchware.fractal.sdk.domain.entities.livesystem.caas.CaaSKubernetesWorkload;
-import com.yanchware.fractal.sdk.domain.entities.livesystem.paas.KubernetesCluster;
-import com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.azure.AzureRegion;
+import com.yanchware.fractal.sdk.domain.blueprint.FractalIdValue;
+import com.yanchware.fractal.sdk.domain.environment.EnvironmentAggregate;
+import com.yanchware.fractal.sdk.domain.environment.EnvironmentIdValue;
+import com.yanchware.fractal.sdk.domain.environment.EnvironmentType;
 import com.yanchware.fractal.sdk.domain.exceptions.InstantiatorException;
+import com.yanchware.fractal.sdk.domain.livesystem.LiveSystemIdValue;
+import com.yanchware.fractal.sdk.domain.livesystem.caas.CaaSKubernetesWorkload;
+import com.yanchware.fractal.sdk.domain.livesystem.paas.KubernetesCluster;
+import com.yanchware.fractal.sdk.domain.livesystem.paas.providers.azure.AzureRegion;
 
 import java.util.Collection;
 import java.util.List;
@@ -40,19 +42,18 @@ public abstract class ContainerizedThreeTiers<T extends KubernetesCluster, B ext
                         .build())
                 .build();
 
-        var environment = getEnvironment(configuration);
-        var liveSystem = LiveSystem.builder()
-                .withFractalName("containerized-three-tiers")
-                .withName(liveSystemName)
+        var automaton = Automaton.getInstance();
+        var environment = getEnvironment(automaton, configuration);
+        var liveSystem = automaton.getLiveSystemBuilder()
+                .withId(new LiveSystemIdValue(configuration.getFractalCloudResourceGroupId(), liveSystemName))
+                .withFractalId(new FractalIdValue(configuration.getFractalCloudResourceGroupId(), "containerized-three-tiers", "v1.0"))
                 .withDescription(String.format("%s Live System", liveSystemName))
-                .withResourceGroupId(configuration.getFractalCloudResourceGroupId())
-                .withComponents(List.of(
-                        kubernetesClusterBuilder.build()))
+                .withComponents(List.of(kubernetesClusterBuilder.build()))
                 .withEnvironment(environment)
                 .build();
 
-        Automaton.instantiate(environment);
-        Automaton.instantiate(List.of(liveSystem), instantiationConfig);
+        automaton.instantiate(environment);
+        automaton.instantiate(List.of(liveSystem), instantiationConfig);
     }
 
     public void addCaaSWorkload(CaaSKubernetesWorkload workload) {
@@ -63,16 +64,18 @@ public abstract class ContainerizedThreeTiers<T extends KubernetesCluster, B ext
         kubernetesClusterBuilder.withK8sWorkloadInstances(workloads);
     }
 
-    private static Environment getEnvironment(InfrastructureConfiguration configuration) {
-        return Environment.builder()
-                .withEnvironmentType(EnvironmentType.PERSONAL)
-                .withOwnerId(configuration.getEnvironmentOwnerId())
-                .withShortName(configuration.getEnvironmentShortName())
+    private static EnvironmentAggregate getEnvironment(Automaton automaton, InfrastructureConfiguration configuration) {
+        return automaton.getEnvironmentBuilder()
+                .withId(new EnvironmentIdValue(
+                        EnvironmentType.PERSONAL,
+                        configuration.getEnvironmentOwnerId(),
+                        configuration.getEnvironmentShortName()))
                 .withName(configuration.getEnvironmentName())
-                .withRegion(AzureRegion.WEST_EUROPE)
+                .withAzureCloudAgent(
+                        AzureRegion.WEST_EUROPE,
+                        configuration.getTenantId(),
+                        configuration.getSubscriptionId())
                 .withResourceGroup(UUID.fromString(configuration.getFractalCloudResourceGroupId()))
-                .withTenantId(configuration.getTenantId())
-                .withSubscriptionId(configuration.getSubscriptionId())
                 .build();
     }
 }

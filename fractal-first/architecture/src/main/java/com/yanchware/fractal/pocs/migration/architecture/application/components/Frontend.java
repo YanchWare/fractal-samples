@@ -1,6 +1,6 @@
 package com.yanchware.fractal.pocs.migration.architecture.application.components;
 
-import com.yanchware.fractal.sdk.domain.entities.livesystem.caas.CaaSKubernetesWorkload;
+import com.yanchware.fractal.sdk.domain.livesystem.caas.CaaSKubernetesWorkload;
 
 import static com.yanchware.fractal.pocs.migration.architecture.configuration.Constants.*;
 import static com.yanchware.fractal.pocs.migration.architecture.configuration.Constants.DEFAULT_NAMESPACE;

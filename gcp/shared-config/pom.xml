@@ -29,5 +29,9 @@
       <artifactId>junit-jupiter-api</artifactId>
       <scope>test</scope>
     </dependency>
+      <dependency>
+          <groupId>com.yanchware</groupId>
+          <artifactId>fractal.sdk</artifactId>
+      </dependency>
   </dependencies>
 </project>

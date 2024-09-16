@@ -1,18 +1,18 @@
 package com.yanchware.fractal.components;
 
-import com.yanchware.fractal.sdk.domain.entities.ComponentLink;
-import com.yanchware.fractal.sdk.domain.entities.livesystem.caas.CustomWorkloadRole;
-import com.yanchware.fractal.sdk.domain.entities.livesystem.caas.RoleType;
-import com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.azure.AzureOsType;
-import com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.azure.AzurePricingPlan;
-import com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.azure.AzureResourceGroup;
-import com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.azure.appservice.*;
-import com.yanchware.fractal.sdk.valueobjects.ComponentId;
+import com.yanchware.fractal.sdk.domain.ComponentLink;
+import com.yanchware.fractal.sdk.domain.livesystem.caas.CustomWorkloadRole;
+import com.yanchware.fractal.sdk.domain.livesystem.caas.RoleType;
+import com.yanchware.fractal.sdk.domain.livesystem.paas.providers.azure.AzureOsType;
+import com.yanchware.fractal.sdk.domain.livesystem.paas.providers.azure.AzurePricingPlan;
+import com.yanchware.fractal.sdk.domain.livesystem.paas.providers.azure.AzureResourceGroup;
+import com.yanchware.fractal.sdk.domain.livesystem.paas.providers.azure.appservice.*;
+import com.yanchware.fractal.sdk.domain.values.ComponentId;
 
 import java.util.List;
 import java.util.Map;
 
-import static com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.azure.AzureOsType.LINUX;
+import static com.yanchware.fractal.sdk.domain.livesystem.paas.providers.azure.AzureOsType.LINUX;
 
 public class WebAppComponent {
 
@@ -22,7 +22,7 @@ public class WebAppComponent {
         .withName("asp-sample")
         .withRegion(resourceGroup.getRegion())
         .withAzureResourceGroup(resourceGroup)
-        .withOperatingSystem(AzureOsType.LINUX)
+        .withOperatingSystem(LINUX)
         .withPricingPlan(AzurePricingPlan.BASIC_B1)
         .withNumberOfWorkers(1)
         .build();

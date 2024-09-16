@@ -1,8 +1,8 @@
 package com.yanchware.fractal.gcp.sample.components;
 
 import com.yanchware.fractal.gcp.sharedconfig.SharedConfiguration;
-import com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.gcp.GcpPostgreSqlDatabase;
-import com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.gcp.GcpPostgreSqlDbms;
+import com.yanchware.fractal.sdk.domain.livesystem.paas.providers.gcp.GcpPostgreSqlDatabase;
+import com.yanchware.fractal.sdk.domain.livesystem.paas.providers.gcp.GcpPostgreSqlDbms;
 
 public class PostgreSqlComponent {
 

@@ -1,7 +1,8 @@
 package com.yanchware.fractal.gcp.sharedconfig;
 
-import com.yanchware.fractal.sdk.aggregates.Environment;
-import com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.gcp.GcpRegion;
+import com.yanchware.fractal.sdk.domain.environment.EnvironmentAggregate;
+import com.yanchware.fractal.sdk.domain.exceptions.InstantiatorException;
+import com.yanchware.fractal.sdk.domain.livesystem.paas.providers.gcp.GcpRegion;
 
 import java.util.UUID;
 
@@ -11,5 +12,5 @@ public interface SharedConfiguration {
   GcpRegion getRegion();
   String getOrganizationId();
   String getProjectId();
-  Environment getEnvironment();
+  EnvironmentAggregate getEnvironment() throws InstantiatorException;
 }

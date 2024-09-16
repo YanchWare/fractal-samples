@@ -1,10 +1,10 @@
 package com.yanchware.fractal.components;
 
-import com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.azure.AzureIdentityType;
-import com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.azure.AzureResourceGroup;
-import com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.azure.cdn.AzureCdnProfile;
-import com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.azure.cdn.AzureCdnSku;
-import com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.azure.cdn.AzureManagedServiceIdentity;
+import com.yanchware.fractal.sdk.domain.livesystem.paas.providers.azure.AzureIdentityType;
+import com.yanchware.fractal.sdk.domain.livesystem.paas.providers.azure.AzureResourceGroup;
+import com.yanchware.fractal.sdk.domain.livesystem.paas.providers.azure.cdn.AzureCdnProfile;
+import com.yanchware.fractal.sdk.domain.livesystem.paas.providers.azure.cdn.AzureCdnSku;
+import com.yanchware.fractal.sdk.domain.livesystem.paas.providers.azure.cdn.AzureManagedServiceIdentity;
 
 public class CdnComponent {
   public static AzureCdnProfile getMinimalComponent(String id, AzureResourceGroup resourceGroup) {

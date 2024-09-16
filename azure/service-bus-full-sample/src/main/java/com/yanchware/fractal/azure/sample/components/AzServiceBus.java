@@ -1,11 +1,11 @@
 package com.yanchware.fractal.azure.sample.components;
 
-import com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.azure.AzureIdentityType;
-import com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.azure.AzureResourceGroup;
-import com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.azure.servicebus.AzureServiceBus;
-import com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.azure.servicebus.AzureServiceBusQueue;
-import com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.azure.servicebus.AzureServiceBusTopic;
-import com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.azure.servicebus.valueobjects.*;
+import com.yanchware.fractal.sdk.domain.livesystem.paas.providers.azure.AzureIdentityType;
+import com.yanchware.fractal.sdk.domain.livesystem.paas.providers.azure.AzureResourceGroup;
+import com.yanchware.fractal.sdk.domain.livesystem.paas.providers.azure.servicebus.AzureServiceBus;
+import com.yanchware.fractal.sdk.domain.livesystem.paas.providers.azure.servicebus.AzureServiceBusQueue;
+import com.yanchware.fractal.sdk.domain.livesystem.paas.providers.azure.servicebus.AzureServiceBusTopic;
+import com.yanchware.fractal.sdk.domain.livesystem.paas.providers.azure.servicebus.valueobjects.*;
 
 import java.time.Duration;
 import java.util.List;

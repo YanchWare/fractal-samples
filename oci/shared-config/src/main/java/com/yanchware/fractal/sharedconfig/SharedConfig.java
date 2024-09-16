@@ -1,9 +1,12 @@
 package com.yanchware.fractal.sharedconfig;
 
-import com.yanchware.fractal.sdk.aggregates.Environment;
-import com.yanchware.fractal.sdk.aggregates.EnvironmentType;
-import com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.oci.Compartment;
-import com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.oci.OciRegion;
+import com.yanchware.fractal.sdk.Automaton;
+import com.yanchware.fractal.sdk.domain.environment.EnvironmentAggregate;
+import com.yanchware.fractal.sdk.domain.environment.EnvironmentIdValue;
+import com.yanchware.fractal.sdk.domain.environment.EnvironmentType;
+import com.yanchware.fractal.sdk.domain.exceptions.InstantiatorException;
+import com.yanchware.fractal.sdk.domain.livesystem.paas.providers.oci.Compartment;
+import com.yanchware.fractal.sdk.domain.livesystem.paas.providers.oci.OciRegion;
 
 import java.util.UUID;
 
@@ -67,7 +70,7 @@ public class SharedConfig implements SharedConfiguration {
   }
 
   @Override
-  public Environment getEnvironment() {
+  public EnvironmentAggregate getEnvironment() throws InstantiatorException {
     var environmentType = getVariableValue("ENVIRONMENT_TYPE");
     if (isBlank(environmentType)) {
       throw new IllegalArgumentException("The environment variable ENVIRONMENT_TYPE is required and it has not been defined");
@@ -88,10 +91,11 @@ public class SharedConfig implements SharedConfiguration {
       environmentName = environmentShortName;
     }
     
-    return Environment.builder()
-        .withEnvironmentType(EnvironmentType.fromString(environmentType))
-        .withOwnerId(UUID.fromString(environmentOwnerId))
-        .withShortName(environmentShortName)
+    return Automaton.getInstance().getEnvironmentBuilder()
+            .withId(new EnvironmentIdValue(
+                    EnvironmentType.fromString(environmentType),
+                    UUID.fromString(environmentOwnerId),
+                    environmentShortName))
         .withName(environmentName)
         .withResourceGroup(getResourceGroupId())
 // Fixed in SDK

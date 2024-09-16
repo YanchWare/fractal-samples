@@ -1,8 +1,8 @@
 package com.yanchware.fractal.pocs.migration.infrastructure;
 
 import com.yanchware.fractal.pocs.migration.infrastructure.configuration.InfrastructureConfiguration;
-import com.yanchware.fractal.sdk.domain.entities.livesystem.caas.CaaSKubernetesWorkload;
 import com.yanchware.fractal.sdk.domain.exceptions.InstantiatorException;
+import com.yanchware.fractal.sdk.domain.livesystem.caas.CaaSKubernetesWorkload;
 
 import java.util.Collection;
 
