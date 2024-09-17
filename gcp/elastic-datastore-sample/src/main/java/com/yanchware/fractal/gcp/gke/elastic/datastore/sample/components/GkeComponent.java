@@ -1,14 +1,15 @@
 package com.yanchware.fractal.gcp.gke.elastic.datastore.sample.components;
 
 import com.yanchware.fractal.gcp.sharedconfig.SharedConfiguration;
-import com.yanchware.fractal.sdk.domain.entities.livesystem.caas.CaaSElasticDataStore;
-import com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.gcp.GcpNodePool;
-import com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.gcp.GoogleKubernetesEngine;
+import com.yanchware.fractal.sdk.domain.livesystem.caas.CaaSElasticDataStore;
+import com.yanchware.fractal.sdk.domain.livesystem.paas.providers.gcp.GcpNodePool;
+import com.yanchware.fractal.sdk.domain.livesystem.paas.providers.gcp.GoogleKubernetesEngine;
 
 import java.util.Collection;
 import java.util.List;
 
-import static com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.gcp.GcpMachine.E2_STANDARD2;
+import static com.yanchware.fractal.sdk.domain.livesystem.paas.providers.gcp.GcpMachine.E2_STANDARD2;
+
 
 public class GkeComponent {
 

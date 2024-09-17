@@ -1,11 +1,12 @@
 package com.yanchware.fractal;
 
 import com.yanchware.fractal.sdk.Automaton;
-import com.yanchware.fractal.sdk.aggregates.LiveSystem;
+import com.yanchware.fractal.sdk.domain.livesystem.LiveSystemAggregate;
 import com.yanchware.fractal.sdk.configuration.instantiation.InstantiationConfiguration;
 import com.yanchware.fractal.sdk.configuration.instantiation.InstantiationWaitConfiguration;
-import com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.azure.AzureRegion;
-import com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.azure.AzureResourceGroup;
+import com.yanchware.fractal.sdk.domain.livesystem.LiveSystemIdValue;
+import com.yanchware.fractal.sdk.domain.livesystem.paas.providers.azure.AzureRegion;
+import com.yanchware.fractal.sdk.domain.livesystem.paas.providers.azure.AzureResourceGroup;
 import com.yanchware.fractal.sdk.domain.exceptions.InstantiatorException;
 import com.yanchware.fractal.sharedconfig.SharedConfig;
 
@@ -19,26 +20,24 @@ public class CosmosSample {
     // CONFIGURATION:
     var configuration = SharedConfig.getInstance();
 
-    var instantiationConfig = new InstantiationConfiguration() {{
-      setWaitConfiguration(new InstantiationWaitConfiguration() {{
-        setWaitForInstantiation(true);
-        setTimeoutMinutes(120);
-      }});
-    }};
+    var instantiationConfig = InstantiationConfiguration.builder().withWaitConfiguration(InstantiationWaitConfiguration.builder()
+              .withWaitForInstantiation(true)
+              .withTimeoutMinutes(120)
+              .build()).build();
     
     // INSTANTIATION:
-    Automaton.instantiate(List.of(getLiveSystem(configuration)), instantiationConfig);
+    var automaton = Automaton.getInstance();
+automaton.instantiate(List.of(getLiveSystem(automaton, configuration)), instantiationConfig);
   }
   
-  public static LiveSystem getLiveSystem(SharedConfig configuration) {
+  public static LiveSystemAggregate getLiveSystem(Automaton automaton, SharedConfig configuration) throws InstantiatorException {
 
     var relationalResourceGroup = new AzureResourceGroup("rg-relational", AzureRegion.SOUTHEAST_ASIA, Map.of("Type", "Relational"));
     var noSqlResourceGroup = new AzureResourceGroup("rg-no-sql",AzureRegion.AUSTRALIA_CENTRAL, Map.of("Type", "NoSql"));
     
-    return LiveSystem.builder()
-        .withName(configuration.getLiveSystemName())
+    return automaton.getLiveSystemBuilder()
+        .withId(new LiveSystemIdValue(configuration.getResourceGroupId().toString(), configuration.getLiveSystemName()))
         .withDescription("Cosmos sample")
-        .withResourceGroupId(configuration.getResourceGroupId().toString())
         .withComponents(List.of(
             getDbmsAndDatabaseForMongoDb("nosql-mongo-1", noSqlResourceGroup),
             getDbmsAndDatabaseForGremlinDb("nosql-gremlin-1", noSqlResourceGroup),

@@ -1,10 +1,11 @@
 package com.yanchware.fractal;
 
 import com.yanchware.fractal.sdk.Automaton;
-import com.yanchware.fractal.sdk.aggregates.LiveSystem;
 import com.yanchware.fractal.sdk.configuration.instantiation.InstantiationConfiguration;
 import com.yanchware.fractal.sdk.configuration.instantiation.InstantiationWaitConfiguration;
 import com.yanchware.fractal.sdk.domain.exceptions.InstantiatorException;
+import com.yanchware.fractal.sdk.domain.livesystem.LiveSystemAggregate;
+import com.yanchware.fractal.sdk.domain.livesystem.LiveSystemIdValue;
 import com.yanchware.fractal.sharedconfig.SharedConfig;
 
 import java.util.List;
@@ -17,26 +18,24 @@ public class StorageAccountSample {
     // CONFIGURATION:
     var configuration = SharedConfig.getInstance();
 
-    var instantiationConfig = new InstantiationConfiguration() {{
-      setWaitConfiguration(new InstantiationWaitConfiguration() {{
-        setWaitForInstantiation(true);
-        setTimeoutMinutes(120);
-      }});
-    }};
+    var instantiationConfig = InstantiationConfiguration.builder().withWaitConfiguration(InstantiationWaitConfiguration.builder()
+              .withWaitForInstantiation(true)
+              .withTimeoutMinutes(120)
+              .build()).build();
     
     // LIVE-SYSTEM INSTANTIATION:
-    Automaton.instantiate(List.of(getLiveSystem(configuration)), instantiationConfig);
+    var automaton = Automaton.getInstance();
+    automaton.instantiate(List.of(getLiveSystem(automaton, configuration)), instantiationConfig);
   }
 
-  public static LiveSystem getLiveSystem(SharedConfig configuration) {
+  public static LiveSystemAggregate getLiveSystem(Automaton automaton, SharedConfig configuration) throws InstantiatorException {
 
     var resourceGroup = configuration.getAzureResourceGroup();
     
     // LIVE-SYSTEM DEFINITION:
-    return LiveSystem.builder()
-        .withName(configuration.getLiveSystemName())
+    return automaton.getLiveSystemBuilder()
+        .withId(new LiveSystemIdValue(configuration.getResourceGroupId().toString(), configuration.getLiveSystemName()))
         .withDescription("Storage account sample")
-        .withResourceGroupId(configuration.getResourceGroupId().toString())
         .withComponents(List.of(
             getLegacyStorageAccountComponent("stlegacyyw001", resourceGroup),
             getStorageAccountComponent("stv2yw001", resourceGroup),

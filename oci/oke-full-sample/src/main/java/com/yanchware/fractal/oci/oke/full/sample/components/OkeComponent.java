@@ -1,8 +1,8 @@
-package com.yanchware.fractal.oci.oke.minimum.sample.components;
+package com.yanchware.fractal.oci.oke.full.sample.components;
 
-import com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.oci.Compartment;
-import com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.oci.OciContainerEngineForKubernetes;
-import com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.oci.OciRegion;
+import com.yanchware.fractal.sdk.domain.livesystem.paas.providers.oci.Compartment;
+import com.yanchware.fractal.sdk.domain.livesystem.paas.providers.oci.OciContainerEngineForKubernetes;
+import com.yanchware.fractal.sdk.domain.livesystem.paas.providers.oci.OciRegion;
 
 public class OkeComponent {
 

@@ -2,28 +2,32 @@ package com.yanchware.fractal.samples.environment.initialization;
 
 import com.yanchware.fractal.samples.environment.initialization.configuration.Configuration;
 import com.yanchware.fractal.sdk.Automaton;
-import com.yanchware.fractal.sdk.aggregates.Environment;
-import com.yanchware.fractal.sdk.aggregates.EnvironmentType;
-import com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.azure.AzureRegion;
+import com.yanchware.fractal.sdk.domain.environment.EnvironmentAggregate;
+import com.yanchware.fractal.sdk.domain.environment.EnvironmentIdValue;
+import com.yanchware.fractal.sdk.domain.environment.EnvironmentType;
 import com.yanchware.fractal.sdk.domain.exceptions.InstantiatorException;
 import com.yanchware.fractal.samples.environment.initialization.configuration.EnvVarConfiguration;
+import com.yanchware.fractal.sdk.domain.livesystem.paas.providers.azure.AzureRegion;
 
 public class EnvironmentInitializationSample {
-    private static Environment getFractalCloudEnvironment(Configuration configuration) {
-        return Environment.builder()
-                .withEnvironmentType(EnvironmentType.PERSONAL)
-                .withOwnerId(configuration.getEnvironmentOwnerId())
-                .withShortName("test-environment")
-                .withName("Test Environment")
-                .withResourceGroup(configuration.getResourceGroupId())
-                .withRegion(AzureRegion.WEST_EUROPE)
-                .withTenantId(configuration.getTenantId())
-                .withSubscriptionId(configuration.getSubscriptionId())
-                .build();
-    }
-
     public static void main(String[] args) throws InstantiatorException {
         var configuration = EnvVarConfiguration.getInstance();
-        Automaton.instantiate(getFractalCloudEnvironment(configuration));
+        var automaton = Automaton.getInstance();
+        automaton.instantiate(getFractalCloudEnvironment(automaton, configuration));
+    }
+
+    private static EnvironmentAggregate getFractalCloudEnvironment(Automaton automaton, Configuration configuration) {
+        return automaton.getEnvironmentBuilder()
+                .withId(new EnvironmentIdValue(
+                        EnvironmentType.PERSONAL,
+                        configuration.getEnvironmentOwnerId(),
+                        "test-environment"))
+                .withName("Test Environment")
+                .withResourceGroup(configuration.getResourceGroupId())
+                .withAzureCloudAgent(
+                        AzureRegion.WEST_EUROPE,
+                        configuration.getTenantId(),
+                        configuration.getSubscriptionId())
+                .build();
     }
 }

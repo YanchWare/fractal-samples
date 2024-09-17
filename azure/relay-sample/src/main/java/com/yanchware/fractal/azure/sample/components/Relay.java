@@ -1,7 +1,7 @@
 package com.yanchware.fractal.azure.sample.components;
 
-import com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.azure.AzureResourceGroup;
-import com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.azure.servicebus.AzureRelay;
+import com.yanchware.fractal.sdk.domain.livesystem.paas.providers.azure.AzureResourceGroup;
+import com.yanchware.fractal.sdk.domain.livesystem.paas.providers.azure.servicebus.AzureRelay;
 
 
 public class Relay {

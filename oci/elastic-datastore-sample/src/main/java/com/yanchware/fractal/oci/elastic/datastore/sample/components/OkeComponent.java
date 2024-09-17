@@ -1,10 +1,9 @@
 package com.yanchware.fractal.oci.elastic.datastore.sample.components;
 
-import com.yanchware.fractal.sdk.domain.entities.livesystem.caas.CaaSElasticDataStore;
-import com.yanchware.fractal.sdk.domain.entities.livesystem.caas.CaaSKubernetesWorkload;
-import com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.oci.Compartment;
-import com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.oci.OciContainerEngineForKubernetes;
-import com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.oci.OciRegion;
+import com.yanchware.fractal.sdk.domain.livesystem.caas.CaaSElasticDataStore;
+import com.yanchware.fractal.sdk.domain.livesystem.paas.providers.oci.Compartment;
+import com.yanchware.fractal.sdk.domain.livesystem.paas.providers.oci.OciContainerEngineForKubernetes;
+import com.yanchware.fractal.sdk.domain.livesystem.paas.providers.oci.OciRegion;
 
 public class OkeComponent {
 

@@ -1,8 +1,8 @@
-# Prometheus with Ambassador in AKS sample 
+# Prometheus with Ambassador in GKE sample 
 
 ## Introduction
 
-The purpose of this project is to test the instantiation of Prometheus alongside Ambassador in AKS.
+The purpose of this project is to test the instantiation of Prometheus alongside Ambassador in GKE.
 
 You can find more information on this in our [documentation](https://fractal.cloud/docs).
 

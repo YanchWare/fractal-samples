@@ -1,9 +1,9 @@
 package com.yanchware.fractal.azure.sample.components;
 
-import com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.azure.AzureResourceGroup;
-import com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.azure.servicebus.AzureServiceBus;
-import com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.azure.servicebus.valueobjects.ServiceBusSku;
-import com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.azure.servicebus.valueobjects.ServiceBusSkuTier;
+import com.yanchware.fractal.sdk.domain.livesystem.paas.providers.azure.AzureResourceGroup;
+import com.yanchware.fractal.sdk.domain.livesystem.paas.providers.azure.servicebus.AzureServiceBus;
+import com.yanchware.fractal.sdk.domain.livesystem.paas.providers.azure.servicebus.valueobjects.ServiceBusSku;
+import com.yanchware.fractal.sdk.domain.livesystem.paas.providers.azure.servicebus.valueobjects.ServiceBusSkuTier;
 
 
 public class AzServiceBus {

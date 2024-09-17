@@ -1,7 +1,7 @@
 package com.yanchware.fractal.pocs.migration.infrastructure.agnostic;
 
-import com.yanchware.fractal.sdk.domain.entities.livesystem.caas.CaaSTraefik;
-import com.yanchware.fractal.sdk.domain.entities.livesystem.caas.TraefikEntryPoint;
+import com.yanchware.fractal.sdk.domain.livesystem.caas.CaaSTraefik;
+import com.yanchware.fractal.sdk.domain.livesystem.caas.TraefikEntryPoint;
 
 import java.util.Collections;
 import java.util.List;

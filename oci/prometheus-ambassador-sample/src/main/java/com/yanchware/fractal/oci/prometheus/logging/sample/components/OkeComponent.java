@@ -1,10 +1,10 @@
 package com.yanchware.fractal.oci.prometheus.logging.sample.components;
 
-import com.yanchware.fractal.sdk.domain.entities.livesystem.caas.CaaSAmbassador;
-import com.yanchware.fractal.sdk.domain.entities.livesystem.caas.CaaSPrometheus;
-import com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.oci.Compartment;
-import com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.oci.OciContainerEngineForKubernetes;
-import com.yanchware.fractal.sdk.domain.entities.livesystem.paas.providers.oci.OciRegion;
+import com.yanchware.fractal.sdk.domain.livesystem.caas.CaaSAmbassador;
+import com.yanchware.fractal.sdk.domain.livesystem.caas.CaaSPrometheus;
+import com.yanchware.fractal.sdk.domain.livesystem.paas.providers.oci.Compartment;
+import com.yanchware.fractal.sdk.domain.livesystem.paas.providers.oci.OciContainerEngineForKubernetes;
+import com.yanchware.fractal.sdk.domain.livesystem.paas.providers.oci.OciRegion;
 
 public class OkeComponent {
 
