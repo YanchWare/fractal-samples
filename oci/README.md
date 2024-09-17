@@ -18,8 +18,8 @@ LIVE_SYSTEM_NAME="oke-full-sample" \
     ENVIRONMENT_TYPE="personal" \
     ENVIRONMENT_OWNER_ID="682edc62-e14d-4357-93f4-7c8b1b896716" \
     ENVIRONMENT_SHORT_NAME="yanch-sandbox-01" \
-    CLIENT_ID="sp-xxx" \
-    CLIENT_SECRET="xxx" \
+    CI_CD_SERVICE_ACCOUNT_NAME="sp-xxx" \
+    CI_CD_SERVICE_ACCOUNT_SECRET="xxx" \
     java -jar oke-full-sample/target/oke-full-sample-jar-with-dependencies.jar
 ```
 
@@ -32,15 +32,15 @@ Please, ensure that the Resource Group you are trying to use is enabled to deplo
 
 Further information about the environment variables required are contained in the following table.
 
-| Environment variable 	  | Description                                                                                                                                                                                                                                           |
-|---------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| LIVE_SYSTEM_NAME    	     | The short name of the Live System that will be created or updated. 	                                                                                                                                                                                  |
-| RESOURCE_GROUP_ID         | The id of the Resource Group you want to use to administrate access control. This information is available in the [Resource Group List](https://fractal.cloud/resource-groups) page of Fractal Cloud.                                                 |
-| ENVIRONMENT_TYPE        	 | The type of the Environment being targeted, it can take the value of `personal` or `organizational`. This information is available in the [Environment Details](https://fractal.cloud/environments) page of Fractal Cloud.             	              |
-| ENVIRONMENT_OWNER_ID      | The id of the owner of the Environment being targeted. This information is available in the [Environment Details](https://fractal.cloud/environments) page of Fractal Cloud.                                                                          |
-| ENVIRONMENT_SHORT_NAME    | The shortname of the Environment being targeted. This information is available in the [Environment Details](https://fractal.cloud/environments) page of Fractal Cloud.                                                                                |
-| CLIENT_ID       	         | The Client Id of the Service Account used to authenticate to Fractal Cloud. This information is stored in a secret called `fractal-ci-cd-service-account-name` on the environment Key-Vault instantiated during Environment Initialization.           |
-| CLIENT_SECRET       	     | The Client Secret of the Service Account used to authenticate to Fractal Cloud. This information is stored in a secret called `fractal-ci-cd-service-account-password` on the environment Key-Vault instantiated during Environment Initialization. 	 |
+| Environment variable 	        | Description                                                                                                                                                                                                                                    |
+|-------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| LIVE_SYSTEM_NAME    	         | The short name of the Live System that will be created or updated. 	                                                                                                                                                                           |
+| RESOURCE_GROUP_ID             | The id of the Resource Group you want to use to administrate access control. This information is available in the [Resource Group List](https://fractal.cloud/resource-groups) page of Fractal Cloud.                                          |
+| ENVIRONMENT_TYPE        	     | The type of the Environment being targeted, it can take the value of `personal` or `organizational`. This information is available in the [Environment Details](https://fractal.cloud/environments) page of Fractal Cloud.             	       |
+| ENVIRONMENT_OWNER_ID          | The id of the owner of the Environment being targeted. This information is available in the [Environment Details](https://fractal.cloud/environments) page of Fractal Cloud.                                                                   |
+| ENVIRONMENT_SHORT_NAME        | The shortname of the Environment being targeted. This information is available in the [Environment Details](https://fractal.cloud/environments) page of Fractal Cloud.                                                                         |
+| CI_CD_SERVICE_ACCOUNT_NAME    | The name of the Service Account used to authenticate to Fractal Cloud. This information is stored in a secret called `fractal-ci-cd-service-account-name` on the environment Vault instantiated during Environment Initialization.         |
+| CI_CD_SERVICE_ACCOUNT_SECRET  | The secret of the Service Account used to authenticate to Fractal Cloud. This information is stored in a secret called `fractal-ci-cd-service-account-password` on the environment Vault instantiated during Environment Initialization. 	 |
 
 ## Projects
 

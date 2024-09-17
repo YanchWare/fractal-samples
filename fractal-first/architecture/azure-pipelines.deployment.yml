@@ -19,8 +19,8 @@ jobs:
             - bash: java -jar $(Pipeline.Workspace)/Architecture/pocs.migration.architecture-jar-with-dependencies.jar
               displayName: 'Deploy Fractal Cloud Architecture PoC'
               env:
-                CLIENT_ID: $(CLIENT_ID)
-                CLIENT_SECRET: $(CLIENT_SECRET)
+                CI_CD_SERVICE_ACCOUNT_NAME: $(CI_CD_SERVICE_ACCOUNT_NAME)
+                CI_CD_SERVICE_ACCOUNT_SECRET: $(CI_CD_SERVICE_ACCOUNT_SECRET)
                 AZURE_TENANT_ID: $(AZURE_TENANT_ID)
                 AZURE_SUBSCRIPTION_ID: $(AZURE_SUBSCRIPTION_ID)
                 AZURE_SP_CLIENT_ID: $(AZURE_SP_CLIENT_ID)
