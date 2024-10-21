@@ -16,12 +16,12 @@ public class EnvironmentInitializationSample {
         automaton.instantiate(getFractalCloudEnvironment(automaton, configuration));
     }
 
-    private static EnvironmentAggregate getFractalCloudEnvironment(Automaton automaton, Configuration configuration) {
-        return automaton.getEnvironmentBuilder()
+    private static EnvironmentAggregate getFractalCloudEnvironment(Automaton automaton, Configuration configuration) throws InstantiatorException {
+        var environment = automaton.getEnvironmentBuilder()
                 .withId(new EnvironmentIdValue(
                         EnvironmentType.PERSONAL,
                         configuration.getEnvironmentOwnerId(),
-                        "test-environment"))
+                        configuration.getEnvironmentShortName()))
                 .withName("Test Environment")
                 .withResourceGroup(configuration.getResourceGroupId())
                 .withAzureCloudAgent(
@@ -29,5 +29,7 @@ public class EnvironmentInitializationSample {
                         configuration.getTenantId(),
                         configuration.getSubscriptionId())
                 .build();
+        environment.createOrUpdate();
+        return environment;
     }
 }

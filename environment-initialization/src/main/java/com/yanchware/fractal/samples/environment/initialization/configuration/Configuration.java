@@ -7,4 +7,5 @@ public interface Configuration {
   UUID getSubscriptionId();
   UUID getEnvironmentOwnerId();
   UUID getResourceGroupId();
+  String getEnvironmentShortName();
 }

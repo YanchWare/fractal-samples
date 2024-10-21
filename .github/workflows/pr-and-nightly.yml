@@ -1,0 +1,101 @@
+name: PR and Nightly
+
+on:
+  pull_request:
+    branches:
+      - master
+  schedule:
+    - cron: "0 1 * * *"   # <=== Change this value
+
+jobs:
+  create-environment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 21 for x64
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+          architecture: x64
+
+      - name: Maven Clean Package
+        working-directory: environment-initialization
+        run: mvn --batch-mode clean package assembly:single
+
+      - name: Run initialization
+        working-directory: environment-initialization/target
+        run: java -jar environment-initialization-jar-with-dependencies.jar
+        
+      - name: Upload Artifacts and Dockerfiles
+        uses: actions/upload-artifact@v4
+        with:
+          name: agents-artifacts
+          path: |
+            **/build/**/*.tar
+            **/*Dockerfile
+  
+  build-and-push-images:
+    needs: build-and-test
+    permissions:
+      contents: 'read'
+      id-token: 'write'
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        provider: [ Azure, GCP, OCI, AWS ]
+    steps:
+      - name: Download Artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: agents-artifacts
+          
+      - uses: 'google-github-actions/auth@v2'
+        id: auth
+        with:
+          token_format: access_token
+          project_id: 'yanchware-test'
+          workload_identity_provider: 'projects/110612486919/locations/global/workloadIdentityPools/github-pool/providers/github-repos'
+          service_account: github-actions@yanchware-test.iam.gserviceaccount.com
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Login to GCR
+        uses: docker/login-action@v3
+        with:
+          registry: europe-west3-docker.pkg.dev
+          username: oauth2accesstoken
+          password: ${{ steps.auth.outputs.access_token }}
+          
+      - name: Generate environment variables
+        run: |
+          pr_tag="PR-${{ github.event.number }}"
+          lowercase_provider=$(echo "${{ matrix.provider }}" | tr '[:upper:]' '[:lower:]')
+
+          image_name="fractal.cloudagent.$lowercase_provider.container"
+          cache_image_ref="europe-west3-docker.pkg.dev/${{ env.GCP_PROJECT }}/docker-dev/cache/$image_name:latest"
+          target_image="europe-west3-docker.pkg.dev/${{ env.GCP_PROJECT }}/container-images/$image_name:$pr_tag"
+
+          # Set the generated variables as environment variables for subsequent steps
+          echo "LOWERCASE_PROVIDER=$lowercase_provider" >> $GITHUB_ENV
+          echo "CACHE_IMAGE_REF=$cache_image_ref" >> $GITHUB_ENV
+          echo "TARGET_IMAGE=$target_image" >> $GITHUB_ENV
+          
+      - name: 🐳 Build and Push ${{ matrix.provider }}
+        uses: docker/build-push-action@v6
+        with:
+          context: 'fractal.cloudagent.${{ env.LOWERCASE_PROVIDER }}.container'
+          platforms: linux/amd64,linux/arm64
+          push: true
+          tags: ${{ env.TARGET_IMAGE }}
+          cache-from: type=registry,ref=${{ env.CACHE_IMAGE_REF }}
+          cache-to: type=registry,ref=${{ env.CACHE_IMAGE_REF }},mode=max
+          build-args: |
+            BUILD_ID=latest
+            AGENT_VERSION=PR-${{ github.event.number }}-SNAPSHOT

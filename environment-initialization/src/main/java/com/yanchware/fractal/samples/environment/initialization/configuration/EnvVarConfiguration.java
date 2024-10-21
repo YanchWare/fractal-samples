@@ -44,6 +44,11 @@ public class EnvVarConfiguration implements Configuration {
     return UUID.fromString(getVariableValue(Constants.FRACTAL_RESOURCE_GROUP_ID_ENV_VAR_KEY));
   }
 
+  @Override
+  public String getEnvironmentShortName() {
+    return getVariableValue(Constants.FRACTAL_ENVIRONMENT_SHORT_NAME_ENV_VAR_KEY);
+  }
+
   private String getVariableValue(String key) {
 
     var value = readFromProperties ? System.getProperty(key) : System.getenv(key);
