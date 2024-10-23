@@ -4,7 +4,7 @@ plugins {
 
 dependencies {
     implementation(project(":azure.shared.config"))
-    testImplementation(project(":azure.shared.config.tests"))
+    testImplementation(testFixtures(project(":azure.shared.config")))
 }
 
 description = "elastic-datastore-sample"

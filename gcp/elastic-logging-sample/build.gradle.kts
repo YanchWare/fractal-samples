@@ -4,7 +4,7 @@ plugins {
 
 dependencies {
     implementation(project(":gcp.shared.config"))
-    testImplementation(project(":gcp.shared.config.tests"))
+    testImplementation(testFixtures(project(":gcp.shared.config")))
 }
 
 description = "elastic-logging-sample"

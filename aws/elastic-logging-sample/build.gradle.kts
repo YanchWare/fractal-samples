@@ -4,7 +4,7 @@ plugins {
 
 dependencies {
     implementation(project(":aws.shared.config"))
-    testImplementation(project(":aws.shared.config.tests"))
+    testImplementation(testFixtures(project(":aws.shared.config")))
 }
 
 description = "elastic-logging-sample"

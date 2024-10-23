@@ -4,7 +4,7 @@ plugins {
 
 dependencies {
     implementation(project(":oci.shared.config"))
-    testImplementation(project(":oci.shared.config.tests"))
+    testImplementation(testFixtures(project(":oci.shared.config")))
 }
 
 description = "elastic-datastore-sample"
