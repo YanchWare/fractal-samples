@@ -81,7 +81,7 @@ tasks.jar {
     val dependencies = configurations
         .runtimeClasspath
         .get()
-        .map(::zipTree) // OR .map { zipTree(it) }
+        .map(::zipTree)
     from(dependencies)
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 }
