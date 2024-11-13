@@ -7,7 +7,7 @@ import com.yanchware.fractal.sdk.domain.environment.EnvironmentIdValue;
 import com.yanchware.fractal.sdk.domain.environment.EnvironmentType;
 import com.yanchware.fractal.sdk.domain.exceptions.InstantiatorException;
 import com.yanchware.fractal.samples.environment.initialization.configuration.EnvVarConfiguration;
-import com.yanchware.fractal.sdk.domain.livesystem.paas.providers.azure.AzureRegion;
+import com.yanchware.fractal.sdk.domain.livesystem.paas.providers.aws.AwsRegion;
 
 public class EnvironmentInitializationSample {
     public static void main(String[] args) throws InstantiatorException {
@@ -24,10 +24,14 @@ public class EnvironmentInitializationSample {
                         "test-environment"))
                 .withName("Test Environment")
                 .withResourceGroup(configuration.getResourceGroupId())
-                .withAzureCloudAgent(
-                        AzureRegion.WEST_EUROPE,
-                        configuration.getTenantId(),
-                        configuration.getSubscriptionId())
+                .withAwsCloudAgent(
+                        AwsRegion.EU_WEST_1,
+                        configuration.getAwsOrganizationId(),
+                        configuration.getAwsAccountId())
+//                .withAzureCloudAgent(
+//                        AzureRegion.WEST_EUROPE,
+//                        configuration.getTenantId(),
+//                        configuration.getSubscriptionId())
                 .build();
     }
 }
