@@ -32,7 +32,7 @@ automaton.instantiate(List.of(getLiveSystem(automaton, configuration)), instanti
         .withId(new LiveSystemIdValue(configuration.getResourceGroupId().toString(), configuration.getLiveSystemName()))
         .withDescription("Elastic Logging in EKS sample")
         .withComponent(getEksWithElasticDatastore("eks-elastic-datastore-1", configuration.getAwsRegion()))
-        .withEnvironment(configuration.getEnvironment())
+        .withEnvironmentId(configuration.getEnvironment().getManagementEnvironment().getId())
         .build();
   }
 }

@@ -25,7 +25,7 @@ public class PrometheusAmbassadorSample {
         .withId(new LiveSystemIdValue(configuration.getResourceGroupId().toString(), configuration.getLiveSystemName()))
         .withDescription("Prometheus in GKE with Ambassador sample")
         .withComponent(getGke("gke-1", configuration))
-        .withEnvironment(configuration.getEnvironment())
+        .withEnvironmentId(configuration.getEnvironment().getManagementEnvironment().getId())
         .build();
   }
 }

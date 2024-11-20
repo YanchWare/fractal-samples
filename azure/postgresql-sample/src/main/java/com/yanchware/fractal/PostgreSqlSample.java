@@ -32,7 +32,7 @@ public class PostgreSqlSample {
         .withId(new LiveSystemIdValue(configuration.getResourceGroupId().toString(), configuration.getLiveSystemName()))
         .withDescription("PostgreSql sample")
         .withComponent(getDbmsAndDatabase("postrgresql-1"))
-        .withEnvironment(configuration.getEnvironment())
+        .withEnvironmentId(configuration.getEnvironment().getManagementEnvironment().getId())
         .build();
   }
 }

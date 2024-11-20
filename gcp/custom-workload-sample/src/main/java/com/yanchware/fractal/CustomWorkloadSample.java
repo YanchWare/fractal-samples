@@ -25,7 +25,7 @@ public class CustomWorkloadSample {
         .withId(new LiveSystemIdValue(configuration.getResourceGroupId().toString(), configuration.getLiveSystemName()))
         .withDescription("Custom Workload in GKE sample")
         .withComponent(getGke("gke-1", configuration))
-        .withEnvironment(configuration.getEnvironment())
+        .withEnvironmentId(configuration.getEnvironment().getManagementEnvironment().getId())
         .build();
   }
 }

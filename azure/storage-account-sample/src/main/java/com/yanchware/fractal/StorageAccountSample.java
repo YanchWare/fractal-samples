@@ -42,7 +42,7 @@ public class StorageAccountSample {
             getFileStorageAccountComponent("stfileyw001", resourceGroup),
             getBlobStorageAccountComponent("stblobyw001", resourceGroup),
             getBlockBlobStorageAccountComponent("stblockblobyw001", resourceGroup)))
-        .withEnvironment(configuration.getEnvironment())
+        .withEnvironmentId(configuration.getEnvironment().getManagementEnvironment().getId())
         .build();
   }
 }

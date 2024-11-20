@@ -33,7 +33,7 @@ public class OkeMinimumSample {
         .withId(new LiveSystemIdValue(configuration.getResourceGroupId().toString(), configuration.getLiveSystemName()))
         .withDescription("OKE with full options sample")
         .withComponent(getOke("oke-minimum-1", configuration.getCompartment(), configuration.getOciRegion()))
-        .withEnvironment(configuration.getEnvironment())
+        .withEnvironmentId(configuration.getEnvironment().getManagementEnvironment().getId())
         .build();
   }
 }

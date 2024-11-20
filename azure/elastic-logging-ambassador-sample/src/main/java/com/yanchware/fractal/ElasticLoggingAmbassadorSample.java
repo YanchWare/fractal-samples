@@ -32,7 +32,7 @@ automaton.instantiate(List.of(getLiveSystem(automaton, configuration)), instanti
         .withId(new LiveSystemIdValue(configuration.getResourceGroupId().toString(), configuration.getLiveSystemName()))
         .withDescription("Elastic Logging with Ambassador in AKS sample")
         .withComponent(getAks("aks-ambassador-elastic-logging-1", configuration.getAzureResourceGroup()))
-        .withEnvironment(configuration.getEnvironment())
+        .withEnvironmentId(configuration.getEnvironment().getManagementEnvironment().getId())
         .build();
   }
 }

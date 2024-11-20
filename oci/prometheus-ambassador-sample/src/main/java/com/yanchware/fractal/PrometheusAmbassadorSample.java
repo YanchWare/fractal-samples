@@ -32,7 +32,7 @@ public class PrometheusAmbassadorSample {
         .withId(new LiveSystemIdValue(configuration.getResourceGroupId().toString(), configuration.getLiveSystemName()))
         .withDescription("Prometheus in OKE sample")
         .withComponent(getOkeWithAmbassadorAndMonitoring("oke-prometheus-ambassador-1", configuration.getCompartment(), configuration.getOciRegion()))
-        .withEnvironment(configuration.getEnvironment())
+        .withEnvironmentId(configuration.getEnvironment().getManagementEnvironment().getId())
         .build();
   }
 }

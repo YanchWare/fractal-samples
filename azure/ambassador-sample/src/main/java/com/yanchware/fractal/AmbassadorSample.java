@@ -31,7 +31,7 @@ automaton.instantiate(List.of(getLiveSystem(automaton, configuration)), instanti
         .withId(new LiveSystemIdValue(configuration.getResourceGroupId().toString(), configuration.getLiveSystemName()))
         .withDescription("Fractal demo")
         .withComponent(getAks("aks-ambassador-1", configuration.getAzureResourceGroup()))
-        .withEnvironment(configuration.getEnvironment())
+        .withEnvironmentId(configuration.getEnvironment().getManagementEnvironment().getId())
         .build();
   }
 }

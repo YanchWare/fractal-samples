@@ -32,7 +32,7 @@ public class PrometheusAmbassadorSample {
         .withId(new LiveSystemIdValue(configuration.getResourceGroupId().toString(), configuration.getLiveSystemName()))
         .withDescription("Prometheus in EKS sample")
         .withComponent(getEksWithAmbassadorAndMonitoring("eks-prometheus-ambassador-1", configuration.getAwsRegion()))
-        .withEnvironment(configuration.getEnvironment())
+        .withEnvironmentId(configuration.getEnvironment().getManagementEnvironment().getId())
         .build();
   }
 }

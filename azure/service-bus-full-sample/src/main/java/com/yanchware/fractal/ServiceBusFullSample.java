@@ -32,7 +32,7 @@ public class ServiceBusFullSample {
         .withId(new LiveSystemIdValue(configuration.getResourceGroupId().toString(), configuration.getLiveSystemName()))
         .withDescription("Service Bus with full options sample")
         .withComponent(getServiceBus(configuration.getAzureResourceGroup()))
-        .withEnvironment(configuration.getEnvironment())
+        .withEnvironmentId(configuration.getEnvironment().getManagementEnvironment().getId())
         .build();
   }
 }

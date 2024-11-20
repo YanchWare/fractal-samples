@@ -45,7 +45,7 @@ automaton.instantiate(List.of(getLiveSystem(automaton, configuration)), instanti
             getDbmsAndDatabaseForCosmosTable("nosql-cosmos-table-1", noSqlResourceGroup),
             getDbmsAndDatabaseForNoSql("nosql-1", noSqlResourceGroup),
             getDbmsAndDatabaseForCassandra("nosql-casandra-1", noSqlResourceGroup)))
-        .withEnvironment(configuration.getEnvironment())
+        .withEnvironmentId(configuration.getEnvironment().getManagementEnvironment().getId())
         .build();
   }
 }

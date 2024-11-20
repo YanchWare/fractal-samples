@@ -40,7 +40,7 @@ automaton.instantiate(List.of(getLiveSystem(automaton, configuration)), instanti
         .withComponents(List.of(
             serviceBusComponent,
             getDotnetWebAppComponent("app-dotnet-fractal-cloud-demo", serviceBusComponent.getId(), resourceGroup)))
-        .withEnvironment(configuration.getEnvironment())
+        .withEnvironmentId(configuration.getEnvironment().getManagementEnvironment().getId())
         .build();
   }
 }

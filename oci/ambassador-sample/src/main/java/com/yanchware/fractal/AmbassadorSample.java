@@ -31,7 +31,7 @@ automaton.instantiate(List.of(getLiveSystem(automaton, configuration)), instanti
         .withId(new LiveSystemIdValue(configuration.getResourceGroupId().toString(), configuration.getLiveSystemName()))
         .withDescription("Fractal demo")
         .withComponent(getOke("oke-ambassador-1", configuration.getCompartment(), configuration.getOciRegion()))
-        .withEnvironment(configuration.getEnvironment())
+        .withEnvironmentId(configuration.getEnvironment().getManagementEnvironment().getId())
         .build();
   }
 }

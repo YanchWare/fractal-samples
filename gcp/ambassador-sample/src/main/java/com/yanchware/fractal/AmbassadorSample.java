@@ -25,7 +25,7 @@ public class AmbassadorSample {
         .withId(new LiveSystemIdValue(configuration.getResourceGroupId().toString(), configuration.getLiveSystemName()))
         .withDescription("GKE with Ambassador sample")
         .withComponent(getGke("gke-1", configuration))
-        .withEnvironment(configuration.getEnvironment())
+        .withEnvironmentId(configuration.getEnvironment().getManagementEnvironment().getId())
         .build();
   }
 }

@@ -4,6 +4,7 @@ import com.yanchware.fractal.sdk.Automaton;
 import com.yanchware.fractal.sdk.domain.environment.EnvironmentAggregate;
 import com.yanchware.fractal.sdk.domain.environment.EnvironmentIdValue;
 import com.yanchware.fractal.sdk.domain.environment.EnvironmentType;
+import com.yanchware.fractal.sdk.domain.environment.ManagementEnvironment;
 import com.yanchware.fractal.sdk.domain.exceptions.InstantiatorException;
 import com.yanchware.fractal.sdk.domain.livesystem.paas.providers.oci.Compartment;
 import com.yanchware.fractal.sdk.domain.livesystem.paas.providers.oci.OciRegion;
@@ -77,7 +78,7 @@ public class SharedConfig implements SharedConfiguration {
       environmentName = environmentShortName;
     }
     
-    return Automaton.getInstance().getEnvironmentBuilder()
+    return Automaton.getInstance().getEnvironmentBuilder().withManagementEnvironment(ManagementEnvironment.builder()
             .withId(new EnvironmentIdValue(
                     EnvironmentType.fromString(environmentType),
                     UUID.fromString(environmentOwnerId),
@@ -88,7 +89,8 @@ public class SharedConfig implements SharedConfiguration {
                 getOciRegion(),
                 getTenancyId(),
                 getCompartment().getName())
-        .build();
+        .build())
+    .build();
   }
 
   /**

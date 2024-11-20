@@ -32,7 +32,7 @@ automaton.instantiate(List.of(getLiveSystem(automaton, configuration)), instanti
         .withId(new LiveSystemIdValue(configuration.getResourceGroupId().toString(), configuration.getLiveSystemName()))
         .withDescription("Elastic Logging in OKE sample")
         .withComponent(getOkeWithElasticDatastore("oke-elastic-datastore-1", configuration.getCompartment(), configuration.getOciRegion()))
-        .withEnvironment(configuration.getEnvironment())
+        .withEnvironmentId(configuration.getEnvironment().getManagementEnvironment().getId())
         .build();
   }
 }

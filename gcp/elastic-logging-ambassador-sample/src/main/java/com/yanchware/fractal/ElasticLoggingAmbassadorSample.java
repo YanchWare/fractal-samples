@@ -25,7 +25,7 @@ public class ElasticLoggingAmbassadorSample {
         .withId(new LiveSystemIdValue(configuration.getResourceGroupId().toString(), configuration.getLiveSystemName()))
         .withDescription("Elastic Logging with Ambassador in GKE sample")
         .withComponent(getGke("gke-1", configuration))
-        .withEnvironment(configuration.getEnvironment())
+        .withEnvironmentId(configuration.getEnvironment().getManagementEnvironment().getId())
         .build();
   }
 }

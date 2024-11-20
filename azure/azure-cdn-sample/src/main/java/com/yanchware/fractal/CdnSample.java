@@ -39,7 +39,7 @@ automaton.instantiate(List.of(getLiveSystem(automaton, configuration)), instanti
         .withComponents(List.of(
             getMinimalComponent("cdn-minimal", resourceGroup),
             getFullComponent("cdn-front-door", resourceGroup)))
-        .withEnvironment(configuration.getEnvironment())
+        .withEnvironmentId(configuration.getEnvironment().getManagementEnvironment().getId())
         .build();
   }
 }

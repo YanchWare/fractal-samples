@@ -4,6 +4,7 @@ import com.yanchware.fractal.sdk.Automaton;
 import com.yanchware.fractal.sdk.domain.environment.EnvironmentAggregate;
 import com.yanchware.fractal.sdk.domain.environment.EnvironmentIdValue;
 import com.yanchware.fractal.sdk.domain.environment.EnvironmentType;
+import com.yanchware.fractal.sdk.domain.environment.ManagementEnvironment;
 import com.yanchware.fractal.sdk.domain.exceptions.InstantiatorException;
 import com.yanchware.fractal.sdk.domain.livesystem.paas.providers.aws.AwsRegion;
 
@@ -83,6 +84,7 @@ public class SharedConfig implements SharedConfiguration {
     }
     
     return Automaton.getInstance().getEnvironmentBuilder()
+            .withManagementEnvironment(ManagementEnvironment.builder()
             .withId(new EnvironmentIdValue(
                     EnvironmentType.fromString(environmentType),
                     UUID.fromString(environmentOwnerId),
@@ -93,7 +95,8 @@ public class SharedConfig implements SharedConfiguration {
                 getAwsRegion(),
                 getOrganizationId(),
                 getAccountId())
-        .build();
+        .build())
+    .build();
   }
 
   /**

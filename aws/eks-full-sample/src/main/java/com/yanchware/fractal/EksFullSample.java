@@ -33,7 +33,7 @@ public class EksFullSample {
         .withId(new LiveSystemIdValue(configuration.getResourceGroupId().toString(), configuration.getLiveSystemName()))
         .withDescription("EKS with full options sample")
         .withComponent(getEks("eks-full-1", configuration.getAwsRegion()))
-        .withEnvironment(configuration.getEnvironment())
+        .withEnvironmentId(configuration.getEnvironment().getManagementEnvironment().getId())
         .build();
   }
 }

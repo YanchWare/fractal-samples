@@ -35,7 +35,7 @@ public class AppServiceSample {
         .withId(new LiveSystemIdValue(configuration.getResourceGroupId().toString(), configuration.getLiveSystemName()))
         .withDescription("WebApp Java Sample")
         .withComponent(getJavaWebAppComponent("app-java-fractal-cloud-demo", configuration.getAzureResourceGroup()))
-        .withEnvironment(configuration.getEnvironment())
+        .withEnvironmentId(configuration.getEnvironment().getManagementEnvironment().getId())
         .build();
   }
 }
