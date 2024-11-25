@@ -42,3 +42,50 @@ jobs:
             ~/.gradle/caches
             ~/.gradle/wrapper
           key: fractal-sdk-dependencies
+          
+      - name: Publish Test Report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: test-results
+          path: '**/build/test-results/test/TEST-*.xml'
+
+      - name: Download Test Report
+        uses: actions/download-artifact@v4
+        if: always()
+        with:
+          name: test-results
+
+      - name: Summarize Test Results
+        if: always()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { context } = require('@actions/github');
+            const { readFileSync } = require('fs');
+            const { parseStringPromise } = require('xml2js');
+            
+            const files = fs.readdirSync('.');
+            let totalTests = 0;
+            let failedTests = 0;
+            let totalDuration = 0;
+            
+            for (const file of files) {
+              if (file.startsWith('TEST-') && file.endsWith('.xml')) {
+                const xml = readFileSync(file, 'utf-8');
+                const result = await parseStringPromise(xml);
+                totalTests += parseInt(result.testsuite.$.tests, 10);
+                failedTests += parseInt(result.testsuite.$.failures, 10);
+                totalDuration += parseFloat(result.testsuite.$.time);
+              }
+            }
+            
+            const success = failedTests === 0;
+            const summary = `Total tests: ${totalTests}\nFailed tests: ${failedTests}\nTotal duration: ${totalDuration.toFixed(2)}s`;
+            
+            await github.rest.pulls.createReview({
+              ...context.repo,
+              pull_number: context.payload.pull_request.number,
+              body: `**Test Results Summary:**\n\n${summary}\n\n${success ? '✅ All tests passed!' : '❌ Some tests failed.'}`,
+              event: 'COMMENT',
+            });
