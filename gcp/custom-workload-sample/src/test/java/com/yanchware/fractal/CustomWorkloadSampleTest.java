@@ -17,6 +17,6 @@ class CustomWorkloadSampleTest extends GcpBaseTest {
     var errors = liveSystem.validate();
 
     assertTrue(errors.isEmpty());
-    assertEquals(liveSystem.getId().name(), "CustomWorkloadSampleTest");
+    assertEquals("CustomWorkloadSampleTest", liveSystem.getId().name());
   }
 }

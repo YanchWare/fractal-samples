@@ -18,6 +18,6 @@ class AppServiceDotnetSampleTest extends AzureBaseTest {
     var errors = liveSystem.validate();
 
     assertTrue(errors.isEmpty());
-    assertEquals(liveSystem.getId().name(), "AppServiceDotnetSampleTest");
+    assertEquals("AppServiceDotnetSampleTest", liveSystem.getId().name());
   }
 }

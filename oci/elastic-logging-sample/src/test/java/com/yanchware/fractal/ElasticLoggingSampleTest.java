@@ -18,6 +18,6 @@ class ElasticLoggingSampleTest extends OciBaseTest {
     var errors = liveSystem.validate();
 
     assertTrue(errors.isEmpty());
-    assertEquals(liveSystem.getId().name(), "ElasticLoggingSampleTest");
+    assertEquals("ElasticLoggingSampleTest", liveSystem.getId().name());
   }
 }

@@ -17,6 +17,6 @@ class PostgreSqlSampleTest extends GcpBaseTest {
     var errors = liveSystem.validate();
 
     assertTrue(errors.isEmpty());
-    assertEquals(liveSystem.getId().name(), "PostgreSqlSampleTest");
+    assertEquals("PostgreSqlSampleTest", liveSystem.getId().name());
   }
 }

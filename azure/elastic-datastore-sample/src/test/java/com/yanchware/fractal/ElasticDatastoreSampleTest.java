@@ -18,6 +18,6 @@ class ElasticDatastoreSampleTest extends AzureBaseTest {
     var errors = liveSystem.validate();
 
     assertTrue(errors.isEmpty());
-    assertEquals(liveSystem.getId().name(), "ElasticDatastoreSampleTest");
+    assertEquals("ElasticDatastoreSampleTest", liveSystem.getId().name());
   }
 }

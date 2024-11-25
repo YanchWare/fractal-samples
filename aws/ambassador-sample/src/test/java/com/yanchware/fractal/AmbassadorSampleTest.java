@@ -18,6 +18,6 @@ class AmbassadorSampleTest extends AwsBaseTest {
     var errors = liveSystem.validate();
 
     assertTrue(errors.isEmpty());
-    assertEquals(liveSystem.getId().name(), "AmbassadorSampleTest");
+    assertEquals("AmbassadorSampleTest", liveSystem.getId().name());
   }
 }

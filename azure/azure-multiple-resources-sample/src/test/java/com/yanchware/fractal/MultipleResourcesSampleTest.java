@@ -18,6 +18,6 @@ class MultipleResourcesSampleTest extends AzureBaseTest {
     var errors = liveSystem.validate();
 
     assertTrue(errors.isEmpty());
-    assertEquals(liveSystem.getId().name(), "MultipleResourcesSampleTest");
+    assertEquals("MultipleResourcesSampleTest", liveSystem.getId().name());
   }
 }

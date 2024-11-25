@@ -18,6 +18,6 @@ public class CdnSampleTest extends AzureBaseTest {
     var errors = liveSystem.validate();
 
     assertTrue(errors.isEmpty());
-    assertEquals(liveSystem.getId().name(), "CdnSampleTest");
+    assertEquals("CdnSampleTest", liveSystem.getId().name());
   }
 }
