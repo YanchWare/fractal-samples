@@ -64,12 +64,16 @@ jobs:
             const { context } = require('@actions/github');
             const { readFileSync } = require('fs');
             const { parseStringPromise } = require('xml2js');
-            
+
+            // Get all files in the current directory
             const files = fs.readdirSync('.');
+            
+            // Initialize variables to store test results
             let totalTests = 0;
             let failedTests = 0;
             let totalDuration = 0;
             
+            // Iterate over the files and parse the XML test reports
             for (const file of files) {
               if (file.startsWith('TEST-') && file.endsWith('.xml')) {
                 const xml = readFileSync(file, 'utf-8');
@@ -80,9 +84,13 @@ jobs:
               }
             }
             
+            // Determine if all tests passed
             const success = failedTests === 0;
+            
+            // Create a summary of the test results
             const summary = `Total tests: ${totalTests}\nFailed tests: ${failedTests}\nTotal duration: ${totalDuration.toFixed(2)}s`;
             
+            // Create a pull request review with the test results summary
             await github.rest.pulls.createReview({
               ...context.repo,
               pull_number: context.payload.pull_request.number,
