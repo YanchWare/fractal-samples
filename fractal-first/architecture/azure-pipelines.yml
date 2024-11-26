@@ -27,7 +27,6 @@ stages:
           - publish: 'target/pocs.migration.architecture-jar-with-dependencies.jar'
             displayName: Publish Artifact
             artifact: Architecture
-
   - stage: deploy
     dependsOn: build
     displayName: Deploy

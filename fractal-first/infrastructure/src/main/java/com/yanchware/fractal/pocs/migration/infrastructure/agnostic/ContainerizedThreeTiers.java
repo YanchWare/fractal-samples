@@ -15,6 +15,7 @@ import com.yanchware.fractal.sdk.domain.livesystem.LiveSystemIdValue;
 import com.yanchware.fractal.sdk.domain.livesystem.caas.CaaSKubernetesWorkload;
 import com.yanchware.fractal.sdk.domain.livesystem.paas.KubernetesCluster;
 import com.yanchware.fractal.sdk.domain.livesystem.paas.providers.azure.AzureRegion;
+import com.yanchware.fractal.sdk.domain.livesystem.service.dtos.ProviderType;
 import lombok.Getter;
 
 import java.util.Collection;
@@ -26,10 +27,12 @@ public abstract class ContainerizedThreeTiers<T extends KubernetesCluster, B ext
 
     @Getter
     private final String liveSystemName;
+    private final ProviderType standardProvider;
 
-    public ContainerizedThreeTiers(KubernetesCluster.Builder<T, B> kubernetesClusterBuilder, String liveSystemName) {
+    public ContainerizedThreeTiers(KubernetesCluster.Builder<T, B> kubernetesClusterBuilder, String liveSystemName, ProviderType standardProvider) {
         this.kubernetesClusterBuilder = kubernetesClusterBuilder;
         this.liveSystemName = liveSystemName;
+        this.standardProvider = standardProvider;
         kubernetesClusterBuilder.withAPIGateway(TraefikWorkload.getTraefik());
     }
 
@@ -49,6 +52,7 @@ public abstract class ContainerizedThreeTiers<T extends KubernetesCluster, B ext
                 .withDescription(String.format("%s Live System", liveSystemName))
                 .withComponents(List.of(kubernetesClusterBuilder.build()))
                 .withEnvironmentId(environment.getManagementEnvironment().getId())
+                .withStandardProvider(standardProvider)
                 .build();
 
         automaton.instantiate(environment);

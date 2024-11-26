@@ -4,6 +4,7 @@ import com.yanchware.fractal.pocs.migration.infrastructure.agnostic.Containerize
 import com.yanchware.fractal.sdk.domain.livesystem.paas.providers.azure.AzureRegion;
 import com.yanchware.fractal.sdk.domain.livesystem.paas.providers.azure.AzureResourceGroup;
 import com.yanchware.fractal.sdk.domain.livesystem.paas.providers.azure.aks.AzureKubernetesService;
+import com.yanchware.fractal.sdk.domain.livesystem.service.dtos.ProviderType;
 
 public class AzureContainerizedThreeTiers extends ContainerizedThreeTiers<AzureKubernetesService, AzureKubernetesService.AzureKubernetesServiceBuilder> {
     public AzureContainerizedThreeTiers(String liveSystemName) {
@@ -11,6 +12,6 @@ public class AzureContainerizedThreeTiers extends ContainerizedThreeTiers<AzureK
                 AzureResourceGroup.builder()
                         .withName(liveSystemName)
                         .withRegion(AzureRegion.WEST_EUROPE)
-                        .build(), liveSystemName), liveSystemName);
+                        .build(), liveSystemName), liveSystemName, ProviderType.AZURE);
     }
 }
