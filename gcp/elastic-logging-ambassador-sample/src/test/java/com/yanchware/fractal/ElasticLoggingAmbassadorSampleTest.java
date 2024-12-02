@@ -17,6 +17,6 @@ class ElasticLoggingAmbassadorSampleTest extends GcpBaseTest {
     var errors = liveSystem.validate();
 
     assertTrue(errors.isEmpty());
-    assertEquals(liveSystem.getId().name(), "ElasticLoggingAmbassadorSampleTest");
+    assertEquals("ElasticLoggingAmbassadorSampleTest", liveSystem.getId().name());
   }
 }

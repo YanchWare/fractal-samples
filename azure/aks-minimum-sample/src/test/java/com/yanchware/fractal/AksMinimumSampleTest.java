@@ -18,6 +18,6 @@ class AksMinimumSampleTest extends AzureBaseTest {
     var errors = liveSystem.validate();
 
     assertTrue(errors.isEmpty());
-    assertEquals(liveSystem.getId().name(), "AksMinimumSampleTest");
+    assertEquals("AksMinimumSampleTest", liveSystem.getId().name());
   }
 }

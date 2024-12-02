@@ -18,6 +18,6 @@ class ServiceBusFullSampleTest extends AzureBaseTest {
     var errors = liveSystem.validate();
 
     assertTrue(errors.isEmpty());
-    assertEquals(liveSystem.getId().name(), "ServiceBusFullSampleTest");
+    assertEquals("ServiceBusFullSampleTest", liveSystem.getId().name());
   }
 }

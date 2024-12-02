@@ -18,6 +18,6 @@ class RelaySampleTest extends AzureBaseTest {
     var errors = liveSystem.validate();
 
     assertTrue(errors.isEmpty());
-    assertEquals(liveSystem.getId().name(), "RelaySampleTest");
+    assertEquals("RelaySampleTest", liveSystem.getId().name());
   }
 }

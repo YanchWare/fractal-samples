@@ -18,6 +18,6 @@ class CosmosSampleTest extends AzureBaseTest {
     var errors = liveSystem.validate();
 
     assertTrue(errors.isEmpty());
-    assertEquals(liveSystem.getId().name(), "CosmosSampleTest");
+    assertEquals("CosmosSampleTest", liveSystem.getId().name());
   }
 }

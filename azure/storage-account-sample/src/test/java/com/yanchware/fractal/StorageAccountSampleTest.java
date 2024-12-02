@@ -18,6 +18,6 @@ class StorageAccountSampleTest extends AzureBaseTest {
     var errors = liveSystem.validate();
 
     assertTrue(errors.isEmpty());
-    assertEquals(liveSystem.getId().name(), "StorageAccountSampleTest");
+    assertEquals("StorageAccountSampleTest", liveSystem.getId().name());
   }
 }

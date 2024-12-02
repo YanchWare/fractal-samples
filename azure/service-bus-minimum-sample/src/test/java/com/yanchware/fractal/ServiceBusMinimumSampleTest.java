@@ -18,6 +18,6 @@ class ServiceBusMinimumSampleTest extends AzureBaseTest {
     var errors = liveSystem.validate();
 
     assertTrue(errors.isEmpty());
-    assertEquals(liveSystem.getId().name(), "ServiceBusMinimumSampleTest");
+    assertEquals("ServiceBusMinimumSampleTest", liveSystem.getId().name());
   }
 }
