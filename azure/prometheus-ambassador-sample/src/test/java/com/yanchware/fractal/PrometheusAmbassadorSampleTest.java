@@ -18,6 +18,6 @@ class PrometheusAmbassadorSampleTest extends AzureBaseTest {
     var errors = liveSystem.validate();
 
     assertTrue(errors.isEmpty());
-    assertEquals(liveSystem.getId().name(), "PrometheusAmbassadorSampleTest");
+    assertEquals("PrometheusAmbassadorSampleTest", liveSystem.getId().name());
   }
 }

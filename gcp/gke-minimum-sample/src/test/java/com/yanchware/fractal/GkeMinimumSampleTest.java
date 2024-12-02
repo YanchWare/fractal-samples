@@ -17,6 +17,6 @@ class GkeMinimumSampleTest extends GcpBaseTest {
     var errors = liveSystem.validate();
 
     assertTrue(errors.isEmpty());
-    assertEquals(liveSystem.getId().name(), "GkeMinimumSampleTest");
+    assertEquals("GkeMinimumSampleTest", liveSystem.getId().name());
   }
 }

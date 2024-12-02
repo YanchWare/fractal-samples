@@ -18,6 +18,6 @@ class AksFullSampleTest extends AzureBaseTest {
     var errors = liveSystem.validate();
     
     assertTrue(errors.isEmpty());
-    assertEquals(liveSystem.getId().name(), "AksFullSampleTest");
+    assertEquals("AksFullSampleTest", liveSystem.getId().name());
   }
 }

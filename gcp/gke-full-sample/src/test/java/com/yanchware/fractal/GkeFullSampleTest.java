@@ -17,6 +17,6 @@ class GkeFullSampleTest extends GcpBaseTest {
     var errors = liveSystem.validate();
 
     assertTrue(errors.isEmpty());
-    assertEquals(liveSystem.getId().name(), "GkeFullSampleTest");
+    assertEquals("GkeFullSampleTest", liveSystem.getId().name());
   }
 }
