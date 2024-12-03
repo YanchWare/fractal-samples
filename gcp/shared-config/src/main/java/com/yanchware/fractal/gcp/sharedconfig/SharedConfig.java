@@ -30,44 +30,29 @@ public class SharedConfig implements SharedConfiguration {
   public static SharedConfig getInstance(boolean readFromProperties) {
     return new SharedConfig(readFromProperties);
   }
-  
+
   @Override
-  public String getLiveSystemName() {
-    var liveSystemName = getVariableValue("LIVE_SYSTEM_NAME");
-    return isBlank(liveSystemName)
-        ? "fractal-cloud-samples"
-        : liveSystemName;
+  public String getFractalCloudResourceGroupId() {
+      return getVariableValue("FRACTAL_RESOURCE_GROUP_ID", true);
   }
 
   @Override
-  public UUID getResourceGroupId() {
-    var resourceGroupId = getVariableValue("RESOURCE_GROUP_ID", true);
-    return UUID.fromString(resourceGroupId);
+  public String getGcpOrganizationId() {
+    return getVariableValue("GCP_ORGANIZATION_ID", true);
   }
 
   @Override
-  public GcpRegion getRegion() {
-    var region = getVariableValue("GCP_REGION", true);
-    return GcpRegion.valueOf(region);
+  public String getGcpProjectId() {
+    return getVariableValue("GCP_PROJECT_ID", true);
   }
 
   @Override
-  public String getOrganizationId() {
-    return getVariableValue("ORGANIZATION_ID", true);
-  }
+  public EnvironmentAggregate getFractalCloudEnvironment(GcpRegion region) throws InstantiatorException {
+    var environmentType = getVariableValue("FRACTAL_ENVIRONMENT_TYPE", true);
+    var environmentOwnerId = getVariableValue("FRACTAL_ENVIRONMENT_OWNER_ID", true);
+    var environmentShortName = getVariableValue("FRACTAL_ENVIRONMENT_SHORT_NAME", true);
 
-  @Override
-  public String getProjectId() {
-    return getVariableValue("PROJECT_ID", true);
-  }
-
-  @Override
-  public EnvironmentAggregate getEnvironment() throws InstantiatorException {
-    var environmentType = getVariableValue("ENVIRONMENT_TYPE", true);
-    var environmentOwnerId = getVariableValue("ENVIRONMENT_OWNER_ID", true);
-    var environmentShortName = getVariableValue("ENVIRONMENT_SHORT_NAME", true);
-
-    var environmentName = getVariableValue("ENVIRONMENT_NAME");
+    var environmentName = getVariableValue("FRACTAL_ENVIRONMENT_NAME");
     if (isBlank(environmentShortName)) {
       environmentName = environmentShortName;
     }
@@ -79,11 +64,11 @@ public class SharedConfig implements SharedConfiguration {
                 UUID.fromString(environmentOwnerId),
                 environmentShortName))
         .withName(environmentName)
-        .withResourceGroup(getResourceGroupId())
+        .withResourceGroup(UUID.fromString(getFractalCloudResourceGroupId()))
         .withGcpCloudAgent(
-                getRegion(),
-                getOrganizationId(),
-                getProjectId())
+                region,
+                getGcpOrganizationId(),
+                getGcpProjectId())
         .build())
     .build();
   }

@@ -6,6 +6,9 @@ import com.yanchware.fractal.sdk.domain.livesystem.service.dtos.ProviderType;
 
 public class AwsContainerizedThreeTiers extends ContainerizedThreeTiers<AwsElasticKubernetesService, AwsElasticKubernetesService.AwsElasticKubernetesServiceBuilder> {
     public AwsContainerizedThreeTiers(String liveSystemName) {
-        super(EksComponent.getComponentBuilder(liveSystemName), liveSystemName, ProviderType.AWS);
+        super(EksComponent.getComponentBuilder(
+                String.format("%s-aws", liveSystemName)),
+                String.format("%s-aws", liveSystemName),
+                ProviderType.AWS);
     }
 }
