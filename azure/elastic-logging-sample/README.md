@@ -1,8 +1,8 @@
-# Custom Workload in EKS Sample
+# Elastic Logging Sample 
 
 ## Introduction
 
-The purpose of this project is to show the instantiation of Custom Workload in EKS.
+The purpose of this project is to show an example of instantiating a AKS cluster with ECK (Elastic, Kibana, APM, Fluentd) as a Logging solution.
 
 You can find more information on this in our [documentation](https://fractal.cloud/docs).
 
@@ -22,11 +22,11 @@ FRACTAL_RESOURCE_GROUP_ID="xxxx" \
     FRACTAL_ENVIRONMENT_OWNER_ID="xxxx" \
     FRACTAL_ENVIRONMENT_SHORT_NAME="xxxx" \
     FRACTAL_ENVIRONMENT_NAME="xxxx" \
-    AWS_ORGANIZATION_ID="xxxx" \
-    AWS_ACCOUNT_ID="xxxx" \
+    AZURE_TENANT_ID="xxxx" \
+    AZURE_SUBSCRIPTION_ID="xxxx" \
     CI_CD_SERVICE_ACCOUNT_NAME="xxxx" \
     CI_CD_SERVICE_ACCOUNT_SECRET="xxxx" \
-    java -jar build/libs/aws.custom.workload.sample-2.0.0.jar
+    java -jar build/libs/azure.elastic.logging.sample-2.0.0.jar
 ```
 
 #### [Go back to previous README](../../gcp/README.md)

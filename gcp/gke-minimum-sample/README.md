@@ -2,7 +2,7 @@
 
 ## Introduction
 
-The purpose of this project is to test the instantiation of a GKE cluster using the minimum requirements. For this example, we will mostly rely on the default settings used by [Fractal Cloud](https://fractal.cloud).
+The purpose of this project is to show the instantiation of a GKE cluster using the minimum requirements. For this example, we will mostly rely on the default settings used by [Fractal Cloud](https://fractal.cloud).
 
 You can find more information on this in our [documentation](https://fractal.cloud/docs).
 

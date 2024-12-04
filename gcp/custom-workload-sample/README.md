@@ -2,7 +2,7 @@
 
 ## Introduction
 
-The purpose of this project is to test the instantiation of Custom Workload in GKE.
+The purpose of this project is to show the instantiation of Custom Workload in GKE.
 
 You can find more information on this in our [documentation](https://fractal.cloud/docs).
 
