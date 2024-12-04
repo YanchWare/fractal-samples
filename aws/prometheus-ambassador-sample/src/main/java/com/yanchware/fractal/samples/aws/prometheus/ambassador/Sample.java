@@ -1,18 +1,24 @@
-package com.yanchware.fractal;
+package com.yanchware.fractal.samples.aws.prometheus.ambassador;
 
 import com.yanchware.fractal.sdk.Automaton;
 import com.yanchware.fractal.sdk.configuration.instantiation.InstantiationConfiguration;
 import com.yanchware.fractal.sdk.configuration.instantiation.InstantiationWaitConfiguration;
+import com.yanchware.fractal.sdk.domain.blueprint.FractalIdValue;
 import com.yanchware.fractal.sdk.domain.exceptions.InstantiatorException;
 import com.yanchware.fractal.sdk.domain.livesystem.LiveSystemAggregate;
 import com.yanchware.fractal.sdk.domain.livesystem.LiveSystemIdValue;
+import com.yanchware.fractal.sdk.domain.livesystem.paas.providers.aws.AwsRegion;
+import com.yanchware.fractal.sdk.domain.livesystem.service.dtos.ProviderType;
 import com.yanchware.fractal.sharedconfig.SharedConfig;
 
 import java.util.List;
 
-import static com.yanchware.fractal.aws.prometheus.logging.sample.components.EksComponent.getEksWithAmbassadorAndMonitoring;
+import static com.yanchware.fractal.samples.aws.prometheus.ambassador.components.EksComponent.getEksWithAmbassadorAndMonitoring;
 
-public class PrometheusAmbassadorSample {
+public class Sample {
+  protected static final String LIVE_SYSTEM_NAME = "aws-prometheus-ambassador-sample";
+  protected static final AwsRegion REGION = AwsRegion.EU_CENTRAL_1;
+
   public static void main(String[] args) throws InstantiatorException {
     // CONFIGURATION:
     var configuration = SharedConfig.getInstance();
@@ -29,10 +35,12 @@ public class PrometheusAmbassadorSample {
 
   public static LiveSystemAggregate getLiveSystem(Automaton automaton, SharedConfig configuration) throws InstantiatorException {
     return automaton.getLiveSystemBuilder()
-        .withId(new LiveSystemIdValue(configuration.getFractalCloudResourceGroupId().toString(), configuration.getLiveSystemName()))
+        .withId(new LiveSystemIdValue(configuration.getFractalCloudResourceGroupId(), LIVE_SYSTEM_NAME))
         .withDescription("Prometheus in EKS sample")
-        .withComponent(getEksWithAmbassadorAndMonitoring("eks-prometheus-ambassador-1", configuration.getAwsRegion()))
-        .withEnvironmentId(configuration.getEnvironment().getManagementEnvironment().getId())
+        .withComponent(getEksWithAmbassadorAndMonitoring("eks-prometheus-ambassador-1", REGION))
+        .withFractalId(new FractalIdValue(configuration.getFractalCloudResourceGroupId(), LIVE_SYSTEM_NAME, "v1.0"))
+        .withStandardProvider(ProviderType.AWS)
+        .withEnvironmentId(configuration.getEnvironment(REGION).getManagementEnvironment().getId())
         .build();
   }
 }

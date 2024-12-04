@@ -1,4 +1,4 @@
-package com.yanchware.fractal.aws.elastic.logging.sample.components;
+package com.yanchware.fractal.samples.aws.elastic.logging.components;
 
 import com.yanchware.fractal.sdk.domain.livesystem.caas.CaaSElasticLogging;
 import com.yanchware.fractal.sdk.domain.livesystem.paas.providers.aws.AwsElasticKubernetesService;

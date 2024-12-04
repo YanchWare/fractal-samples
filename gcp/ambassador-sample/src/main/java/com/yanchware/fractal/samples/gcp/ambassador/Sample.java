@@ -32,7 +32,7 @@ public class Sample {
                 .build())
         .build();
 
-    automaton.instantiate(List.of(getLiveSystem(automaton, configuration)), instantiationConfig);
+    automaton.delete(List.of(getLiveSystem(automaton, configuration).getId()));
   }
 
   public static LiveSystemAggregate getLiveSystem(Automaton automaton, SharedConfig configuration) throws InstantiatorException {

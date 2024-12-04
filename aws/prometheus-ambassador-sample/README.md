@@ -1,10 +1,8 @@
-# Elastic Logging with Ambassador Sample 
+# Prometheus in GKE sample 
 
 ## Introduction
 
-The purpose of this project is to show an example of instantiating a EKS cluster with ECK (Elastic, Kibana, APM, Fluentd) as a Logging solution and Ambassador as API Gateway.
-
-Having both components present, Fractal Cloud will make Kibana available at the Ambassador host address mentioned.
+The purpose of this project is to test the instantiation of Prometheus alongside Ambassador in EKS.
 
 You can find more information on this in our [documentation](https://fractal.cloud/docs).
 
@@ -28,7 +26,7 @@ FRACTAL_RESOURCE_GROUP_ID="xxxx" \
     AWS_ACCOUNT_ID="xxxx" \
     CI_CD_SERVICE_ACCOUNT_NAME="xxxx" \
     CI_CD_SERVICE_ACCOUNT_SECRET="xxxx" \
-    java -jar build/libs/aws.elastic.logging.ambassador.sample-2.0.0.jar
+    java -jar build/libs/aws.prometheus.ambassador.sample-2.0.0.jar
 ```
 
 #### [Go back to previous README](../../gcp/README.md)

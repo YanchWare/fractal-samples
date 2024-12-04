@@ -1,4 +1,4 @@
-package com.yanchware.fractal.aws.prometheus.logging.sample.components;
+package com.yanchware.fractal.samples.aws.prometheus.ambassador.components;
 
 import com.yanchware.fractal.sdk.domain.livesystem.caas.CaaSAmbassador;
 import com.yanchware.fractal.sdk.domain.livesystem.caas.CaaSPrometheus;

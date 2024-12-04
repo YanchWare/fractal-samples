@@ -1,4 +1,4 @@
-package com.yanchware.fractal;
+package com.yanchware.fractal.samples.aws.elastic.logging;
 
 import com.yanchware.fractal.aws.sharedconfig.AwsBaseTest;
 import com.yanchware.fractal.sdk.Automaton;
@@ -9,16 +9,15 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-class PrometheusAmbassadorSampleTest extends AwsBaseTest {
+class SampleTest extends AwsBaseTest {
 
   @Test
   public void validateLiveSystem() throws InstantiatorException {
     var configuration = SharedConfig.getInstance(true);
-    var automaton = Automaton.getInstance();
-    var liveSystem = PrometheusAmbassadorSample.getLiveSystem(automaton, configuration);
+    var liveSystem = Sample.getLiveSystem(Automaton.getInstance(), configuration);
     var errors = liveSystem.validate();
 
     assertTrue(errors.isEmpty());
-    assertEquals("PrometheusAmbassadorSampleTest", liveSystem.getId().name());
+    assertEquals(Sample.LIVE_SYSTEM_NAME, liveSystem.getId().name());
   }
 }
