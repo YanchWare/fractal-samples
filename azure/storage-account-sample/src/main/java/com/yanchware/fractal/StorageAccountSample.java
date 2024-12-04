@@ -3,9 +3,13 @@ package com.yanchware.fractal;
 import com.yanchware.fractal.sdk.Automaton;
 import com.yanchware.fractal.sdk.configuration.instantiation.InstantiationConfiguration;
 import com.yanchware.fractal.sdk.configuration.instantiation.InstantiationWaitConfiguration;
+import com.yanchware.fractal.sdk.domain.blueprint.FractalIdValue;
 import com.yanchware.fractal.sdk.domain.exceptions.InstantiatorException;
 import com.yanchware.fractal.sdk.domain.livesystem.LiveSystemAggregate;
 import com.yanchware.fractal.sdk.domain.livesystem.LiveSystemIdValue;
+import com.yanchware.fractal.sdk.domain.livesystem.paas.providers.azure.AzureRegion;
+import com.yanchware.fractal.sdk.domain.livesystem.paas.providers.azure.AzureResourceGroup;
+import com.yanchware.fractal.sdk.domain.livesystem.service.dtos.ProviderType;
 import com.yanchware.fractal.sharedconfig.SharedConfig;
 
 import java.util.List;
@@ -13,6 +17,14 @@ import java.util.List;
 import static com.yanchware.fractal.azure.sample.components.StorageAccountComponent.*;
 
 public class StorageAccountSample {
+  protected static final String LIVE_SYSTEM_NAME = "azure-storage-account-sample";
+  protected static final AzureRegion REGION = AzureRegion.WEST_EUROPE;
+  protected static final AzureResourceGroup RESOURCE_GROUP = AzureResourceGroup.builder()
+          .withName("rg-samples")
+          .withRegion(REGION)
+          .withTag("Purpose", "Samples")
+          .build();
+
   public static void main(String[] args) throws InstantiatorException {
 
     // CONFIGURATION:
@@ -29,20 +41,19 @@ public class StorageAccountSample {
   }
 
   public static LiveSystemAggregate getLiveSystem(Automaton automaton, SharedConfig configuration) throws InstantiatorException {
-
-    var resourceGroup = configuration.getAzureResourceGroup();
-    
     // LIVE-SYSTEM DEFINITION:
     return automaton.getLiveSystemBuilder()
-        .withId(new LiveSystemIdValue(configuration.getResourceGroupId().toString(), configuration.getLiveSystemName()))
+        .withId(new LiveSystemIdValue(configuration.getFractalResourceGroupId().toString(), LIVE_SYSTEM_NAME))
         .withDescription("Storage account sample")
         .withComponents(List.of(
-            getLegacyStorageAccountComponent("stlegacyyw001", resourceGroup),
-            getStorageAccountComponent("stv2yw001", resourceGroup),
-            getFileStorageAccountComponent("stfileyw001", resourceGroup),
-            getBlobStorageAccountComponent("stblobyw001", resourceGroup),
-            getBlockBlobStorageAccountComponent("stblockblobyw001", resourceGroup)))
-        .withEnvironmentId(configuration.getEnvironment().getManagementEnvironment().getId())
+            getLegacyStorageAccountComponent("stlegacyyw001", RESOURCE_GROUP),
+            getStorageAccountComponent("stv2yw001", RESOURCE_GROUP),
+            getFileStorageAccountComponent("stfileyw001", RESOURCE_GROUP),
+            getBlobStorageAccountComponent("stblobyw001", RESOURCE_GROUP),
+            getBlockBlobStorageAccountComponent("stblockblobyw001", RESOURCE_GROUP)))
+        .withFractalId(new FractalIdValue(configuration.getFractalResourceGroupId().toString(), LIVE_SYSTEM_NAME, "v1.0"))
+        .withStandardProvider(ProviderType.AZURE)
+        .withEnvironmentId(configuration.getFractalEnvironment(REGION).getManagementEnvironment().getId())
         .build();
   }
 }

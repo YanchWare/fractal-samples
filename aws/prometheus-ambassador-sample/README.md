@@ -1,4 +1,4 @@
-# Prometheus in GKE sample 
+# Prometheus in EKS sample 
 
 ## Introduction
 

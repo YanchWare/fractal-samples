@@ -26,7 +26,7 @@ FRACTAL_RESOURCE_GROUP_ID="xxxx" \
     GCP_PROJECT_ID="xxxx" \
     CI_CD_SERVICE_ACCOUNT_NAME="xxxx" \
     CI_CD_SERVICE_ACCOUNT_SECRET="xxxx" \
-    java -jar build/libs/gcp.prometheus.sample-2.0.0.jar
+    java -jar build/libs/gcp.prometheus.ambassador.sample-2.0.0.jar
 ```
 
 #### [Go back to previous README](../../gcp/README.md)

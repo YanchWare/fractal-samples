@@ -1,4 +1,4 @@
-# Custom Workload in GKE Sample
+# Custom Workload in EKS Sample
 
 ## Introduction
 

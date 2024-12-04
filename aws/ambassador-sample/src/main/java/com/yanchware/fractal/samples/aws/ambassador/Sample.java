@@ -30,8 +30,9 @@ public class Sample {
     
     // INSTANTIATION:
     var automaton = Automaton.getInstance();
-automaton.instantiate(List.of(getLiveSystem(automaton, configuration)), instantiationConfig);
+    automaton.instantiate(List.of(getLiveSystem(automaton, configuration)), instantiationConfig);
   }
+
   public static LiveSystemAggregate getLiveSystem(Automaton automaton, SharedConfig configuration) throws InstantiatorException {
     return automaton.getLiveSystemBuilder()
         .withId(new LiveSystemIdValue(configuration.getFractalCloudResourceGroupId(), LIVE_SYSTEM_NAME))
