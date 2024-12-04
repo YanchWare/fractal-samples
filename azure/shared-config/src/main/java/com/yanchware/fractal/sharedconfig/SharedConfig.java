@@ -7,7 +7,6 @@ import com.yanchware.fractal.sdk.domain.environment.EnvironmentType;
 import com.yanchware.fractal.sdk.domain.environment.ManagementEnvironment;
 import com.yanchware.fractal.sdk.domain.exceptions.InstantiatorException;
 import com.yanchware.fractal.sdk.domain.livesystem.paas.providers.azure.AzureRegion;
-import com.yanchware.fractal.sdk.domain.livesystem.paas.providers.azure.AzureResourceGroup;
 
 import java.util.UUID;
 
@@ -46,19 +45,19 @@ public class SharedConfig implements SharedConfiguration {
 
   @Override
   public UUID getFractalResourceGroupId() {
-    var resourceGroupId = getVariableValue("RESOURCE_GROUP_ID", true);
+    var resourceGroupId = getVariableValue("FRACTAL_RESOURCE_GROUP_ID", true);
     return UUID.fromString(resourceGroupId);
   }
 
   @Override
   public EnvironmentAggregate getFractalEnvironment(AzureRegion region) throws InstantiatorException {
-    var environmentType = getVariableValue("ENVIRONMENT_TYPE", true);
+    var environmentType = getVariableValue("FRACTAL_ENVIRONMENT_TYPE", true);
 
-    var environmentOwnerId = getVariableValue("ENVIRONMENT_OWNER_ID", true);
+    var environmentOwnerId = getVariableValue("FRACTAL_ENVIRONMENT_OWNER_ID", true);
 
-    var environmentShortName = getVariableValue("ENVIRONMENT_SHORT_NAME", true);
+    var environmentShortName = getVariableValue("FRACTAL_ENVIRONMENT_SHORT_NAME", true);
 
-    var environmentName = getVariableValue("ENVIRONMENT_NAME");
+    var environmentName = getVariableValue("FRACTAL_ENVIRONMENT_NAME");
     if (isBlank(environmentShortName)) {
       environmentName = environmentShortName;
     }
@@ -78,7 +77,7 @@ public class SharedConfig implements SharedConfiguration {
         .build())
     .build();
   }
-  
+
   /**
    * Retrieves the value of the specified environment or system property.
    *
