@@ -29,7 +29,7 @@ public class PrometheusAmbassadorSample {
 
   public static LiveSystemAggregate getLiveSystem(Automaton automaton, SharedConfig configuration) throws InstantiatorException {
     return automaton.getLiveSystemBuilder()
-        .withId(new LiveSystemIdValue(configuration.getResourceGroupId().toString(), configuration.getLiveSystemName()))
+        .withId(new LiveSystemIdValue(configuration.getFractalCloudResourceGroupId().toString(), configuration.getLiveSystemName()))
         .withDescription("Prometheus in EKS sample")
         .withComponent(getEksWithAmbassadorAndMonitoring("eks-prometheus-ambassador-1", configuration.getAwsRegion()))
         .withEnvironmentId(configuration.getEnvironment().getManagementEnvironment().getId())
