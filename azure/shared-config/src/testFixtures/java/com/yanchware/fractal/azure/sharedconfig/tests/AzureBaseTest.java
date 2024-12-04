@@ -1,4 +1,4 @@
-package com.yanchware.fractal.azure.sharedconfig.tests;
+package com.yanchware.fractal.samples.azure.sharedconfig.tests;
 
 import org.junit.jupiter.api.BeforeEach;
 

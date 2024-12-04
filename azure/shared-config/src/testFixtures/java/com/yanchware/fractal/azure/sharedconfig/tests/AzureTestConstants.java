@@ -1,4 +1,4 @@
-package com.yanchware.fractal.azure.sharedconfig.tests;
+package com.yanchware.fractal.samples.azure.sharedconfig.tests;
 
 public class AzureTestConstants {
   public static final EnvVarRecord RESOURCE_GROUP_ID_ENV =
