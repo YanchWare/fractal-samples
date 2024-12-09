@@ -4,6 +4,7 @@ import com.yanchware.fractal.sdk.Automaton;
 import com.yanchware.fractal.sdk.domain.environment.EnvironmentAggregate;
 import com.yanchware.fractal.sdk.domain.environment.EnvironmentIdValue;
 import com.yanchware.fractal.sdk.domain.environment.EnvironmentType;
+import com.yanchware.fractal.sdk.domain.environment.ManagementEnvironment;
 import com.yanchware.fractal.sdk.domain.exceptions.InstantiatorException;
 import com.yanchware.fractal.sdk.domain.livesystem.paas.providers.aws.AwsRegion;
 
@@ -31,69 +32,56 @@ public class SharedConfig implements SharedConfiguration {
   }
 
   @Override
-  public UUID getResourceGroupId() {
-    var resourceGroupId = getVariableValue("RESOURCE_GROUP_ID", true);
-    return UUID.fromString(resourceGroupId);
-  }
-
-  @Override
-  public String getLiveSystemName() {
-    var liveSystemName = getVariableValue("LIVE_SYSTEM_NAME");
-    return isBlank(liveSystemName)
-        ? "fractal-cloud-samples"
-        : liveSystemName;
-  }
-
-  @Override
-  public AwsRegion getAwsRegion() {
-    var region = getVariableValue("AWS_REGION", true);
-    return AwsRegion.fromString(region);
+  public String getFractalCloudResourceGroupId() {
+      return getVariableValue("FRACTAL_RESOURCE_GROUP_ID", true);
   }
 
   @Override
   public String getOrganizationId() {
-      return getVariableValue("ORGANIZATION_ID", true);
+      return getVariableValue("AWS_ORGANIZATION_ID", true);
   }
 
   @Override
   public String getAccountId() {
-    return getVariableValue("ACCOUNT_ID", true);
+    return getVariableValue("AWS_ACCOUNT_ID", true);
   }
 
   @Override
-  public EnvironmentAggregate getEnvironment() throws InstantiatorException {
-    var environmentType = getVariableValue("ENVIRONMENT_TYPE", true);
+  public EnvironmentAggregate getEnvironment(AwsRegion region) throws InstantiatorException {
+    var environmentType = getVariableValue("FRACTAL_ENVIRONMENT_TYPE", true);
     if (isBlank(environmentType)) {
       throw new IllegalArgumentException("The environment variable ENVIRONMENT_TYPE is required and it has not been defined");
     }
 
-    var environmentOwnerId = getVariableValue("ENVIRONMENT_OWNER_ID");
+    var environmentOwnerId = getVariableValue("FRACTAL_ENVIRONMENT_OWNER_ID");
     if (isBlank(environmentOwnerId)) {
       throw new IllegalArgumentException("The environment variable ENVIRONMENT_OWNER_ID is required and it has not been defined");
     }
 
-    var environmentShortName = getVariableValue("ENVIRONMENT_SHORT_NAME");
+    var environmentShortName = getVariableValue("FRACTAL_ENVIRONMENT_SHORT_NAME");
     if (isBlank(environmentShortName)) {
       throw new IllegalArgumentException("The environment variable ENVIRONMENT_SHORT_NAME is required and it has not been defined");
     }
 
-    var environmentName = getVariableValue("ENVIRONMENT_NAME");
+    var environmentName = getVariableValue("FRACTAL_ENVIRONMENT_NAME");
     if (isBlank(environmentShortName)) {
       environmentName = environmentShortName;
     }
     
     return Automaton.getInstance().getEnvironmentBuilder()
+            .withManagementEnvironment(ManagementEnvironment.builder()
             .withId(new EnvironmentIdValue(
                     EnvironmentType.fromString(environmentType),
                     UUID.fromString(environmentOwnerId),
                     environmentShortName))
         .withName(environmentName)
-        .withResourceGroup(getResourceGroupId())
+        .withResourceGroup(UUID.fromString(getFractalCloudResourceGroupId()))
         .withAwsCloudAgent(
-                getAwsRegion(),
+                region,
                 getOrganizationId(),
                 getAccountId())
-        .build();
+        .build())
+    .build();
   }
 
   /**

@@ -4,6 +4,7 @@ import com.yanchware.fractal.sdk.Automaton;
 import com.yanchware.fractal.sdk.domain.environment.EnvironmentAggregate;
 import com.yanchware.fractal.sdk.domain.environment.EnvironmentIdValue;
 import com.yanchware.fractal.sdk.domain.environment.EnvironmentType;
+import com.yanchware.fractal.sdk.domain.environment.ManagementEnvironment;
 import com.yanchware.fractal.sdk.domain.exceptions.InstantiatorException;
 import com.yanchware.fractal.sdk.domain.livesystem.paas.providers.oci.Compartment;
 import com.yanchware.fractal.sdk.domain.livesystem.paas.providers.oci.OciRegion;
@@ -32,32 +33,18 @@ public class SharedConfig implements SharedConfiguration {
   }
 
   @Override
-  public UUID getResourceGroupId() {
-    var resourceGroupId = getVariableValue("RESOURCE_GROUP_ID", true);
+  public UUID getFractalResourceGroupId() {
+    var resourceGroupId = getVariableValue("FRACTAL_RESOURCE_GROUP_ID", true);
     return UUID.fromString(resourceGroupId);
   }
 
   @Override
-  public String getLiveSystemName() {
-    var liveSystemName = getVariableValue("LIVE_SYSTEM_NAME");
-    return isBlank(liveSystemName)
-        ? "fractal-cloud-samples"
-        : liveSystemName;
+  public String getOciTenancyId() {
+    return getVariableValue("OCI_TENANCY_ID", true);
   }
 
   @Override
-  public OciRegion getOciRegion() {
-    var region = getVariableValue("OCI_REGION", true);
-    return OciRegion.fromString(region);
-  }
-
-  @Override
-  public String getTenancyId() {
-    return getVariableValue("TENANCY_ID", true);
-  }
-
-  @Override
-  public Compartment getCompartment() {
+  public Compartment getOciCompartment() {
     var resourceGroupName = getVariableValue("OCI_COMPARTMENT_NAME", false);
 
     return Compartment.builder()
@@ -67,28 +54,29 @@ public class SharedConfig implements SharedConfiguration {
   }
 
   @Override
-  public EnvironmentAggregate getEnvironment() throws InstantiatorException {
-    var environmentType = getVariableValue("ENVIRONMENT_TYPE", true);
-    var environmentOwnerId = getVariableValue("ENVIRONMENT_OWNER_ID", true);
-    var environmentShortName = getVariableValue("ENVIRONMENT_SHORT_NAME", true);
+  public EnvironmentAggregate getFractalEnvironment(OciRegion region) throws InstantiatorException {
+    var environmentType = getVariableValue("FRACTAL_ENVIRONMENT_TYPE", true);
+    var environmentOwnerId = getVariableValue("FRACTAL_ENVIRONMENT_OWNER_ID", true);
+    var environmentShortName = getVariableValue("FRACTAL_ENVIRONMENT_SHORT_NAME", true);
 
-    var environmentName = getVariableValue("ENVIRONMENT_NAME");
+    var environmentName = getVariableValue("FRACTAL_ENVIRONMENT_NAME");
     if (isBlank(environmentShortName)) {
       environmentName = environmentShortName;
     }
     
-    return Automaton.getInstance().getEnvironmentBuilder()
+    return Automaton.getInstance().getEnvironmentBuilder().withManagementEnvironment(ManagementEnvironment.builder()
             .withId(new EnvironmentIdValue(
                     EnvironmentType.fromString(environmentType),
                     UUID.fromString(environmentOwnerId),
                     environmentShortName))
         .withName(environmentName)
-        .withResourceGroup(getResourceGroupId())
+        .withResourceGroup(getFractalResourceGroupId())
         .withOciCloudAgent(
-                getOciRegion(),
-                getTenancyId(),
-                getCompartment().getName())
-        .build();
+                region,
+                getOciTenancyId(),
+                getOciCompartment().getName())
+        .build())
+    .build();
   }
 
   /**

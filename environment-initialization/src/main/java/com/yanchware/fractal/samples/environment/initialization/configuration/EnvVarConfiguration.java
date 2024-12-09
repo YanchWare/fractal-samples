@@ -25,13 +25,23 @@ public class EnvVarConfiguration implements Configuration {
   }
 
   @Override
-  public UUID getTenantId() {
-    return UUID.fromString(getVariableValue(Constants.FRACTAL_TENANT_ID_ENV_VAR_KEY));
+  public UUID getAzureTenantId() {
+    return UUID.fromString(getVariableValue(Constants.AZURE_TENANT_ID_ENV_VAR_KEY));
   }
 
   @Override
-  public UUID getSubscriptionId() {
-    return UUID.fromString(getVariableValue(Constants.FRACTAL_SUBSCRIPTION_ID_ENV_VAR_KEY));
+  public UUID getAzureSubscriptionId() {
+    return UUID.fromString(getVariableValue(Constants.AZURE_SUBSCRIPTION_ID_ENV_VAR_KEY));
+  }
+
+  @Override
+  public String getAwsOrganizationId() {
+    return getVariableValue(Constants.AWS_ORGANIZATION_ID_ENV_VAR_KEY);
+  }
+
+  @Override
+  public String getAwsAccountId() {
+    return getVariableValue(Constants.AWS_ACCOUNT_ID_ENV_VAR_KEY);
   }
 
   @Override

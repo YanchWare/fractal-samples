@@ -4,9 +4,9 @@ import com.yanchware.fractal.sdk.Automaton;
 import com.yanchware.fractal.sdk.domain.environment.EnvironmentAggregate;
 import com.yanchware.fractal.sdk.domain.environment.EnvironmentIdValue;
 import com.yanchware.fractal.sdk.domain.environment.EnvironmentType;
+import com.yanchware.fractal.sdk.domain.environment.ManagementEnvironment;
 import com.yanchware.fractal.sdk.domain.exceptions.InstantiatorException;
 import com.yanchware.fractal.sdk.domain.livesystem.paas.providers.azure.AzureRegion;
-import com.yanchware.fractal.sdk.domain.livesystem.paas.providers.azure.AzureResourceGroup;
 
 import java.util.UUID;
 
@@ -30,77 +30,52 @@ public class SharedConfig implements SharedConfiguration {
   public static SharedConfig getInstance(boolean readFromProperties) {
     return new SharedConfig(readFromProperties);
   }
-  
-  @Override
-  public String getLiveSystemName() {
-    var liveSystemName = getVariableValue("LIVE_SYSTEM_NAME");
-    return isBlank(liveSystemName)
-        ? "fractal-cloud-samples"
-        : liveSystemName;
-  }
 
   @Override
-  public AzureRegion getAzureRegion() {
-    var azureRegion = getVariableValue("AZURE_REGION", true);
-    return AzureRegion.fromString(azureRegion);
-  }
-
-  @Override
-  public UUID getTenantId() {
+  public UUID getAzureTenantId() {
     var tenantId = getVariableValue("AZURE_TENANT_ID", true);
     return UUID.fromString(tenantId);
   }
 
   @Override
-  public UUID getSubscriptionId() {
+  public UUID getAzureSubscriptionId() {
     var subscriptionId = getVariableValue("AZURE_SUBSCRIPTION_ID", true);
     return UUID.fromString(subscriptionId);
   }
 
   @Override
-  public UUID getResourceGroupId() {
-    var resourceGroupId = getVariableValue("RESOURCE_GROUP_ID", true);
+  public UUID getFractalResourceGroupId() {
+    var resourceGroupId = getVariableValue("FRACTAL_RESOURCE_GROUP_ID", true);
     return UUID.fromString(resourceGroupId);
   }
 
   @Override
-  public EnvironmentAggregate getEnvironment() throws InstantiatorException {
-    var environmentType = getVariableValue("ENVIRONMENT_TYPE", true);
+  public EnvironmentAggregate getFractalEnvironment(AzureRegion region) throws InstantiatorException {
+    var environmentType = getVariableValue("FRACTAL_ENVIRONMENT_TYPE", true);
 
-    var environmentOwnerId = getVariableValue("ENVIRONMENT_OWNER_ID", true);
+    var environmentOwnerId = getVariableValue("FRACTAL_ENVIRONMENT_OWNER_ID", true);
 
-    var environmentShortName = getVariableValue("ENVIRONMENT_SHORT_NAME", true);
+    var environmentShortName = getVariableValue("FRACTAL_ENVIRONMENT_SHORT_NAME", true);
 
-    var environmentName = getVariableValue("ENVIRONMENT_NAME");
+    var environmentName = getVariableValue("FRACTAL_ENVIRONMENT_NAME");
     if (isBlank(environmentShortName)) {
       environmentName = environmentShortName;
     }
 
     var automaton = Automaton.getInstance();
-    return automaton.getEnvironmentBuilder()
+    return automaton.getEnvironmentBuilder().withManagementEnvironment(ManagementEnvironment.builder()
         .withId(new EnvironmentIdValue(
                     EnvironmentType.fromString(environmentType),
                     UUID.fromString(environmentOwnerId),
                     environmentShortName))
         .withName(environmentName)
         .withAzureCloudAgent(
-                getAzureRegion(),
-                getTenantId(),
-                getSubscriptionId())
-        .withResourceGroup(getResourceGroupId())
-        .build();
-  }
-
-  @Override
-  public AzureResourceGroup getAzureResourceGroup() {
-    var resourceGroupName = getVariableValue("AZURE_RESOURCE_GROUP_NAME", false);
-    var resourceGroupRegion = getVariableValue("AZURE_RESOURCE_GROUP_REGION", false);
-    
-    return AzureResourceGroup.builder()
-        .withName(isBlank(resourceGroupName) ? "rg-samples" : resourceGroupName)
-        .withRegion(isBlank(resourceGroupRegion) ? AzureRegion.WEST_EUROPE : AzureRegion.fromString(resourceGroupRegion))
-        .withTag("Purpose", "Samples")
-        .build();
+                region,
+                getAzureTenantId(),
+                getAzureSubscriptionId())
+        .withResourceGroup(getFractalResourceGroupId())
+        .build())
+    .build();
   }
 
   /**

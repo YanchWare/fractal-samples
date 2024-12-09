@@ -9,11 +9,14 @@ import com.yanchware.fractal.sdk.domain.blueprint.FractalIdValue;
 import com.yanchware.fractal.sdk.domain.environment.EnvironmentAggregate;
 import com.yanchware.fractal.sdk.domain.environment.EnvironmentIdValue;
 import com.yanchware.fractal.sdk.domain.environment.EnvironmentType;
+import com.yanchware.fractal.sdk.domain.environment.ManagementEnvironment;
 import com.yanchware.fractal.sdk.domain.exceptions.InstantiatorException;
 import com.yanchware.fractal.sdk.domain.livesystem.LiveSystemIdValue;
 import com.yanchware.fractal.sdk.domain.livesystem.caas.CaaSKubernetesWorkload;
 import com.yanchware.fractal.sdk.domain.livesystem.paas.KubernetesCluster;
 import com.yanchware.fractal.sdk.domain.livesystem.paas.providers.azure.AzureRegion;
+import com.yanchware.fractal.sdk.domain.livesystem.service.dtos.ProviderType;
+import lombok.Getter;
 
 import java.util.Collection;
 import java.util.List;
@@ -22,15 +25,14 @@ import java.util.UUID;
 public abstract class ContainerizedThreeTiers<T extends KubernetesCluster, B extends KubernetesCluster.Builder<T, B>> implements ThreeTierApplication {
     protected final KubernetesCluster.Builder<T, B> kubernetesClusterBuilder;
 
+    @Getter
     private final String liveSystemName;
+    private final ProviderType standardProvider;
 
-    public String getLiveSystemName() {
-        return liveSystemName;
-    }
-
-    public ContainerizedThreeTiers(KubernetesCluster.Builder<T, B> kubernetesClusterBuilder, String liveSystemName) {
+    public ContainerizedThreeTiers(KubernetesCluster.Builder<T, B> kubernetesClusterBuilder, String liveSystemName, ProviderType standardProvider) {
         this.kubernetesClusterBuilder = kubernetesClusterBuilder;
         this.liveSystemName = liveSystemName;
+        this.standardProvider = standardProvider;
         kubernetesClusterBuilder.withAPIGateway(TraefikWorkload.getTraefik());
     }
 
@@ -49,7 +51,8 @@ public abstract class ContainerizedThreeTiers<T extends KubernetesCluster, B ext
                 .withFractalId(new FractalIdValue(configuration.getFractalCloudResourceGroupId(), "containerized-three-tiers", "v1.0"))
                 .withDescription(String.format("%s Live System", liveSystemName))
                 .withComponents(List.of(kubernetesClusterBuilder.build()))
-                .withEnvironment(environment)
+                .withEnvironmentId(environment.getManagementEnvironment().getId())
+                .withStandardProvider(standardProvider)
                 .build();
 
         automaton.instantiate(environment);
@@ -66,16 +69,18 @@ public abstract class ContainerizedThreeTiers<T extends KubernetesCluster, B ext
 
     private static EnvironmentAggregate getEnvironment(Automaton automaton, InfrastructureConfiguration configuration) {
         return automaton.getEnvironmentBuilder()
-                .withId(new EnvironmentIdValue(
-                        EnvironmentType.PERSONAL,
-                        configuration.getEnvironmentOwnerId(),
-                        configuration.getEnvironmentShortName()))
-                .withName(configuration.getEnvironmentName())
-                .withAzureCloudAgent(
-                        AzureRegion.WEST_EUROPE,
-                        configuration.getTenantId(),
-                        configuration.getSubscriptionId())
-                .withResourceGroup(UUID.fromString(configuration.getFractalCloudResourceGroupId()))
-                .build();
+            .withManagementEnvironment(ManagementEnvironment.builder()
+            .withId(new EnvironmentIdValue(
+                    EnvironmentType.PERSONAL,
+                    configuration.getEnvironmentOwnerId(),
+                    configuration.getEnvironmentShortName()))
+            .withName(configuration.getEnvironmentName())
+            .withAzureCloudAgent(
+                    AzureRegion.WEST_EUROPE,
+                    configuration.getTenantId(),
+                    configuration.getSubscriptionId())
+            .withResourceGroup(UUID.fromString(configuration.getFractalCloudResourceGroupId()))
+            .build())
+        .build();
     }
 }

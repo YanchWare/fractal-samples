@@ -7,16 +7,6 @@ plugins {
 
 repositories {
     mavenLocal()
-
-    maven {
-        name = "YanchWare Maven Packages"
-        url = uri("https://maven.pkg.github.com/YanchWare/fractal-java-sdk")
-        credentials {
-            username = System.getenv("GITHUB_MAVEN_REGISTRY_USER")
-            password = System.getenv("GITHUB_MAVEN_REGISTRY_TOKEN")
-        }
-    }
-
     mavenCentral()
 }
 
@@ -28,7 +18,7 @@ var lombokVersion = "1.18.34"
 
 dependencies {
     implementation("org.apache.commons:commons-lang3:3.17.0")
-    implementation("com.yanchware:fractal.sdk:10.0.2")
+    implementation("com.yanchware:fractal.sdk:11.1.0")
     testImplementation("org.assertj:assertj-core:3.26.3")
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.11.3")
     testImplementation("org.junit.jupiter:junit-jupiter-engine:5.11.0")
@@ -65,14 +55,5 @@ tasks.named<Test>("test") {
     testlogger {
         theme = ThemeType.MOCHA
         showFullStackTraces = true
-    }
-}
-
-
-tasks.jar {
-    manifest {
-        attributes(
-            "Implementation-Version" to archiveVersion
-        )
     }
 }

@@ -3,8 +3,10 @@ package com.yanchware.fractal.samples.environment.initialization.configuration;
 import java.util.UUID;
 
 public interface Configuration {
-  UUID getTenantId();
-  UUID getSubscriptionId();
+  UUID getAzureTenantId();
+  UUID getAzureSubscriptionId();
+  String getAwsOrganizationId();
+  String getAwsAccountId();
   UUID getEnvironmentOwnerId();
   UUID getResourceGroupId();
 }
