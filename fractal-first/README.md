@@ -1,7 +1,7 @@
-# Table of Contents
-1. [Introduction](#introduction)
-2. [Projects](#projects)
-# Introduction
+# Fractal-First Sample
+
+* Focus on reusability and automation across your organization
+* Advised on establishing a cloud adoption and governance framework at the enterprise level
 
 This PoC demonstrate the simplicity of using Fractal Architecture through Fractal Cloud, resolving the following pains:
 
@@ -12,7 +12,7 @@ This PoC demonstrate the simplicity of using Fractal Architecture through Fracta
 
 ![Organization](./docs/organization.png)
 
-# Getting Started
+## Getting Started
 
 In the [Infrastructure](./infrastructure) project, Infrastructure
 specialists work with creating reusable components for the Application teams.
