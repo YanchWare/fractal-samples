@@ -1,0 +1,76 @@
+name: Instantiate infrastructure
+
+on:
+  workflow_dispatch:
+    inputs:
+      sampleToRun:
+        description: 'Sample to run'
+        required: true
+        default: 'ambassador-sample'
+        type: choice
+        options:
+          - ambassador-sample
+          - custom-workload-sample
+          - elastic-datastore-sample
+          - elastic-logging-ambassador-sample
+          - elastic-logging-sample
+          - gke-full-sample
+          - gke-minimum-sample
+          - postgresql-sample
+          - prometheus-ambassador-sample
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v3
+        with:
+          gradle-version: 8.10.2
+
+      - name: Restore dependencies cache
+        uses: actions/cache@v4
+        id: cache-restore
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: sample-dependencies
+
+      - name: Build with Gradle
+        working-directory: livesystem-first/gcp/${{ inputs.sampleToRun }}
+        run: gradle clean test
+
+      - name: Deploy
+        working-directory: livesystem-first/gcp/${{ inputs.sampleToRun }}
+        run: | 
+          SAMPLE="${{ inputs.sampleToRun }}"
+          JAR_NAME="gcp.${SAMPLE//-/.}-2.0.0.jar"
+          java -jar "build/libs/$JAR_NAME"
+        env:
+          FRACTAL_RESOURCE_GROUP_ID: ${{ secrets.FRACTAL_RESOURCE_GROUP_ID }}
+          FRACTAL_ENVIRONMENT_TYPE: ${{ secrets.FRACTAL_ENVIRONMENT_TYPE }}
+          FRACTAL_ENVIRONMENT_OWNER_ID: ${{ secrets.FRACTAL_ENVIRONMENT_OWNER_ID }}
+          FRACTAL_ENVIRONMENT_SHORT_NAME: ${{ secrets.FRACTAL_ENVIRONMENT_SHORT_NAME }}
+          FRACTAL_ENVIRONMENT_NAME: ${{ secrets.FRACTAL_ENVIRONMENT_NAME }}
+          GCP_ORGANIZATION_ID: ${{ secrets.GCP_ORGANIZATION_ID }}
+          GCP_PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
+          CI_CD_SERVICE_ACCOUNT_NAME: ${{ secrets.CI_CD_SERVICE_ACCOUNT_NAME }}
+          CI_CD_SERVICE_ACCOUNT_SECRET: ${{ secrets.CI_CD_SERVICE_ACCOUNT_SECRET }}
+
+      - name: Save dependencies cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: sample-dependencies

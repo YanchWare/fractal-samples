@@ -17,7 +17,7 @@ import static com.yanchware.fractal.samples.gcp.elastic.logging.components.GkeCo
 
 public class Sample {
   protected static final String LIVE_SYSTEM_NAME = "gcp-elastic-logging-sample";
-  protected static final GcpRegion REGION = GcpRegion.EUROPE_WEST1;
+    protected static final GcpRegion REGION = GcpRegion.EUROPE_WEST12;
 
   public static void main(String[] args) throws InstantiatorException {
     // CONFIGURATION:
