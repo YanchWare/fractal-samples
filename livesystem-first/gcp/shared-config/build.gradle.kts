@@ -5,6 +5,7 @@
 plugins {
     `java-test-fixtures`
     id("samples.java-conventions")
+    id("com.mikepenz.aboutlibraries.plugin") version "11.4.0-b01"
 }
 
 description = "gcp-shared-config"

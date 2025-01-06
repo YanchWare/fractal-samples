@@ -36,6 +36,7 @@ public class AksComponent {
   public static CaaSAmbassador getAmbassador() {
     return CaaSAmbassador.builder()
         .withId("ambassador")
+        .withDisplayName("ambassador")
         .withHost("api.yourdomain.com")
         .withHostOwnerEmail("email@yourdomain.com")
         .withAcmeProviderAuthority("https://acme-v02.api.letsencrypt.org/directory")
@@ -48,7 +49,7 @@ public class AksComponent {
     return CaaSPrometheus.builder()
         .withId("prometheus")
         .withDescription("Prometheus monitoring")
-        .withDisplayName("Prometheus")
+        .withDisplayName("prometheus")
         .withNamespace("monitoring")
         .withApiGatewayUrl("api.yourdomain.com")
         .build();

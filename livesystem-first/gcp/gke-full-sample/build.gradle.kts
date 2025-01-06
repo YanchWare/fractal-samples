@@ -1,5 +1,6 @@
 plugins {
     id("samples.java-conventions")
+    id("com.mikepenz.aboutlibraries.plugin") version "11.4.0-b01"
 }
 
 dependencies {
