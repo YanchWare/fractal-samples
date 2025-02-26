@@ -1,5 +1,7 @@
 package com.yanchware.fractal.pocs.migration.infrastructure.configuration;
 
+import com.yanchware.fractal.sdk.domain.environment.CiCdProfile;
+
 import java.util.UUID;
 
 import static org.apache.commons.lang3.StringUtils.isBlank;
@@ -37,6 +39,16 @@ public class EnvVarInfrastructureConfiguration implements InfrastructureConfigur
   @Override
   public UUID getSubscriptionId() {
     return UUID.fromString(getVariableValue(Constants.SUBSCRIPTION_ID_ENV_VAR_KEY));
+  }
+
+  @Override
+  public CiCdProfile getDefaultCiCdProfile() {
+    return new CiCdProfile(
+            getVariableValue(Constants.DEFAULT_CI_CD_PROFILE_SHORT_NAME_ENV_VAR_KEY),
+            getVariableValue(Constants.DEFAULT_CI_CD_PROFILE_DISPLAY_NAME_ENV_VAR_KEY),
+            getVariableValue(Constants.DEFAULT_CI_CD_PROFILE_DESCRIPTION_ENV_VAR_KEY),
+            getVariableValue(Constants.DEFAULT_CI_CD_PROFILE_SSH_PRIVATE_KEY_DATA_ENV_VAR_KEY),
+            getVariableValue(Constants.DEFAULT_CI_CD_PROFILE_SSH_PRIVATE_KEY_PASSPHRASE_ENV_VAR_KEY));
   }
 
 

@@ -31,8 +31,6 @@ public class WebAppComponent {
         .withRegion(resourceGroup.getRegion())
         .withRepoId("YanchWare/fractal-samples")
         .withBranchName("env/prod")
-        .withPrivateSSHKeyPassphraseSecretId("fractal-deployer-secret-id")
-        .withPrivateSSHKeySecretId("fractal-deployer-passphrase-secret-id")
         .withSSHRepositoryURI("git@github.com:YanchWare/fractal-samples.git")
         .withOperatingSystem(LINUX)
         .withRuntimeStack(AzureWebAppLinuxRuntimeStack.JAVA_11)

@@ -51,7 +51,7 @@ public class Sample {
         .withComponents(List.of(
             getDbmsAndDatabaseForMongoDb("nosql-mongo-1", noSqlResourceGroup),
             getDbmsAndDatabaseForGremlinDb("nosql-gremlin-1", noSqlResourceGroup),
-            getDbmsAndDatabaseForPostgreSql("nosql-postgresql-1", relationalResourceGroup),
+            getAzureCosmosPostgreSqlDbms("nosql-postgresql-1", relationalResourceGroup),
             getDbmsAndDatabaseForCosmosTable("nosql-cosmos-table-1", noSqlResourceGroup),
             getDbmsAndDatabaseForNoSql("nosql-1", noSqlResourceGroup),
             getDbmsAndDatabaseForCassandra("nosql-casandra-1", noSqlResourceGroup)))
