@@ -1,5 +1,7 @@
 package com.yanchware.fractal.pocs.migration.infrastructure.configuration;
 
+import com.yanchware.fractal.sdk.domain.environment.CiCdProfile;
+
 import java.util.UUID;
 
 public interface InfrastructureConfiguration {
@@ -9,4 +11,5 @@ public interface InfrastructureConfiguration {
   String getEnvironmentName();
   UUID getTenantId();
   UUID getSubscriptionId();
+  CiCdProfile getDefaultCiCdProfile();
 }

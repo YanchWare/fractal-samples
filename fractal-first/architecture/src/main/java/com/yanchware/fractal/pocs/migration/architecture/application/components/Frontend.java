@@ -17,8 +17,8 @@ public class Frontend {
                 .withSSHRepositoryURI("git@ssh.dev.azure.com:v3/YanchWare/Migration%20PoC/Frontend")
                 .withRepoId("Migration%20PoC/Frontend")
                 .withBranchName(DEFAULT_BRANCH_NAME)
-                .withPrivateSSHKeySecretId(DEPLOYER_SSH_KEY_SECRET_ID)
-                .withPrivateSSHKeyPassphraseSecretId(DEPLOYER_SSH_KEY_PASSPHRASE_SECRET_ID)
+                .withPrivateSSHKeyEnvironmentSecretShortName(DEPLOYER_SSH_KEY_SECRET_ID)
+                .withPrivateSSHKeyPassphraseEnvironmentSecretShortName(DEPLOYER_SSH_KEY_PASSPHRASE_SECRET_ID)
                 .withNamespace(DEFAULT_NAMESPACE)
                 .build();
     }

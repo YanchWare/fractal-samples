@@ -80,6 +80,7 @@ public abstract class ContainerizedThreeTiers<T extends KubernetesCluster, B ext
                     configuration.getTenantId(),
                     configuration.getSubscriptionId())
             .withResourceGroup(UUID.fromString(configuration.getFractalCloudResourceGroupId()))
+            .withDefaultCiCdProfile(configuration.getDefaultCiCdProfile())
             .build())
         .build();
     }

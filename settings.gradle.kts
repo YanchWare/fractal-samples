@@ -9,6 +9,8 @@ include(":gcp.prometheus.sample")
 include(":aws.eks.ambassador.sample")
 include(":azure.custom.workload.sample")
 include(":environment-initialization")
+include(":environment.initialization.DefaultCiCdProfileSample")
+include(":environment.initialization.management.EnvironmentInitializationSample")
 include(":azure.appservice.dotnet.sample")
 include(":gcp.custom.workload.sample")
 include(":aws.eks.full.sample")
@@ -103,3 +105,14 @@ project(":migration.architecture").projectDir = file("fractal-first/architecture
 project(":gcp.elastic.datastore.sample").projectDir = file("livesystem-first/gcp/elastic-datastore-sample")
 project(":gcp.gke.full.sample").projectDir = file("livesystem-first/gcp/gke-full-sample")
 project(":gcp.postgresql.sample").projectDir = file("livesystem-first/gcp/postgresql-sample")
+include("environment-initialization:management-environment")
+include("environment-initialization:default-cicd-profile")
+findProject(":environment-initialization:default-cicd-profile")?.name = "default-cicd-profile"
+include("environment-initialization:cicd-profiles")
+findProject(":environment-initialization:cicd-profiles")?.name = "cicd-profiles"
+include("environment-initialization:secrets")
+findProject(":environment-initialization:secrets")?.name = "secrets"
+include("environment-initialization:all-features")
+findProject(":environment-initialization:all-features")?.name = "all-features"
+include("environment-initialization:operational-environment")
+findProject(":environment-initialization:operational-environment")?.name = "operational-environment"

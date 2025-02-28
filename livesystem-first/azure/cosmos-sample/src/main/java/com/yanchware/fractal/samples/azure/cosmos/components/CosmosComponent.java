@@ -27,14 +27,10 @@ public class CosmosComponent {
         .build();
   }
 
-  public static AzureCosmosPostgreSqlDbms getDbmsAndDatabaseForPostgreSql(String id, AzureResourceGroup azureResourceGroup) {
+  public static AzureCosmosPostgreSqlDbms getAzureCosmosPostgreSqlDbms(String id, AzureResourceGroup azureResourceGroup) {
     return AzureCosmosPostgreSqlDbms.builder()
         .withId(id)
         .withAzureResourceGroup(azureResourceGroup)
-        .withCosmosEntity(
-            AzureCosmosPostgreSqlDatabase.builder()
-                .withId(String.format("%s-nice-db", id))
-                .build())
         .build();
   }
 
