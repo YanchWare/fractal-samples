@@ -28,6 +28,10 @@ public class DefaultCiCdProfileSample {
                                 configuration.getAzureRegion(),
                                 configuration.getAzureTenantId(),
                                 configuration.getAzureSubscriptionId())
+                        .withGcpCloudAgent(
+                                configuration.getGcpRegion(),
+                                configuration.getGcpOrganizationId(),
+                                configuration.getGcpProjectId())
                         .withDefaultCiCdProfile(configuration.getDefaultCiCdProfile())
                         .build())
                 .build();

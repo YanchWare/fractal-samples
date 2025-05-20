@@ -1,8 +1,8 @@
-package com.yanchware.fractal.samples.environment.initialization.cicd;
+package com.yanchware.fractal.samples.environment.initialization.secrets;
 
 import org.junit.jupiter.api.BeforeEach;
 
-import static com.yanchware.fractal.samples.environment.initialization.cicd.configuration.TestConstants.*;
+import static com.yanchware.fractal.samples.environment.initialization.secrets.configuration.TestConstants.*;
 
 public class BaseTest {
     @BeforeEach
@@ -26,5 +26,15 @@ public class BaseTest {
         System.setProperty(MANAGEMENT_ENVIRONMENT_NAME_ENV.key(), MANAGEMENT_ENVIRONMENT_NAME_ENV.value());
         System.setProperty(MANAGEMENT_ENVIRONMENT_SHORT_NAME_ENV_VAR.key(), MANAGEMENT_ENVIRONMENT_SHORT_NAME_ENV_VAR.value());
         System.setProperty(MANAGEMENT_ENVIRONMENT_TYPE_ENV_VAR.key(), MANAGEMENT_ENVIRONMENT_TYPE_ENV_VAR.value());
+        System.setProperty(SECOND_CI_CD_PROFILE_SHORT_NAME_ENV_VAR.key(), SECOND_CI_CD_PROFILE_SHORT_NAME_ENV_VAR.value());
+        System.setProperty(SECOND_CI_CD_PROFILE_DISPLAY_NAME_ENV_VAR.key(), SECOND_CI_CD_PROFILE_DISPLAY_NAME_ENV_VAR.value());
+        System.setProperty(SECOND_CI_CD_PROFILE_DESCRIPTION_ENV_VAR.key(), SECOND_CI_CD_PROFILE_DESCRIPTION_ENV_VAR.value());
+        System.setProperty(SECOND_CI_CD_PROFILE_SSH_PRIVATE_KEY_DATA_ENV_VAR.key(), SECOND_CI_CD_PROFILE_SSH_PRIVATE_KEY_DATA_ENV_VAR.value());
+        System.setProperty(SECOND_CI_CD_PROFILE_SSH_PRIVATE_KEY_PASSPHRASE_ENV_VAR.key(), SECOND_CI_CD_PROFILE_SSH_PRIVATE_KEY_PASSPHRASE_ENV_VAR.value());
+        System.setProperty(THIRD_CI_CD_PROFILE_SHORT_NAME_ENV_VAR.key(), THIRD_CI_CD_PROFILE_SHORT_NAME_ENV_VAR.value());
+        System.setProperty(THIRD_CI_CD_PROFILE_DISPLAY_NAME_ENV_VAR.key(), THIRD_CI_CD_PROFILE_DISPLAY_NAME_ENV_VAR.value());
+        System.setProperty(THIRD_CI_CD_PROFILE_DESCRIPTION_ENV_VAR.key(), THIRD_CI_CD_PROFILE_DESCRIPTION_ENV_VAR.value());
+        System.setProperty(THIRD_CI_CD_PROFILE_SSH_PRIVATE_KEY_DATA_ENV_VAR.key(), THIRD_CI_CD_PROFILE_SSH_PRIVATE_KEY_DATA_ENV_VAR.value());
+        System.setProperty(THIRD_CI_CD_PROFILE_SSH_PRIVATE_KEY_PASSPHRASE_ENV_VAR.key(), THIRD_CI_CD_PROFILE_SSH_PRIVATE_KEY_PASSPHRASE_ENV_VAR.value());
     }
 }

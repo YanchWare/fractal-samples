@@ -34,6 +34,15 @@ public class TestConstants {
   public static final EnvVarRecord FRACTAL_RESOURCE_GROUP_ID_ENV_VAR =
           new EnvVarRecord(FRACTAL_RESOURCE_GROUP_ID_ENV_VAR_KEY, UUID.randomUUID().toString());
 
+  public static final EnvVarRecord GCP_ORGANIZATION_ID_ENV_VAR =
+          new EnvVarRecord(GCP_ORGANIZATION_ID_ENV_VAR_KEY, "organization123");
+
+  public static final EnvVarRecord GCP_PROJECT_ID_ENV_VAR =
+          new EnvVarRecord(GCP_PROJECT_ID_ENV_VAR_KEY, "project123");
+
+  public static final EnvVarRecord GCP_REGION_ENV_VAR =
+          new EnvVarRecord(GCP_REGION_ENV_VAR_KEY, "europe-west-1");
+
   public static final EnvVarRecord MANAGEMENT_ENVIRONMENT_NAME_ENV =
           new EnvVarRecord(MANAGEMENT_ENVIRONMENT_NAME_ENV_VAR_KEY, "Test Environment");
 

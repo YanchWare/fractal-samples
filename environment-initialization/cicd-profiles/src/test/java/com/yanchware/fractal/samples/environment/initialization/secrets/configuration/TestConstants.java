@@ -1,11 +1,11 @@
-package com.yanchware.fractal.samples.environment.initialization.cicd.configuration;
+package com.yanchware.fractal.samples.environment.initialization.secrets.configuration;
 
-import com.yanchware.fractal.samples.environment.initialization.cicd.EnvVarRecord;
-import com.yanchware.fractal.samples.environment.initialization.cicd.Utils.TestUtils;
+import com.yanchware.fractal.samples.environment.initialization.secrets.EnvVarRecord;
+import com.yanchware.fractal.samples.environment.initialization.secrets.Utils.TestUtils;
 
 import java.util.UUID;
 
-import static com.yanchware.fractal.samples.environment.initialization.cicd.configuration.Constants.*;
+import static com.yanchware.fractal.samples.environment.initialization.secrets.configuration.Constants.*;
 
 
 public class TestConstants {
@@ -66,6 +66,36 @@ public class TestConstants {
 
   public static final EnvVarRecord MANAGEMENT_ENVIRONMENT_TYPE_ENV_VAR =
           new EnvVarRecord(MANAGEMENT_ENVIRONMENT_TYPE_ENV_VAR_KEY, "Personal");
+  
+  public static final EnvVarRecord SECOND_CI_CD_PROFILE_SHORT_NAME_ENV_VAR =
+          new EnvVarRecord(SECOND_CI_CD_PROFILE_SHORT_NAME_ENV_VAR_KEY, "second-profile");
+
+  public static final EnvVarRecord SECOND_CI_CD_PROFILE_DISPLAY_NAME_ENV_VAR =
+          new EnvVarRecord(SECOND_CI_CD_PROFILE_DISPLAY_NAME_ENV_VAR_KEY, "Second CI/CD Profile");
+
+  public static final EnvVarRecord SECOND_CI_CD_PROFILE_DESCRIPTION_ENV_VAR =
+          new EnvVarRecord(SECOND_CI_CD_PROFILE_DESCRIPTION_ENV_VAR_KEY, "This is the second CI/CD profile.");
+
+  public static final EnvVarRecord SECOND_CI_CD_PROFILE_SSH_PRIVATE_KEY_DATA_ENV_VAR =
+          new EnvVarRecord(SECOND_CI_CD_PROFILE_SSH_PRIVATE_KEY_DATA_ENV_VAR_KEY, "-----BEGIN OPENSSH PRIVATE KEY-----\nBBBBB3NzaC1yc2EAAAADAQABAAABAQ...\n-----END OPENSSH PRIVATE KEY-----");
+
+  public static final EnvVarRecord SECOND_CI_CD_PROFILE_SSH_PRIVATE_KEY_PASSPHRASE_ENV_VAR =
+          new EnvVarRecord(SECOND_CI_CD_PROFILE_SSH_PRIVATE_KEY_PASSPHRASE_ENV_VAR_KEY, "second_passphrase");
+
+  public static final EnvVarRecord THIRD_CI_CD_PROFILE_SHORT_NAME_ENV_VAR =
+          new EnvVarRecord(THIRD_CI_CD_PROFILE_SHORT_NAME_ENV_VAR_KEY, "third-profile");
+
+  public static final EnvVarRecord THIRD_CI_CD_PROFILE_DISPLAY_NAME_ENV_VAR =
+          new EnvVarRecord(THIRD_CI_CD_PROFILE_DISPLAY_NAME_ENV_VAR_KEY, "Third CI/CD Profile");
+
+  public static final EnvVarRecord THIRD_CI_CD_PROFILE_DESCRIPTION_ENV_VAR =
+          new EnvVarRecord(THIRD_CI_CD_PROFILE_DESCRIPTION_ENV_VAR_KEY, "This is the third CI/CD profile.");
+
+  public static final EnvVarRecord THIRD_CI_CD_PROFILE_SSH_PRIVATE_KEY_DATA_ENV_VAR =
+          new EnvVarRecord(THIRD_CI_CD_PROFILE_SSH_PRIVATE_KEY_DATA_ENV_VAR_KEY, "----BEGIN OPENSSH PRIVATE KEY-----\nCCCCB3NzaC1yc2EAAAADAQABAAABAQ...\n-----END OPENSSH PRIVATE KEY-----");
+
+  public static final EnvVarRecord THIRD_CI_CD_PROFILE_SSH_PRIVATE_KEY_PASSPHRASE_ENV_VAR =
+          new EnvVarRecord(THIRD_CI_CD_PROFILE_SSH_PRIVATE_KEY_PASSPHRASE_ENV_VAR_KEY, "third_passphrase");
 }
 
 

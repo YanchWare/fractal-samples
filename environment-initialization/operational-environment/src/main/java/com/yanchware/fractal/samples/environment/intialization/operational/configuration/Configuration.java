@@ -6,6 +6,7 @@ import com.yanchware.fractal.sdk.domain.environment.EnvironmentType;
 import com.yanchware.fractal.sdk.domain.environment.Secret;
 import com.yanchware.fractal.sdk.domain.livesystem.paas.providers.aws.AwsRegion;
 import com.yanchware.fractal.sdk.domain.livesystem.paas.providers.azure.AzureRegion;
+import com.yanchware.fractal.sdk.domain.livesystem.paas.providers.gcp.GcpRegion;
 
 import java.util.UUID;
 
@@ -17,6 +18,9 @@ public interface Configuration {
   UUID getAzureSubscriptionId();
   UUID getAzureTenantId();
   UUID getEnvironmentOwnerId();
+  String getGcpOrganizationId();
+  String getGcpProjectId();
+  GcpRegion getGcpRegion();
   EnvironmentIdValue getManagementEnvironmentId();
   String getManagementEnvironmentName();
   String getManagementEnvironmentShortName();

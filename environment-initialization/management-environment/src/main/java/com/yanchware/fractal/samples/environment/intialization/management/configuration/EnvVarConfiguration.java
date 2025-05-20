@@ -4,6 +4,7 @@ import com.yanchware.fractal.sdk.domain.environment.EnvironmentIdValue;
 import com.yanchware.fractal.sdk.domain.environment.EnvironmentType;
 import com.yanchware.fractal.sdk.domain.livesystem.paas.providers.aws.AwsRegion;
 import com.yanchware.fractal.sdk.domain.livesystem.paas.providers.azure.AzureRegion;
+import com.yanchware.fractal.sdk.domain.livesystem.paas.providers.gcp.GcpRegion;
 
 import java.util.UUID;
 
@@ -62,6 +63,21 @@ public class EnvVarConfiguration implements Configuration {
   @Override
   public UUID getEnvironmentOwnerId() {
     return UUID.fromString(getVariableValue(Constants.FRACTAL_ENVIRONMENT_OWNER_ID_ENV_VAR_KEY));
+  }
+
+  @Override
+  public String getGcpOrganizationId() {
+    return getVariableValue(Constants.GCP_ORGANIZATION_ID_ENV_VAR_KEY);
+  }
+
+  @Override
+  public String getGcpProjectId() {
+    return getVariableValue(Constants.GCP_PROJECT_ID_ENV_VAR_KEY);
+  }
+
+  @Override
+  public GcpRegion getGcpRegion() {
+    return GcpRegion.fromString(getVariableValue(Constants.GCP_REGION_ENV_VAR_KEY));
   }
 
   @Override

@@ -1,4 +1,4 @@
-package com.yanchware.fractal.samples.environment.initialization.cicd.configuration;
+package com.yanchware.fractal.samples.environment.initialization.secrets.configuration;
 
 import com.yanchware.fractal.sdk.domain.environment.CiCdProfile;
 import com.yanchware.fractal.sdk.domain.environment.EnvironmentIdValue;
@@ -10,12 +10,76 @@ import org.junit.jupiter.api.Test;
 
 import java.util.UUID;
 
-import static com.yanchware.fractal.samples.environment.initialization.cicd.configuration.Constants.*;
-import static com.yanchware.fractal.samples.environment.initialization.cicd.configuration.TestConstants.*;
+import static com.yanchware.fractal.samples.environment.initialization.secrets.configuration.Constants.*;
+import static com.yanchware.fractal.samples.environment.initialization.secrets.configuration.TestConstants.*;
+import static com.yanchware.fractal.samples.environment.initialization.secrets.configuration.TestConstants.DEFAULT_CI_CD_PROFILE_SSH_PRIVATE_KEY_PASSPHRASE_ENV_VAR;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class EnvVarConfigurationTest {
+
+    @Test
+    void should_getAdditionalCiCdProfiles_fromEnvVar() {
+        // Arrange
+        var expectedSecondCiCdProfile = new CiCdProfile(
+                SECOND_CI_CD_PROFILE_SHORT_NAME_ENV_VAR.value(),
+                SECOND_CI_CD_PROFILE_DISPLAY_NAME_ENV_VAR.value(),
+                SECOND_CI_CD_PROFILE_DESCRIPTION_ENV_VAR.value(),
+                SECOND_CI_CD_PROFILE_SSH_PRIVATE_KEY_DATA_ENV_VAR.value(),
+                SECOND_CI_CD_PROFILE_SSH_PRIVATE_KEY_PASSPHRASE_ENV_VAR.value());
+
+        var expectedThirdtCiCdProfile = new CiCdProfile(
+                THIRD_CI_CD_PROFILE_SHORT_NAME_ENV_VAR.value(),
+                THIRD_CI_CD_PROFILE_DISPLAY_NAME_ENV_VAR.value(),
+                THIRD_CI_CD_PROFILE_DESCRIPTION_ENV_VAR.value(),
+                THIRD_CI_CD_PROFILE_SSH_PRIVATE_KEY_DATA_ENV_VAR.value(),
+                THIRD_CI_CD_PROFILE_SSH_PRIVATE_KEY_PASSPHRASE_ENV_VAR.value());
+
+        System.setProperty(SECOND_CI_CD_PROFILE_SHORT_NAME_ENV_VAR.key(), SECOND_CI_CD_PROFILE_SHORT_NAME_ENV_VAR.value());
+        System.setProperty(SECOND_CI_CD_PROFILE_DISPLAY_NAME_ENV_VAR.key(), SECOND_CI_CD_PROFILE_DISPLAY_NAME_ENV_VAR.value());
+        System.setProperty(SECOND_CI_CD_PROFILE_DESCRIPTION_ENV_VAR.key(), SECOND_CI_CD_PROFILE_DESCRIPTION_ENV_VAR.value());
+        System.setProperty(SECOND_CI_CD_PROFILE_SSH_PRIVATE_KEY_DATA_ENV_VAR.key(), SECOND_CI_CD_PROFILE_SSH_PRIVATE_KEY_DATA_ENV_VAR.value());
+        System.setProperty(SECOND_CI_CD_PROFILE_SSH_PRIVATE_KEY_PASSPHRASE_ENV_VAR.key(), SECOND_CI_CD_PROFILE_SSH_PRIVATE_KEY_PASSPHRASE_ENV_VAR.value());
+        System.setProperty(THIRD_CI_CD_PROFILE_SHORT_NAME_ENV_VAR.key(), THIRD_CI_CD_PROFILE_SHORT_NAME_ENV_VAR.value());
+        System.setProperty(THIRD_CI_CD_PROFILE_DISPLAY_NAME_ENV_VAR.key(), THIRD_CI_CD_PROFILE_DISPLAY_NAME_ENV_VAR.value());
+        System.setProperty(THIRD_CI_CD_PROFILE_DESCRIPTION_ENV_VAR.key(), THIRD_CI_CD_PROFILE_DESCRIPTION_ENV_VAR.value());
+        System.setProperty(THIRD_CI_CD_PROFILE_SSH_PRIVATE_KEY_DATA_ENV_VAR.key(), THIRD_CI_CD_PROFILE_SSH_PRIVATE_KEY_DATA_ENV_VAR.value());
+        System.setProperty(THIRD_CI_CD_PROFILE_SSH_PRIVATE_KEY_PASSPHRASE_ENV_VAR.key(), THIRD_CI_CD_PROFILE_SSH_PRIVATE_KEY_PASSPHRASE_ENV_VAR.value());
+        var config = EnvVarConfiguration.getInstance(true);
+
+        // Act
+        var additionalCiCdProfiles = config.getAdditionalCiCdProfiles();
+
+        // Assert
+        assertThat(additionalCiCdProfiles).isNotNull();
+        assertThat(additionalCiCdProfiles).size().isEqualTo(2);
+        assertThat(additionalCiCdProfiles)
+                .containsExactly(
+                        expectedSecondCiCdProfile,
+                        expectedThirdtCiCdProfile
+                );
+    }
+
+    @Test
+    void should_throwException_when_additionalCiCdProfilesShortNameIsInvalid() {
+        // Arrange
+        System.setProperty(SECOND_CI_CD_PROFILE_SHORT_NAME_ENV_VAR.key(), "Invalid Short Name");
+        System.setProperty(SECOND_CI_CD_PROFILE_DISPLAY_NAME_ENV_VAR.key(), SECOND_CI_CD_PROFILE_DISPLAY_NAME_ENV_VAR.value());
+        System.setProperty(SECOND_CI_CD_PROFILE_DESCRIPTION_ENV_VAR.key(), SECOND_CI_CD_PROFILE_DESCRIPTION_ENV_VAR.value());
+        System.setProperty(SECOND_CI_CD_PROFILE_SSH_PRIVATE_KEY_DATA_ENV_VAR.key(), SECOND_CI_CD_PROFILE_SSH_PRIVATE_KEY_DATA_ENV_VAR.value());
+        System.setProperty(SECOND_CI_CD_PROFILE_SSH_PRIVATE_KEY_PASSPHRASE_ENV_VAR.key(), SECOND_CI_CD_PROFILE_SSH_PRIVATE_KEY_PASSPHRASE_ENV_VAR.value());
+        System.setProperty(THIRD_CI_CD_PROFILE_SHORT_NAME_ENV_VAR.key(), "Invalid Short Name");
+        System.setProperty(THIRD_CI_CD_PROFILE_DISPLAY_NAME_ENV_VAR.key(), THIRD_CI_CD_PROFILE_DISPLAY_NAME_ENV_VAR.value());
+        System.setProperty(THIRD_CI_CD_PROFILE_DESCRIPTION_ENV_VAR.key(), THIRD_CI_CD_PROFILE_DESCRIPTION_ENV_VAR.value());
+        System.setProperty(THIRD_CI_CD_PROFILE_SSH_PRIVATE_KEY_DATA_ENV_VAR.key(), THIRD_CI_CD_PROFILE_SSH_PRIVATE_KEY_DATA_ENV_VAR.value());
+        System.setProperty(THIRD_CI_CD_PROFILE_SSH_PRIVATE_KEY_PASSPHRASE_ENV_VAR.key(), THIRD_CI_CD_PROFILE_SSH_PRIVATE_KEY_PASSPHRASE_ENV_VAR.value());
+        var config = EnvVarConfiguration.getInstance(true);
+        
+        // Act & Assert
+        assertThatThrownBy(config::getAdditionalCiCdProfiles)
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("CI/CD Profile validation failed");
+    }
 
     @Test
     void should_getAwsAccountId_fromEnvVar() {

@@ -1,8 +1,9 @@
-package com.yanchware.fractal.samples.environment.initialization.cicd.configuration;
+package com.yanchware.fractal.samples.environment.initialization.all.features.configuration;
 
 import com.yanchware.fractal.sdk.domain.environment.CiCdProfile;
 import com.yanchware.fractal.sdk.domain.environment.EnvironmentIdValue;
 import com.yanchware.fractal.sdk.domain.environment.EnvironmentType;
+import com.yanchware.fractal.sdk.domain.environment.Secret;
 import com.yanchware.fractal.sdk.domain.livesystem.paas.providers.aws.AwsRegion;
 import com.yanchware.fractal.sdk.domain.livesystem.paas.providers.azure.AzureRegion;
 import com.yanchware.fractal.sdk.domain.livesystem.paas.providers.gcp.GcpRegion;
@@ -10,12 +11,75 @@ import org.junit.jupiter.api.Test;
 
 import java.util.UUID;
 
-import static com.yanchware.fractal.samples.environment.initialization.cicd.configuration.Constants.*;
-import static com.yanchware.fractal.samples.environment.initialization.cicd.configuration.TestConstants.*;
+import static com.yanchware.fractal.samples.environment.initialization.all.features.configuration.Constants.*;
+import static com.yanchware.fractal.samples.environment.initialization.all.features.configuration.TestConstants.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class EnvVarConfigurationTest {
+
+    @Test
+    void should_getAdditionalCiCdProfiles_fromEnvVar() {
+        // Arrange
+        var expectedSecondCiCdProfile = new CiCdProfile(
+                SECOND_CI_CD_PROFILE_SHORT_NAME_ENV_VAR.value(),
+                SECOND_CI_CD_PROFILE_DISPLAY_NAME_ENV_VAR.value(),
+                SECOND_CI_CD_PROFILE_DESCRIPTION_ENV_VAR.value(),
+                SECOND_CI_CD_PROFILE_SSH_PRIVATE_KEY_DATA_ENV_VAR.value(),
+                SECOND_CI_CD_PROFILE_SSH_PRIVATE_KEY_PASSPHRASE_ENV_VAR.value());
+
+        var expectedThirdtCiCdProfile = new CiCdProfile(
+                THIRD_CI_CD_PROFILE_SHORT_NAME_ENV_VAR.value(),
+                THIRD_CI_CD_PROFILE_DISPLAY_NAME_ENV_VAR.value(),
+                THIRD_CI_CD_PROFILE_DESCRIPTION_ENV_VAR.value(),
+                THIRD_CI_CD_PROFILE_SSH_PRIVATE_KEY_DATA_ENV_VAR.value(),
+                THIRD_CI_CD_PROFILE_SSH_PRIVATE_KEY_PASSPHRASE_ENV_VAR.value());
+
+        System.setProperty(SECOND_CI_CD_PROFILE_SHORT_NAME_ENV_VAR.key(), SECOND_CI_CD_PROFILE_SHORT_NAME_ENV_VAR.value());
+        System.setProperty(SECOND_CI_CD_PROFILE_DISPLAY_NAME_ENV_VAR.key(), SECOND_CI_CD_PROFILE_DISPLAY_NAME_ENV_VAR.value());
+        System.setProperty(SECOND_CI_CD_PROFILE_DESCRIPTION_ENV_VAR.key(), SECOND_CI_CD_PROFILE_DESCRIPTION_ENV_VAR.value());
+        System.setProperty(SECOND_CI_CD_PROFILE_SSH_PRIVATE_KEY_DATA_ENV_VAR.key(), SECOND_CI_CD_PROFILE_SSH_PRIVATE_KEY_DATA_ENV_VAR.value());
+        System.setProperty(SECOND_CI_CD_PROFILE_SSH_PRIVATE_KEY_PASSPHRASE_ENV_VAR.key(), SECOND_CI_CD_PROFILE_SSH_PRIVATE_KEY_PASSPHRASE_ENV_VAR.value());
+        System.setProperty(THIRD_CI_CD_PROFILE_SHORT_NAME_ENV_VAR.key(), THIRD_CI_CD_PROFILE_SHORT_NAME_ENV_VAR.value());
+        System.setProperty(THIRD_CI_CD_PROFILE_DISPLAY_NAME_ENV_VAR.key(), THIRD_CI_CD_PROFILE_DISPLAY_NAME_ENV_VAR.value());
+        System.setProperty(THIRD_CI_CD_PROFILE_DESCRIPTION_ENV_VAR.key(), THIRD_CI_CD_PROFILE_DESCRIPTION_ENV_VAR.value());
+        System.setProperty(THIRD_CI_CD_PROFILE_SSH_PRIVATE_KEY_DATA_ENV_VAR.key(), THIRD_CI_CD_PROFILE_SSH_PRIVATE_KEY_DATA_ENV_VAR.value());
+        System.setProperty(THIRD_CI_CD_PROFILE_SSH_PRIVATE_KEY_PASSPHRASE_ENV_VAR.key(), THIRD_CI_CD_PROFILE_SSH_PRIVATE_KEY_PASSPHRASE_ENV_VAR.value());
+        var config = EnvVarConfiguration.getInstance(true);
+
+        // Act
+        var additionalCiCdProfiles = config.getAdditionalCiCdProfiles();
+
+        // Assert
+        assertThat(additionalCiCdProfiles).isNotNull();
+        assertThat(additionalCiCdProfiles).size().isEqualTo(2);
+        assertThat(additionalCiCdProfiles)
+                .containsExactly(
+                        expectedSecondCiCdProfile,
+                        expectedThirdtCiCdProfile
+                );
+    }
+
+    @Test
+    void should_throwException_when_additionalCiCdProfilesShortNameIsInvalid() {
+        // Arrange
+        System.setProperty(SECOND_CI_CD_PROFILE_SHORT_NAME_ENV_VAR.key(), "Invalid Short Name");
+        System.setProperty(SECOND_CI_CD_PROFILE_DISPLAY_NAME_ENV_VAR.key(), SECOND_CI_CD_PROFILE_DISPLAY_NAME_ENV_VAR.value());
+        System.setProperty(SECOND_CI_CD_PROFILE_DESCRIPTION_ENV_VAR.key(), SECOND_CI_CD_PROFILE_DESCRIPTION_ENV_VAR.value());
+        System.setProperty(SECOND_CI_CD_PROFILE_SSH_PRIVATE_KEY_DATA_ENV_VAR.key(), SECOND_CI_CD_PROFILE_SSH_PRIVATE_KEY_DATA_ENV_VAR.value());
+        System.setProperty(SECOND_CI_CD_PROFILE_SSH_PRIVATE_KEY_PASSPHRASE_ENV_VAR.key(), SECOND_CI_CD_PROFILE_SSH_PRIVATE_KEY_PASSPHRASE_ENV_VAR.value());
+        System.setProperty(THIRD_CI_CD_PROFILE_SHORT_NAME_ENV_VAR.key(), "Invalid Short Name");
+        System.setProperty(THIRD_CI_CD_PROFILE_DISPLAY_NAME_ENV_VAR.key(), THIRD_CI_CD_PROFILE_DISPLAY_NAME_ENV_VAR.value());
+        System.setProperty(THIRD_CI_CD_PROFILE_DESCRIPTION_ENV_VAR.key(), THIRD_CI_CD_PROFILE_DESCRIPTION_ENV_VAR.value());
+        System.setProperty(THIRD_CI_CD_PROFILE_SSH_PRIVATE_KEY_DATA_ENV_VAR.key(), THIRD_CI_CD_PROFILE_SSH_PRIVATE_KEY_DATA_ENV_VAR.value());
+        System.setProperty(THIRD_CI_CD_PROFILE_SSH_PRIVATE_KEY_PASSPHRASE_ENV_VAR.key(), THIRD_CI_CD_PROFILE_SSH_PRIVATE_KEY_PASSPHRASE_ENV_VAR.value());
+        var config = EnvVarConfiguration.getInstance(true);
+        
+        // Act & Assert
+        assertThatThrownBy(config::getAdditionalCiCdProfiles)
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("CI/CD Profile validation failed");
+    }
 
     @Test
     void should_getAwsAccountId_fromEnvVar() {
@@ -93,6 +157,19 @@ class EnvVarConfigurationTest {
 
         // Assert
         assertThat(azureRegion).isEqualTo(AzureRegion.WEST_EUROPE);
+    }
+
+    @Test
+    void should_getGcpRegion_fromEnvVar() {
+        // Arrange
+        System.setProperty(GCP_REGION_ENV_VAR_KEY, "europe-west1");
+        var config = EnvVarConfiguration.getInstance(true);
+
+        // Act
+        var gcpRegion = config.getGcpRegion();
+
+        // Assert
+        assertThat(gcpRegion).isEqualTo(GcpRegion.EUROPE_WEST1);
     }
 
     @Test
@@ -215,6 +292,78 @@ class EnvVarConfigurationTest {
     }
 
     @Test
+    void should_getEnvironmentSecrets_fromEnvVar() {
+        // Arrange
+        var expectedFirstSecret = new Secret(
+                FIRST_SECRET_SHORT_NAME_ENV_VAR.value(),
+                FIRST_SECRET_DISPLAY_NAME_ENV_VAR.value(),
+                FIRST_SECRET_DESCRIPTION_ENV_VAR.value(),
+                FIRST_SECRET_VALUE_ENV_VAR.value());
+
+        var expectedSecondSecret = new Secret(
+                SECOND_SECRET_SHORT_NAME_ENV_VAR.value(),
+                SECOND_SECRET_DISPLAY_NAME_ENV_VAR.value(),
+                SECOND_SECRET_DESCRIPTION_ENV_VAR.value(),
+                SECOND_SECRET_VALUE_ENV_VAR.value());
+
+        var expectedThirdSecret = new Secret(
+                THIRD_SECRET_SHORT_NAME_ENV_VAR.value(),
+                THIRD_SECRET_DISPLAY_NAME_ENV_VAR.value(),
+                THIRD_SECRET_DESCRIPTION_ENV_VAR.value(),
+                THIRD_SECRET_VALUE_ENV_VAR.value());
+
+        System.setProperty(FIRST_SECRET_SHORT_NAME_ENV_VAR.key(), FIRST_SECRET_SHORT_NAME_ENV_VAR.value());
+        System.setProperty(FIRST_SECRET_DISPLAY_NAME_ENV_VAR.key(), FIRST_SECRET_DISPLAY_NAME_ENV_VAR.value());
+        System.setProperty(FIRST_SECRET_DESCRIPTION_ENV_VAR.key(), FIRST_SECRET_DESCRIPTION_ENV_VAR.value());
+        System.setProperty(FIRST_SECRET_VALUE_ENV_VAR.key(), FIRST_SECRET_VALUE_ENV_VAR.value());
+        System.setProperty(SECOND_SECRET_SHORT_NAME_ENV_VAR.key(), SECOND_SECRET_SHORT_NAME_ENV_VAR.value());
+        System.setProperty(SECOND_SECRET_DISPLAY_NAME_ENV_VAR.key(), SECOND_SECRET_DISPLAY_NAME_ENV_VAR.value());
+        System.setProperty(SECOND_SECRET_DESCRIPTION_ENV_VAR.key(), SECOND_SECRET_DESCRIPTION_ENV_VAR.value());
+        System.setProperty(SECOND_SECRET_VALUE_ENV_VAR.key(), SECOND_SECRET_VALUE_ENV_VAR.value());
+        System.setProperty(THIRD_SECRET_SHORT_NAME_ENV_VAR.key(), THIRD_SECRET_SHORT_NAME_ENV_VAR.value());
+        System.setProperty(THIRD_SECRET_DISPLAY_NAME_ENV_VAR.key(), THIRD_SECRET_DISPLAY_NAME_ENV_VAR.value());
+        System.setProperty(THIRD_SECRET_DESCRIPTION_ENV_VAR.key(), THIRD_SECRET_DESCRIPTION_ENV_VAR.value());
+        System.setProperty(THIRD_SECRET_VALUE_ENV_VAR.key(), THIRD_SECRET_VALUE_ENV_VAR.value());
+        var config = EnvVarConfiguration.getInstance(true);
+
+        // Act
+        var environmentSecrets = config.getEnvironmentSecrets();
+
+        // Assert
+        assertThat(environmentSecrets).isNotNull();
+        assertThat(environmentSecrets).size().isEqualTo(3);
+        assertThat(environmentSecrets)
+                .containsExactly(
+                        expectedFirstSecret,
+                        expectedSecondSecret,
+                        expectedThirdSecret
+                );
+    }
+
+    @Test
+    void should_throwException_when_environmentSecretsShortNameIsInvalid() {
+        // Arrange
+        System.setProperty(FIRST_SECRET_SHORT_NAME_ENV_VAR.key(), "Invalid Short Name");
+        System.setProperty(FIRST_SECRET_DISPLAY_NAME_ENV_VAR.key(), FIRST_SECRET_DISPLAY_NAME_ENV_VAR.value());
+        System.setProperty(FIRST_SECRET_DESCRIPTION_ENV_VAR.key(), FIRST_SECRET_DESCRIPTION_ENV_VAR.value());
+        System.setProperty(FIRST_SECRET_VALUE_ENV_VAR.key(), FIRST_SECRET_VALUE_ENV_VAR.value());
+        System.setProperty(SECOND_SECRET_SHORT_NAME_ENV_VAR.key(), "Invalid Short Name");
+        System.setProperty(SECOND_SECRET_DISPLAY_NAME_ENV_VAR.key(), SECOND_SECRET_DISPLAY_NAME_ENV_VAR.value());
+        System.setProperty(SECOND_SECRET_DESCRIPTION_ENV_VAR.key(), SECOND_SECRET_DESCRIPTION_ENV_VAR.value());
+        System.setProperty(SECOND_SECRET_VALUE_ENV_VAR.key(), SECOND_SECRET_VALUE_ENV_VAR.value());
+        System.setProperty(THIRD_SECRET_SHORT_NAME_ENV_VAR.key(), "Invalid Short Name");
+        System.setProperty(THIRD_SECRET_DISPLAY_NAME_ENV_VAR.key(), THIRD_SECRET_DISPLAY_NAME_ENV_VAR.value());
+        System.setProperty(THIRD_SECRET_DESCRIPTION_ENV_VAR.key(), THIRD_SECRET_DESCRIPTION_ENV_VAR.value());
+        System.setProperty(THIRD_SECRET_VALUE_ENV_VAR.key(), THIRD_SECRET_VALUE_ENV_VAR.value());
+        var config = EnvVarConfiguration.getInstance(true);
+
+        // Act & Assert
+        assertThatThrownBy(config::getEnvironmentSecrets)
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("Secret validation failed");
+    }
+
+    @Test
     void should_getGcpOrganizationId_fromEnvVar() {
         // Arrange
         String expectedOrganizationId = UUID.randomUUID().toString();
@@ -264,19 +413,6 @@ class EnvVarConfigurationTest {
         assertThatThrownBy(config::getGcpProjectId)
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("is required but it has not been defined");
-    }
-
-    @Test
-    void should_getGcpRegion_fromEnvVar() {
-        // Arrange
-        System.setProperty(GCP_REGION_ENV_VAR_KEY, "europe-west1");
-        var config = EnvVarConfiguration.getInstance(true);
-
-        // Act
-        var gcpRegion = config.getGcpRegion();
-
-        // Assert
-        assertThat(gcpRegion).isEqualTo(GcpRegion.EUROPE_WEST1);
     }
 
     @Test

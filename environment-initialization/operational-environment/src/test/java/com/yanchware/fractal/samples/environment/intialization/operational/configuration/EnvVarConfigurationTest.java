@@ -6,6 +6,7 @@ import com.yanchware.fractal.sdk.domain.environment.EnvironmentType;
 import com.yanchware.fractal.sdk.domain.environment.Secret;
 import com.yanchware.fractal.sdk.domain.livesystem.paas.providers.aws.AwsRegion;
 import com.yanchware.fractal.sdk.domain.livesystem.paas.providers.azure.AzureRegion;
+import com.yanchware.fractal.sdk.domain.livesystem.paas.providers.gcp.GcpRegion;
 import org.junit.jupiter.api.Test;
 
 import java.util.UUID;
@@ -172,6 +173,71 @@ class EnvVarConfigurationTest {
         assertThatThrownBy(config::getEnvironmentOwnerId)
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("Invalid UUID string");
+    }
+
+    @Test
+    void should_getGcpOrganizationId_fromEnvVar() {
+        // Arrange
+        String expectedOrganizationId = UUID.randomUUID().toString();
+        System.setProperty(GCP_ORGANIZATION_ID_ENV_VAR_KEY, expectedOrganizationId);
+        var config = EnvVarConfiguration.getInstance(true);
+
+        // Act
+        var organizationId = config.getGcpOrganizationId();
+
+        // Assert
+        assertThat(organizationId).isEqualTo(expectedOrganizationId);
+    }
+
+    @Test
+    void should_throwException_when_gcpOrganizationIdIsEmpty() {
+        // Arrange
+        System.setProperty(GCP_ORGANIZATION_ID_ENV_VAR_KEY, "");
+        var config = EnvVarConfiguration.getInstance(true);
+
+        // Act & Assert
+        assertThatThrownBy(config::getGcpOrganizationId)
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("is required but it has not been defined");
+    }
+
+    @Test
+    void should_getGcpProjectId_fromEnvVar() {
+        // Arrange
+        String expectedProjectId = UUID.randomUUID().toString();
+        System.setProperty(GCP_PROJECT_ID_ENV_VAR_KEY, expectedProjectId);
+        var config = EnvVarConfiguration.getInstance(true);
+
+        // Act
+        var projectId = config.getGcpProjectId();
+
+        // Assert
+        assertThat(projectId).isEqualTo(expectedProjectId);
+    }
+
+    @Test
+    void should_throwException_when_gcpProjectIdIsEmpty() {
+        // Arrange
+        System.setProperty(GCP_PROJECT_ID_ENV_VAR_KEY, "");
+        var config = EnvVarConfiguration.getInstance(true);
+
+        // Act & Assert
+        assertThatThrownBy(config::getGcpProjectId)
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("is required but it has not been defined");
+    }
+
+    @Test
+    void should_getGcpRegion_fromEnvVar() {
+        // Arrange
+        System.setProperty(GCP_REGION_ENV_VAR_KEY, "europe-west1");
+        var config = EnvVarConfiguration.getInstance(true);
+
+        // Act
+        var gcpRegion = config.getGcpRegion();
+
+        // Assert
+        assertThat(gcpRegion).isEqualTo(GcpRegion.EUROPE_WEST1);
     }
 
     @Test
