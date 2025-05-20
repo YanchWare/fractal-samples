@@ -1,12 +1,15 @@
-package com.yanchware.fractal.samples.environment.initialization.cicd.configuration;
+package com.yanchware.fractal.samples.environment.initialization.all.features.configuration;
 
 import com.yanchware.fractal.sdk.domain.environment.CiCdProfile;
 import com.yanchware.fractal.sdk.domain.environment.EnvironmentIdValue;
 import com.yanchware.fractal.sdk.domain.environment.EnvironmentType;
+import com.yanchware.fractal.sdk.domain.environment.Secret;
 import com.yanchware.fractal.sdk.domain.livesystem.paas.providers.aws.AwsRegion;
 import com.yanchware.fractal.sdk.domain.livesystem.paas.providers.azure.AzureRegion;
 import com.yanchware.fractal.sdk.domain.livesystem.paas.providers.gcp.GcpRegion;
 
+import java.util.Collection;
+import java.util.List;
 import java.util.UUID;
 
 import static org.apache.commons.lang3.StringUtils.isBlank;
@@ -29,6 +32,24 @@ public class EnvVarConfiguration implements Configuration {
 
   public static Configuration getInstance(boolean readFromProperties) {
     return new EnvVarConfiguration(readFromProperties);
+  }
+
+  @Override
+  public Collection<CiCdProfile> getAdditionalCiCdProfiles() {
+    return List.of(
+            new CiCdProfile(
+                    getVariableValue(Constants.SECOND_CI_CD_PROFILE_SHORT_NAME_ENV_VAR_KEY),
+                    getVariableValue(Constants.SECOND_CI_CD_PROFILE_DISPLAY_NAME_ENV_VAR_KEY),
+                    getVariableValue(Constants.SECOND_CI_CD_PROFILE_DESCRIPTION_ENV_VAR_KEY),
+                    getVariableValue(Constants.SECOND_CI_CD_PROFILE_SSH_PRIVATE_KEY_DATA_ENV_VAR_KEY),
+                    getVariableValue(Constants.SECOND_CI_CD_PROFILE_SSH_PRIVATE_KEY_PASSPHRASE_ENV_VAR_KEY)),
+            new CiCdProfile(
+                    getVariableValue(Constants.THIRD_CI_CD_PROFILE_SHORT_NAME_ENV_VAR_KEY),
+                    getVariableValue(Constants.THIRD_CI_CD_PROFILE_DISPLAY_NAME_ENV_VAR_KEY),
+                    getVariableValue(Constants.THIRD_CI_CD_PROFILE_DESCRIPTION_ENV_VAR_KEY),
+                    getVariableValue(Constants.THIRD_CI_CD_PROFILE_SSH_PRIVATE_KEY_DATA_ENV_VAR_KEY),
+                    getVariableValue(Constants.THIRD_CI_CD_PROFILE_SSH_PRIVATE_KEY_PASSPHRASE_ENV_VAR_KEY))
+    );
   }
 
   @Override
@@ -77,6 +98,32 @@ public class EnvVarConfiguration implements Configuration {
   }
 
   @Override
+  public Collection<Secret> getEnvironmentSecrets() {
+    return List.of(
+            new Secret(
+                    getVariableValue(Constants.FIRST_SECRET_SHORT_NAME_ENV_VAR_KEY),
+                    getVariableValue(Constants.FIRST_SECRET_DISPLAY_NAME_ENV_VAR_KEY),
+                    getVariableValue(Constants.FIRST_SECRET_DESCRIPTION_ENV_VAR_KEY),
+                    getVariableValue(Constants.FIRST_SECRET_VALUE_ENV_VAR_KEY)),
+            new Secret(
+                    getVariableValue(Constants.SECOND_SECRET_SHORT_NAME_ENV_VAR_KEY),
+                    getVariableValue(Constants.SECOND_SECRET_DISPLAY_NAME_ENV_VAR_KEY),
+                    getVariableValue(Constants.SECOND_SECRET_DESCRIPTION_ENV_VAR_KEY),
+                    getVariableValue(Constants.SECOND_SECRET_VALUE_ENV_VAR_KEY)),
+            new Secret(
+                    getVariableValue(Constants.THIRD_SECRET_SHORT_NAME_ENV_VAR_KEY),
+                    getVariableValue(Constants.THIRD_SECRET_DISPLAY_NAME_ENV_VAR_KEY),
+                    getVariableValue(Constants.THIRD_SECRET_DESCRIPTION_ENV_VAR_KEY),
+                    getVariableValue(Constants.THIRD_SECRET_VALUE_ENV_VAR_KEY))
+    );
+  }
+
+  @Override
+  public GcpRegion getGcpRegion() {
+    return GcpRegion.fromString(getVariableValue(Constants.GCP_REGION_ENV_VAR_KEY));
+  }
+
+  @Override
   public String getGcpOrganizationId() {
     return getVariableValue(Constants.GCP_ORGANIZATION_ID_ENV_VAR_KEY);
   }
@@ -84,11 +131,6 @@ public class EnvVarConfiguration implements Configuration {
   @Override
   public String getGcpProjectId() {
     return getVariableValue(Constants.GCP_PROJECT_ID_ENV_VAR_KEY);
-  }
-
-  @Override
-  public GcpRegion getGcpRegion() {
-    return GcpRegion.fromString(getVariableValue(Constants.GCP_REGION_ENV_VAR_KEY));
   }
 
   @Override

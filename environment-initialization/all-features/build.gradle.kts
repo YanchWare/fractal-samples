@@ -11,7 +11,7 @@ tasks.jar {
     manifest {
         attributes(
             "Implementation-Version" to archiveVersion,
-            "Main-Class" to "com.yanchware.fractal.samples.environment.initialization.secrets.SecretsSample"
+            "Main-Class" to "com.yanchware.fractal.samples.environment.initialization.AllFeaturesSample"
         )
     }
 

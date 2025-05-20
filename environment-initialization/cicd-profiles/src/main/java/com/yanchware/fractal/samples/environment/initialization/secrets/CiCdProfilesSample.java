@@ -1,19 +1,20 @@
-package com.yanchware.fractal.samples.environment.intialization.operational;
+package com.yanchware.fractal.samples.environment.initialization.secrets;
 
-import com.yanchware.fractal.samples.environment.intialization.operational.configuration.Configuration;
+import com.yanchware.fractal.samples.environment.initialization.secrets.configuration.Configuration;
+import com.yanchware.fractal.samples.environment.initialization.secrets.configuration.EnvVarConfiguration;
 import com.yanchware.fractal.sdk.Automaton;
-import com.yanchware.fractal.sdk.domain.environment.*;
+import com.yanchware.fractal.sdk.domain.environment.EnvironmentAggregate;
+import com.yanchware.fractal.sdk.domain.environment.ManagementEnvironment;
 import com.yanchware.fractal.sdk.domain.exceptions.InstantiatorException;
-import com.yanchware.fractal.samples.environment.intialization.operational.configuration.EnvVarConfiguration;
 
-public class OperationalEnvironmentSample {
+public class CiCdProfilesSample {
     public static void main(String[] args) throws InstantiatorException {
         var configuration = EnvVarConfiguration.getInstance();
         var automaton = Automaton.getInstance();
         automaton.instantiate(getFractalCloudEnvironment(automaton, configuration));
     }
 
-    static EnvironmentAggregate getFractalCloudEnvironment(Automaton automaton, Configuration configuration) {
+    public static EnvironmentAggregate getFractalCloudEnvironment(Automaton automaton, Configuration configuration) {
         return automaton.getEnvironmentBuilder()
                 .withManagementEnvironment(ManagementEnvironment.builder()
                         .withId(configuration.getManagementEnvironmentId())
@@ -31,16 +32,8 @@ public class OperationalEnvironmentSample {
                                 configuration.getGcpRegion(),
                                 configuration.getGcpOrganizationId(),
                                 configuration.getGcpProjectId())
-                        .withOperationalEnvironment(OperationalEnvironment.builder()
-                                .withShortName(configuration.getOperationalEnvironmentShortName())
-                                .withName(configuration.getOperationalEnvironmentName())
-                                .withResourceGroup(configuration.getOperationalEnvironmentResourceGroup())
-                                .withAzureSubscription(
-                                        configuration.getOperationalEnvironmentAzureRegion(),
-                                        configuration.getOperationalEnvironmentAzureSubscriptionId())
-                                .withDefaultCiCdProfile(configuration.getOperationalEnvironmentDefaultCiCdProfile())
-                                .withSecret(configuration.getOperationalEnvironmentSecret())
-                                .build())
+                        .withDefaultCiCdProfile(configuration.getDefaultCiCdProfile())//Default profile must be added in order to be able to use additional profiles
+                        .withCiCdProfiles(configuration.getAdditionalCiCdProfiles())
                         .build())
                 .build();
     }

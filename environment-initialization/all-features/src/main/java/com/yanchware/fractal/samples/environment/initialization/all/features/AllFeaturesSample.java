@@ -1,12 +1,13 @@
-package com.yanchware.fractal.samples.environment.intialization.operational;
+package com.yanchware.fractal.samples.environment.initialization.all.features;
 
-import com.yanchware.fractal.samples.environment.intialization.operational.configuration.Configuration;
+import com.yanchware.fractal.samples.environment.initialization.all.features.configuration.Configuration;
+import com.yanchware.fractal.samples.environment.initialization.all.features.configuration.EnvVarConfiguration;
 import com.yanchware.fractal.sdk.Automaton;
-import com.yanchware.fractal.sdk.domain.environment.*;
+import com.yanchware.fractal.sdk.domain.environment.EnvironmentAggregate;
+import com.yanchware.fractal.sdk.domain.environment.ManagementEnvironment;
 import com.yanchware.fractal.sdk.domain.exceptions.InstantiatorException;
-import com.yanchware.fractal.samples.environment.intialization.operational.configuration.EnvVarConfiguration;
 
-public class OperationalEnvironmentSample {
+public class AllFeaturesSample {
     public static void main(String[] args) throws InstantiatorException {
         var configuration = EnvVarConfiguration.getInstance();
         var automaton = Automaton.getInstance();
@@ -30,17 +31,10 @@ public class OperationalEnvironmentSample {
                         .withGcpCloudAgent(
                                 configuration.getGcpRegion(),
                                 configuration.getGcpOrganizationId(),
-                                configuration.getGcpProjectId())
-                        .withOperationalEnvironment(OperationalEnvironment.builder()
-                                .withShortName(configuration.getOperationalEnvironmentShortName())
-                                .withName(configuration.getOperationalEnvironmentName())
-                                .withResourceGroup(configuration.getOperationalEnvironmentResourceGroup())
-                                .withAzureSubscription(
-                                        configuration.getOperationalEnvironmentAzureRegion(),
-                                        configuration.getOperationalEnvironmentAzureSubscriptionId())
-                                .withDefaultCiCdProfile(configuration.getOperationalEnvironmentDefaultCiCdProfile())
-                                .withSecret(configuration.getOperationalEnvironmentSecret())
-                                .build())
+                                configuration.getGcpProjectId()                        )
+                        .withDefaultCiCdProfile(configuration.getDefaultCiCdProfile())//Default profile must be added in order to be able to use additional profiles
+                        .withCiCdProfiles(configuration.getAdditionalCiCdProfiles())
+                        .withSecrets(configuration.getEnvironmentSecrets())
                         .build())
                 .build();
     }
