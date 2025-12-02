@@ -16,6 +16,7 @@ public class AksComponent {
   public static AzureKubernetesService getAks(String id, AzureResourceGroup resourceGroup) {
     return AzureKubernetesService.builder()
         .withId(id)
+        .withDisplayName(id)
         .withRegion(resourceGroup.getRegion())
         .withResourceGroup(resourceGroup)
         .withNodePools(getNodePools())

@@ -46,7 +46,7 @@ public class Sample {
     var noSqlResourceGroup = new AzureResourceGroup("rg-no-sql",AzureRegion.AUSTRALIA_CENTRAL, Map.of("Type", "NoSql"));
     
     return automaton.getLiveSystemBuilder()
-        .withId(new LiveSystemIdValue(configuration.getFractalResourceGroupId().toString(), LIVE_SYSTEM_NAME))
+        .withId(new LiveSystemIdValue(configuration.getFractalResourceGroupId(), LIVE_SYSTEM_NAME))
         .withDescription("Cosmos sample")
         .withComponents(List.of(
             getDbmsAndDatabaseForMongoDb("nosql-mongo-1", noSqlResourceGroup),
@@ -55,7 +55,7 @@ public class Sample {
             getDbmsAndDatabaseForCosmosTable("nosql-cosmos-table-1", noSqlResourceGroup),
             getDbmsAndDatabaseForNoSql("nosql-1", noSqlResourceGroup),
             getDbmsAndDatabaseForCassandra("nosql-casandra-1", noSqlResourceGroup)))
-        .withFractalId(new FractalIdValue(configuration.getFractalResourceGroupId().toString(), LIVE_SYSTEM_NAME, "v1.0"))
+        .withFractalId(new FractalIdValue(configuration.getFractalResourceGroupId(), LIVE_SYSTEM_NAME, "v1.0"))
         .withStandardProvider(ProviderType.AZURE)
         .withEnvironmentId(configuration.getFractalEnvironment(REGION).getManagementEnvironment().getId())
         .build();

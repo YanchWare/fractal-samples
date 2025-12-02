@@ -2,7 +2,7 @@ package com.yanchware.fractal.samples.gcp.sharedconfig;
 
 public class GcpTestConstants {
   public static final EnvVarRecord RESOURCE_GROUP_ID_ENV =
-      new EnvVarRecord("FRACTAL_RESOURCE_GROUP_ID", "01902519-89af-7d0e-b1ce-55c74d41ee5b");
+      new EnvVarRecord("FRACTAL_RESOURCE_GROUP_ID", "Personal/14e43d41-dc32-4426-b13a-1acb6c16bc6f/short-name");
 
   public static final EnvVarRecord ENVIRONMENT_NAME_ENV =
       new EnvVarRecord("FRACTAL_ENVIRONMENT_NAME", "Fractal Cloud Samples");

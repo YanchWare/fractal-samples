@@ -1,6 +1,7 @@
 package com.yanchware.fractal.samples.environment.initialization.cicd.profiles.configuration;
 
 import com.yanchware.fractal.sdk.domain.environment.Secret;
+import com.yanchware.fractal.sdk.domain.values.ResourceGroupId;
 
 import java.util.Collection;
 import java.util.List;
@@ -54,8 +55,8 @@ public class EnvVarConfiguration implements Configuration {
     }
 
     @Override
-    public UUID getResourceGroupId() {
-        return UUID.fromString(getVariableValue(Constants.FRACTAL_RESOURCE_GROUP_ID_ENV_VAR_KEY));
+    public ResourceGroupId getResourceGroupId() {
+        return ResourceGroupId.fromString(getVariableValue(Constants.FRACTAL_RESOURCE_GROUP_ID_ENV_VAR_KEY));
     }
 
     @Override

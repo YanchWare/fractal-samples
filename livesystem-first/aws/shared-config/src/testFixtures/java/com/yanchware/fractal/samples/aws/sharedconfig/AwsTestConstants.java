@@ -2,7 +2,7 @@ package com.yanchware.fractal.samples.aws.sharedconfig;
 
 public class AwsTestConstants {
   public static final EnvVarRecord RESOURCE_GROUP_ID_ENV =
-      new EnvVarRecord("FRACTAL_RESOURCE_GROUP_ID", "0190269e-712c-7abf-9eee-180bb4c22d0b");
+    new EnvVarRecord("FRACTAL_RESOURCE_GROUP_ID", "Personal/14e43d41-dc32-4426-b13a-1acb6c16bc6f/short-name");
 
   public static final EnvVarRecord ENVIRONMENT_NAME_ENV =
       new EnvVarRecord("FRACTAL_ENVIRONMENT_NAME", "Fractal Cloud Samples");

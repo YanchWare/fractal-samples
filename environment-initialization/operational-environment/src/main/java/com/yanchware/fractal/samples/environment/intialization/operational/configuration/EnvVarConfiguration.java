@@ -6,6 +6,7 @@ import com.yanchware.fractal.sdk.domain.environment.EnvironmentType;
 import com.yanchware.fractal.sdk.domain.environment.Secret;
 import com.yanchware.fractal.sdk.domain.livesystem.paas.providers.aws.AwsRegion;
 import com.yanchware.fractal.sdk.domain.livesystem.paas.providers.azure.AzureRegion;
+import com.yanchware.fractal.sdk.domain.values.ResourceGroupId;
 
 import java.util.UUID;
 
@@ -121,8 +122,8 @@ public class EnvVarConfiguration implements Configuration {
   }
 
   @Override
-  public UUID getOperationalEnvironmentResourceGroup() {
-    return UUID.fromString(getVariableValue(Constants.OPERATIONAL_ENVIRONMENT_FRACTAL_RESOURCE_GROUP_ID_ENV_VAR_KEY));
+  public ResourceGroupId getOperationalEnvironmentResourceGroupId() {
+    return ResourceGroupId.fromString(getVariableValue(Constants.OPERATIONAL_ENVIRONMENT_FRACTAL_RESOURCE_GROUP_ID_ENV_VAR_KEY));
   }
 
   @Override
@@ -136,8 +137,8 @@ public class EnvVarConfiguration implements Configuration {
   }
 
   @Override
-  public UUID getResourceGroupId() {
-    return UUID.fromString(getVariableValue(Constants.FRACTAL_RESOURCE_GROUP_ID_ENV_VAR_KEY));
+  public ResourceGroupId getResourceGroupId() {
+    return ResourceGroupId.fromString(getVariableValue(Constants.FRACTAL_RESOURCE_GROUP_ID_ENV_VAR_KEY));
   }
 
   private String getVariableValue(String key) {

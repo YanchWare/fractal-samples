@@ -9,6 +9,7 @@ import com.yanchware.fractal.sdk.domain.environment.aws.AwsCloudAgent;
 import com.yanchware.fractal.sdk.domain.environment.azure.AzureCloudAgent;
 import com.yanchware.fractal.sdk.domain.exceptions.InstantiatorException;
 import com.yanchware.fractal.sdk.domain.livesystem.service.dtos.ProviderType;
+import com.yanchware.fractal.sdk.domain.values.ResourceGroupId;
 import org.junit.jupiter.api.Test;
 
 import java.util.UUID;
@@ -41,7 +42,7 @@ class OperationalEnvironmentSampleTest extends BaseTest {
         ));
         assertThat(managementEnvironment.getName()).isEqualTo(MANAGEMENT_ENVIRONMENT_NAME_ENV.value());
         assertThat(managementEnvironment.getResourceGroups())
-                .containsExactly(UUID.fromString(FRACTAL_RESOURCE_GROUP_ID_ENV_VAR.value()));
+                .containsExactly(ResourceGroupId.fromString(FRACTAL_RESOURCE_GROUP_ID_ENV_VAR.value()));
 
         // Assert AWS Cloud Agent
         var awsAgent = managementEnvironment.getCloudAgentByProviderType().get(ProviderType.AWS);

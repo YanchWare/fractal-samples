@@ -30,7 +30,7 @@ public class OperationalEnvironmentSample {
                         .withOperationalEnvironment(OperationalEnvironment.builder()
                                 .withShortName(configuration.getOperationalEnvironmentShortName())
                                 .withName(configuration.getOperationalEnvironmentName())
-                                .withResourceGroup(configuration.getOperationalEnvironmentResourceGroup())
+                                .withResourceGroup(configuration.getOperationalEnvironmentResourceGroupId())
                                 .withAzureSubscription(
                                         configuration.getOperationalEnvironmentAzureRegion(),
                                         configuration.getOperationalEnvironmentAzureSubscriptionId())

@@ -36,10 +36,10 @@ public class Sample {
 
   public static LiveSystemAggregate getLiveSystem(Automaton automaton, SharedConfig configuration) throws InstantiatorException {
     return automaton.getLiveSystemBuilder()
-        .withId(new LiveSystemIdValue(configuration.getFractalResourceGroupId().toString(), LIVE_SYSTEM_NAME))
+        .withId(new LiveSystemIdValue(configuration.getFractalResourceGroupId(), LIVE_SYSTEM_NAME))
         .withDescription("Custom Workload in OKE sample")
         .withComponent(getOkeWithCustomWorkload("oke-custom-workload-1", configuration.getOciCompartment(), REGION))
-        .withFractalId(new FractalIdValue(configuration.getFractalResourceGroupId().toString(), LIVE_SYSTEM_NAME, "v1.0"))
+        .withFractalId(new FractalIdValue(configuration.getFractalResourceGroupId(), LIVE_SYSTEM_NAME, "v1.0"))
         .withStandardProvider(ProviderType.OCI)
         .withEnvironmentId(configuration.getFractalEnvironment(REGION).getManagementEnvironment().getId())
         .build();
