@@ -32,7 +32,7 @@ public class TestConstants {
       new EnvVarRecord(FRACTAL_ENVIRONMENT_OWNER_ID_ENV_VAR_KEY, UUID.randomUUID().toString());
 
   public static final EnvVarRecord FRACTAL_RESOURCE_GROUP_ID_ENV_VAR =
-          new EnvVarRecord(FRACTAL_RESOURCE_GROUP_ID_ENV_VAR_KEY, UUID.randomUUID().toString());
+          new EnvVarRecord(FRACTAL_RESOURCE_GROUP_ID_ENV_VAR_KEY, String.format("Personal/%s/test-env", UUID.randomUUID()));
 
   public static final EnvVarRecord MANAGEMENT_ENVIRONMENT_NAME_ENV =
           new EnvVarRecord(MANAGEMENT_ENVIRONMENT_NAME_ENV_VAR_KEY, "Test Environment");
@@ -66,7 +66,7 @@ public class TestConstants {
           new EnvVarRecord(OPERATIONAL_ENVIRONMENT_DEFAULT_CI_CD_PROFILE_SSH_PRIVATE_KEY_PASSPHRASE_ENV_VAR_KEY, "Operational CI/CD profile private key passphrase");
   
   public static final EnvVarRecord OPERATIONAL_ENVIRONMENT_FRACTAL_RESOURCE_GROUP_ID_ENV_VAR =
-          new EnvVarRecord(OPERATIONAL_ENVIRONMENT_FRACTAL_RESOURCE_GROUP_ID_ENV_VAR_KEY, UUID.randomUUID().toString());
+          new EnvVarRecord(OPERATIONAL_ENVIRONMENT_FRACTAL_RESOURCE_GROUP_ID_ENV_VAR_KEY, String.format("Personal/%s/test-env", UUID.randomUUID()));
   
   public static final EnvVarRecord OPERATIONAL_ENVIRONMENT_NAME_ENV_VAR =
           new EnvVarRecord(OPERATIONAL_ENVIRONMENT_NAME_ENV_VAR_KEY, "Operational Environment");

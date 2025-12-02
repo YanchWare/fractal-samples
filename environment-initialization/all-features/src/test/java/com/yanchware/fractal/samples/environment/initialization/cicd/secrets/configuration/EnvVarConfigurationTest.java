@@ -6,6 +6,7 @@ import com.yanchware.fractal.sdk.domain.environment.EnvironmentType;
 import com.yanchware.fractal.sdk.domain.environment.Secret;
 import com.yanchware.fractal.sdk.domain.livesystem.paas.providers.aws.AwsRegion;
 import com.yanchware.fractal.sdk.domain.livesystem.paas.providers.azure.AzureRegion;
+import com.yanchware.fractal.sdk.domain.values.ResourceGroupId;
 import org.junit.jupiter.api.Test;
 
 import java.util.UUID;
@@ -462,7 +463,7 @@ class EnvVarConfigurationTest {
     @Test
     void should_getResourceGroupId_fromEnvVar() {
         // Arrange
-        String expected = UUID.randomUUID().toString();
+        String expected = String.format("Personal/%s/test-env", UUID.randomUUID());
         System.setProperty(FRACTAL_RESOURCE_GROUP_ID_ENV_VAR_KEY, expected);
         var config = EnvVarConfiguration.getInstance(true);
 
@@ -470,7 +471,7 @@ class EnvVarConfigurationTest {
         var resourceGroupId = config.getResourceGroupId();
 
         // Assert
-        assertThat(resourceGroupId).isEqualTo(UUID.fromString(expected));
+        assertThat(resourceGroupId).isEqualTo(ResourceGroupId.fromString(expected));
     }
 
     @Test
@@ -482,7 +483,7 @@ class EnvVarConfigurationTest {
         // Act & Assert
         assertThatThrownBy(config::getResourceGroupId)
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("Invalid UUID string");
+                .hasMessageContaining("Invalid resource group id");
     }
 
     @Test

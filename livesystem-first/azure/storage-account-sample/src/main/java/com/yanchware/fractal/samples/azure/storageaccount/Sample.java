@@ -43,7 +43,7 @@ public class Sample {
   public static LiveSystemAggregate getLiveSystem(Automaton automaton, SharedConfig configuration) throws InstantiatorException {
     // LIVE-SYSTEM DEFINITION:
     return automaton.getLiveSystemBuilder()
-        .withId(new LiveSystemIdValue(configuration.getFractalResourceGroupId().toString(), LIVE_SYSTEM_NAME))
+        .withId(new LiveSystemIdValue(configuration.getFractalResourceGroupId(), LIVE_SYSTEM_NAME))
         .withDescription("Storage account sample")
         .withComponents(List.of(
             getLegacyStorageAccountComponent("stlegacyyw001", RESOURCE_GROUP),
@@ -51,7 +51,7 @@ public class Sample {
             getFileStorageAccountComponent("stfileyw001", RESOURCE_GROUP),
             getBlobStorageAccountComponent("stblobyw001", RESOURCE_GROUP),
             getBlockBlobStorageAccountComponent("stblockblobyw001", RESOURCE_GROUP)))
-        .withFractalId(new FractalIdValue(configuration.getFractalResourceGroupId().toString(), LIVE_SYSTEM_NAME, "v1.0"))
+        .withFractalId(new FractalIdValue(configuration.getFractalResourceGroupId(), LIVE_SYSTEM_NAME, "v1.0"))
         .withStandardProvider(ProviderType.AZURE)
         .withEnvironmentId(configuration.getFractalEnvironment(REGION).getManagementEnvironment().getId())
         .build();

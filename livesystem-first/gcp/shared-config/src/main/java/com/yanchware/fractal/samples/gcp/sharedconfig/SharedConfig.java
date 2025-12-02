@@ -7,6 +7,7 @@ import com.yanchware.fractal.sdk.domain.environment.EnvironmentType;
 import com.yanchware.fractal.sdk.domain.environment.ManagementEnvironment;
 import com.yanchware.fractal.sdk.domain.exceptions.InstantiatorException;
 import com.yanchware.fractal.sdk.domain.livesystem.paas.providers.gcp.GcpRegion;
+import com.yanchware.fractal.sdk.domain.values.ResourceGroupId;
 
 import java.util.UUID;
 
@@ -32,8 +33,8 @@ public class SharedConfig implements SharedConfiguration {
   }
 
   @Override
-  public String getFractalCloudResourceGroupId() {
-      return getVariableValue("FRACTAL_RESOURCE_GROUP_ID", true);
+  public ResourceGroupId getFractalCloudResourceGroupId() {
+      return ResourceGroupId.fromString(getVariableValue("FRACTAL_RESOURCE_GROUP_ID", true));
   }
 
   @Override
@@ -64,7 +65,7 @@ public class SharedConfig implements SharedConfiguration {
                 UUID.fromString(environmentOwnerId),
                 environmentShortName))
         .withName(environmentName)
-        .withResourceGroup(UUID.fromString(getFractalCloudResourceGroupId()))
+        .withResourceGroup(getFractalCloudResourceGroupId())
         .withGcpCloudAgent(
                 region,
                 getGcpOrganizationId(),

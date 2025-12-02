@@ -3,9 +3,10 @@ package com.yanchware.fractal.samples.aws.sharedconfig;
 import com.yanchware.fractal.sdk.domain.environment.EnvironmentAggregate;
 import com.yanchware.fractal.sdk.domain.exceptions.InstantiatorException;
 import com.yanchware.fractal.sdk.domain.livesystem.paas.providers.aws.AwsRegion;
+import com.yanchware.fractal.sdk.domain.values.ResourceGroupId;
 
 public interface SharedConfiguration {
-  String getFractalCloudResourceGroupId();
+  ResourceGroupId getFractalCloudResourceGroupId();
   String getOrganizationId();
   String getAccountId();
   EnvironmentAggregate getEnvironment(AwsRegion region) throws InstantiatorException;

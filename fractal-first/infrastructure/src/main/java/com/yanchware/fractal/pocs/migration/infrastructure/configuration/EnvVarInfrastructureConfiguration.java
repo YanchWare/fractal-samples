@@ -1,6 +1,7 @@
 package com.yanchware.fractal.pocs.migration.infrastructure.configuration;
 
 import com.yanchware.fractal.sdk.domain.environment.CiCdProfile;
+import com.yanchware.fractal.sdk.domain.values.ResourceGroupId;
 
 import java.util.UUID;
 
@@ -58,8 +59,8 @@ public class EnvVarInfrastructureConfiguration implements InfrastructureConfigur
   }
 
   @Override
-  public String getFractalCloudResourceGroupId() {
-    return getVariableValue(Constants.FRACTAL_CLOUD_RESOURCE_GROUP_ID_ENV_VAR_KEY);
+  public ResourceGroupId getFractalCloudResourceGroupId() {
+    return ResourceGroupId.fromString(getVariableValue(Constants.FRACTAL_CLOUD_RESOURCE_GROUP_ID_ENV_VAR_KEY));
   }
 
   @Override

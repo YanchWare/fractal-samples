@@ -8,6 +8,7 @@ import com.yanchware.fractal.sdk.domain.environment.ManagementEnvironment;
 import com.yanchware.fractal.sdk.domain.exceptions.InstantiatorException;
 import com.yanchware.fractal.sdk.domain.livesystem.paas.providers.oci.Compartment;
 import com.yanchware.fractal.sdk.domain.livesystem.paas.providers.oci.OciRegion;
+import com.yanchware.fractal.sdk.domain.values.ResourceGroupId;
 
 import java.util.UUID;
 
@@ -33,9 +34,9 @@ public class SharedConfig implements SharedConfiguration {
   }
 
   @Override
-  public UUID getFractalResourceGroupId() {
+  public ResourceGroupId getFractalResourceGroupId() {
     var resourceGroupId = getVariableValue("FRACTAL_RESOURCE_GROUP_ID", true);
-    return UUID.fromString(resourceGroupId);
+    return ResourceGroupId.fromString(resourceGroupId);
   }
 
   @Override

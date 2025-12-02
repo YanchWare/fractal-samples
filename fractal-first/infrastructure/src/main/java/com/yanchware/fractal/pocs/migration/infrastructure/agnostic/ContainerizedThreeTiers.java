@@ -20,7 +20,6 @@ import lombok.Getter;
 
 import java.util.Collection;
 import java.util.List;
-import java.util.UUID;
 
 public abstract class ContainerizedThreeTiers<T extends KubernetesCluster, B extends KubernetesCluster.Builder<T, B>> implements ThreeTierApplication {
     protected final KubernetesCluster.Builder<T, B> kubernetesClusterBuilder;
@@ -79,7 +78,7 @@ public abstract class ContainerizedThreeTiers<T extends KubernetesCluster, B ext
                     AzureRegion.WEST_EUROPE,
                     configuration.getTenantId(),
                     configuration.getSubscriptionId())
-            .withResourceGroup(UUID.fromString(configuration.getFractalCloudResourceGroupId()))
+            .withResourceGroup(configuration.getFractalCloudResourceGroupId())
             .withDefaultCiCdProfile(configuration.getDefaultCiCdProfile())
             .build())
         .build();

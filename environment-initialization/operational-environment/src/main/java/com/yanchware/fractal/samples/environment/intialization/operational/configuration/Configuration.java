@@ -6,6 +6,7 @@ import com.yanchware.fractal.sdk.domain.environment.EnvironmentType;
 import com.yanchware.fractal.sdk.domain.environment.Secret;
 import com.yanchware.fractal.sdk.domain.livesystem.paas.providers.aws.AwsRegion;
 import com.yanchware.fractal.sdk.domain.livesystem.paas.providers.azure.AzureRegion;
+import com.yanchware.fractal.sdk.domain.values.ResourceGroupId;
 
 import java.util.UUID;
 
@@ -26,7 +27,7 @@ public interface Configuration {
   CiCdProfile getOperationalEnvironmentDefaultCiCdProfile();
   String getOperationalEnvironmentShortName();
   String getOperationalEnvironmentName();
-  UUID getOperationalEnvironmentResourceGroup();
+  ResourceGroupId getOperationalEnvironmentResourceGroupId();
   Secret getOperationalEnvironmentSecret();
-  UUID getResourceGroupId();
+  ResourceGroupId getResourceGroupId();
 }

@@ -4,6 +4,7 @@ import com.yanchware.fractal.sdk.domain.environment.EnvironmentIdValue;
 import com.yanchware.fractal.sdk.domain.environment.EnvironmentType;
 import com.yanchware.fractal.sdk.domain.livesystem.paas.providers.aws.AwsRegion;
 import com.yanchware.fractal.sdk.domain.livesystem.paas.providers.azure.AzureRegion;
+import com.yanchware.fractal.sdk.domain.values.ResourceGroupId;
 
 import java.util.UUID;
 
@@ -19,5 +20,5 @@ public interface Configuration {
   String getManagementEnvironmentName();
   String getManagementEnvironmentShortName();
   EnvironmentType getManagementEnvironmentType();
-  UUID getResourceGroupId();
+  ResourceGroupId getResourceGroupId();
 }
