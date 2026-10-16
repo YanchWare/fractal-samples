@@ -28,9 +28,6 @@ Further information about the environment variables required are contained in th
 | [ custom-workload-sample ]( ambassador-sample/ )                                   	        | Sample project creating an OKE and running a custom workload on it                                              |
 | [ eks-full-sample ]( eks-full-sample/ )                                   	                 | Sample project to emphasise the creation of an OKE with all the possible options available                      |
 | [ eks-minimum-sample ]( eks-minimum-sample/ )                              	                | Sample project to emphasise the creation of an OKE with the minimum requirements                                |
-| [ elastic-datastore-sample ]( eks-minimum-sample/ )                              	          | Sample project creating an OKE and running elastic as datastore                                                 |
-| [ elastic-logging-ambassador-sample ]( eks-minimum-sample/ )                              	 | Sample project creating an OKE and running elastic logging exposing its services through Ambassador API Gateway |
-| [ elastic-logging-sample ]( eks-minimum-sample/ )                              	            | Sample project creating an OKE and running elastic logging on it in isolation                                   |
 | [ prometheus-ambassador-sample ]( eks-minimum-sample/ )                              	      | Sample project creating an OKE and running prometheus exposing its services through Ambassador API Gateway      |
 
 

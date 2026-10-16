@@ -33,9 +33,6 @@ Further information about the environment variables required are contained in th
 | [ azure-multiple-resources-sample ]( ./azure-multiple-resources-sample/ ) 	    | Sample project creating multiple resources on Azure                                         |
 | [ cosmos-sample ]( ./cosmos-sample/ ) 	                                        | Sample project creating an Azure Cosmos Entities                                            |
 | [ custom-workload-sample ](./custom-workload-sample/)                          | Sample project creating a Custom Workload in AKS                                            |
-| [ elastic-datastore-sample ]( ./elastic-datastore-sample/ ) 	                  | Sample project creating an Elastic Datastore in AKS                                         |
-| [ elastic-logging-ambassador-sample ]( ./elastic-logging-ambassador-sample/ )  | Sample project creating an Elastic Logging with Ambassador in AKS            	              |
-| [ elastic-logging-sample ]( ./elastic-logging-sample/ ) 	                      | Sample project creating an Elastic Logging in AKS                                           |
 | [ postgresql-sample ]( ./postgresql-sample/ ) 	                                | Sample project creating a Postgresql in Azure                                               |
 | [ prometheus-ambassador-sample ]( ./prometheus-ambassador-sample/ ) 	          | Sample project creating a Prometheus alongisde Ambassador in AKS                            |
 | [ relay-sample ]( ./relay-sample/ ) 	                                          | Sample project creating an Azure Relay                                                      |
